@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   
-  sequelize.define('Cancha', {
+  sequelize.define('Field', {
     id: {
       type: DataTypes.UUID,
       primaryKey : true,
@@ -13,8 +13,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-    cuentaTransferencia: {
+    bankAccount: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -29,18 +28,15 @@ module.exports = (sequelize) => {
      allowNull: false,
     },
 
-    direccion: {
+    address: {
         type: DataTypes.STRING,
         allowNull: false,
        },
 
-    direccion: {
+    city: {
     type: DataTypes.TEXT,
      allowNull: false,
     },
-
-
-
   },
   {timestamps: false}
   );
