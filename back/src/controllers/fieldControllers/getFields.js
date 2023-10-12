@@ -1,14 +1,28 @@
-const {Field} = require ("../db");
+const { Field, Sport } = require("../../db");
+const axios = require("axios");
 
+const getAllFields = async (name) => {
+  const allFields = await Field.findAll({
+    // include: {
+    //   model: Sport,
+    //   attributes: ["name"],
+    //   through: { attributes: [] },
+    // },
+  });
 
-const searchAll = async () => {
+  if (name) {
+    fieldsByName = allFields.filter((field) =>
+      field.name.toLowerCase().startsWith(name.toLowerCase())
+    );
 
-const dataBaseFields = await Field.findAll();
+    if (fieldsByName.length) {
+      return fieldsByName.slice(0, 15);
+    } else {
+      throw new Error(`No se encontró a ninguna cancha por el nombre: ${name}`);
+    }
+  }
 
-return dataBaseFields 
+  return allFields;
 };
 
-
-module.exports = searchAll
-
-
+module.exports = getAllFields;
