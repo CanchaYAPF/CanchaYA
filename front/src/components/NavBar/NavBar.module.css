@@ -1,0 +1,14 @@
+.navbar {
+    background-color: #ffffff;
+    border-top: 1px solid #ccc;
+  }
+  
+  .nav-link {
+    color: #000000;
+    font-family: sans-serif;
+    font-size: 16px;
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
