@@ -1,5 +1,10 @@
 const { Router } = require("express");
 
+
+const getSportsHandler = require ("../handlers/sportsHandlers/getSportsHandler")
+
 const sportsRouter = Router();
 
-module.exports = sportsRouter;
+sportsRouter.get("/", getSportsHandler);
+
+module.exports = getSportsHandler;
