@@ -1,9 +1,11 @@
 const { Router } = require("express");
-const userRouter = require("./userRouter");
-const fieldRouter = require("./fieldRouter");
-const bookingRouter = require("./bookingRouter");
-const reviewRouter = require("./reviewRouter");
-const sportsRouter = require("./sportsRouter");
+const {
+  userRouter,
+  fieldRouter,
+  bookingRouter,
+  reviewRouter,
+  sportsRouter,
+} = require("./index");
 
 const router = Router();
 

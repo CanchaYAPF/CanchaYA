@@ -1,11 +1,9 @@
+const { getBookingHr, postBookingHr } = require("../handlers");
 const { Router } = require("express");
-const postBooking = require("../handlers/bookingHandlers/bookingPostHandlers");
-const getAllBooking = require ("../handlers/bookingHandlers/bookingHandlers") 
 
 const bookingRouter = Router();
 
-bookingRouter.post("/", postBooking)
-bookingRouter.get("/", getAllBooking)
-
+bookingRouter.get("/", getBookingHr);
+bookingRouter.post("/", postBookingHr);
 
 module.exports = bookingRouter;
