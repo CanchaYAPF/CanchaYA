@@ -1,12 +1,12 @@
-const { Booking } = require('../../db');
+const { Booking } = require("../../db");
 
 const getBooking = async () => {
   try {
     const allBooking = await Booking.findAll({
-      attributes: ['id', 'day', 'initialHour', 'finalHour', 'totalTime'],
+      attributes: ["id", "day", "initialHour", "finalHour", "totalTime"],
     });
-    
-    const bookingsObject = allBooking.map(booking => {
+
+    const bookingsObject = allBooking.map((booking) => {
       return {
         id: booking.dataValues.id,
         day: booking.dataValues.day,
@@ -18,8 +18,8 @@ const getBooking = async () => {
 
     return bookingsObject;
   } catch (error) {
-    console.error('Error al buscar reservas:', error);
-    return null; 
+    console.error("Error al buscar reservas:", error);
+    return null;
   }
 };
 

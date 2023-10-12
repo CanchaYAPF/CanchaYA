@@ -1,4 +1,4 @@
-const getAllFields = require("../../controllers/fieldControllers/getFields");
+const getAllFields = require("../../controllers/field/getFields");
 
 const allFieldsHr = async (req, res) => {
   try {

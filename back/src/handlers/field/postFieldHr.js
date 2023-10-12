@@ -1,4 +1,4 @@
-const postField = require("../../controllers/fieldControllers/postField");
+const postField = require("../../controllers/field/postField");
 
 const postFieldHr = async (req, res) => {
   const { name, bankAccount, image, mail, address, city } = req.body;

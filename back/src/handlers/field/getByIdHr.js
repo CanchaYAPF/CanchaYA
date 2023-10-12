@@ -1,4 +1,4 @@
-const getById = require("../../controllers/fieldControllers/getById");
+const getById = require("../../controllers/field/getById");
 
 const getByIdHr = async (req, res) => {
   const { id } = req.params;
