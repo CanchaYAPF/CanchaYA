@@ -1,13 +1,14 @@
 const createBooking = require("../../controllers/booking/createBooking");
 
 const postBookingHr = async (req, res) => {
-  const { day, initialHour, finalHour, totalTime } = req.body;
+  const { day, initialHour, finalHour, totalTime, fieldName } = req.body;
   try {
     const postBooking = await createBooking(
       day,
       initialHour,
       finalHour,
-      totalTime
+      totalTime,
+      fieldName
     );
     res.status(200).json({ reserva: postBooking });
   } catch (error) {
