@@ -9,10 +9,6 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
-      description: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       rate: {
         type: DataTypes.INTEGER,
         validate: {
@@ -20,6 +16,10 @@ module.exports = (sequelize) => {
             arg: [0, 5],
           },
         },
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
     },
