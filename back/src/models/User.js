@@ -13,14 +13,31 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      lastname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate:{
+          len:{
+            arg:[5,15],
+            msg:"La contraseña debe de tener entre 5 y 15 caracteres"
+          }
+        }
       },
       mail: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isEmail: true,
+        }
       },
+      user_type: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     },
     { timestamps: false }
   );
