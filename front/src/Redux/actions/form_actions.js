@@ -1,11 +1,6 @@
-export const CREATE_BOOKING = 'CREATE_BOOKING';
-export const GET_BOOKING = 'GET_BOOKING';
-export const CREATE_FIELD = 'CREATE_FIELD';
-export const GET_FIELD = 'GET_FIELD';
-export const CREATE_REVIEW = 'CREATE_REVIEW';
-export const GET_REVIEW = 'GET_REVIEW';
-export const USER_LOGIN = 'USER_LOGIN';
-export const USER_SIGNUP = 'USER_SIGNUP';
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP } from "./constants"
+
+import axios from "axios";
 
 export function createBooking(data) {
   return { type: CREATE_BOOKING, data };
@@ -32,9 +27,23 @@ export function getReview(data) {
 }
 
 export function userLogin(data) {
-  return { type: USER_LOGIN, data };
+  return async function (dispatch) {
+    const res = await axios.post(`http://localhost:3001/user/login`, data)
+    const user = res.data
+    return dispatch({
+      type: USER_LOGIN,
+      payload: user
+    })
+  }
 }
 
 export function userSignup(data) {
-  return { type: USER_SIGNUP, data };
+  return async function (dispatch) {
+    const res = await axios.post(`http://localhost:3001/user/signup`, data)
+    const register = res.data
+    return dispatch({
+      type: USER_SIGNUP,
+      payload: register
+    })
+  }
 }
