@@ -1,9 +1,7 @@
-const { postSignUpHr } = require("../handlers/userHandlers/postSignUpHr");
+const postSignUpHr = require("../handlers/user/postSignUpHr");
 const { Router } = require("express");
 
 const userRouter = Router();
-userRouter.post('/signup',postSignUpHr);
-
-
+userRouter.post("/signup", postSignUpHr);
 
 module.exports = userRouter;

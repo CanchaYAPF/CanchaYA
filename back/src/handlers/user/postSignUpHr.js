@@ -9,4 +9,5 @@ const postSignUpHr = async (req, res) => {
     res.status(404).json({ error: error.message });
   }
 };
+
 module.exports = postSignUpHr;
