@@ -1,5 +1,5 @@
 const { Field, Sport } = require("../../db");
-const axios = require("axios");
+
 
 const getAllFields = async (name) => {
   const allFields = await Field.findAll({

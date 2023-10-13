@@ -1,5 +1,5 @@
 const { Field, Sport } = require("../../db");
-const axios = require("axios");
+
 
 const getById = async (id) => {
   if (isNaN(id)) {
