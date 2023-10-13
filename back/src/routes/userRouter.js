@@ -3,6 +3,6 @@ const { Router } = require("express");
 
 const userRouter = Router();
 
-userRouter.post("/", postSignUpHr);
+userRouter.post("/signup", postSignUpHr);
 
 module.exports = userRouter;
