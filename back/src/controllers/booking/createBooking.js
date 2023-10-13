@@ -2,9 +2,9 @@ const { Booking, User, Field } = require('../../db');
 
 module.exports = createBooking;
 
-async function createBooking(day, initialHour, finalHour, totalTime, fieldName) {
+async function createBooking(day, initialHour, finalHour, totalTime, fieldName, userId) {
     try {
-        if (!day || !initialHour || !finalHour || !totalTime || !fieldName) {
+        if (!day || !initialHour || !finalHour || !totalTime || !fieldName || !userId) {
             throw new Error("Faltan datos por completar");
         }
 
@@ -19,12 +19,19 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldName) 
             throw new Error("Cancha no encontrada");
         }
 
+        const user = await User.findByPk(userId);
+
+        if (!user) {
+            throw new Error("Usuario no encontrado");
+        }
+
         const booking = await Booking.create({
             day,
             initialHour,
             finalHour,
             totalTime,
             fieldId: field.id,
+            userId: user.id, 
         });
 
         const fieldWithReserva = await Field.findByPk(field.id);
@@ -36,6 +43,7 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldName) 
         return {
             reserva: booking,
             cancha: fieldWithReserva,
+            usuario: user,
         };
     } catch (error) {
         console.error(error);
