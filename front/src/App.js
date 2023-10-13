@@ -1,15 +1,17 @@
 import React from 'react';
-import { Route, Router } from "react-router-dom"
+import { Route, Routes, Navigate } from "react-router-dom"
 import { Home, SignUp, Login } from "./components/index"
 import './App.css';
+
 const App = () => {
   return (
     <div className="container">
-      <Router>
+      <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
+        <Route path='home' element={<Home />} />
         <Route path='signup' element={<SignUp />} />
         <Route path='login' element={<Login />} />
-        <Route path='home' element={<Home />} />
-      </Router>
+      </Routes>
     </div>
   );
 };

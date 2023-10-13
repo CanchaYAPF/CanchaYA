@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { userSignup } from "../../../Redux/actions/form_actions"
-import { response } from 'express'
 
 const SignUp = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const [userRegister, setUserRegister] = useState({
         name: "",
@@ -17,18 +16,12 @@ const SignUp = () => {
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await dispatch(userSignup, userRegister)
-            navigate("/home")
-
+          await dispatch(userSignup(userRegister))
+          navigate("/home")
         } catch (error) {
-            return error
+          return error
         }
-
-
-
-
-    }
-
+      }
     const handleNameChange = (e) => {
         setUserRegister({
             ...userRegister,
@@ -42,6 +35,7 @@ const SignUp = () => {
             email: e.target.value,
         })
     }
+
     const handlePasswordChange = (e) => {
         setUserRegister({
             ...userRegister,
@@ -52,7 +46,6 @@ const SignUp = () => {
     return (
         <>
             <form onSubmit={handleRegisterSubmit}>
-
                 <div>
                     <input label="Nombre Completo" value={userRegister.name} onChange={handleNameChange} />
                 </div>

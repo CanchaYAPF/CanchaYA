@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const Login = () => {
   const dispatch = useDispatch()
-  const [usernameLogin, setUserNameLogin] = useState({
+  const [usernameLogin, setUserLogin] = useState({
     email: "",
     password: ""
   })
@@ -14,25 +14,22 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await dispatch(userLogin(usernameLogin))
-
+      await dispatch(userLogin(usernameLogin))
     } catch (error) {
-
+      console.error("Error al iniciar sesión:", error);
     }
   }
-
   const handleEmailChange = (e) => {
     setUserLogin({
       ...usernameLogin,
-      email: e.prevent.value,
+      email: e.target.value,
     })
   }
-
+  
   const handlePasswordChange = (e) => {
     setUserLogin({
       ...usernameLogin,
-      password: e.prevent.value
-
+      password: e.target.value
     })
   }
   return (
