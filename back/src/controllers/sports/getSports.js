@@ -1,12 +1,12 @@
 const getAllSports = async () => {
   const sports = [
-    "futbol",
-    "basketball",
-    "rugby",
-    "tennis",
-    "golf",
-    "boxing",
-    "hockey",
+    "Fútbol",
+    "Básquet",
+    "Rugby",
+    "Tenis",
+    "Vóley",
+    "Boxeo",
+    "Hockey",
   ];
   return sports;
 };
