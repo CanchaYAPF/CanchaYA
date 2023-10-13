@@ -4,6 +4,7 @@ const userRouter = Router();
 const {postSignUpHandler}=require('../handlers/userHandlers/postSignUpHandler.js')
 
 
-userRouter.post('/',postSignUpHandler);
+userRouter.post('/signup',postSignUpHandler);
+
 
 module.exports = userRouter;
