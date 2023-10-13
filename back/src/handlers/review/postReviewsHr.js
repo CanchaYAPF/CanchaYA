@@ -1,7 +1,7 @@
 const postReviews = require("../../controllers/review/postReviews");
 
 const postReviewHr = async (req, res) => {
-  const { id, description, rate } = req.body;
+  const { description, rate } = req.body;
   try {
     const result = await postReviews(description, rate);
     res.status(200).json(result);

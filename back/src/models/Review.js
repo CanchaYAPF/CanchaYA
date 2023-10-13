@@ -20,6 +20,7 @@ module.exports = (sequelize) => {
             arg: [0, 5],
           },
         },
+        allowNull: false,
       },
     },
     { timestamps: false }

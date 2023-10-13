@@ -12,7 +12,7 @@ const router = Router();
 router.use("/user", userRouter);
 router.use("/field", fieldRouter);
 router.use("/booking", bookingRouter);
-router.use("/review", reviewRouter);
+router.use("/reviews", reviewRouter);
 router.use("/sports", sportsRouter);
 
 module.exports = router;
