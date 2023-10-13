@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 //--SignUp--//
-const signUpController= async(name,mail,password)=>{
+const signUp= async(name,mail,password)=>{
   
 const encryptPassword= await bcrypt.hash(password.toString(),10) 
 const user = await User.findOne({ where: { mail } });
@@ -25,4 +25,4 @@ const user = await User.findOne({ where: { mail } });
         });
       });
 }}
-module.exports={signUpController}
+module.exports={signUp}
