@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         validate: {
           len: {
-            arg: [0, 5],
+            arg: [1, 5],
           },
         },
         allowNull: false,
@@ -22,6 +22,11 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
+      approved:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:false,
+        allowNull:false
+      }
     },
     { timestamps: false }
   );
