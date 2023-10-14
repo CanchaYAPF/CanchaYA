@@ -42,12 +42,12 @@ export default function formReducer(state = initialState, action) {
     case USER_LOGIN:
       return {
         ...state,
-        userData: action.data
+        userData: action.payload 
       };
     case USER_SIGNUP:
       return {
         ...state,
-        userData: action.data
+        userData: action.payload 
       };
     default:
       return state;
