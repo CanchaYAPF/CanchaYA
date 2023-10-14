@@ -7,7 +7,7 @@ const Home = () => {
       <div className={style.navbar}>
         <h1>Navbar</h1>
       </div>
-      <button className={style.btn}>Agregar Cancha</button>
+      <Link to={'/form'}><button className={style.btn}>Agregar Cancha</button></Link>
       <Link to={'/login'}><button className={style.btn}>Iniciar Sesión</button></Link>
       <Link to={'/signup'}><button className={style.btn}>Registrarse</button></Link>
       <div className={style.search}>

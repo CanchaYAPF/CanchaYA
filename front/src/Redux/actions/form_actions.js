@@ -1,5 +1,4 @@
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP } from "./constants"
-
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP } from "./constants";
 import axios from "axios";
 
 export function createBooking(data) {
@@ -28,22 +27,22 @@ export function getReview(data) {
 
 export function userLogin(data) {
   return async function (dispatch) {
-    const res = await axios.post(`http://localhost:3001/user/login`, data)
-    const user = res.data
+    const res = await axios.post(`http://localhost:3001/user/login`, data);
+    const user = res.data;
     return dispatch({
       type: USER_LOGIN,
       payload: user
-    })
+    });
   }
 }
 
 export function userSignup(data) {
   return async function (dispatch) {
-    const res = await axios.post(`http://localhost:3001/user/signup`, data)
-    const register = res.data
+    const res = await axios.post(`http://localhost:3001/user/signup`, data);
+    const register = res.data;
     return dispatch({
       type: USER_SIGNUP,
       payload: register
-    })
+    });
   }
 }
