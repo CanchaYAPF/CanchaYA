@@ -11,28 +11,37 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false,
-      },
-      bankAccount: {
-        type: DataTypes.STRING,
-        allowNull: false,
+   
       },
       image: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      mail: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      service: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+ 
       },
       address: {
         type: DataTypes.STRING,
-        allowNull: false,
+  
       },
       city: {
         type: DataTypes.TEXT,
-        allowNull: false,
+   
       },
+      phone:{
+        type: DataTypes.STRING,
+      },
+      price:{
+        type: DataTypes.INTEGER,
+      },
+      paymentMethod:{
+        type:DataTypes.ARRAY(DataTypes.STRING)
+      },
+      shift:{
+        type:DataTypes.ARRAY(DataTypes.STRING)
+      }
+
     },
     { timestamps: false }
   );

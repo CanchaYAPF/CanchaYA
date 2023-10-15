@@ -4,18 +4,19 @@ import { Link } from 'react-router-dom';
 import styles from './Form.module.css';
 import { formCancha } from '../../Redux/actions/form_actions';
 
+
 const FormularioCancha = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    nombreCancha: '',
-    imagen: '',
-    direccionCancha: '',
-    ciudad: '',
-    telefono: '',
-    precioHora: '',
-    turnos: [],
-    metodosPago: [],
-    servicios: [],
+    name: '',
+    image: '',
+    address: '',
+    city: '',
+    phone: '',
+    price: '',
+    shift: [],
+    paymentMethod: [],
+    service: [],
   });
 
   const handleChange = (e) => {
@@ -26,11 +27,11 @@ const FormularioCancha = () => {
   const handleTurnoChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
-      setFormData({ ...formData, turnos: [...formData.turnos, value] });
+      setFormData({ ...formData, shift: [...formData.shift, value] });
     } else {
       setFormData({
         ...formData,
-        turnos: formData.turnos.filter((turno) => turno !== value),
+        shift: formData.shift.filter((turno) => turno !== value),
       });
     }
   };
@@ -38,11 +39,11 @@ const FormularioCancha = () => {
   const handleMetodoPagoChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
-      setFormData({ ...formData, metodosPago: [...formData.metodosPago, value] });
+      setFormData({ ...formData, paymentMethod: [...formData.paymentMethod, value] });
     } else {
       setFormData({
         ...formData,
-        metodosPago: formData.metodosPago.filter((metodo) => metodo !== value),
+        paymentMethod: formData.paymentMethod.filter((metodo) => metodo !== value),
       });
     }
   };
@@ -50,11 +51,11 @@ const FormularioCancha = () => {
   const handleServicioChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
-      setFormData({ ...formData, servicios: [...formData.servicios, value] });
+      setFormData({ ...formData, service: [...formData.service, value] });
     } else {
       setFormData({
         ...formData,
-        servicios: formData.servicios.filter((servicio) => servicio !== value),
+        service: formData.service.filter((servicio) => servicio !== value),
       });
     }
   };
@@ -70,8 +71,8 @@ const FormularioCancha = () => {
       <input
         type="text"
         className={styles.formInput}
-        name="nombreCancha"
-        value={formData.nombreCancha}
+        name="name"
+        value={formData.name}
         onChange={handleChange}
       />
 
@@ -79,18 +80,18 @@ const FormularioCancha = () => {
       <input
         type="text"
         className={styles.formInput}
-        name="imagen"
-        value={formData.imagen}
+        name="image"
+        value={formData.image}
         onChange={handleChange}
       />
-      {formData.imagen && <img src={formData.imagen} alt="Imagen de la cancha" />}
+      {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}
 
       <label className={styles.formLabel}>Dirección de la Cancha:</label>
       <input
         type="text"
         className={styles.formInput}
-        name="direccionCancha"
-        value={formData.direccionCancha}
+        name="address"
+        value={formData.address}
         onChange={handleChange}
       />
 
@@ -98,8 +99,8 @@ const FormularioCancha = () => {
       <input
         type="text"
         className={styles.formInput}
-        name="ciudad"
-        value={formData.ciudad}
+        name="city"
+        value={formData.city}
         onChange={handleChange}
       />
 
@@ -107,8 +108,8 @@ const FormularioCancha = () => {
       <input
         type="text"
         className={styles.formInput}
-        name="telefono"
-        value={formData.telefono}
+        name="phone"
+        value={formData.phone}
         onChange={handleChange}
       />
 
@@ -116,8 +117,8 @@ const FormularioCancha = () => {
       <input
         type="text"
         className={styles.formInput}
-        name="precioHora"
-        value={formData.precioHora}
+        name="price"
+        value={formData.price}
         onChange={handleChange}
       />
 
@@ -127,7 +128,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="turnoManana"
         value="Mañana"
-        checked={formData.turnos.includes('Mañana')}
+        checked={formData.shift.includes('Mañana')}
         onChange={handleTurnoChange}
       />
       Mañana
@@ -136,7 +137,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="turnoTarde"
         value="Tarde"
-        checked={formData.turnos.includes('Tarde')}
+        checked={formData.shift.includes('Tarde')}
         onChange={handleTurnoChange}
       />
       Tarde
@@ -145,7 +146,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="turnoNoche"
         value="Noche"
-        checked={formData.turnos.includes('Noche')}
+        checked={formData.shift.includes('Noche')}
         onChange={handleTurnoChange}
       />
       Noche
@@ -156,7 +157,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="metodoEfectivo"
         value="Efectivo"
-        checked={formData.metodosPago.includes('Efectivo')}
+        checked={formData.paymentMethod.includes('Efectivo')}
         onChange={handleMetodoPagoChange}
       />
       Efectivo
@@ -165,7 +166,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="metodoDebito"
         value="Débito"
-        checked={formData.metodosPago.includes('Débito')}
+        checked={formData.paymentMethod.includes('Débito')}
         onChange={handleMetodoPagoChange}
       />
       Débito
@@ -174,7 +175,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="metodoCredito"
         value="Crédito"
-        checked={formData.metodosPago.includes('Crédito')}
+        checked={formData.paymentMethod.includes('Crédito')}
         onChange={handleMetodoPagoChange}
       />
       Crédito
@@ -183,7 +184,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="metodoMercadoPago"
         value="MercadoPago"
-        checked={formData.metodosPago.includes('MercadoPago')}
+        checked={formData.paymentMethod.includes('MercadoPago')}
         onChange={handleMetodoPagoChange}
       />
       MercadoPago
@@ -194,7 +195,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="estacionamiento"
         value="Estacionamiento"
-        checked={formData.servicios.includes('Estacionamiento')}
+        checked={formData.service.includes('Estacionamiento')}
         onChange={handleServicioChange}
       />
       Estacionamiento
@@ -203,7 +204,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="tribunas"
         value="Tribunas"
-        checked={formData.servicios.includes('Tribunas')}
+        checked={formData.service.includes('Tribunas')}
         onChange={handleServicioChange}
       />
       Tribunas
@@ -212,7 +213,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="vestuarios"
         value="Vestuarios"
-        checked={formData.servicios.includes('Vestuarios')}
+        checked={formData.service.includes('Vestuarios')}
         onChange={handleServicioChange}
       />
       Vestuarios
@@ -221,7 +222,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="duchas"
         value="Duchas"
-        checked={formData.servicios.includes('Duchas')}
+        checked={formData.service.includes('Duchas')}
         onChange={handleServicioChange}
       />
       Duchas
@@ -230,7 +231,7 @@ const FormularioCancha = () => {
         className={styles.formCheckbox}
         name="kiosco"
         value="Kiosco"
-        checked={formData.servicios.includes('Kiosco')}
+        checked={formData.service.includes('Kiosco')}
         onChange={handleServicioChange}
       />
       Kiosco
