@@ -8,12 +8,14 @@ const FormularioCancha = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     nombreCancha: '',
+    imagen: '',
     direccionCancha: '',
+    ciudad: '',
     telefono: '',
-    email: '',
     precioHora: '',
     turnos: [],
     metodosPago: [],
+    servicios: [],
   });
 
   const handleChange = (e) => {
@@ -45,6 +47,18 @@ const FormularioCancha = () => {
     }
   };
 
+  const handleServicioChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setFormData({ ...formData, servicios: [...formData.servicios, value] });
+    } else {
+      setFormData({
+        ...formData,
+        servicios: formData.servicios.filter((servicio) => servicio !== value),
+      });
+    }
+  };
+
   const handleSubmit = () => {
     dispatch(formCancha(formData));
   };
@@ -61,6 +75,16 @@ const FormularioCancha = () => {
         onChange={handleChange}
       />
 
+      <label className={styles.formLabel}>Imagen:</label>
+      <input
+        type="text"
+        className={styles.formInput}
+        name="imagen"
+        value={formData.imagen}
+        onChange={handleChange}
+      />
+      {formData.imagen && <img src={formData.imagen} alt="Imagen de la cancha" />}
+
       <label className={styles.formLabel}>Dirección de la Cancha:</label>
       <input
         type="text"
@@ -70,21 +94,21 @@ const FormularioCancha = () => {
         onChange={handleChange}
       />
 
-      <label className={styles.formLabel}>Número de Teléfono:</label>
+      <label className={styles.formLabel}>Ciudad:</label>
+      <input
+        type="text"
+        className={styles.formInput}
+        name="ciudad"
+        value={formData.ciudad}
+        onChange={handleChange}
+      />
+
+      <label className={styles.formLabel}>Teléfono:</label>
       <input
         type="text"
         className={styles.formInput}
         name="telefono"
         value={formData.telefono}
-        onChange={handleChange}
-      />
-
-      <label className={styles.formLabel}>Correo Electrónico:</label>
-      <input
-        type="text"
-        className={styles.formInput}
-        name="email"
-        value={formData.email}
         onChange={handleChange}
       />
 
@@ -163,6 +187,53 @@ const FormularioCancha = () => {
         onChange={handleMetodoPagoChange}
       />
       MercadoPago
+
+      <div className={styles.formLabel}>Servicios:</div>
+      <input
+        type="checkbox"
+        className={styles.formCheckbox}
+        name="estacionamiento"
+        value="Estacionamiento"
+        checked={formData.servicios.includes('Estacionamiento')}
+        onChange={handleServicioChange}
+      />
+      Estacionamiento
+      <input
+        type="checkbox"
+        className={styles.formCheckbox}
+        name="tribunas"
+        value="Tribunas"
+        checked={formData.servicios.includes('Tribunas')}
+        onChange={handleServicioChange}
+      />
+      Tribunas
+      <input
+        type="checkbox"
+        className={styles.formCheckbox}
+        name="vestuarios"
+        value="Vestuarios"
+        checked={formData.servicios.includes('Vestuarios')}
+        onChange={handleServicioChange}
+      />
+      Vestuarios
+      <input
+        type="checkbox"
+        className={styles.formCheckbox}
+        name="duchas"
+        value="Duchas"
+        checked={formData.servicios.includes('Duchas')}
+        onChange={handleServicioChange}
+      />
+      Duchas
+      <input
+        type="checkbox"
+        className={styles.formCheckbox}
+        name="kiosco"
+        value="Kiosco"
+        checked={formData.servicios.includes('Kiosco')}
+        onChange={handleServicioChange}
+      />
+      Kiosco
 
       <button className={styles.formButton} onClick={handleSubmit}>Agregar</button>
     </div>
