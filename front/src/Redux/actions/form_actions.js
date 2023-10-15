@@ -48,18 +48,16 @@ export function userSignup(data) {
 }
 
 export function formCancha(data) {
+  console.log("data",data)
   return async function (dispatch) {
     try {
-      const response = await axios.post('http://localhost:3001/user/form', data);
+      await axios.post('http://localhost:3001/field', data);
       dispatch({
         type: FORM_CANCHA_SUCCESS,
-        payload: response.data
+        payload: data
       });
     } catch (error) {
-      dispatch({
-        type: FORM_CANCHA_ERROR,
-        payload: error.message
-      });
+      throw new Error(error.message);
     }
   };
 }

@@ -49,17 +49,7 @@ export default function formReducer(state = initialState, action) {
         ...state,
         userData: action.payload 
       };
-   case FORM_CANCHA_SUCCESS:
-  return {
-    ...state,
-    formData: action.payload
-  };
-    case FORM_CANCHA_ERROR:
-      return {
-        ...state,
-        error: action.payload
-      };
     default:
       return state;
   }
-};
+}
