@@ -1,6 +1,6 @@
 const { Field, Sport } = require("../../db");
 
-const postField = async (name, bankAccount, image, mail, address, city) => {
+const postField = async (name, image, phone, address, city, paymentMethod, price, service,shift) => {
   const existingField = await Field.findOne({ where: { name } });
   if (existingField) {
     const error = new Error("La cancha ya existe");
@@ -17,11 +17,14 @@ const postField = async (name, bankAccount, image, mail, address, city) => {
 
   const newField = await Field.create({
     name,
-    bankAccount,
-    image,
-    mail,
+    image, 
+    phone,
     address,
     city,
+    paymentMethod, 
+    price,
+    service, 
+    shift
   });
 
   //   await newField.addSports(sport);
