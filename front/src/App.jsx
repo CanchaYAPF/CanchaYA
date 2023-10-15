@@ -2,7 +2,7 @@ import { Route, Routes, Navigate } from "react-router-dom"
 import Login from "./components/Auth/Login/Login"
 import SignUp from "./components/Auth/SignUp/SignUp"
 import Home from "./components/Home/Home"
-import Form from "./components/Form/Form"
+import Form from "./components/Form/form"
 import './App.css';
 
 const App = () => {

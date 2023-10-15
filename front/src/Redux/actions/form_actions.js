@@ -1,4 +1,4 @@
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP } from "./constants";
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR } from "../types/form_types";
 import axios from "axios";
 
 export function createBooking(data) {
@@ -45,4 +45,21 @@ export function userSignup(data) {
       payload: register
     });
   }
+}
+
+export function formCancha(data) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post('http://localhost:3001/user/form', data);
+      dispatch({
+        type: FORM_CANCHA_SUCCESS,
+        payload: response.data
+      });
+    } catch (error) {
+      dispatch({
+        type: FORM_CANCHA_ERROR,
+        payload: error.message
+      });
+    }
+  };
 }
