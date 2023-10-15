@@ -16,7 +16,7 @@ const signUp = async (name, lastname, mail, password) => {
       password: encryptPassword,
     });
     const token = await jwt.sign({ userId: newUser.id }, "secretKey");
-    return { newUser, token };
+    return { auth:"registro exitoso", token:token };
   }
 };
 
