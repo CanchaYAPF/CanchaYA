@@ -2,12 +2,15 @@ import React from 'react'
 import { useState } from 'react'
 import { userLogin } from '../../../Redux/actions/form_actions'
 import { useDispatch } from "react-redux"
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+
 
 const Login = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate();
+
   const [usernameLogin, setUserLogin] = useState({
-    email: "",
+    mail: "",
     password: ""
   })
 
@@ -15,6 +18,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await dispatch(userLogin(usernameLogin))
+      navigate("/home")
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
     }
@@ -22,7 +26,7 @@ const Login = () => {
   const handleEmailChange = (e) => {
     setUserLogin({
       ...usernameLogin,
-      email: e.target.value,
+      mail: e.target.value,
     })
   }
   
@@ -36,10 +40,10 @@ const Login = () => {
     <div>
       <form onSubmit={handleLoginSubmit}>
         <div>
-          <input label="email" onChange={handleEmailChange} value={usernameLogin.email} />
+          <input placeholder="e-mail" onChange={handleEmailChange} value={usernameLogin.mail} />
         </div>
         <div>
-          <input label="password" onChange={handlePasswordChange} value={usernameLogin.password} />
+          <input placeholder="contraseña" onChange={handlePasswordChange} value={usernameLogin.password} type='password'/>
         </div>
         <button type="submit">Iniciar Sesion</button>
         <Link to="/signup">

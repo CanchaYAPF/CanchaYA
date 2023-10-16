@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { Link,useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { userSignup } from "../../../Redux/actions/form_actions"
 
@@ -9,7 +9,8 @@ const SignUp = () => {
 
     const [userRegister, setUserRegister] = useState({
         name: "",
-        email: "",
+        lastname:"",
+        mail: "",
         password: "",
     })
 
@@ -29,10 +30,17 @@ const SignUp = () => {
         })
     }
 
+    const handleLastNameChange = (e) => {
+        setUserRegister({
+            ...userRegister,
+            lastname: e.target.value,
+        })
+    }
+
     const handleEmailChange = (e) => {
         setUserRegister({
             ...userRegister,
-            email: e.target.value,
+            mail: e.target.value,
         })
     }
 
@@ -47,17 +55,20 @@ const SignUp = () => {
         <>
             <form onSubmit={handleRegisterSubmit}>
                 <div>
-                    <input label="Nombre Completo" value={userRegister.name} onChange={handleNameChange} />
+                    <input placeholder="Nombre" value={userRegister.name} onChange={handleNameChange} />
                 </div>
                 <div>
-                    <input label="Correo Electronico" value={userRegister.email} onChange={handleEmailChange} />
+                    <input placeholder="Apellidos" value={userRegister.lastname} onChange={handleLastNameChange} />
                 </div>
                 <div>
-                    <input label="Contraseña" value={userRegister.password} onChange={handlePasswordChange} />
+                    <input placeholder="Correo Electronico" value={userRegister.mail} onChange={handleEmailChange} type="email" />
+                </div>
+                <div>
+                    <input placeholder="Contraseña" value={userRegister.password} onChange={handlePasswordChange} type="password" />
                 </div>
                 <div>
                     <button type='submit'>Registrar Usuario</button>
-                    <button>Ya tengo un usuario</button>
+                    <Link to="/login"><button>Ya tengo un usuario</button></Link>
                 </div>
             </form>
         </>
