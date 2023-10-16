@@ -2,7 +2,7 @@ import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GE
 
 const initialState = {
   bookingData: {},
-  fieldData: {},
+  fieldData: [],
   reviewData: {},
   userData: {},
 };
@@ -27,7 +27,7 @@ export default function formReducer(state = initialState, action) {
     case GET_FIELD:
       return {
         ...state,
-        fieldData: action.data
+        fieldData: [...action.payload]
       };
     case CREATE_REVIEW:
       return {
