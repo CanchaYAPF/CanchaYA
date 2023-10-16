@@ -13,9 +13,20 @@ export function createField(data) {
   return { type: CREATE_FIELD, data };
 }
 
-export function getField(data) {
+export function getField() {
 return async function(dispatch){
-  const res = await axios.get(`http://localhost:3001/fieldRouter`)
+  try{
+
+    const fields = await axios.get("http://localhost:3001/field/");
+    const dataFields = fields.data
+
+
+return dispatch({type: GET_FIELD, payload: dataFields});
+
+}
+catch (error) {
+    alert("error.response.data.error")
+}
 }
 
 
