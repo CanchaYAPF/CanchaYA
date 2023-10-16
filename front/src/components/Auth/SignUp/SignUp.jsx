@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link,useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { userSignup } from "../../../Redux/actions/form_actions"
 
@@ -9,7 +9,7 @@ const SignUp = () => {
 
     const [userRegister, setUserRegister] = useState({
         name: "",
-        lastname:"",
+        lastname: "",
         mail: "",
         password: "",
     })
@@ -17,12 +17,15 @@ const SignUp = () => {
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
         try {
-          await dispatch(userSignup(userRegister))
-          navigate("/home")
+            console.log();
+            const response = await dispatch(userSignup(userRegister))
+            const token = response.payload.token
+            sessionStorage.setItem('token', token);
+            navigate("/home")
         } catch (error) {
-          return error
+            return error
         }
-      }
+    }
     const handleNameChange = (e) => {
         setUserRegister({
             ...userRegister,

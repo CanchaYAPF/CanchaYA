@@ -1,18 +1,19 @@
-import style from './Home.module.css';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavBar } from "../index"
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate()
+  const token = sessionStorage.getItem(`token`)
+
+  useEffect(() => {
+    if (token === null) navigate("/login")
+  }, []);
   return (
-    <div className={style.homeContainer}>
-      <div className={style.navbar}>
-        <h1>Navbar</h1>
-      </div>
-      <Link to={'/form'}><button className={style.btn}>Agregar Cancha</button></Link>
-      <Link to={'/login'}><button className={style.btn}>Iniciar Sesión</button></Link>
-      <Link to={'/signup'}><button className={style.btn}>Registrarse</button></Link>
-      <div className={style.search}>
-        <input type="text" placeholder="Buscar..." />
-      </div>
+
+    <div>
+      <NavBar />
     </div>
   );
 };

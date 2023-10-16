@@ -14,7 +14,12 @@ export function createField(data) {
 }
 
 export function getField(data) {
-  return { type: GET_FIELD, data };
+return async function(dispatch){
+  const res = await axios.get(`http://localhost:3001/fieldRouter`)
+}
+
+
+  
 }
 
 export function createReview(data) {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'; 
 import styles from './Form.module.css';
@@ -6,6 +6,12 @@ import { formCancha } from '../../Redux/actions/form_actions';
 
 
 const FormularioCancha = () => {
+  const token = sessionStorage.getItem(`token`)
+
+  useEffect(() => {
+   if (token === null) navigate("/login")
+  }, []);
+   
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
@@ -65,6 +71,7 @@ const FormularioCancha = () => {
   };
 
   return (
+    
     <div className={styles.formContainer}>
       <Link to="/">Volver al Inicio</Link>
       <label className={styles.formLabel}>Nombre de Cancha:</label>
@@ -78,7 +85,7 @@ const FormularioCancha = () => {
 
       <label className={styles.formLabel}>Imagen:</label>
       <input
-        type="text"
+        type="file"
         className={styles.formInput}
         name="image"
         value={formData.image}
