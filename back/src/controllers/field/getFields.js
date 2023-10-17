@@ -3,11 +3,11 @@ const { Field, Sport } = require("../../db");
 
 const getAllFields = async (name) => {
   const allFields = await Field.findAll({
-    include: {
-      model: Sport,
-      attributes: ["name"],
-      through: { attributes: [] },
-    },
+    // include: {
+    //   model: Sport,
+    //   attributes: ["name"],
+    //   through: { attributes: [] },
+    // },
   });
 
   if (name) {

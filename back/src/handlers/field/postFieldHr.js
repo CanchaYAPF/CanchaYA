@@ -1,12 +1,13 @@
 const postField = require("../../controllers/field/postField");
 
 const postFieldHr = async (req, res) => {
-  const { name, image, phone, address, city, paymentMethod, price, service,shift,token } = req.body;
+  const { name, image,sport, phone, address, city, paymentMethod, price, service,shift,token } = req.body;
   try {
     // const arrSports = sports.split(", ");
     const newField = await postField(
       name,
       image, 
+      sport,
       phone,
       address,
       city,
