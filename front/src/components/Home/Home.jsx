@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { getField, getSports } from '../../Redux/actions/form_actions';
 import Cards from "../Cards/Cards"
+import style from './Home.module.css'
 
 
 const Home = () => {
@@ -40,10 +41,29 @@ const Home = () => {
 
     <div >
       <NavBar />
-      <select  onChange={filters} name="filter">
+      <div className={style.selects}>
+      <select className={style.select} onChange={filters} name="filter">
+      <option value="Ciudad">Ciudad</option>
           {allSports.map(s=>  <option value={s.name} key={s.id}> {s.name} </option>   )}
-        
       </select>
+      <select className={style.select} onChange={filters} name="filter">
+      <option value="Deporte">Deporte</option>
+          {allSports.map(s=>  <option value={s.name} key={s.id}> {s.name} </option>   )}
+      </select>
+      <select className={style.select} onChange={filters} name="filter">
+      <option value="Fecha">Fecha</option>
+      {allSports.map(s=>  <option value={s.name} key={s.id}> {s.name} </option>   )}
+  </select>
+  <select className={style.select} onChange={filters} name="filter">
+      <option value="Hora">Hora</option>
+      {allSports.map(s=>  <option value={s.name} key={s.id}> {s.name} </option>   )}
+  </select>
+  <div className={style.search}>
+        <input type="text"
+        placeholder="Buscar cancha por nombre" 
+        />
+        </div>
+  </div>
     <div >
     
     </div>

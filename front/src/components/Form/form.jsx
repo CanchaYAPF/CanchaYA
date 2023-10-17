@@ -294,8 +294,4 @@ const FormularioCancha = () => {
 };
 
 export default FormularioCancha;
-    </div>
-  );
-};
-
-export default FormularioCancha;
+  
