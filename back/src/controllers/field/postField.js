@@ -1,7 +1,7 @@
 const { Field, Sport } = require("../../db");
 const jwt = require("jsonwebtoken")
 
-const postField = async (name, image, phone, address, city, paymentMethod, price, service,shift,token) => {
+const postField = async (name, image,sport, phone, address, city, paymentMethod, price, service,shift,token) => {
   const existingField = await Field.findOne({ where: { name } });
   if (existingField) {
     const error = new Error("La cancha ya existe");
@@ -22,6 +22,7 @@ const postField = async (name, image, phone, address, city, paymentMethod, price
   const newField = await Field.create({
     name,
     image, 
+    sport,
     phone,
     address,
     city,

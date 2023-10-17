@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { getFieldById } from '../../Redux/actions/form_actions';
+import style from './Details.module.css';
 
 function Details() {
   const { id } = useParams();
@@ -14,17 +15,18 @@ function Details() {
   }, [dispatch, id]);
 
   return (
-    <div>
-      <h2>Nombre: {field.name}</h2>
+    <div className={style.container}>
+      <div className={style.contenido}>
+      <h1>{field.name}</h1>
       <img src={field.image} alt={field.name} />
-      <p>Servicio: {field.service.join(', ')}</p>
-      <p>Dirección: {field.address}</p>
-      <p>Ciudad: {field.city}</p>
-      <p>Teléfono: {field.phone}</p>
-      <p>Precio: {field.price}</p>
-      <p>Método de pago: {field.paymentMethod.join(', ')}</p>
-      <p>Turno: {field.shift.join(', ')}</p>
+      
+      <h2>Dirección: {field.address}</h2>
+      <h2>Ciudad: {field.city}</h2>
+      <h2>Teléfono: {field.phone}</h2>
+      <h2>Precio: {field.price}</h2>
+      
     </div>
+      </div>
   );
 }
 

@@ -1,21 +1,28 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'; 
 import styles from './Form.module.css';
-import { formCancha } from '../../Redux/actions/form_actions';
-
+import { formCancha, getSports } from '../../Redux/actions/form_actions';
+import Swal from 'sweetalert2'
 
 const FormularioCancha = () => {
   const token = sessionStorage.getItem(`token`)
 
+  const allSports = useSelector(state => state.sportData)
+
+
+ const dispatch = useDispatch();
+
   useEffect(() => {
+    dispatch(getSports())
    if (token === null) navigate("/login")
   }, []);
    
-  const dispatch = useDispatch();
+ 
   const [formData, setFormData] = useState({
     name: '',
     image: '',
+    sport:"",
     address: '',
     city: '',
     phone: '',
@@ -85,6 +92,11 @@ const FormularioCancha = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     dispatch(formCancha(formData));
+    Swal.fire(
+      'Cancha Subida con exito',
+      'You clicked the button!',
+      'success'
+    )
      setFormData({
       name: '',
       image: '',
@@ -96,6 +108,7 @@ const FormularioCancha = () => {
       paymentMethod: [],
       service: [],
     });
+
   };
 
   return (
@@ -124,14 +137,14 @@ const FormularioCancha = () => {
       <label >{errors.image}</label>
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}
       
-      <label className={styles.formLabel}>Deporte:</label>
-      <input
-        type="text"
-        className={styles.formInput}
-        name="sport"
-        value={formData.sport}
-        onChange={handleChange}
-      />
+      
+      <label>Sport: </label>
+        <select onChange={handleChange} name='sport'>
+        {allSports?.map(s=>  <option value={s} key={s}> {  s  } </option>   )}
+        
+
+        </select>
+
 
       <label className={styles.formLabel}>Dirección de la Cancha:</label>
       <input
@@ -293,9 +306,10 @@ const FormularioCancha = () => {
   );
 };
 
-export default FormularioCancha;
-    </div>
-  );
-};
+
 
 export default FormularioCancha;
+
+
+  
+

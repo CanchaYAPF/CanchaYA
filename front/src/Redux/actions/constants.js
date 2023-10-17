@@ -8,3 +8,5 @@ export const USER_LOGIN = 'USER_LOGIN';
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const GET_SPORTS = 'GET_SPORTS';
 export const FILTER = 'FILTER';
+export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
+export const GET_FIELD_BY_ID = "GET_FIELD_BY_ID";
