@@ -6,6 +6,7 @@ import OrderByPrice from '../Order/orderByPrice';
 const NavBar = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home"
+
   
   return (
     <div className={style.homeContainer}>
@@ -26,6 +27,7 @@ const NavBar = () => {
       <div className={style.text}>
         <div className={style.texto}>
         <h1 className={style.verde}>NO TE QUEDES SIN JUGAR</h1>
+
         <h1>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
         </div>
       </div>
@@ -36,11 +38,12 @@ const NavBar = () => {
         <button>Fecha</button>
         <button>Hora</button>
         <OrderByPrice />
+
+        <h1 className={style.blanco}>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
+
         </div>
-      <div className={style.search}>
-        <input type="text" placeholder="Buscar cancha por nombre" />
       </div>
-      </div>
+      
     </div>
   )
 }
