@@ -1,6 +1,7 @@
 const { Field, Sport } = require("../../db");
+const jwt = require("jsonwebtoken")
 
-const postField = async (name, image, phone, address, city, paymentMethod, price, service,shift) => {
+const postField = async (name, image, phone, address, city, paymentMethod, price, service,shift,token) => {
   const existingField = await Field.findOne({ where: { name } });
   if (existingField) {
     const error = new Error("La cancha ya existe");
@@ -14,6 +15,9 @@ const postField = async (name, image, phone, address, city, paymentMethod, price
   //     return result.id;
   //   })
   // );
+  const decoded = jwt.verify(token, 'secretKey');
+  console.log("decode",decoded.userId)
+  const userId = decoded.userId
 
   const newField = await Field.create({
     name,
@@ -24,7 +28,8 @@ const postField = async (name, image, phone, address, city, paymentMethod, price
     paymentMethod, 
     price,
     service, 
-    shift
+    shift,
+    UserId:userId
   });
 
   //   await newField.addSports(sport);

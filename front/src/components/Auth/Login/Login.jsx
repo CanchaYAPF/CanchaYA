@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { userLogin } from '../../../Redux/actions/form_actions'
 import { useDispatch } from "react-redux"
 import { Link,useNavigate } from 'react-router-dom'
@@ -18,8 +18,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await dispatch(userLogin(usernameLogin))
-      const token = response.payload.token
-      sessionStorage.setItem('token', token);
+      localStorage.setItem('token', response.payload.token);
+      console.log("funciona")
       navigate("/home")
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
