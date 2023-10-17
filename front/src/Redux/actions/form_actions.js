@@ -1,4 +1,4 @@
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR } from "../types/form_types";
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_FIELD_BY_ID } from "../types/form_types";
 import axios from "axios";
 
 export function createBooking(data) {
@@ -80,4 +80,16 @@ export function formCancha(data) {
       throw new Error(error.message);
     }
   };
+}
+export function getFieldById(id) {
+  return async function(dispatch){
+    try{
+      const result = await axios.get(`http://localhost:3001/field/${id}`);
+      const field = result.data;
+      return dispatch({type: GET_FIELD_BY_ID, payload: field});
+    }
+    catch (error) {
+      alert("error")
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom"
-import {Home, Login, SignUp, Form} from "./components/index"
+import {Home, Login, SignUp, Form, Details} from "./components/index" 
 import './App.css'; 
 
 const App = () => {
@@ -11,7 +11,7 @@ const App = () => {
         <Route path='/signup' element={<SignUp />} />
         <Route path='home' element={<Home />} />
         <Route path='/form' element={<Form />} />
-
+        <Route path='/details/:id' element={<Details />} /> 
       </Routes>
     </div>
   );
