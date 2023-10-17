@@ -1,8 +1,11 @@
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS } from '../types/form_types';
+
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , GET_FIELD_BY_ID } from '../types/form_types';
+
 
 const initialState = {
   bookingData: {},
   fieldData: [],
+  currentField: null, 
   reviewData: {},
   userData: {},
   sportData: [],
@@ -53,6 +56,17 @@ export default function formReducer(state = initialState, action) {
         ...state,
         userData: action.payload 
       };
+
+      case GET_FIELD_BY_ID:
+        return {
+          ...state,
+          currentField: action.payload 
+        };
+      default:
+        return state;
+    }
+  }
+
     case GET_SPORTS:
       return {
         ...state,
@@ -71,3 +85,4 @@ export default function formReducer(state = initialState, action) {
       return state;
   }
 }
+
