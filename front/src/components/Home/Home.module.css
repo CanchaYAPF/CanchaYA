@@ -1,0 +1,34 @@
+
+  
+  .select{
+    display: flex;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.986);
+        margin: 10px 10px;
+        padding: 6px 8px;
+        border-radius: 7px;
+        width: 90px;
+        font-size: 0.9em;
+        color: #0D3A5D;
+  }
+  .selects{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  align-items: center;
+  background-color: #0D3A5D;
+  margin: 0;
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px;
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
