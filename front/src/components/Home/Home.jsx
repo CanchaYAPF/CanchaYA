@@ -55,7 +55,8 @@ const Home = () => {
       {allSports.map(s=>  <option value={s.name} key={s.id}> {s.name} </option>   )}
   </select>
   <select className={style.select} onChange={filters} name="filter">
-      
+      <option value="Hora">Hora</option>
+      {allSports.map(s=>  <option value={s.a} key={s.x}> {s.e} </option>   )}
   </select>
   <div className={style.search}>
         <input type="text"
