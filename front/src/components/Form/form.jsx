@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'; 
 import styles from './Form.module.css';
 import { formCancha, getSports } from '../../Redux/actions/form_actions';
-
+import Swal from 'sweetalert2'
 
 const FormularioCancha = () => {
   const token = sessionStorage.getItem(`token`)
@@ -92,6 +92,11 @@ const FormularioCancha = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     dispatch(formCancha(formData));
+    Swal.fire(
+      'Cancha Subida con exito',
+      'You clicked the button!',
+      'success'
+    )
      setFormData({
       name: '',
       image: '',
@@ -103,6 +108,7 @@ const FormularioCancha = () => {
       paymentMethod: [],
       service: [],
     });
+
   };
 
   return (

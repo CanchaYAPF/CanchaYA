@@ -78,10 +78,9 @@ export function userSignup(data) {
 }
 
 export function formCancha(data) {
-  
   return async function (dispatch) {
     //se obtiene el token del localStorage y se usa para enviar por cabecera para pasar filtro del middleware Auth
-    const token = sessionStorage.getItem('tokenLoginResponse')
+    const token = sessionStorage.getItem('token')
     try {
       await axios.post('http://localhost:3001/field', data,{
         headers:{
