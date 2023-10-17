@@ -6,7 +6,7 @@ import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GE
 const initialState = {
   bookingData: {},
   fieldData: [],
-  currentField: null, 
+  currentField: {} ,
   reviewData: {},
   userData: {},
   sportData: [],

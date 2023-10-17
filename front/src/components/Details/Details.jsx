@@ -17,13 +17,13 @@ function Details() {
     <div>
       <h2>Nombre: {field.name}</h2>
       <img src={field.image} alt={field.name} />
-      <p>Servicio: {field.service.join(', ')}</p>
+      {/* <p>Servicio: {field.service.join(', ')}</p> */}
       <p>Dirección: {field.address}</p>
       <p>Ciudad: {field.city}</p>
       <p>Teléfono: {field.phone}</p>
       <p>Precio: {field.price}</p>
-      <p>Método de pago: {field.paymentMethod.join(', ')}</p>
-      <p>Turno: {field.shift.join(', ')}</p>
+      {/* <p>Método de pago: {field.paymentMethod.join(', ')}</p> */}
+      {/* <p>Turno: {field.shift.join(', ')}</p> */}
     </div>
   );
 }
