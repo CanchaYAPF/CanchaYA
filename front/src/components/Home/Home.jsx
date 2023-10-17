@@ -48,15 +48,14 @@ const Home = () => {
       </select>
       <select className={style.select} onChange={filters} name="filter">
       <option value="Deporte">Deporte</option>
-          {allSports.map(s=>  <option value={s.name} key={s.id}> {s.name} </option>   )}
+          {allSports.map(s=>  <option value={s} key={s}> {s} </option>   )}
       </select>
       <select className={style.select} onChange={filters} name="filter">
       <option value="Fecha">Fecha</option>
       {allSports.map(s=>  <option value={s.name} key={s.id}> {s.name} </option>   )}
   </select>
   <select className={style.select} onChange={filters} name="filter">
-      <option value="Hora">Hora</option>
-      {allSports.map(s=>  <option value={s.name} key={s.id}> {s.name} </option>   )}
+      
   </select>
   <div className={style.search}>
         <input type="text"
