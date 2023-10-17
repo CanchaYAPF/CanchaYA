@@ -1,5 +1,6 @@
 
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , GET_FIELD_BY_ID } from '../types/form_types';
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW,
+   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , GET_FIELD_BY_ID,FILTER } from '../types/form_types';
 
 
 const initialState = {
@@ -62,10 +63,7 @@ export default function formReducer(state = initialState, action) {
           ...state,
           currentField: action.payload 
         };
-      default:
-        return state;
-    }
-  }
+   
 
     case GET_SPORTS:
       return {
