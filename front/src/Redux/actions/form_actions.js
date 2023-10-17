@@ -1,4 +1,6 @@
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_FIELD_BY_ID } from "../types/form_types";
+
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS } from "../types/form_types";
+
 import axios from "axios";
 
 export function createBooking(data) {
@@ -24,18 +26,26 @@ return async function(dispatch){
 return dispatch({type: GET_FIELD, payload: fields});
 }
 catch (error) {
-    alert("error")
+    alert("error fields")
+}}}
+
+
+export function getSports() {
+return async function(dispatch){
+
+  try{
+
+    const result = await axios.get(`http://localhost:3001/Sports/`);
+    const sports = result.data
+
+return dispatch({type: GET_SPORTS, payload: sports});
 }
+catch (error) {
+    alert("error sports")
+}}}
 
 
 
- 
- 
-}
-
-
-  
-}
 
 export function createReview(data) {
   return { type: CREATE_REVIEW, data };
@@ -68,10 +78,17 @@ export function userSignup(data) {
 }
 
 export function formCancha(data) {
-  console.log("data",data)
+  
   return async function (dispatch) {
+    //se obtiene el token del localStorage y se usa para enviar por cabecera para pasar filtro del middleware Auth
+    const token = localStorage.getItem('tokenLoginResponse')
     try {
-      await axios.post('http://localhost:3001/field', data);
+      await axios.post('http://localhost:3001/field', data,{
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
       dispatch({
         type: FORM_CANCHA_SUCCESS,
         payload: data

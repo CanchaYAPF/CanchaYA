@@ -1,23 +1,43 @@
 .navbar {
-    background-color: #333;
+  display: flex;
+  align-items: center; 
+    background-color: #0D3A5D;
     color: #fff;
     padding: 10px;
     text-align: center;
+    justify-content: space-between;
+    margin-bottom: 0;
   }
-  
+.logo a{
+  color: rgb(255, 254, 254);
+  text-decoration:none
+}
+.logo{
+  margin-left: 300px;
+}
   .btn {
-    background-color: #007bff;
+    
+    background-color: #81BA27;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     margin: 10px;
     cursor: pointer;
+    display: inline-block;
+    margin-left: 0; 
+  margin-right: 300px;
   }
   
   .btn:hover {
     background-color: #0056b3;
   }
-  
+  .nav{
+    display: flex;
+  align-items: center; 
+  background-color: #0D3A5D;
+
+  justify-content: center;
+  }
   .search {
     display: flex;
     align-items: center;
@@ -32,8 +52,27 @@
     width: 100%;
     padding: 5px;
   }
+  .texto{
+    margin-left: 300px;
+  }
+  .text{
+    background-color: #0D3A5D;
+    color: #fff;
+    margin: 0;
+    padding: 10px;
+  font-size: 12px;
   
+  }
+  .verde{
+    color: #81BA27;
+    margin-bottom: 0;
+    
+  }
   input[type="text"]::placeholder {
     color: #777;
   }
-  
+  .btnContainer{
+    margin-left: 10px; /* Establece el margen izquierdo a 0 */
+  margin-right: 0; /* Añade un margen derecho */
+  }
+

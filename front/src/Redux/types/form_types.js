@@ -9,3 +9,5 @@ export const USER_SIGNUP = 'USER_SIGNUP';
 export const FORM_CANCHA_SUCCESS = 'FORM_CANCHA_SUCCESS';
 export const FORM_CANCHA_ERROR = 'FORM_CANCHA_ERROR';
 export const GET_FIELD_BY_ID = 'GET_FIELD_BY_ID';
+export const GET_SPORTS = 'GET_SPORTS';
+

@@ -5,3 +5,14 @@
     padding: 20px;
   }
   
+  .select{
+    display: flex;
+        justify-content: center;
+        background-color: rgba(39, 37, 37, 0.986);
+        margin: 20px 10px;
+        padding: 20px 20px;
+        border-radius: 7px;
+        width: 700px;
+        font-size: 1em;
+  
+  }
