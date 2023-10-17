@@ -17,6 +17,7 @@ function Card({field}) {
           <h1>Name: {field.name}</h1>
           <h2>City: {field.city}</h2>
           <h3>Price: {field.price}</h3>
+          <h4>Sport: {field.sport}</h4>  
           <div className={style.imagen}>
             <img src={field.image}  alt="Charging..." />
           </div>
