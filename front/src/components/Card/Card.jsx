@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom"
+import style from "./card.module.css";
 
 
 
@@ -11,12 +12,14 @@ function Card({field}) {
     return (
       <div className="cardContainer">
         <Link to ={`/${id}`} >
-        <div className="info">
+        <div className={style.container2}>
           
-          <h2>Name: {field.name}</h2>
-          <h3>City: {field.city}</h3>
-          <h4>Address: {field.address}</h4>
-          <h5>Price: {field.capacity}</h5>
+          <h1>Name: {field.name}</h1>
+          <h2>City: {field.city}</h2>
+          <h3>Price: {field.price}</h3>
+          <div className={style.imagen}>
+            <img src={field.image}  alt="Charging..." />
+          </div>
         
           </div>
           
