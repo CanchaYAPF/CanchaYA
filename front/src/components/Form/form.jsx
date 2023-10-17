@@ -6,7 +6,7 @@ import { formCancha } from '../../Redux/actions/form_actions';
 
 
 const FormularioCancha = () => {
-  const token = sessionStorage.getItem(`token`)
+  const token = localStorage.getItem(`token`)
 
   useEffect(() => {
    if (token === null) navigate("/login")
@@ -23,6 +23,7 @@ const FormularioCancha = () => {
     shift: [],
     paymentMethod: [],
     service: [],
+    token:token
   });
 
   const handleChange = (e) => {

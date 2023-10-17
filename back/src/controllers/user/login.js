@@ -11,7 +11,7 @@ const login = async (mail, password) => {
     const passwordIsValid = await bcrypt.compare(password, user.password);
     if (passwordIsValid) {
       const token = jwt.sign({ userId: user.id }, "secretKey");
-      return { user, token };
+      return { auth:"Validación exitosa", token:token };
     } else {
       throw new Error("Contraseña inválida");
     }

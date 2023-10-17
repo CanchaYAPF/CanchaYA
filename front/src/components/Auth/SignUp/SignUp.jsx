@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { userSignup } from "../../../Redux/actions/form_actions"
@@ -18,10 +18,8 @@ const SignUp = () => {
     const handleRegisterSubmit = async (e) => {
         e.preventDefault();
         try {
-            console.log();
             const response = await dispatch(userSignup(userRegister))
-            const token = response.payload.token
-            sessionStorage.setItem('token', token);
+            localStorage.setItem('token',response.payload.token);
             navigate("/home")
         } catch (error) {
             return error
