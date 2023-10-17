@@ -28,7 +28,7 @@ const NavBar = () => {
         <div className={style.texto}>
         <h1 className={style.verde}>NO TE QUEDES SIN JUGAR</h1>
         <h1 className={style.blanco}>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
-        
+        <OrderByPrice />
         </div>
       </div>
       
