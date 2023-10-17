@@ -1,10 +1,14 @@
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR } from '../types/form_types';
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS } from '../types/form_types';
 
 const initialState = {
   bookingData: {},
   fieldData: [],
   reviewData: {},
   userData: {},
+  sportData: [],
+  allFieldsBackUp: [],
+  filteredFields: [],
+  filters: false,
 };
 
 export default function formReducer(state = initialState, action) {
@@ -49,6 +53,20 @@ export default function formReducer(state = initialState, action) {
         ...state,
         userData: action.payload 
       };
+    case GET_SPORTS:
+      return {
+        ...state,
+        sportData: action.payload 
+      };
+    case FILTER:
+
+      let filterSport = [...state.allFieldsBackUp].filter(f => f.sports?.includes(action.payload))
+      return {...state, fieldData:[...filterSport],
+        filteredFields: filterSport, filters:true,
+
+      }
+
+
     default:
       return state;
   }

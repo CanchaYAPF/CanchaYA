@@ -6,3 +6,4 @@ export const CREATE_REVIEW = 'CREATE_REVIEW';
 export const GET_REVIEW = 'GET_REVIEW';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_SIGNUP = 'USER_SIGNUP';
+export const GET_SPORTS = 'GET_SPORTS';
