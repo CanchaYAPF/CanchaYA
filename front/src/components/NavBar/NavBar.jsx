@@ -1,6 +1,8 @@
 import React from 'react'
 import style from './Navbar.module.css';
 import { Link, useLocation } from 'react-router-dom';
+import OrderByPrice from '../Order/orderByPrice'; 
+
 const NavBar = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home"
@@ -25,7 +27,20 @@ const NavBar = () => {
       <div className={style.text}>
         <div className={style.texto}>
         <h1 className={style.verde}>NO TE QUEDES SIN JUGAR</h1>
+
+        <h1>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
+        </div>
+      </div>
+      <div className={style.nav}>
+        <div className={style.filtros}>
+        <button>Ciudad</button>
+        <button>Deporte</button>
+        <button>Fecha</button>
+        <button>Hora</button>
+        <OrderByPrice />
+
         <h1 className={style.blanco}>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
+
         </div>
       </div>
       
