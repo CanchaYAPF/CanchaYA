@@ -18,8 +18,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await dispatch(userLogin(usernameLogin))
-      localStorage.setItem('token', response.payload.token);
-      console.log("funciona")
+      sessionStorage.setItem('token', response.payload.token);
       navigate("/home")
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
