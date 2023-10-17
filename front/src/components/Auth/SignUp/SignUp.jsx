@@ -19,7 +19,7 @@ const SignUp = () => {
         e.preventDefault();
         try {
             const response = await dispatch(userSignup(userRegister))
-            localStorage.setItem('token',response.payload.token);
+            sessionStorage.setItem('token',response.payload.token);
             navigate("/home")
         } catch (error) {
             return error

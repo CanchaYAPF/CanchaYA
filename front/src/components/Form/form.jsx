@@ -3,10 +3,11 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'; 
 import styles from './Form.module.css';
 import { formCancha } from '../../Redux/actions/form_actions';
+import {validate} from '../../utils/utils'
 
 
 const FormularioCancha = () => {
-  const token = localStorage.getItem(`token`)
+  const token = sessionStorage.getItem(`token`)
 
   useEffect(() => {
    if (token === null) navigate("/login")
@@ -25,10 +26,23 @@ const FormularioCancha = () => {
     service: [],
     token:token
   });
+  const [errors,setErrors]=useState({
+    name: '',
+    image: '',
+    address: '',
+    city: '',
+    phone: '',
+    price: '',
+    shift: [],
+    paymentMethod: [],
+    service: [],
+  })
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    const validation= validate(name,value)
+    setErrors(validation)
   };
 
   const handleTurnoChange = (e) => {
@@ -76,6 +90,7 @@ const FormularioCancha = () => {
     <div className={styles.formContainer}>
       <Link to="/">Volver al Inicio</Link>
       <label className={styles.formLabel}>Nombre de Cancha:</label>
+      <form onSubmit={handleSubmit}>
       <input
         type="text"
         className={styles.formInput}
@@ -83,6 +98,7 @@ const FormularioCancha = () => {
         value={formData.name}
         onChange={handleChange}
       />
+      <label >{errors.name}</label>
 
       <label className={styles.formLabel}>Imagen:</label>
       <input
@@ -92,6 +108,7 @@ const FormularioCancha = () => {
         value={formData.image}
         onChange={handleChange}
       />
+      <label >{errors.image}</label>
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}
 
       <label className={styles.formLabel}>Dirección de la Cancha:</label>
@@ -244,7 +261,8 @@ const FormularioCancha = () => {
       />
       Kiosco
 
-      <button className={styles.formButton} onClick={handleSubmit}>Agregar</button>
+      <button className={styles.formButton} >Agregar</button>
+      </form>
     </div>
   );
 };
