@@ -1,5 +1,5 @@
 
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS } from "../types/form_types";
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE } from "../types/form_types";
 
 import axios from "axios";
 
@@ -110,3 +110,9 @@ export function getFieldById(id) {
     }
   }
 }
+export const orderByPrice = (order) => {
+  return {
+    type: ORDER_BY_PRICE,
+    payload: order,
+  };
+};

@@ -1,6 +1,8 @@
 import React from 'react'
 import style from './Navbar.module.css';
 import { Link, useLocation } from 'react-router-dom';
+import OrderByPrice from '../Order/orderByPrice'; 
+
 const NavBar = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home"
@@ -33,6 +35,7 @@ const NavBar = () => {
         <button>Deporte</button>
         <button>Fecha</button>
         <button>Hora</button>
+        <OrderByPrice />
         </div>
       <div className={style.search}>
         <input type="text" placeholder="Buscar cancha por nombre" />
