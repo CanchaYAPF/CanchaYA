@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'; 
 import styles from './Form.module.css';
 import { formCancha } from '../../Redux/actions/form_actions';
-import {validate} from '../../utils/utils'
 
 
 const FormularioCancha = () => {
@@ -29,6 +28,7 @@ const FormularioCancha = () => {
   const [errors,setErrors]=useState({
     name: '',
     image: '',
+    sport:'',
     address: '',
     city: '',
     phone: '',
@@ -36,18 +36,19 @@ const FormularioCancha = () => {
     shift: [],
     paymentMethod: [],
     service: [],
+    token:token
   })
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    const validation= validate(name,value)
-    setErrors(validation)
   };
+  
 
   const handleTurnoChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
+      if(!checked.value)
       setFormData({ ...formData, shift: [...formData.shift, value] });
     } else {
       setFormData({
@@ -81,8 +82,20 @@ const FormularioCancha = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async(e) => {
+    e.preventDefault();
     dispatch(formCancha(formData));
+     setFormData({
+      name: '',
+      image: '',
+      address: '',
+      city: '',
+      phone: '',
+      price: '',
+      shift: [],
+      paymentMethod: [],
+      service: [],
+    });
   };
 
   return (
@@ -102,7 +115,7 @@ const FormularioCancha = () => {
 
       <label className={styles.formLabel}>Imagen:</label>
       <input
-        type="file"
+        //type="file"
         className={styles.formInput}
         name="image"
         value={formData.image}
@@ -110,6 +123,15 @@ const FormularioCancha = () => {
       />
       <label >{errors.image}</label>
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}
+      
+      <label className={styles.formLabel}>Deporte:</label>
+      <input
+        type="text"
+        className={styles.formInput}
+        name="sport"
+        value={formData.sport}
+        onChange={handleChange}
+      />
 
       <label className={styles.formLabel}>Dirección de la Cancha:</label>
       <input
@@ -119,6 +141,7 @@ const FormularioCancha = () => {
         value={formData.address}
         onChange={handleChange}
       />
+       <label >{errors.address}</label>
 
       <label className={styles.formLabel}>Ciudad:</label>
       <input
@@ -128,6 +151,7 @@ const FormularioCancha = () => {
         value={formData.city}
         onChange={handleChange}
       />
+      <label >{errors.city}</label>
 
       <label className={styles.formLabel}>Teléfono:</label>
       <input
@@ -137,6 +161,7 @@ const FormularioCancha = () => {
         value={formData.phone}
         onChange={handleChange}
       />
+      <label >{errors.phone}</label>
 
       <label className={styles.formLabel}>Precio por Hora:</label>
       <input
@@ -146,6 +171,7 @@ const FormularioCancha = () => {
         value={formData.price}
         onChange={handleChange}
       />
+      <label >{errors.price}</label>
 
       <div className={styles.formLabel}>Turnos Disponibles:</div>
       <input
