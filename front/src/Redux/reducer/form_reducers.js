@@ -35,7 +35,8 @@ export default function formReducer(state = initialState, action) {
     case GET_FIELD:
       return {
         ...state,
-        fieldData: [...action.payload]
+        fieldData: [...action.payload],
+        allFieldsBackUp: action.payload
       };
     case CREATE_REVIEW:
       return {
@@ -72,7 +73,7 @@ export default function formReducer(state = initialState, action) {
       };
     case FILTER:
 
-      let filterSport = [...state.fieldData].filter(f => f.sports?.includes(action.payload))
+      let filterSport = [...state.allFieldsBackUp].filter(f => f.sport==action.payload)
       return {...state, fieldData:[...filterSport],
         filteredFields: filterSport, filters:true,
 
