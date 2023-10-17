@@ -33,10 +33,7 @@ const NavBar = () => {
       </div>
       <div className={style.nav}>
         <div className={style.filtros}>
-        <button>Ciudad</button>
-        <button>Deporte</button>
-        <button>Fecha</button>
-        <button>Hora</button>
+        
         <OrderByPrice />
 
         <h1 className={style.blanco}>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
