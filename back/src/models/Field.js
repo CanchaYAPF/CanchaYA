@@ -41,9 +41,7 @@ module.exports = (sequelize) => {
       shift:{
         type:DataTypes.ARRAY(DataTypes.STRING)
       },
-      sport:{
-        type: DataTypes.STRING
-      }
+      
 
     },
     { timestamps: false }

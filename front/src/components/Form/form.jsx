@@ -24,7 +24,7 @@ const FormularioCancha = () => {
   const [formData, setFormData] = useState({
     name: '',
     image: '',
-    sport:"",
+    sports:[],
     address: '',
     city: '',
     phone: '',
@@ -49,10 +49,22 @@ const FormularioCancha = () => {
   // })
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+
+const { name, value } = e.target;
+
+    if(e.target.name==="sports"){ console.log("entro")
+      if(formData.sports.includes(e.target.value)) return //corta ejecucion
+      setFormData({
+        ...formData,
+        sports: [...formData.sports, e.target.value]
+      
+      })
+    }
+else{
+    
     setFormData({ ...formData, [name]: value });
   };
-  
+  }
 
   const handleTurnoChange = (e) => {
     const { value, checked } = e.target;
@@ -101,6 +113,9 @@ const FormularioCancha = () => {
   setFormData({ ...formData, image: response.data.secure_url })
  }
 
+ 
+
+
   const handleSubmit = async(e) => {
     e.preventDefault();
     dispatch(formCancha(formData));
@@ -112,6 +127,7 @@ const FormularioCancha = () => {
      setFormData({
       name: '',
       image: '',
+      sports:[],
       address: '',
       city: '',
       phone: '',
@@ -160,12 +176,19 @@ const FormularioCancha = () => {
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}
       
       
-      <label>Deporte: </label>
-        <select onChange={handleChange} name='sport'>
-        {allSports?.map(s=>  <option value={s} key={s}> {  s  } </option>   )}
-        
+      <label>Deportes: </label>
+        <select onChange={handleChange} name="sports">
+        {allSports?.map(s=>  <option value={s.name} key={s.id}> {  s.name  } </option>   )}
+      </select>
 
-        </select>
+         <div>
+          {
+            formData.sports.map((s)=> <div key={s}> {s} 
+            <button  name='sport' id={s}  ></button>
+            
+            
+            </div> )
+          }</div> 
 
 
       <label className={styles.formLabel}>Dirección de la Cancha:</label>
