@@ -1,8 +1,12 @@
 const { Field, Sport } = require("../../db");
+const mock = require ("../../../../mockUp")
+
+const getById = async (id, source) => {
 
 
-const getById = async (id) => {
-  const result = await Field.findAll({where:{id : id},
+  const result = source === "api" ? mock.filter(f => f.id===id):
+
+  await Field.findAll({where:{id : id},
     
     include: {
       model: Sport,
@@ -22,17 +26,17 @@ const getById = async (id) => {
   arr.map((field) => {
   
   
-      const sport = field.Sports.map(objeto => objeto.name);
-      const sports = sport.join(', ');
+      const sport = field.Sports?.map(objeto => objeto.name);
+      const sports = sport?.join(', ');
 
-      const shif = field.shift.map(objeto => objeto);
-      const shifs = shif.join(', ');
+      const shif = field.shift?.map(objeto => objeto);
+      const shifs = shif?.join(', ');
 
-      const pay = field.paymentMethod.map(objeto => objeto);
-      const pays = pay.join(', ');
+      const pay = field.paymentMethod?.map(objeto => objeto);
+      const pays = pay?.join(', ');
 
-      const ser = field.service.map(objeto => objeto);
-      const servs = ser.join(', ');
+      const ser = field.service?.map(objeto => objeto);
+      const servs = ser?.join(', ');
   
       return {
         id :field.id,

@@ -44,9 +44,9 @@ const Home = () => {
     setSearchTerm(event.target.value);
   }
 
-  const filteredFields = allFields.filter(field =>
-    field.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // const filteredFields = allFields.filter(field =>
+  //   field.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
   return (
     <div>
