@@ -101,7 +101,7 @@ export function getFieldById(id) {
   return async function(dispatch){
     try{
       const result = await axios.get(`http://localhost:3001/field/${id}`);
-      const field = result.data;
+      const field = result.data[0];
       return dispatch({type: GET_FIELD_BY_ID, payload: field});
     }
     catch (error) {

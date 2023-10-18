@@ -24,7 +24,7 @@ function Details() {
       <h1>{field.name}</h1>
       <img src={field.image} alt={field.name} />
       
-      <h2>Deporte: {field.sport}</h2>
+      <h2>Deporte: {field.sports}</h2>
       <h2>Ciudad: {field.city}</h2>
       <h2>Dirección: {field.address}</h2>
       <h2>Horario: {field.shift}</h2>
