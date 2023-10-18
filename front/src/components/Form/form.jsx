@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'; 
+import { Link,useNavigate } from 'react-router-dom'; 
 import styles from './Form.module.css';
 import { formCancha, getSports } from '../../Redux/actions/form_actions';
 import Swal from 'sweetalert2'
+import axios from "axios"
 
 const FormularioCancha = () => {
   const token = sessionStorage.getItem(`token`)
-
+  const navigate= useNavigate()
   const allSports = useSelector(state => state.sportData)
 
 
@@ -88,7 +89,20 @@ const FormularioCancha = () => {
       });
     }
   };
+//Cloudinary:
 
+ const handleImageChange = async (e) => {
+  const file = e.target.files[0];
+  const data = new FormData();
+  data.append("file", file)
+  data.append("upload_preset","fields")
+
+    const response = await axios.post('https://api.cloudinary.com/v1_1/dujhqsogz/image/upload',data)
+    console.log(response.data.secure_url)
+    setFormData({ ...formData, image: response.data.secure_url })
+ }
+    
+  
   const handleSubmit = async(e) => {
     e.preventDefault();
     dispatch(formCancha(formData));
@@ -124,25 +138,23 @@ const FormularioCancha = () => {
         value={formData.name}
         onChange={handleChange}
       />
-      <label >{errors.name}</label>
+      
 
       <label className={styles.formLabel}>Imagen:</label>
       <input
-        //type="file"
+        type="file"
+        accept="image/*"
         className={styles.formInput}
         name="image"
-        value={formData.image}
-        onChange={handleChange}
+        onChange={handleImageChange}
       />
-      <label >{errors.image}</label>
+      
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}
       
       
       <label>Sport: </label>
         <select onChange={handleChange} name='sport'>
         {allSports?.map(s=>  <option value={s} key={s}> {  s  } </option>   )}
-        
-
         </select>
 
 
@@ -154,7 +166,7 @@ const FormularioCancha = () => {
         value={formData.address}
         onChange={handleChange}
       />
-       <label >{errors.address}</label>
+       
 
       <label className={styles.formLabel}>Ciudad:</label>
       <input
@@ -164,7 +176,7 @@ const FormularioCancha = () => {
         value={formData.city}
         onChange={handleChange}
       />
-      <label >{errors.city}</label>
+     
 
       <label className={styles.formLabel}>Teléfono:</label>
       <input
@@ -174,7 +186,6 @@ const FormularioCancha = () => {
         value={formData.phone}
         onChange={handleChange}
       />
-      <label >{errors.phone}</label>
 
       <label className={styles.formLabel}>Precio por Hora:</label>
       <input
@@ -184,7 +195,6 @@ const FormularioCancha = () => {
         value={formData.price}
         onChange={handleChange}
       />
-      <label >{errors.price}</label>
 
       <div className={styles.formLabel}>Turnos Disponibles:</div>
       <input
