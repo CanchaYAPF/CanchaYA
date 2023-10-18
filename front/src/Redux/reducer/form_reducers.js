@@ -1,6 +1,6 @@
 
 import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW,
-   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE } from '../types/form_types';
+   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE, GET_CITIES } from '../types/form_types';
 
 
 const initialState = {
@@ -13,6 +13,7 @@ const initialState = {
   allFieldsBackUp: [],
   filteredFields: [],
   filters: false,
+  citiesData: [],
 };
 
 export default function formReducer(state = initialState, action) {
@@ -97,6 +98,13 @@ export default function formReducer(state = initialState, action) {
         ...state,
         fieldData: orderByPrice, 
       };
+
+      case GET_CITIES:
+      return { ...state,
+        citiesData: [...action.payload]
+      };
+      
+      
 
 
     default:

@@ -1,5 +1,5 @@
 
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID } from "../types/form_types";
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES } from "../types/form_types";
 
 import axios from "axios";
 
@@ -122,3 +122,20 @@ export const filter= (order) => {
     payload: order,
   };
 };
+export function getCities() {
+  const cities = [
+    "Buenos Aires",
+    "Córdoba",
+    "Rosario",
+    "Mendoza",
+    "Tucumán",
+    "Santa Fe",
+    "San Miguel de Tucumán",
+    "Mar del Plata",
+  ];
+
+  return {
+    type: GET_CITIES,
+    payload: cities.slice(0, 8),
+  };
+}
