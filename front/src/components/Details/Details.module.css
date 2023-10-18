@@ -3,9 +3,9 @@
     background-repeat: no-repeat;
     background-size: 250vh;
     background-position: center center;
-    border: 2px solid black;
+    
     backdrop-filter: blur(5px);
-    height: 100vh;
+    height: 110vh;
 }
 
 

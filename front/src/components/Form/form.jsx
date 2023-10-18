@@ -115,6 +115,7 @@ const FormularioCancha = () => {
   return (
     <div>
       <NavBar />
+      
     <div className={styles.container}>
     <div className={styles.formContainer}>
       <Link className={styles.link} to="/">Volver al Inicio</Link>
@@ -136,6 +137,13 @@ const FormularioCancha = () => {
         name="image"
         value={formData.image}
         onChange={handleChange}
+        style={{ 
+    width: '99.5%', 
+    padding: '7px', 
+    margin: '5px 0', 
+    border: '1px solid #292929', 
+    borderRadius: '3px', 
+  }}
         />
       <label >{errors.image}</label>
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}

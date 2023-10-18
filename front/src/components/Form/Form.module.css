@@ -1,3 +1,4 @@
+
 .formContainer {
   max-width: 600px;
   margin: 0 auto;
@@ -5,17 +6,18 @@
   border: 1px solid #ccc;
   border-radius: 5px;
  background-color: #fff;
+  
 }
 .container{
   background-color: #0D3A5D;
-  height: 100vh;
+  height: 115vh;
 }
 
 .formLabel {
   display: block;
   margin: 5px 0;
   font-weight: bold;
-  width: 50px;
+  
 }
 
 .formInput {

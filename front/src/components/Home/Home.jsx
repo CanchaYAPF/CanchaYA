@@ -57,6 +57,7 @@ const Home = () => {
         
       <OrderByPrice />
       <select className={style.select} onChange={filters} name="filter">
+      <option value="Deportes">Deportes</option>
     {allSports.map(s=>  <option value={s} key={s}> {s} </option>   )}
       </select>
 
