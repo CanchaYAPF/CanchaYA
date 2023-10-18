@@ -69,7 +69,7 @@ export default function formReducer(state = initialState, action) {
     case GET_SPORTS:
       return {
         ...state,
-        sportData: action.payload 
+        sportData: [...action.payload]
       };
     case FILTER:
 
