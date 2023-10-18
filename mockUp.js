@@ -1,4 +1,4 @@
-[
+export const mock = [
   {
     name: "Fútbol Cancha",
     city: "Buenos Aires",

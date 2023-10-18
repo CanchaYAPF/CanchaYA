@@ -1,7 +1,11 @@
 const { Field, Sport } = require("../../db");
-
+const postField = require("../field/postField")
+const mock = require ("../../../../mockUp")
 
 const getAllFields = async (name) => {
+
+mock.map(f=> postField(f))
+
   const allFields = await Field.findAll({
     include: {
       model: Sport,
@@ -23,7 +27,7 @@ const getAllFields = async (name) => {
   }
 
 
-
+  
 
 
   const normalize = (arr) => 
