@@ -12,6 +12,5 @@ export const ORDER_BY_PRICE = "ORDER_BY_PRICE";
 export const GET_FIELD_BY_ID = "GET_FIELD_BY_ID";
 export const GET_CITIES = "GET_CITIES";
 export const FILTER_CITIES= 'FILTER_CITIES';
-
-
-
+export const FILTER_HORARIO= 'FILTER_HORARIO';
+export const GET_HORARIOS= 'GET_HORARIOS';

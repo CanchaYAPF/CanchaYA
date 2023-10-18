@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { filter, filterCities } from '../../Redux/actions/form_actions'; // Asegúrate de tener una acción 'filterCities' en tus acciones
+import { filter, filterCities,filterHorario } from '../../Redux/actions/form_actions'; // Asegúrate de tener una acción 'filterCities' en tus acciones
 import style from './Filters.module.css';
 
 function Filters() {
   const dispatch = useDispatch();
   const allSports = useSelector((state) => state.sportData);
   const allCities = useSelector((state) => state.citiesData); 
+  const allHorarios = useSelector((state) => state.horariosData);
 
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
   const [selectedCity, setSelectedCity] = useState(''); 
@@ -19,6 +20,10 @@ function Filters() {
     setSelectedCity(selectedCity);
     dispatch(filterCities(selectedCity));
     
+  };
+
+  const handleHorario = (event) => {
+    dispatch(filterHorario(event.target.value));
   };
 
   const handlePriceRangeChange = (event) => {
@@ -45,6 +50,15 @@ function Filters() {
         {allCities.map((city) => (
           <option value={city} key={city}>
             {city}
+          </option>
+        ))}
+      </select>
+
+      <select className={style.select} onChange={handleHorario} name="city">
+        <option value="">Horarios</option>
+        {allHorarios.map((hora) => (
+          <option value={hora} key={hora}>
+            {hora}
           </option>
         ))}
       </select>
