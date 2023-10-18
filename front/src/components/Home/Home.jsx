@@ -7,6 +7,7 @@ import Cards from '../Cards/Cards';
 import style from './Home.module.css';
 import Paginate from '../Pagination/Paginate';
 import NavBar from '../NavBar/NavBar';
+import OrderByPrice from "../Order/orderByPrice"
 
 const Home = () => {
   const navigate = useNavigate();
@@ -53,6 +54,7 @@ const Home = () => {
       <div className={style.homeContainer}>
         <div className={style.leftBox}>
           <Filters />
+          <OrderByPrice/>
         </div>
         <div className={style.cards}>
           <div className={style.search}>
