@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getField, getSports, filter } from '../../Redux/actions/form_actions';
+import { getField, getSports, filter,getCities, getHorarios } from '../../Redux/actions/form_actions';
 import Filters from '../Filters/Filters'; 
 import Cards from '../Cards/Cards';
 import style from './Home.module.css';
@@ -23,8 +23,10 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
+    dispatch(getHorarios())
     dispatch(getSports());
     dispatch(getField());
+    dispatch (getCities())
     if (token === null) navigate('/login');
   }, [dispatch, token, navigate]);
 

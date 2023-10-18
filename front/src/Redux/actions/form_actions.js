@@ -1,5 +1,5 @@
 
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES} from "../types/form_types";
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES, FILTER_HORARIO, GET_HORARIOS} from "../types/form_types";
 
 import axios from "axios";
 
@@ -122,6 +122,26 @@ export const filter= (order) => {
     payload: order,
   };
 };
+
+export const filterHorario= (order) => {
+  return {
+    type: FILTER_HORARIO,
+    payload: order,
+  };
+};
+
+export function getHorarios() {
+  const horarios = [
+    "Mañana",
+    "Tarde",
+    "Noche",
+  ];
+  return {
+    type: GET_HORARIOS,
+    payload: horarios,
+  };
+}
+
 export function getCities() {
   const cities = [
     "Buenos Aires",

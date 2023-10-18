@@ -1,6 +1,6 @@
 
 import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW,
-   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE, GET_CITIES, FILTER_CITIES } from '../types/form_types';
+   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE, GET_CITIES, FILTER_CITIES,FILTER_HORARIO,GET_HORARIOS } from '../types/form_types';
 
 
 const initialState = {
@@ -14,6 +14,7 @@ const initialState = {
   filteredFields: [],
   filters: false,
   citiesData: [],
+  horariosData: [],
 };
 
 export default function formReducer(state = initialState, action) {
@@ -79,7 +80,13 @@ export default function formReducer(state = initialState, action) {
         filteredFields: filterSport, filters:true,
 
       }
+
+
+
+
       case ORDER_BY_PRICE:
+
+        
       const orderByPrice = state.fieldData.slice();
       const isDescending = action.payload === "Descendente";
 
@@ -100,8 +107,13 @@ export default function formReducer(state = initialState, action) {
       };
 
       case GET_CITIES:
+        return { ...state,
+          citiesData: [...action.payload]
+        };
+
+      case GET_HORARIOS:
       return { ...state,
-        citiesData: [...action.payload]
+        horariosData: [...action.payload]
       };
       case FILTER_CITIES: 
       const selectedCity = action.payload;
@@ -115,7 +127,18 @@ export default function formReducer(state = initialState, action) {
         filteredFields: filteredFieldsByCity,
         filters: true,
       };
-      
+
+      case FILTER_HORARIO: 
+      const selectedHorario = action.payload;
+      const filteredFieldsByHorario = state.allFieldsBackUp.filter(
+        (field) => field.shift?.includes(selectedHorario)
+      );
+      return {
+        ...state,
+        fieldData: [...filteredFieldsByHorario],
+        filteredFields: filteredFieldsByHorario,
+        filters: true,
+      }; 
       
 
 
