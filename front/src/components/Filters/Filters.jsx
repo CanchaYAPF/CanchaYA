@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { filter } from '../../Redux/actions/form_actions';
+import { filter, filterCities } from '../../Redux/actions/form_actions'; // Asegúrate de tener una acción 'filterCities' en tus acciones
 import style from './Filters.module.css';
 
 function Filters() {
   const dispatch = useDispatch();
   const allSports = useSelector((state) => state.sportData);
+  const allCities = useSelector((state) => state.citiesData); 
 
   const [priceRange, setPriceRange] = useState({ min: '', max: '' });
-
+  const [selectedCity, setSelectedCity] = useState(''); 
   const handleFilterChange = (event) => {
     dispatch(filter(event.target.value));
+  };
+
+  const handleCityChange = (event) => {
+    const selectedCity = event.target.value;
+    setSelectedCity(selectedCity);
+    dispatch(filterCities(selectedCity));
+    
   };
 
   const handlePriceRangeChange = (event) => {
@@ -32,6 +40,15 @@ function Filters() {
         ))}
       </select>
       
+      <select className={style.select} onChange={handleCityChange} name="city">
+        <option value="">Todas las ciudades</option>
+        {allCities.map((city) => (
+          <option value={city} key={city}>
+            {city}
+          </option>
+        ))}
+      </select>
+
       <div className={style.priceFilter}>
         <input
           type="number"
@@ -50,7 +67,6 @@ function Filters() {
           className={style.priceInput}
         />
       </div>
-      
     </div>
   );
 }
