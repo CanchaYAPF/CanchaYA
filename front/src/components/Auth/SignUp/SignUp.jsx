@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { userSignup } from "../../../Redux/actions/form_actions"
 import style from './signup.module.css'
+import GoogleLogin from "react-google-login";//para registro con Google
+import { gapi } from "gapi-script"; //para registro con Google
 
 const SignUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+  
 
     const [userRegister, setUserRegister] = useState({
         name: "",
@@ -25,32 +28,35 @@ const SignUp = () => {
             return error
         }
     }
-    const handleNameChange = (e) => {
+    const handleInputChange = (e) => {
         setUserRegister({
             ...userRegister,
-            name: e.target.value,
+            [e.target.name]: e.target.value,
         })
     }
+    //Registro con Google
+    const googleId="889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com"
+    useEffect(()=>{
+        const start=()=>{
+            gapi.auth2.init({
+                clientId:googleId
+            })
+        }
+        gapi.load("client:auth2",start)
+    }, [])
 
-    const handleLastNameChange = (e) => {
-        setUserRegister({
-            ...userRegister,
-            lastname: e.target.value,
-        })
+    const responseGoogle = (response)=>{
+       const userData={
+         name:response.profileObj.givenName,
+         lastname:response.profileObj.familyName,
+         mail:response.profileObj.email,
+         password:response.accessToken}
+
+    console.log(userData)
+
     }
-
-    const handleEmailChange = (e) => {
-        setUserRegister({
-            ...userRegister,
-            mail: e.target.value,
-        })
-    }
-
-    const handlePasswordChange = (e) => {
-        setUserRegister({
-            ...userRegister,
-            password: e.target.value,
-        })
+    const responseError =()=>{
+        console.log("algo salio mal")
     }
 
     return (
@@ -71,22 +77,27 @@ const SignUp = () => {
             <form onSubmit={handleRegisterSubmit}>
                 <div className={style.inputs}>
                 <label htmlFor="Nombre">Nombre: </label>
-                    <input placeholder="Nombre" value={userRegister.name} onChange={handleNameChange} />
+                    <input placeholder="Nombre" name="name" value={userRegister.name} onChange={handleInputChange} type="text" />
                 </div>
                 <div className={style.inputs}>
                 <label htmlFor="Apellidos">Apellidos: </label>
-                    <input placeholder="Apellidos" value={userRegister.lastname} onChange={handleLastNameChange} />
+                    <input placeholder="Apellidos" name="lastname" value={userRegister.lastname} onChange={handleInputChange} type="text" />
                 </div>
                 <div className={style.inputs}>
                 <label htmlFor="Correo Electronico">Correo Electronico: </label>
-                    <input placeholder="Correo Electronico" value={userRegister.mail} onChange={handleEmailChange} type="email" />
+                    <input placeholder="Correo Electronico" name="mail" value={userRegister.mail} onChange={handleInputChange} type="email" />
                 </div>
                 <div className={style.inputs}>
                 <label htmlFor="Contraseña">Contraseña: </label>
-                    <input placeholder="Contraseña" value={userRegister.password} onChange={handlePasswordChange} type="password" />
+                    <input placeholder="Contraseña" name="password" value={userRegister.password} onChange={handleInputChange} type="password" />
                 </div>
                 <div className={style.button}>
                     <button className={style.verde} type='submit'>Registrar Usuario</button>
+                    <GoogleLogin 
+                    clientId={googleId}
+                    buttonText="Iniciar sesión con Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseError}/>
                     <Link to="/login"><button className={style.link}>Ya tengo un usuario</button></Link>
                 </div>
             </form>
