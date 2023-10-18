@@ -29,12 +29,16 @@ const Home = () => {
   }, [dispatch, token, navigate]);
 
   useEffect(() => {
+    const filteredFields = allFields.filter(field =>
+      field.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     const paginatedData = [];
-    for (let i = 0; i < allFields.length; i += cardsPerPage) {
-      paginatedData.push(allFields.slice(i, i + cardsPerPage));
+    for (let i = 0; i < filteredFields.length; i += cardsPerPage) {
+      paginatedData.push(filteredFields.slice(i, i + cardsPerPage));
     }
     setPaginatedFields(paginatedData);
-  }, [allFields, cardsPerPage]);
+  }, [allFields, cardsPerPage, searchTerm]);
 
   const filters = (event) => {    
     dispatch(filter(event.target.value))   
@@ -44,26 +48,15 @@ const Home = () => {
     setSearchTerm(event.target.value);
   }
 
-  // const filteredFields = allFields.filter(field =>
-  //   field.name.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
-
   return (
     <div>
-      <NavBar />
+      <NavBar handleSearchChange={handleSearchChange} />
       <div className={style.homeContainer}>
         <div className={style.leftBox}>
           <Filters />
           <OrderByPrice/>
         </div>
         <div className={style.cards}>
-          <div className={style.search}>
-            <input
-              type="search"
-              placeholder="Buscar cancha por nombre" 
-              onChange={handleSearchChange}
-            />
-          </div>
           <Paginate
             data={paginatedFields}
             cardsPerPage={cardsPerPage}
