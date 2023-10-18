@@ -1,11 +1,8 @@
 const { Field, Sport } = require("../../db");
-const postField = require("../field/postField")
+
 const mock = require ("../../../../mockUp")
 
 const getAllFields = async (name) => {
-
-mock.map(f=> postField(f))
-
   const allFields = await Field.findAll({
     include: {
       model: Sport,
@@ -34,17 +31,17 @@ mock.map(f=> postField(f))
   arr.map((field) => {
   
   
-      const sport = field.Sports.map(objeto => objeto.name);
-      const sports = sport.join(', ');
+      const sport = field.Sports?.map(objeto => objeto.name);
+      const sports = sport?.join(', ');
 
-      const shif = field.shift.map(objeto => objeto);
-      const shifs = shif.join(', ');
+      const shif = field.shift?.map(objeto => objeto);
+      const shifs = shif?.join(', ');
 
-      const pay = field.paymentMethod.map(objeto => objeto);
-      const pays = pay.join(', ');
+      const pay = field.paymentMethod?.map(objeto => objeto);
+      const pays = pay?.join(', ');
 
-      const ser = field.service.map(objeto => objeto);
-      const servs = ser.join(', ');
+      const ser = field.service?.map(objeto => objeto);
+      const servs = ser?.join(', ');
   
       return {
         id :field.id,
@@ -65,10 +62,10 @@ mock.map(f=> postField(f))
   });
 
 
+const mockNormal = normalize(mock)
+const database = normalize(allFields)
 
-
-
-  return normalize(allFields);
+  return [...database,...mockNormal];
 };
 
 module.exports = getAllFields;

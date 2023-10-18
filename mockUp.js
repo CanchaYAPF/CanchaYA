@@ -1,4 +1,4 @@
-export const mock = [
+const mock = [
   {
     name: "Fútbol Cancha",
     city: "Buenos Aires",
@@ -387,3 +387,5 @@ export const mock = [
     id: "42",
   },
 ];
+
+module.exports = mock
