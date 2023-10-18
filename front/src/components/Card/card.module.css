@@ -6,6 +6,7 @@
     display:flexbox;
     flex-direction:row;
     margin-left: 8vw; 
+    
 }
 .container2 .imagen img{
     width: 265px;
@@ -13,6 +14,8 @@
     border: 2px solid #fff;
     border-radius: 5px;   
     margin-bottom: 40px;
+    margin-top: 8px;
+    
 }
 .container2 h1{
     color: #000000;

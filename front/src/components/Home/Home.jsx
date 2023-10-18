@@ -8,6 +8,7 @@ import { getField, getSports, filter } from '../../Redux/actions/form_actions';
 import Cards from "../Cards/Cards"
 import style from './Home.module.css'
 import Paginate from '../Pagination/Paginate';
+import OrderByPrice from '../Order/orderByPrice'; 
 
 const Home = () => {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ const Home = () => {
       <NavBar />
       <div className={style.selects}>
         
-
+      <OrderByPrice />
       <select className={style.select} onChange={filters} name="filter">
     {allSports.map(s=>  <option value={s} key={s}> {s} </option>   )}
       </select>
