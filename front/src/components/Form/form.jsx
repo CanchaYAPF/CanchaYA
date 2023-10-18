@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './Form.module.css';
 import { formCancha, getSports } from '../../Redux/actions/form_actions';
 import Swal from 'sweetalert2'
+import NavBar from '../NavBar/NavBar';
 
 const FormularioCancha = () => {
   const token = sessionStorage.getItem(`token`)
@@ -112,9 +113,11 @@ const FormularioCancha = () => {
   };
 
   return (
-    
+    <div>
+      <NavBar />
+    <div className={styles.container}>
     <div className={styles.formContainer}>
-      <Link to="/">Volver al Inicio</Link>
+      <Link className={styles.link} to="/">Volver al Inicio</Link>
       <label className={styles.formLabel}>Nombre de Cancha:</label>
       <form onSubmit={handleSubmit}>
       <input
@@ -123,7 +126,7 @@ const FormularioCancha = () => {
         name="name"
         value={formData.name}
         onChange={handleChange}
-      />
+        />
       <label >{errors.name}</label>
 
       <label className={styles.formLabel}>Imagen:</label>
@@ -133,12 +136,12 @@ const FormularioCancha = () => {
         name="image"
         value={formData.image}
         onChange={handleChange}
-      />
+        />
       <label >{errors.image}</label>
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}
       
       
-      <label>Sport: </label>
+      <label>Deporte: </label>
         <select onChange={handleChange} name='sport'>
         {allSports?.map(s=>  <option value={s} key={s}> {  s  } </option>   )}
         
@@ -153,7 +156,7 @@ const FormularioCancha = () => {
         name="address"
         value={formData.address}
         onChange={handleChange}
-      />
+        />
        <label >{errors.address}</label>
 
       <label className={styles.formLabel}>Ciudad:</label>
@@ -163,7 +166,7 @@ const FormularioCancha = () => {
         name="city"
         value={formData.city}
         onChange={handleChange}
-      />
+        />
       <label >{errors.city}</label>
 
       <label className={styles.formLabel}>Teléfono:</label>
@@ -173,7 +176,7 @@ const FormularioCancha = () => {
         name="phone"
         value={formData.phone}
         onChange={handleChange}
-      />
+        />
       <label >{errors.phone}</label>
 
       <label className={styles.formLabel}>Precio por Hora:</label>
@@ -183,7 +186,7 @@ const FormularioCancha = () => {
         name="price"
         value={formData.price}
         onChange={handleChange}
-      />
+        />
       <label >{errors.price}</label>
 
       <div className={styles.formLabel}>Turnos Disponibles:</div>
@@ -194,7 +197,7 @@ const FormularioCancha = () => {
         value="Mañana"
         checked={formData.shift.includes('Mañana')}
         onChange={handleTurnoChange}
-      />
+        />
       Mañana
       <input
         type="checkbox"
@@ -203,7 +206,7 @@ const FormularioCancha = () => {
         value="Tarde"
         checked={formData.shift.includes('Tarde')}
         onChange={handleTurnoChange}
-      />
+        />
       Tarde
       <input
         type="checkbox"
@@ -212,7 +215,7 @@ const FormularioCancha = () => {
         value="Noche"
         checked={formData.shift.includes('Noche')}
         onChange={handleTurnoChange}
-      />
+        />
       Noche
 
       <div className={styles.formLabel}>Métodos de Pago:</div>
@@ -223,7 +226,7 @@ const FormularioCancha = () => {
         value="Efectivo"
         checked={formData.paymentMethod.includes('Efectivo')}
         onChange={handleMetodoPagoChange}
-      />
+        />
       Efectivo
       <input
         type="checkbox"
@@ -232,7 +235,7 @@ const FormularioCancha = () => {
         value="Débito"
         checked={formData.paymentMethod.includes('Débito')}
         onChange={handleMetodoPagoChange}
-      />
+        />
       Débito
       <input
         type="checkbox"
@@ -241,7 +244,7 @@ const FormularioCancha = () => {
         value="Crédito"
         checked={formData.paymentMethod.includes('Crédito')}
         onChange={handleMetodoPagoChange}
-      />
+        />
       Crédito
       <input
         type="checkbox"
@@ -250,7 +253,7 @@ const FormularioCancha = () => {
         value="MercadoPago"
         checked={formData.paymentMethod.includes('MercadoPago')}
         onChange={handleMetodoPagoChange}
-      />
+        />
       MercadoPago
 
       <div className={styles.formLabel}>Servicios:</div>
@@ -261,7 +264,7 @@ const FormularioCancha = () => {
         value="Estacionamiento"
         checked={formData.service.includes('Estacionamiento')}
         onChange={handleServicioChange}
-      />
+        />
       Estacionamiento
       <input
         type="checkbox"
@@ -270,7 +273,7 @@ const FormularioCancha = () => {
         value="Tribunas"
         checked={formData.service.includes('Tribunas')}
         onChange={handleServicioChange}
-      />
+        />
       Tribunas
       <input
         type="checkbox"
@@ -279,7 +282,7 @@ const FormularioCancha = () => {
         value="Vestuarios"
         checked={formData.service.includes('Vestuarios')}
         onChange={handleServicioChange}
-      />
+        />
       Vestuarios
       <input
         type="checkbox"
@@ -288,7 +291,7 @@ const FormularioCancha = () => {
         value="Duchas"
         checked={formData.service.includes('Duchas')}
         onChange={handleServicioChange}
-      />
+        />
       Duchas
       <input
         type="checkbox"
@@ -297,12 +300,14 @@ const FormularioCancha = () => {
         value="Kiosco"
         checked={formData.service.includes('Kiosco')}
         onChange={handleServicioChange}
-      />
+        />
       Kiosco
 
       <button className={styles.formButton} >Agregar</button>
       </form>
     </div>
+        </div>
+        </div>
   );
 };
 
