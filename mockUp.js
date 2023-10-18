@@ -5,7 +5,8 @@ export const mock = [
     price: "10000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "1",
   },
   {
     name: "F5 Canchas",
@@ -13,7 +14,8 @@ export const mock = [
     price: "15000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "2",
   },
   {
     name: "Canchitas F5",
@@ -21,7 +23,8 @@ export const mock = [
     price: "12000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "3",
   },
   {
     name: "Buenos Aires Fútbol",
@@ -29,7 +32,8 @@ export const mock = [
     price: "11000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "4",
   },
   {
     name: "Complejo Básquet",
@@ -37,7 +41,8 @@ export const mock = [
     price: "13000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Básquet",
+    Sports: ["Básquet"],
+    id: "5",
   },
   {
     name: "Fútbol por Hora",
@@ -45,7 +50,8 @@ export const mock = [
     price: "10000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "6",
   },
   {
     name: "Cancha 2",
@@ -53,7 +59,8 @@ export const mock = [
     price: "11500",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "7",
   },
   {
     name: "Canchas Vóley",
@@ -61,7 +68,8 @@ export const mock = [
     price: "12000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Vóley",
+    Sports: ["Vóley"],
+    id: "8",
   },
   {
     name: "Fútbol Camp",
@@ -69,7 +77,8 @@ export const mock = [
     price: "9000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "9",
   },
   {
     name: "Cancha San Martín",
@@ -77,7 +86,8 @@ export const mock = [
     price: "18000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Padel",
+    Sports: ["Padel"],
+    id: "10",
   },
   {
     name: "Belgrano Fútbol",
@@ -85,7 +95,8 @@ export const mock = [
     price: "19000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "11",
   },
   {
     name: "Saavedra Básquet",
@@ -93,7 +104,8 @@ export const mock = [
     price: "11000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Básquet",
+    Sports: ["Básquet"],
+    id: "12",
   },
   {
     name: "Mendoza Padel",
@@ -101,7 +113,8 @@ export const mock = [
     price: "14000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Padel",
+    Sports: ["Padel"],
+    id: "13",
   },
   {
     name: "San Cristóbal",
@@ -109,7 +122,8 @@ export const mock = [
     price: "8000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Tenis",
+    Sports: ["Tenis"],
+    id: "14",
   },
   {
     name: "Dorrego Fútbol",
@@ -117,7 +131,8 @@ export const mock = [
     price: "9000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "15",
   },
   {
     name: "San Martín",
@@ -125,7 +140,8 @@ export const mock = [
     price: "7000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Tenis",
+    Sports: ["Tenis"],
+    id: "16",
   },
   {
     name: "Quique Fútbol",
@@ -133,7 +149,8 @@ export const mock = [
     price: "6000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "17",
   },
   {
     name: "Romario Futebol",
@@ -141,7 +158,8 @@ export const mock = [
     price: "17400",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "18",
   },
   {
     name: "Chapu Canchas",
@@ -149,7 +167,8 @@ export const mock = [
     price: "14030",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Vóley",
+    Sports: ["Vóley"],
+    id: "19",
   },
   {
     name: "Blanco Encalada Básquet",
@@ -157,7 +176,8 @@ export const mock = [
     price: "4500",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Básquet",
+    Sports: ["Básquet"],
+    id: "20",
   },
   {
     name: "San Lorenzo de Rosario",
@@ -165,7 +185,8 @@ export const mock = [
     price: "13000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Básquet",
+    Sports: ["Básquet"],
+    id: "21",
   },
   {
     name: "Constitución",
@@ -173,7 +194,8 @@ export const mock = [
     price: "10000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Vóley",
+    Sports: ["Vóley"],
+    id: "22",
   },
   {
     name: "Messi F5",
@@ -181,7 +203,8 @@ export const mock = [
     price: "10000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "23",
   },
   {
     name: "Di María F5",
@@ -189,7 +212,8 @@ export const mock = [
     price: "11000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "24",
   },
   {
     name: "Vóley Rosario",
@@ -197,7 +221,8 @@ export const mock = [
     price: "9000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Vóley",
+    Sports: ["Vóley"],
+    id: "25",
   },
   {
     name: "Rosario Sur",
@@ -205,7 +230,8 @@ export const mock = [
     price: "6000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Padel",
+    Sports: ["Padel"],
+    id: "25",
   },
   {
     name: "Rosario Norte",
@@ -213,7 +239,8 @@ export const mock = [
     price: "12000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Tenis",
+    Sports: ["Tenis"],
+    id: "26",
   },
   {
     name: "F5 Ahora",
@@ -221,7 +248,8 @@ export const mock = [
     price: "10000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "27",
   },
   {
     name: "Talleres de Córdoba",
@@ -229,7 +257,8 @@ export const mock = [
     price: "15000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "28",
   },
   {
     name: "Guemes Padel",
@@ -237,7 +266,8 @@ export const mock = [
     price: "8000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Padel",
+    Sports: ["Padel"],
+    id: "29",
   },
   {
     name: "San Girona",
@@ -245,7 +275,8 @@ export const mock = [
     price: "13000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Padel",
+    Sports: ["Padel"],
+    id: "30",
   },
   {
     name: "Solís Fútbol",
@@ -253,7 +284,8 @@ export const mock = [
     price: "12000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "31",
   },
   {
     name: "Pueyrredón Básquet",
@@ -261,7 +293,8 @@ export const mock = [
     price: "13000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Básquet",
+    Sports: ["Básquet"],
+    id: "32",
   },
   {
     name: "Chacabuco Fútbol",
@@ -269,7 +302,8 @@ export const mock = [
     price: "14000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "33",
   },
   {
     name: "Federico Lacroze",
@@ -277,7 +311,8 @@ export const mock = [
     price: "9000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Tenis",
+    Sports: ["Tenis"],
+    id: "34",
   },
   {
     name: "Sol de Mayo",
@@ -285,7 +320,8 @@ export const mock = [
     price: "16000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Básquet",
+    Sports: ["Básquet"],
+    id: "35",
   },
   {
     name: "Club Parque",
@@ -293,7 +329,8 @@ export const mock = [
     price: "11000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Vóley",
+    Sports: ["Vóley"],
+    id: "36",
   },
   {
     name: "Cullen Padel",
@@ -301,7 +338,8 @@ export const mock = [
     price: "9000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Padel",
+    Sports: ["Padel"],
+    id: "37",
   },
   {
     name: "Crespo Fútbol",
@@ -309,7 +347,8 @@ export const mock = [
     price: "4300",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "38",
   },
   {
     name: "Lo de Pepe Fútbol",
@@ -317,7 +356,8 @@ export const mock = [
     price: "8000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "39",
   },
   {
     name: "Cancha 3",
@@ -325,7 +365,8 @@ export const mock = [
     price: "11600",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Tenis",
+    Sports: ["Tenis"],
+    id: "40",
   },
   {
     name: "Vóley Pueyrredón",
@@ -333,7 +374,8 @@ export const mock = [
     price: "6000",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Vóley",
+    Sports: ["Vóley"],
+    id: "41",
   },
   {
     name: "Silvera Fútbol",
@@ -341,6 +383,7 @@ export const mock = [
     price: "4600",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    Sports: "Fútbol",
+    Sports: ["Fútbol"],
+    id: "42",
   },
 ];
