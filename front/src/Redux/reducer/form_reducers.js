@@ -74,7 +74,7 @@ export default function formReducer(state = initialState, action) {
       };
     case FILTER:
 
-      let filterSport = [...state.allFieldsBackUp].filter(f => f.sport==action.payload)
+      let filterSport = [...state.allFieldsBackUp].filter(f => f.sports.includes(action.payload))
       return {...state, fieldData:[...filterSport],
         filteredFields: filterSport, filters:true,
 
