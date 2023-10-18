@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link,useNavigate } from 'react-router-dom'; 
 import styles from './Form.module.css';
-import { formCancha, getSports } from '../../Redux/actions/form_actions';
+import { formCancha, getSports, getCities } from '../../Redux/actions/form_actions';
 import Swal from 'sweetalert2'
 import NavBar from '../NavBar/NavBar';
 import axios from "axios"
@@ -11,12 +11,15 @@ const FormularioCancha = () => {
   const token = sessionStorage.getItem(`token`)
   const navigate= useNavigate()
   const allSports = useSelector(state => state.sportData)
+  const allCities = useSelector(state => state.citiesData)
+
 
 
  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getSports())
+    dispatch (getCities())
    if (token === null) navigate("/login")
   }, []);
    
@@ -201,14 +204,20 @@ else{
         />
 
 
-      <label className={styles.formLabel}>Ciudad:</label>
-      <input
-        type="text"
-        className={styles.formInput}
-        name="city"
-        value={formData.city}
-        onChange={handleChange}
-        />
+<label className={styles.formLabel}>Ciudad:</label>
+<select
+  className={styles.formSelect}
+  name="city"
+  value={formData.city}
+  onChange={handleChange}
+>
+  <option value="">Selecciona una ciudad</option>
+  {allCities.map((city) => (
+    <option key={city} value={city}>
+      {city}
+    </option>
+  ))}
+</select>
 
 
       <label className={styles.formLabel}>Teléfono:</label>
