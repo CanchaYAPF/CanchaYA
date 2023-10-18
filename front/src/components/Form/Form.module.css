@@ -6,11 +6,11 @@
   border: 1px solid #ccc;
   border-radius: 5px;
  background-color: #fff;
-  
+  margin-top: 40px;
 }
 .container{
   background-color: #0D3A5D;
-  height: 115vh;
+  height: 117vh;
 }
 
 .formLabel {
@@ -59,4 +59,7 @@ border: 1px solid #292929;
 .link{
   color: #0056b3;
   text-decoration: none;
+}
+.master{
+  background-color: #0D3A5D;
 }

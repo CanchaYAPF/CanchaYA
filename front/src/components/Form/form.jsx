@@ -140,7 +140,7 @@ else{
   };
 
   return (
-    <div>
+    <div className={styles.master}>
       <NavBar />
       
     <div className={styles.container}>
@@ -173,7 +173,7 @@ else{
   }}
         />
 
-      {formData.image && <img src={formData.image} alt="Imagen de la cancha" />}
+      {formData.image && <img src={formData.image} alt="Imagen de la cancha" style={{maxWidth: "50%", height: 'auto',}}/>}
       
       
       <label>Deportes: </label>

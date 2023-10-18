@@ -71,7 +71,7 @@ const Home = () => {
       
   </select>
   <div className={style.search}>
-        <input type="text"
+        <input type="search"
         placeholder="Buscar cancha por nombre" 
         />
         </div>
