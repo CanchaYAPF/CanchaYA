@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import NavBar from '../NavBar/NavBar';
 import axios from "axios"
 
-const validate = (name, image, sports, address, city, phone, price, shift, paymentMethod, service) => {
+const validate = ({name, image, sports, address, city, phone, price, shift, paymentMethod, service}) => {
   let errors = {}
   let regexNotNumbers = /([0-9])+/;
   let regexImg = (/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
@@ -15,8 +15,8 @@ const validate = (name, image, sports, address, city, phone, price, shift, payme
 
   if (!name) {
     errors.name = 'Por favor, ingrese nombre de la cancha';
-  } else if (name.length > 10 || name.length < 2) {
-    errors.name = 'El nombre debe contener más de 2 caracteres y menos de 40';
+  } else if (name.length > 30 || name.length < 2) {
+    errors.name = 'El nombre debe contener más de 2 caracteres y menos de 30';
   }
 
   if (!address) {
@@ -50,7 +50,7 @@ const validate = (name, image, sports, address, city, phone, price, shift, payme
   if (!phone) {
     errors.phone = 'Por favor, ingrese un número de teléfono';
   } else if (!regexPhone.test(phone)) {
-    errors.phone = 'El número de teléfono debe tener exactamente 10 dígitos';
+    errors.phone = 'El número de teléfono debe tener exactamente 10 dígitos, sin guiones ni caracteres';
   }
 
   if (!price) {
@@ -114,27 +114,35 @@ const FormularioCancha = () => {
   // })
 
   const handleChange = (e) => {
-
-const { name, value } = e.target;
-
-if (e.target.name === "sports") {
-  console.log("entro");
-  if (formData.sports.includes(e.target.value)) return; // corta ejecución
-  setFormData({
-    ...formData,
-    sports: [...formData.sports, e.target.value],
-  });
-} else {
-  setFormData({ ...formData, [name]: value });
-}
-setErrors (
-  validate({
-    ...formData, [e.target.name]:e.target.value
-  })
-)
-
-  }
+    const { name, value } = e.target;
   
+    if (name === "phone" || name === "price") {
+      const numericValue = value.replace(/\D/g, ''); // Solo permite números
+  
+      
+        setFormData({ ...formData, [name]: numericValue });
+      
+    } else if (name === "sports") {
+      console.log("entro");
+      if (formData.sports.includes(value)) return;
+      setFormData({
+        ...formData,
+        sports: [...formData.sports, value],
+      });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  
+    setErrors(
+      validate({
+        ...formData,
+        [name]: value,
+      })
+    );
+  };
+  
+  
+
   
 
   const handleTurnoChange = (e) => {
