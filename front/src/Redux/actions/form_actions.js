@@ -1,5 +1,5 @@
 
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES } from "../types/form_types";
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP,GOOGLE_SIGNUP, FORM_CANCHA_SUCCESS, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES } from "../types/form_types";
 
 import axios from "axios";
 
@@ -72,6 +72,17 @@ export function userSignup(data) {
     const register = res.data;
     return dispatch({
       type: USER_SIGNUP,
+      payload: register
+    });
+  }
+}
+
+export function googleSignUp(data) {
+  return async function (dispatch) {
+    const res = await axios.post(`http://localhost:3001/user/googleSignup`, data);
+    const register = res.data;
+    return dispatch({
+      type: GOOGLE_SIGNUP,
       payload: register
     });
   }

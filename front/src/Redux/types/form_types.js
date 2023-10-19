@@ -6,6 +6,7 @@ export const CREATE_REVIEW = 'CREATE_REVIEW';
 export const GET_REVIEW = 'GET_REVIEW';
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_SIGNUP = 'USER_SIGNUP';
+export const GOOGLE_SIGNUP = 'GOOGLE_SIGNUP';
 export const FORM_CANCHA_SUCCESS = 'FORM_CANCHA_SUCCESS';
 export const FORM_CANCHA_ERROR = 'FORM_CANCHA_ERROR';
 export const GET_FIELD_BY_ID = 'GET_FIELD_BY_ID';

@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
-import { userSignup } from "../../../Redux/actions/form_actions"
+import { userSignup,googleSignUp } from "../../../Redux/actions/form_actions"
 import style from './signup.module.css'
 import GoogleLogin from "react-google-login";//para registro con Google
 import { gapi } from "gapi-script"; //para registro con Google
@@ -35,7 +35,7 @@ const SignUp = () => {
         })
     }
     //Registro con Google
-    const googleId="889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com"
+    const googleId="889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com"// deberia ir en un archivo env?
     useEffect(()=>{
         const start=()=>{
             gapi.auth2.init({
@@ -44,19 +44,23 @@ const SignUp = () => {
         }
         gapi.load("client:auth2",start)
     }, [])
-
+    //Envio de respuesta de google al backend y al sessionStorage
     const responseGoogle = (response)=>{
-       const userData={
-         name:response.profileObj.givenName,
-         lastname:response.profileObj.familyName,
-         mail:response.profileObj.email,
-         password:response.accessToken}
+        const googleUser={ 
+            name:response.profileObj.givenName,
+            lastname:response.profileObj.familyName,
+            mail:response.profileObj.email,
+        }
+        console.log(googleUser)
+        try {
 
-    console.log(userData)
+            dispatch(googleSignUp(googleUser))
+            sessionStorage.setItem('token',response.accessToken)
+            navigate("/home")
+        } catch (error) {
+            return error
+        }
 
-    }
-    const responseError =()=>{
-        console.log("algo salio mal")
     }
 
     return (
@@ -97,7 +101,7 @@ const SignUp = () => {
                     clientId={googleId}
                     buttonText="Iniciar sesión con Google"
                     onSuccess={responseGoogle}
-                    onFailure={responseError}/>
+                    onFailure={responseGoogle}/>
                     <Link to="/login"><button className={style.link}>Ya tengo un usuario</button></Link>
                 </div>
             </form>
