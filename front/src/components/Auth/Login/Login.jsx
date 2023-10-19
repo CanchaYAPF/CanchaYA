@@ -3,12 +3,13 @@ import { Link,useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { userLogin } from '../../../Redux/actions/form_actions';
 import style from './login.module.css';
-import GoogleLogin from 'react-google-login'
+import axios from "axios"
+import GoogleSignUp from "../GoogleSingUp/GoogleSingUp"
 
 const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
-  const googleId="889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com"
+  
 
   const [usernameLogin, setUserLogin] = useState({
     mail: "",
@@ -31,6 +32,20 @@ const Login = () => {
             [e.target.name]: e.target.value,
         })
     }
+
+  //Google:
+  const googleId = "889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com";
+
+  const responseGoogle = async (response) => {
+    console.log(response);
+    try {
+      await axios.post(`http://localhost:3001/user/googleSingup`, { token: response.tokenId });
+      sessionStorage.setItem('token', response.tokenId);
+      navigate("/home");
+    } catch (error) {
+      return error;
+    }
+  }
   
   return (
     <div className={style.master}>
@@ -59,7 +74,12 @@ const Login = () => {
         </div>
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>
-        <GoogleLogin clientId={googleId} buttonText="Iniciar sesión con Google"/>
+        <GoogleSignUp 
+                    clientId={googleId} 
+                    buttonText="Iniciar sesión con Google"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
+                    />
         <Link to="/signup">
           <button className={style.link}>No tengo una cuenta</button>
         </Link>
