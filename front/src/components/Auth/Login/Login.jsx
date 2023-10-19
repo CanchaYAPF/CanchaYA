@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { userLogin } from '../../../Redux/actions/form_actions';
 import style from './login.module.css';
 import axios from "axios"
-import GoogleSignUp from "../GoogleSingUp/GoogleSingUp"
+import GoogleSignUp from "../GoogleSingUp/googleSingUp"
 
 const Login = () => {
   const dispatch = useDispatch()
