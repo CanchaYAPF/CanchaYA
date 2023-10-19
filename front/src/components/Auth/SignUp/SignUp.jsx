@@ -1,4 +1,4 @@
-import { useState} from 'react'
+import { useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
 import { userSignup } from "../../../Redux/actions/form_actions"
@@ -10,6 +10,13 @@ import axios from 'axios'
 const SignUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+//redirije a home automaticamente si ya te logueaste (si existe un token o googletoken en sessionStorage)
+    useEffect(()=>{
+        if (sessionStorage.getItem('token') || sessionStorage.getItem('googleToken')){
+            navigate("/home")
+        }
+    },[])
 
     const [userRegister, setUserRegister] = useState({
         name: "",
@@ -41,7 +48,7 @@ const SignUp = () => {
     const responseGoogle = async (response) => {
       try {
         await axios.post(`http://localhost:3001/user/googleSingup`, { token: response.tokenId });
-        sessionStorage.setItem('token', response.tokenId);
+        sessionStorage.setItem('googleToken', response.tokenId);
         navigate("/home");
       } catch (error) {
         return error;
