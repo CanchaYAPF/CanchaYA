@@ -35,7 +35,7 @@ const GoogleSignUp =()=>{
 
     return(
         <div>
-            <GoogleLogin 
+                    <GoogleLogin 
                     clientId={googleId}
                     buttonText="Iniciar sesión con Google"
                     onSuccess={responseGoogle}
