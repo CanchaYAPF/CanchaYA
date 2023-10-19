@@ -5,10 +5,11 @@ const {
   bookingRouter,
   reviewRouter,
   sportsRouter,
+  mercadoPagoRouter,
 } = require("./index");
 
 const router = Router();
-
+router.use("/payment", mercadoPagoRouter)
 router.use("/user", userRouter);
 router.use("/field", fieldRouter);
 router.use("/booking", bookingRouter);
