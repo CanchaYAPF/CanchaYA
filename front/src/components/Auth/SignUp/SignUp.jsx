@@ -9,8 +9,8 @@ import GoogleSignUp from '../GoogleSingUp/googleSingUp'
 const SignUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const googleId="889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com"
   
-
     const [userRegister, setUserRegister] = useState({
         name: "",
         lastname: "",
@@ -39,6 +39,7 @@ const SignUp = () => {
     return (
         <>
         <div className={style.master}>
+        <iframe src="http://localhost:5173/signup" sandbox="allow-same-origin allow-popups allow-forms"></iframe>
       <div className={style.logo}>
       <h1>Canchas Ya</h1>
       </div>
@@ -54,23 +55,23 @@ const SignUp = () => {
             <form onSubmit={handleRegisterSubmit}>
                 <div className={style.inputs}>
                 <label htmlFor="Nombre">Nombre: </label>
-                    <input placeholder="Nombre" name="name" value={userRegister.name} onChange={handleInputChange} type="text" />
+                    <input placeholder="Nombre" id="name" name="name" value={userRegister.name} onChange={handleInputChange} type="text" />
                 </div>
                 <div className={style.inputs}>
                 <label htmlFor="Apellidos">Apellidos: </label>
-                    <input placeholder="Apellidos" name="lastname" value={userRegister.lastname} onChange={handleInputChange} type="text" />
+                    <input placeholder="Apellidos" id="lastname" name="lastname" value={userRegister.lastname} onChange={handleInputChange} type="text" />
                 </div>
                 <div className={style.inputs}>
                 <label htmlFor="Correo Electronico">Correo Electronico: </label>
-                    <input placeholder="Correo Electronico" name="mail" value={userRegister.mail} onChange={handleInputChange} type="email" />
+                    <input placeholder="Correo Electronico" id="mail" name="mail" value={userRegister.mail} onChange={handleInputChange} type="email" />
                 </div>
                 <div className={style.inputs}>
                 <label htmlFor="Contraseña">Contraseña: </label>
-                    <input placeholder="Contraseña" name="password" value={userRegister.password} onChange={handleInputChange} type="password" />
+                    <input placeholder="Contraseña" id="password" name="password" value={userRegister.password} onChange={handleInputChange} type="password" />
                 </div>
                 <div className={style.button}>
                     <button className={style.verde} type='submit'>Registrar Usuario</button>
-                    <GoogleSignUp/>
+                    <GoogleSignUp clientId={googleId} buttonText="Iniciar sesión con Google"/>
                     <Link to="/login"><button className={style.link}>Ya tengo un usuario</button></Link>
                 </div>
             </form>

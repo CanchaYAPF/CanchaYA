@@ -1,20 +1,20 @@
-import React from 'react'
-import { useState } from 'react'
-import { userLogin } from '../../../Redux/actions/form_actions'
-import { useDispatch } from "react-redux"
-import { Link,useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { Link,useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { userLogin } from '../../../Redux/actions/form_actions';
 import style from './login.module.css';
 import GoogleLogin from 'react-google-login'
-
 
 const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
+  const googleId="889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com"
+
   const [usernameLogin, setUserLogin] = useState({
     mail: "",
     password: ""
   })
-
+  
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -25,21 +25,16 @@ const Login = () => {
       console.error("Error al iniciar sesión:", error);
     }
   }
-  const handleEmailChange = (e) => {
-    setUserLogin({
-      ...usernameLogin,
-      mail: e.target.value,
-    })
-  }
+    const handleInputChange = (e) => {
+        setUserLogin({
+            ...userLogin,
+            [e.target.name]: e.target.value,
+        })
+    }
   
-  const handlePasswordChange = (e) => {
-    setUserLogin({
-      ...usernameLogin,
-      password: e.target.value
-    })
-  }
   return (
     <div className={style.master}>
+      <iframe src="http://localhost:5173/login" sandbox="allow-same-origin allow-popups allow-forms"></iframe>
       <div className={style.logo}>
         <h1>Canchas Ya</h1>
       </div>
@@ -56,15 +51,15 @@ const Login = () => {
       <form onSubmit={handleLoginSubmit}>
         <div className={style.inputs}>
         <label htmlFor="E-mail">E-mail: </label>
-          <input placeholder="Escribí tu e-mail" onChange={handleEmailChange} value={usernameLogin.mail} />
+          <input placeholder="Escribí tu e-mail" onChange={handleInputChange} value={usernameLogin.mail} id="name" name="name" type="text" />
         </div>
         <div className={style.inputs}>
         <label htmlFor="Contraseña">Contraseña: </label>
-          <input placeholder="Escribí tu contraseña" onChange={handlePasswordChange} value={usernameLogin.password} type='password'/>
+          <input placeholder="Escribí tu contraseña" onChange={handleInputChange} value={usernameLogin.password} id="password" name="password" type='password'/>
         </div>
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>
-        <GoogleLogin/>
+        <GoogleLogin clientId={googleId} buttonText="Iniciar sesión con Google"/>
         <Link to="/signup">
           <button className={style.link}>No tengo una cuenta</button>
         </Link>
