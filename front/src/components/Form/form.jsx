@@ -7,6 +7,64 @@ import Swal from 'sweetalert2'
 import NavBar from '../NavBar/NavBar';
 import axios from "axios"
 
+const validate = (name, image, sports, address, city, phone, price, shift, paymentMethod, service) => {
+  let errors = {}
+  let regexNotNumbers = /([0-9])+/;
+  let regexImg = (/\.(gif|jpe?g|tiff?|png|webp|bmp)$/i);
+  let regexPhone = /^[0-9]{10}$/; 
+
+  if (!name) {
+    errors.name = 'Por favor, ingrese nombre de la cancha';
+  } else if (name.length > 10 || name.length < 2) {
+    errors.name = 'El nombre debe contener más de 2 caracteres y menos de 40';
+  }
+
+  if (!address) {
+    errors.address = 'Por favor, ingrese una dirección';
+  } else if (address.length > 20 || address.length < 2) {
+    errors.address = 'La dirección debe contener más de 2 caracteres y menos de 20';
+  }
+
+  if (!sports) {
+    errors.sports = 'Por favor, ingrese al menos un deporte';
+  }
+  if (!city) {
+    errors.city = 'Por favor, ingrese una ciudad';
+  }
+  if (!shift) {
+    errors.shift = 'Por favor, ingrese turno';
+  }
+  if (!paymentMethod) {
+    errors.paymentMethod = 'Por favor, ingrese al menos un método de pago';
+  }
+  if (!service) {
+    errors.service = 'Por favor, ingrese al menos un servicio';
+  }
+
+  if (!image) {
+    errors.image = 'Por favor, inserta una imagen';
+  } else if (!regexImg.test(image.trim())) {
+    errors.image = 'Por favor, ingrese un formato válido';
+  }
+
+  if (!phone) {
+    errors.phone = 'Por favor, ingrese un número de teléfono';
+  } else if (!regexPhone.test(phone)) {
+    errors.phone = 'El número de teléfono debe tener exactamente 10 dígitos';
+  }
+
+  if (!price) {
+    errors.price = 'Por favor, ingrese un precio';
+  } else if (!regexNotNumbers.test(price)) {
+    errors.price = 'El precio debe contener solo números';
+  }
+
+  return errors;
+}
+
+
+
+
 const FormularioCancha = () => {
   const token = sessionStorage.getItem(`token`)
   const navigate= useNavigate()
@@ -16,6 +74,10 @@ const FormularioCancha = () => {
 
 
  const dispatch = useDispatch();
+
+
+ const [errors, setErrors] = useState({});
+
 
   useEffect(() => {
     dispatch(getSports())
@@ -55,19 +117,25 @@ const FormularioCancha = () => {
 
 const { name, value } = e.target;
 
-    if(e.target.name==="sports"){ console.log("entro")
-      if(formData.sports.includes(e.target.value)) return //corta ejecucion
-      setFormData({
-        ...formData,
-        sports: [...formData.sports, e.target.value]
-      
-      })
-    }
-else{
-    
-    setFormData({ ...formData, [name]: value });
-  };
+if (e.target.name === "sports") {
+  console.log("entro");
+  if (formData.sports.includes(e.target.value)) return; // corta ejecución
+  setFormData({
+    ...formData,
+    sports: [...formData.sports, e.target.value],
+  });
+} else {
+  setFormData({ ...formData, [name]: value });
+}
+setErrors (
+  validate({
+    ...formData, [e.target.name]:e.target.value
+  })
+)
+
   }
+  
+  
 
   const handleTurnoChange = (e) => {
     const { value, checked } = e.target;
@@ -121,6 +189,12 @@ else{
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    let error = Object.keys(validate(formData));
+      if (error.length || !formData.sports.length || !formData.phone.length) {
+        alert("Falta completar datos");
+        errors.sports = "falta completar datos";
+        errors.phone = "falta completar datos";
+      }{
     dispatch(formCancha(formData));
     Swal.fire(
       'Cancha Subida con exito',
@@ -139,7 +213,7 @@ else{
       paymentMethod: [],
       service: [],
     });
-
+   }
   };
 
   return (
@@ -157,7 +231,8 @@ else{
         name="name"
         value={formData.name}
         onChange={handleChange}
-        />
+        />      
+       {errors.name && <p className={styles.error}>{errors.name}</p>}
 
 
       <label className={styles.formLabel}>Imagen:</label>
@@ -192,6 +267,7 @@ else{
             
             </div> )
           }</div> 
+          {errors.sports && <p className={styles.error} >{errors.sports}</p>}
 
 
       <label className={styles.formLabel}>Dirección de la Cancha:</label>
@@ -202,6 +278,7 @@ else{
         value={formData.address}
         onChange={handleChange}
         />
+        {errors.address && <p className={styles.error} >{errors.address}</p>}
 
 
 <label className={styles.formLabel}>Ciudad:</label>
@@ -217,7 +294,9 @@ else{
       {city}
     </option>
   ))}
-</select>
+  </select>
+       {errors.city && <p className={styles.error}>{errors.city}</p>}
+
 
 
       <label className={styles.formLabel}>Teléfono:</label>
@@ -228,6 +307,8 @@ else{
         value={formData.phone}
         onChange={handleChange}
         />
+        {errors.phone && <p className={styles.error} >{errors.phone}</p>}
+
 
 
       <label className={styles.formLabel}>Precio por Hora:</label>
@@ -238,6 +319,9 @@ else{
         value={formData.price}
         onChange={handleChange}
         />
+        {errors.price && <p className={styles.error} >{errors.price}</p>}
+
+        
  
 
       <div className={styles.formLabel}>Turnos Disponibles:</div>
@@ -268,6 +352,9 @@ else{
         onChange={handleTurnoChange}
         />
       Noche
+      {errors.shift && <p className={styles.error} >{errors.shift}</p>}
+
+      
 
       <div className={styles.formLabel}>Métodos de Pago:</div>
       <input
@@ -306,6 +393,9 @@ else{
         onChange={handleMetodoPagoChange}
         />
       MercadoPago
+      {errors.paymentMethod && <p className={styles.error} >{errors.paymentMethod}</p>}
+
+      
 
       <div className={styles.formLabel}>Servicios:</div>
       <input
@@ -353,6 +443,8 @@ else{
         onChange={handleServicioChange}
         />
       Kiosco
+      {errors.service && <p className={styles.error} >{errors.service}</p>}
+
 
       <button className={styles.formButton} >Agregar</button>
       </form>

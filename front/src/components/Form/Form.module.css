@@ -63,3 +63,8 @@ border: 1px solid #292929;
 .master{
   background-color: #0D3A5D;
 }
+.error {
+  color: #e63946;
+  font-size: 16px;
+  margin-top: 5px;
+}
