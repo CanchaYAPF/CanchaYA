@@ -2,15 +2,33 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: #0D3A5D;
   }
   
   .select {
+    display: flex;
+    border: #0D3A5D;
+    margin-left: 10px;
+    align-items: center;
+  }
+  .select::after {
+    content: '▼'; 
+    color: #0D3A5D;; 
+    font-weight: bold; 
+    position: absolute;
+    right: 10px; 
+    top: 50%; 
+    transform: translateY(-50%);
+    transform: translateY(-50%); 
   }
   
   .priceFilter {
     display: flex;
     align-items: center;
+    padding: 3px 10px;
     gap: 10px; 
+    margin-left: 1010px;
+    
   }
   
   
