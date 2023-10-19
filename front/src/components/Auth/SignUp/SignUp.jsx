@@ -54,7 +54,6 @@ const SignUp = () => {
     return (
         <>
         <div className={style.master}>
-        <iframe src="http://localhost:5173/signup" sandbox="allow-same-origin allow-popups allow-forms"></iframe>
       <div className={style.logo}>
       <h1>Canchas Ya</h1>
       </div>
