@@ -11,27 +11,26 @@ const googleLogin = async (token) => {
     idToken: token,
     audience: CLIENT_ID_GOOGLE,
   });
-  const tokenEmail=ticket.payload.email
+  console.log("ticket autorizacion",ticket)
+  
+  // const tokenEmail=ticket.payload.email
   //generar password aleatoria y encriptarla
   const password=generatePassword(10);
   const encryptPassword=await bcrypt.hash(password,10);
-  //vefificar existencia del email:
-  const user = await User.findOne({ where: {tokenEmail} });
-  //generar usuario con datos de token decodificado
-  if(!ticket){
-    throw new Error("Error con el tokenId");
-  }else if(user){
-    return { auth:"Usuario ya registrado, bienvenido de vuelta"}
-  }else{
-    const newUser = await User.create({
+
+
+   
+  const newUser = await User.create({
         name:ticket.payload.given_name,
         lastname:ticket.payload.family_name,
         mail:ticket.payload.email,
         password: encryptPassword,
       });
+
+   return newUser
       
-    return { auth:"Registro exitoso"}
-  }
+
+  
 
 
 };
