@@ -47,11 +47,14 @@ Review.belongsTo(Field);
 User.hasMany(Review);
 Review.belongsTo(User);
 
-Booking.belongsToMany(Field, { through: "BookingField" });
-Field.belongsToMany(Booking, { through: "FieldBooking" });
+Field.hasMany(Booking);
+Booking.belongsTo(Field);
 
 User.hasMany(Field);
 Field.belongsTo(User);
+
+Field.hasMany(Booking);
+Booking.belongsTo(Field);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
