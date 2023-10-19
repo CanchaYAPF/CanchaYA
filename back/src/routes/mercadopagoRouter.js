@@ -1,4 +1,5 @@
 const { Router } = require("express")
+const mercadopago = require("mercadopago");
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 const mercadoPagoRouter = Router()
 
