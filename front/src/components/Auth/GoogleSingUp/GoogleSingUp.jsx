@@ -23,7 +23,7 @@ const GoogleSignUp =()=>{
             console.log(response)
             try {
                 await axios.post(`http://localhost:3001/user/googleSingup`, { token:response.tokenId })
-                sessionStorage.setItem('token',response.tokenId)
+                sessionStorage.setItem('googleToken',response.tokenId)
                 navigate("/home")
             } catch (error) {
                 return error
