@@ -1,12 +1,11 @@
 import { useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from "react-redux"
-import { googleSignUp } from "../../../Redux/actions/form_actions"
 import GoogleLogin from "react-google-login";//para registro con Google
 import { gapi } from "gapi-script"; //para registro con Google
+import axios from "axios"
 
 const GoogleSignUp =()=>{
-    const dispatch = useDispatch();
+
     const navigate = useNavigate();
 
         //Registro con Google
@@ -20,18 +19,19 @@ const GoogleSignUp =()=>{
             gapi.load("client:auth2",start)
         }, [])
         //Envio de respuesta de google al backend y al sessionStorage
-        const responseGoogle = (response)=>{
-            const token=response.tokenId;
-            console.log("token desde el front:", token)
+        const responseGoogle = async (response)=>{
+            console.log(response)
             try {
-                dispatch(googleSignUp("token"))
-                sessionStorage.setItem('token',token)
+                await axios.post(`http://localhost:3001/user/googleSingup`, { token:response.tokenId })
+                sessionStorage.setItem('token',response.tokenId)
                 navigate("/home")
             } catch (error) {
                 return error
             }
     
         }
+
+
 
     return(
         <div>
