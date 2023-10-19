@@ -11,7 +11,6 @@ const SignUp = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-  
     const [userRegister, setUserRegister] = useState({
         name: "",
         lastname: "",
@@ -37,10 +36,9 @@ const SignUp = () => {
     }
 
     //google
-    const googleId = "889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com";
+    const CLIENT_ID_GOOGLE = "889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com";//al env
 
     const responseGoogle = async (response) => {
-      console.log(response);
       try {
         await axios.post(`http://localhost:3001/user/googleSingup`, { token: response.tokenId });
         sessionStorage.setItem('token', response.tokenId);
@@ -50,7 +48,6 @@ const SignUp = () => {
       }
     }
   
-
     return (
         <>
         <div className={style.master}>
@@ -86,7 +83,7 @@ const SignUp = () => {
                 <div className={style.button}>
                     <button className={style.verde} type='submit'>Registrar Usuario</button>
                     <GoogleSignUp 
-                    clientId={googleId} 
+                    clientId={CLIENT_ID_GOOGLE} 
                     buttonText="Iniciar sesión con Google"
                     onSuccess={responseGoogle}
                     onFailure={responseGoogle}
