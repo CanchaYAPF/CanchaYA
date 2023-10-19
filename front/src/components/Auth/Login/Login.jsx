@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { userLogin } from '../../../Redux/actions/form_actions';
@@ -9,6 +9,13 @@ import GoogleSignUp from "../GoogleSingUp/googleSingUp"
 const Login = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
+
+  //redirije a home automaticamente si ya te logueaste (si existe un token o googletoken en sessionStorage)
+  useEffect(()=>{
+    if (sessionStorage.getItem('token') || sessionStorage.getItem('googleToken')){
+        navigate("/home")
+    }
+},[])
   
 
   const [usernameLogin, setUserLogin] = useState({
