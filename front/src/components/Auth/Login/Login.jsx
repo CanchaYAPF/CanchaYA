@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { userLogin } from '../../../Redux/actions/form_actions'
 import { useDispatch } from "react-redux"
 import { Link,useNavigate } from 'react-router-dom'
-import style from './login.module.css'
+import style from './login.module.css';
+import GoogleLogin from 'react-google-login'
 
 
 const Login = () => {
@@ -63,6 +64,7 @@ const Login = () => {
         </div>
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>
+        <GoogleLogin/>
         <Link to="/signup">
           <button className={style.link}>No tengo una cuenta</button>
         </Link>

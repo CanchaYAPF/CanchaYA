@@ -1,10 +1,10 @@
-import { useState, useEffect} from 'react'
+import { useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux"
-import { userSignup,googleSignUp } from "../../../Redux/actions/form_actions"
+import { userSignup } from "../../../Redux/actions/form_actions"
 import style from './signup.module.css'
-import GoogleLogin from "react-google-login";//para registro con Google
-import { gapi } from "gapi-script"; //para registro con Google
+import GoogleSignUp from '../GoogleSingUp/googleSingUp'
+
 
 const SignUp = () => {
     const dispatch = useDispatch();
@@ -34,34 +34,7 @@ const SignUp = () => {
             [e.target.name]: e.target.value,
         })
     }
-    //Registro con Google
-    const googleId="889605891641-navvi2j6f5q2p56v1nojfo9qi0vugusj.apps.googleusercontent.com"// deberia ir en un archivo env?
-    useEffect(()=>{
-        const start=()=>{
-            gapi.auth2.init({
-                clientId:googleId
-            })
-        }
-        gapi.load("client:auth2",start)
-    }, [])
-    //Envio de respuesta de google al backend y al sessionStorage
-    const responseGoogle = (response)=>{
-        const googleUser={ 
-            name:response.profileObj.givenName,
-            lastname:response.profileObj.familyName,
-            mail:response.profileObj.email,
-        }
-        console.log(googleUser)
-        try {
-
-            dispatch(googleSignUp(googleUser))
-            sessionStorage.setItem('token',response.accessToken)
-            navigate("/home")
-        } catch (error) {
-            return error
-        }
-
-    }
+  
 
     return (
         <>
@@ -97,11 +70,7 @@ const SignUp = () => {
                 </div>
                 <div className={style.button}>
                     <button className={style.verde} type='submit'>Registrar Usuario</button>
-                    <GoogleLogin 
-                    clientId={googleId}
-                    buttonText="Iniciar sesión con Google"
-                    onSuccess={responseGoogle}
-                    onFailure={responseGoogle}/>
+                    <GoogleSignUp/>
                     <Link to="/login"><button className={style.link}>Ya tengo un usuario</button></Link>
                 </div>
             </form>

@@ -79,11 +79,12 @@ export function userSignup(data) {
 
 export function googleSignUp(data) {
   return async function (dispatch) {
-    const res = await axios.post(`http://localhost:3001/user/googleSignup`, data);
-    const register = res.data;
+    await axios.post(`http://localhost:3001/user/googleSingup`, data);
+
+    console.log("register action: ",data)
     return dispatch({
       type: GOOGLE_SIGNUP,
-      payload: register
+      payload: data
     });
   }
 }
