@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom"
 import { getFieldById } from '../../Redux/actions/form_actions';
 import style from './Details.module.css';
 /* import NavBar from '../NavBar/NavBar'; */
@@ -33,7 +34,7 @@ function Details() {
       <h2>Teléfono: {field.phone}</h2>
       <h2>Precio: {field.price}</h2>
       <h2>Metodos de Pago: {field.paymentMethod}</h2>
-      <Link to="/booking" className={styles.link}>
+      <Link to="/booking" className={style.link}>
             Reservar
           </Link>
       </div>

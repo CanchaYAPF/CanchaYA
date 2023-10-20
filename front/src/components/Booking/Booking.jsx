@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import styles from './Booking.module.css'; // Asegúrate de importar tu archivo CSS
 import { postBooking } from '../../Redux/actions/form_actions';
+import axios from 'axios';
 
 Modal.setAppElement('#root'); // Reemplaza '#root' con el selector del elemento raíz de tu aplicación
 
 
 const Booking = () => {
-
+  const field = useSelector(state => state.currentField); 
     const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -59,9 +60,28 @@ const Booking = () => {
       dispatch(postBooking(formData));
       alert('Reserva creada');
     } else if (method === 'mercadopago') {
-      // Mostrar un mensaje o redirigir a una página de MercadoPago
-      alert('Estamos trabajando en eso');
-    }
+        const paymentData = {
+          id: field.id, 
+          items:1,
+          title: field.name, 
+          description: `Reserva de la cancha ${field.name}`, 
+          image: field.image, 
+          price: field.price, 
+        };
+    
+        console.log(paymentData);
+    
+      axios
+        .post("http://localhost:3001/payment/createOrder", paymentData)
+        .then((response) => {
+          window.location.href = response.data.body.init_point;
+        })
+        .catch((error) => console.log(error.message));
+
+        dispatch(postBooking(formData))
+        alert('Reserva creada');
+    };
+    
 
     // Cerrar el modal
     setIsModalOpen(false);
