@@ -6,7 +6,8 @@ import Form from "./Form/form";
 
 import Details from "./Details/Details";
 import Profile from "./Profile/Profile";
+import Booking from "./Booking/Booking";
 import Favorites from "./Favorites/Favorites"
 
-export { Login, NavBar, Home, SignUp, Form, Details, Profile, Favorites } 
 
+export { Login, NavBar, Home, SignUp, Form, Details, Profile, Booking, Favorites } 

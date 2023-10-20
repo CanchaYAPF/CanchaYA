@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from "react-router-dom"
 
-import {Home, Login, SignUp, Form, Details,Profile,NavBar, Favorites} from "./components/index" 
+import {Home, Login, SignUp, Form, Details,Profile,NavBar, Favorites, Booking} from "./components/index" 
 
 
 import './App.css'; 
@@ -18,6 +18,8 @@ const App = () => {
         <Route path='/form' element={<Form />} />
         <Route path='/:id' element={<Details />} />
         <Route path='/profile' element={<Profile/>} /> 
+        <Route path='/booking' element={<Booking/>} /> 
+
       </Routes>
     </div>
   );
