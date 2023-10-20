@@ -81,20 +81,52 @@ import { getField, getSports, filter, getCities, getHorarios } from '../../Redux
 import Filters from '../Filters/Filters';
 import Cards from '../Cards/Cards';
 import style from './Home.module.css';
-import Paginate from '../Pagination/Paginate';
+import Paginationn from "../../components/Pagination/Paginate"
 /* import NavBar from '../NavBar/NavBar'; */
 import OrderByPrice from '../Order/orderByPrice';
 
 const Home = () => {
-  const navigate = useNavigate();
-  const token = sessionStorage.getItem('token');
-  const [paginatedFields, setPaginatedFields] = useState([]);
-  const cardsPerPage = 8; // Define 8 tarjetas por página
+
 
   const dispatch = useDispatch();
 
   const allSports = useSelector((state) => state.sportData);
   const allFields = useSelector((state) => state.fieldData);
+
+
+
+  const navigate = useNavigate();
+  const token = sessionStorage.getItem('token');
+
+
+  
+  //estado local para paginado
+const [currentPage, setCurrentPage] = useState(1);
+const cardxPage = 8
+const totalPages = Math.ceil(allFields.length / cardxPage);
+
+//primer index -1 por ser array
+const startIndex = (currentPage - 1) * cardxPage;
+
+const endIndex = startIndex + cardxPage;
+
+let currentCards = allFields.slice(startIndex, endIndex);
+
+
+function pageHandler(pageNumber) {
+  setCurrentPage(pageNumber);
+}
+
+const pagination = (event) =>{
+  if (event.target.name === "next" && currentPage  * cardxPage < allFields.length ){
+  setCurrentPage(currentPage +1)}
+else if(event.target.name=== "prev" && startIndex!==0 ) setCurrentPage(currentPage -1)
+}
+
+
+ 
+
+
 
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -111,12 +143,8 @@ const Home = () => {
       field.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    const paginatedData = [];
-    for (let i = 0; i < filteredFields.length; i += cardsPerPage) {
-      paginatedData.push(filteredFields.slice(i, i + cardsPerPage));
-    }
-    setPaginatedFields(paginatedData);
-  }, [allFields, cardsPerPage, searchTerm]);
+    
+  }, [allFields,searchTerm]);
 
   const filters = (event) => {
     dispatch(filter(event.target.value));
@@ -136,15 +164,18 @@ const Home = () => {
         </div>
         <div className={style.cards}>
           {/* Pasa la cantidad correcta de tarjetas por página a Paginate */}
-          <Paginate
-            data={paginatedFields}
-            cardsPerPage={cardsPerPage}
-            renderCardFunction={(page, pageIndex) => (
-              <Cards allFields={page} />
-            )}
-          />
+          <Cards allFields ={currentCards} />
+          
+          
         </div>
       </div>
+
+
+
+      <button name="prev" onClick={pagination}>Prev Page</button>
+          <button name="next" onClick={pagination}>Next Page</button>
+          <Paginationn total={totalPages} page={pageHandler}/>
+
     </div>
   );
 };

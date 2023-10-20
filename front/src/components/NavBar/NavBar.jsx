@@ -47,6 +47,7 @@ const NavBar = ({ handleSearchChange }) => {
             {isProfileMenuOpen && (
               <div className={style.profileMenu}>
                 <Link to="/Profile">Ver Mi Perfil</Link>
+                <Link to="/favorites">Mis Favoritos</Link>
                 <button onClick={logoutFunction}>Cerrar Sesión</button>
               </div>
             )}
