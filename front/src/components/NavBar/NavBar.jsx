@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './Navbar.module.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const NavBar = ({ handleSearchChange }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === "/home"
+
+  const [selectValue, setSelectValue] = useState('Perfil');
+
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('googleToken');
+    navigate("/login");
+  }
+
+  const handleProfileOptionChange = (event) => {
+    setSelectValue(event.target.value);
+    switch (event.target.value) {
+      case 'profile':
+        navigate("/profile");
+        break;
+      case 'logout':
+        handleLogout();
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <div className={style.homeContainer}>
@@ -21,6 +44,12 @@ const NavBar = ({ handleSearchChange }) => {
         </div>
         <div className={style.btnContainer}>
           <Link to={'/form'}><button className={style.btn}>Agregar Cancha</button></Link>
+          {sessionStorage.getItem('token') || sessionStorage.getItem('googleToken') ? (
+            <select value={selectValue} onChange={handleProfileOptionChange} className={style.btn}>
+              <option value="profile">Ver Perfil</option>
+              <option value="logout">Cerrar Sesión</option>
+            </select>
+          ) : null}
         </div>
       </div>
       <div className={style.text}>
