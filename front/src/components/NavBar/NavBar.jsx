@@ -13,15 +13,14 @@ const NavBar = ({ handleSearchChange }) => {
   };
 
   const logoutFunction = () => {
-   
   };
-  
+
   const isLoginOrSignup =
     location.pathname === '/login' || location.pathname === '/signup';
 
   return (
     <div className={style.homeContainer}>
-      {!isLoginOrSignup && ( 
+      {!isLoginOrSignup && (
         <div className={style.navbar}>
           <div className={style.logo}>
             <Link to="/home" style={{ font: '28px Poppins, sans-serif' }}>
@@ -51,14 +50,14 @@ const NavBar = ({ handleSearchChange }) => {
               </div>
             )}
           </div>
+            <div className={style.text}>
+              <div className={style.texto}>
+                <h1 className={style.verde}>NO TE QUEDES SIN JUGAR</h1>
+                <h1 className={style.blanco}>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
+              </div>
+            </div>
         </div>
       )}
-      <div className={style.text}>
-        <div className={style.texto}>
-          <h1 className={style.verde}>NO TE QUEDES SIN JUGAR</h1>
-          <h1 className={style.blanco}>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
-        </div>
-      </div>
     </div>
   );
 };

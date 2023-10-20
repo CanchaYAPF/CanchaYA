@@ -18,7 +18,7 @@
     display: flex;
     align-items: center; 
     justify-content: center;
-margin-top: auto;
+    margin-top: auto;
   }
   .inputs input {
     width: 90%;
@@ -36,11 +36,11 @@ margin-top: auto;
     background: rgb(220, 220, 220);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 55vh;
+    height: 150vh;
     margin: 0;
   }
   .container {
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     border-radius: 35px;
     position: relative;
     overflow: hidden;
@@ -53,14 +53,14 @@ margin-top: auto;
     color: #0D3A5D;
     margin: 0;
     padding: 10px;
-  font-size: 30px;
+    font-size: 30px;
   }
   .button{
     display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center; 
-  height: 115px;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    height: 115px;
   }
   .button button {
     margin: 10px 0; 
@@ -79,7 +79,7 @@ margin-top: auto;
     border: none;
     background-color: transparent;
     cursor: pointer;
-margin-bottom: 0;
+    margin-bottom: 0;
   }
   .texto{
     margin-left: 500px;
@@ -105,11 +105,31 @@ margin-bottom: 0;
   .logo{
     color: #fff;
     text-decoration: none;
-    margin-top: -10px;
+    margin-top: 10px;
     margin-right: 900px;
     font: 20px 'Poppins', sans-serif;
   }
   .resaltado{
     color: rgb(16, 194, 0); 
-  font-weight: bold;
+    font-weight: bold;
   }
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .passwordContainer {
+    position: relative;
+}
+
+.passwordIcon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; 
+    cursor: pointer;
+    width: 24px; 
+    height: 24px;
+}
+
+  
