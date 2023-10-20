@@ -1,37 +1,113 @@
+// import React, { useEffect, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { getField, getSports, filter,getCities, getHorarios } from '../../Redux/actions/form_actions';
+// import Filters from '../Filters/Filters'; 
+// import Cards from '../Cards/Cards';
+// import style from './Home.module.css';
+// import Paginate from '../Pagination/Paginate';
+// import NavBar from '../NavBar/NavBar';
+// import OrderByPrice from "../Order/orderByPrice"
+
+// const Home = () => {
+//   const navigate = useNavigate();
+//   const token = sessionStorage.getItem('token');
+//   const [paginatedFields, setPaginatedFields] = useState([]);
+//   const cardsPerPage = 8;
+
+//   const dispatch = useDispatch();
+
+//   const allSports = useSelector(state => state.sportData);
+//   const allFields = useSelector(state => state.fieldData);
+
+//   const [searchTerm, setSearchTerm] = useState('');
+
+//   useEffect(() => {
+//     dispatch(getHorarios())
+//     dispatch(getSports());
+//     dispatch(getField());
+//     dispatch (getCities())
+//     if (token === null) navigate('/login');
+//   }, [dispatch, token, navigate]);
+
+//   useEffect(() => {
+//     const filteredFields = allFields.filter(field =>
+//       field.name.toLowerCase().includes(searchTerm.toLowerCase())
+//     );
+
+//     const paginatedData = [];
+//     for (let i = 0; i < filteredFields.length; i += cardsPerPage) {
+//       paginatedData.push(filteredFields.slice(i, i + cardsPerPage));
+//     }
+//     setPaginatedFields(paginatedData);
+//   }, [allFields, cardsPerPage, searchTerm]);
+
+//   const filters = (event) => {    
+//     dispatch(filter(event.target.value))   
+//   }
+
+//   const handleSearchChange = (event) => {
+//     setSearchTerm(event.target.value);
+//   }
+
+//   return (
+//     <div>
+//       <NavBar handleSearchChange={handleSearchChange} />
+//       <div className={style.homeContainer}>
+//         <div className={style.leftBox}>
+//           <Filters />
+//           <OrderByPrice/>
+//         </div>
+//         <div className={style.cards}>
+//           <Paginate
+//             data={paginatedFields}
+//             cardsPerPage={cardsPerPage}
+//             renderCardFunction={(page, pageIndex) => (
+//               <Cards allFields={page} />
+//             )}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Home;
+// Home.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getField, getSports, filter,getCities, getHorarios } from '../../Redux/actions/form_actions';
-import Filters from '../Filters/Filters'; 
+import { getField, getSports, filter, getCities, getHorarios } from '../../Redux/actions/form_actions';
+import Filters from '../Filters/Filters';
 import Cards from '../Cards/Cards';
 import style from './Home.module.css';
 import Paginate from '../Pagination/Paginate';
 import NavBar from '../NavBar/NavBar';
-import OrderByPrice from "../Order/orderByPrice"
+import OrderByPrice from '../Order/orderByPrice';
 
 const Home = () => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem('token');
   const [paginatedFields, setPaginatedFields] = useState([]);
-  const cardsPerPage = 8;
+  const cardsPerPage = 8; // Define 8 tarjetas por página
 
   const dispatch = useDispatch();
 
-  const allSports = useSelector(state => state.sportData);
-  const allFields = useSelector(state => state.fieldData);
+  const allSports = useSelector((state) => state.sportData);
+  const allFields = useSelector((state) => state.fieldData);
 
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    dispatch(getHorarios())
+    dispatch(getHorarios());
     dispatch(getSports());
     dispatch(getField());
-    dispatch (getCities())
+    dispatch(getCities());
     if (token === null) navigate('/login');
   }, [dispatch, token, navigate]);
 
   useEffect(() => {
-    const filteredFields = allFields.filter(field =>
+    const filteredFields = allFields.filter((field) =>
       field.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -42,13 +118,13 @@ const Home = () => {
     setPaginatedFields(paginatedData);
   }, [allFields, cardsPerPage, searchTerm]);
 
-  const filters = (event) => {    
-    dispatch(filter(event.target.value))   
-  }
+  const filters = (event) => {
+    dispatch(filter(event.target.value));
+  };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-  }
+  };
 
   return (
     <div>
@@ -56,9 +132,10 @@ const Home = () => {
       <div className={style.homeContainer}>
         <div className={style.leftBox}>
           <Filters />
-          <OrderByPrice/>
+          <OrderByPrice />
         </div>
         <div className={style.cards}>
+          {/* Pasa la cantidad correcta de tarjetas por página a Paginate */}
           <Paginate
             data={paginatedFields}
             cardsPerPage={cardsPerPage}

@@ -1,30 +1,37 @@
-.paginate-container {
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
   
-  .card {
-    border: 1px solid #ccc;
-    padding: 16px;
-    margin: 8px;
-  }
   
-  .button-container {
+  
+  .button{
     margin: 16px;
+    text-align: center;
   }
   
   button {
-    background-color: #007bff;
+    background-color: #0D3A5D;
     color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    margin: 10px;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
   
   button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+  }
+  .active {
+    background-color: #0D3A5D;
+    color: white; /* Texto en color blanco para que sea visible en el fondo azul */
+    border: 1px solid blue; /* Borde azul */
   }
   
