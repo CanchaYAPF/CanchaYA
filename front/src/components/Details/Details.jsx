@@ -6,26 +6,7 @@ import style from './Details.module.css';
 /* import NavBar from '../NavBar/NavBar'; */
 
 function Details() {
-  const handlePaymentMercado = () => {
-
-    const paymentData = {
-      id: field.id, 
-      items:1,
-      title: field.name, 
-      description: `Reserva de la cancha ${field.name}`, 
-      image: field.image, 
-      price: field.price, 
-    };
-
-    console.log(paymentData);
-
-  axios
-    .post("http://localhost:3001/payment/createOrder", paymentData)
-    .then((response) => {
-      window.location.href = response.data.body.init_point;
-    })
-    .catch((error) => console.log(error.message));
-};
+ 
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -52,8 +33,9 @@ function Details() {
       <h2>Teléfono: {field.phone}</h2>
       <h2>Precio: {field.price}</h2>
       <h2>Metodos de Pago: {field.paymentMethod}</h2>
-
-      <button onClick={handlePaymentMercado}>Pagar ahora con mercado pago</button>
+      <Link to="/booking" className={styles.link}>
+            Reservar
+          </Link>
       </div>
     </div>
       </div>

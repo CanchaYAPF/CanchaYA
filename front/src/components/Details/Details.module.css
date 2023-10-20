@@ -50,3 +50,32 @@
     border-radius: 5px;
     color: #000000;
 }
+
+.linkContainer {
+    position: absolute;
+    top: 390px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    z-index: 2; /* Valor superior para el contenedor de enlace */
+  }
+  
+  .link {
+    display: inline-block;
+    padding: 10px 1px;
+    background-color: #f1f1f1;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 5px;
+    width: 90px;;
+    text-align: center; /* Centra el texto horizontalmente */
+    line-height: 4px;
+     margin-right: 5px;
+}
+.link:hover {
+    transform: scale(1.05);
+    color: cyan;
+}
