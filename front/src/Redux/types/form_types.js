@@ -16,3 +16,6 @@ export const GET_CITIES = "GET_CITIES";
 export const FILTER_CITIES= 'FILTER_CITIES';
 export const FILTER_HORARIO= 'FILTER_HORARIO';
 export const GET_HORARIOS= 'GET_HORARIOS';
+export const ADD_FAV= 'ADD_FAV';
+export const DELETE_FAV= 'DELETE_FAV';
+export const GET_FAV= 'GET_FAV';
