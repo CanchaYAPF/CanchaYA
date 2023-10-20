@@ -9,7 +9,6 @@ function Card({field}) {
 
   const token = sessionStorage.getItem(`token`)
 
-
   const id = field.id
 
   const char= {
@@ -18,7 +17,6 @@ function Card({field}) {
     idsFields: field.id
   }
 
-  
 
 const dispatch = useDispatch();
   const [isFav, setIsFav] = useState(false);
@@ -37,17 +35,7 @@ const dispatch = useDispatch();
   };
 
 
-
-
-
-
-  
-
     return (
-
-
-
-
       
       <div className="cardContainer">
 
@@ -61,8 +49,6 @@ const dispatch = useDispatch();
         )}
         {isFav ? null : <button onClick={() => onClose(id)}>X</button>}
       </div>
-
-
 
 
         <Link to ={`/${id}`} >

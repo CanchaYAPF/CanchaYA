@@ -1,4 +1,44 @@
-.container {
+.paginado {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.paginado li {
+  margin: 0 4px;
+}
+
+.paginado button {
+  color:white;
+  text-decoration: none;
+  background: black;
+  border: none;
+  cursor: pointer;
+}
+
+.paginado button:focus {
+  outline: none;
+}
+
+.paginado .number.active button {
+  color: #fff;
+  background-color: grey;
+  padding: 5px 8px;
+}
+
+.inicioFin {
+  background: grey; 
+  color: rgb(255, 255, 255); 
+  width: 55px;
+}
+
+.paginado .disabled button {
+  color: #916f6f;
+  cursor: not-allowed;
+}
+
+/* .container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +68,7 @@
   button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
-  }
+  } */
   .active {
     background-color: #0D3A5D;
     color: white; /* Texto en color blanco para que sea visible en el fondo azul */

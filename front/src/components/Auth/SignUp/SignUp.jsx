@@ -114,11 +114,11 @@ const SignUp = () => {
         const { value } = e.target;
         setUserRegister({ ...userRegister, birthdate: value });
 
-        if (!isBirthdateValid(value)) {
-            setErrors({ ...errors, birthdate: "Debes ser mayor de 15 años para registrarte" });
-        } else {
-            setErrors({ ...errors, birthdate: "" });
-        }
+        // if (!isBirthdateValid(value)) {
+        //     setErrors({ ...errors, birthdate: "Debes ser mayor de 15 años para registrarte" });
+        // } else {
+        //     setErrors({ ...errors, birthdate: "" });
+        // }
     }
 
     const handlePhoneChange = (e) => {
