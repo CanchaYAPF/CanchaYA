@@ -153,9 +153,9 @@ const Booking = () => {
             onChange={handleChange}
             className={styles.formInput}
           />
-          
-          
-            <button type="submit" className={styles.formButton}>Reservar</button>
+          {isFormComplete && (
+            <button type="submit" className="formButton">Reservar</button>
+          )}
            
         </form>
       </div>
