@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { getFieldById } from '../../Redux/actions/form_actions';
 import style from './Details.module.css';
-import NavBar from '../NavBar/NavBar';
+/* import NavBar from '../NavBar/NavBar'; */
 
 function Details() {
   const { id } = useParams();
@@ -17,7 +17,7 @@ function Details() {
 
   return (
     <div>
-      <NavBar />
+     {/*  <NavBar /> */}
     <div className={style.container}>
       
       <div className={style.contenido}>

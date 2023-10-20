@@ -9,10 +9,10 @@ function Cards({ allFields }) {
       f.id === field.id
     ))
   )
-  .slice(0, 16);
+  .slice(0, 8);
   return (
     <div className={styles.container}>
-      {allFields.slice(0, 16).map((field) => (
+      {allFields.slice(0, 8).map((field) => (
         <Card key={field.id} field={field} className={styles.card} />
       ))}
     </div>
