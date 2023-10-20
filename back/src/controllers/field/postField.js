@@ -1,4 +1,4 @@
-const { Field, Sport } = require("../../db");
+const { Field, Sport,User } = require("../../db");
 const jwt = require("jsonwebtoken")
 
 const postField = async (name, image,sports, phone, address, city, paymentMethod, price, service,shift,token) => {
@@ -9,33 +9,47 @@ const postField = async (name, image,sports, phone, address, city, paymentMethod
     throw error;
   }
 
-
-
   const sportsToAdd = await Sport.findAll({where:{name : sports}});
-
-
 
   const decoded = jwt.verify(token, 'secretKey');
   console.log("decode",decoded.userId)
-  const userId = decoded.userId
-
-  const newField = await Field.create({
-    name,
-    image, 
-    phone,
-    address,
-    city,
-    paymentMethod, 
-    price,
-    service, 
-    shift,
-    UserId:userId
-  });
-
-  newField.addSports(sportsToAdd);
-
+  if(decoded.userId){
+    const userId=decoded.userId
+    const newField = await Field.create({
+      name,
+      image, 
+      phone,
+      address,
+      city,
+      paymentMethod, 
+      price,
+      service, 
+      shift,
+      UserId:userId
+    });
   
-  return newField;
+    await newField.addSports(sportsToAdd);
+  
+    return newField;
+  // } else{
+  //    const googleUser= await User.findOne({ where:
+  //     {mail:decoded.email}
+  //   })
+  //    const newField = await Field.create({
+  //     name,
+  //     image, 
+  //     phone,
+  //     address,
+  //     city,
+  //     paymentMethod, 
+  //     price,
+  //     service, 
+  //     shift,
+  //     UserId:googleUser.id
+  //   });
+  //   newField.addSports(sportsToAdd);
+  //   return newField;
+  // }
 };
 
 module.exports = postField;
