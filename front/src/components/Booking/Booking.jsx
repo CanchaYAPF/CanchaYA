@@ -30,7 +30,6 @@ const Booking = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Verificar si todos los campos están completos
     const allFieldsComplete = Object.values(formData).every((value) => value.trim() !== '');
     setIsFormComplete(allFieldsComplete);
   };
@@ -135,8 +134,9 @@ const Booking = () => {
           />
           
           
-            <button type="submit" className={styles.formButton}>Reservar</button>
-           
+          {isFormComplete && (
+            <button type="submit" className="formButton">Reservar</button>
+          )}
         </form>
       </div>
     </div>
