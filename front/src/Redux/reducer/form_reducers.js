@@ -1,6 +1,8 @@
 
 import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW,
-   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE, GET_CITIES, FILTER_CITIES,FILTER_HORARIO,GET_HORARIOS } from '../types/form_types';
+   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , 
+   GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE, GET_CITIES,
+    FILTER_CITIES,FILTER_HORARIO,GET_HORARIOS, ADD_FAV } from '../types/form_types';
 
 
 const initialState = {
@@ -15,6 +17,8 @@ const initialState = {
   filters: false,
   citiesData: [],
   horariosData: [],
+  myFavorites:[],
+  myFavoritesReady:[],
 };
 
 export default function formReducer(state = initialState, action) {
@@ -140,6 +144,14 @@ export default function formReducer(state = initialState, action) {
         filters: true,
       }; 
       
+
+
+      case ADD_FAV: 
+      return {
+        ...state,
+        myFavorites: action.payload,
+        // allFavorites: payload,
+      };
 
 
     default:
