@@ -5,6 +5,7 @@ import NavBar from "./NavBar/NavBar";
 import Form from "./Form/form";
 import Details from "./Details/Details";
 import Profile from "./Profile/Profile";
+import Booking from "./Booking/Booking";
 
 
-export { Login, NavBar, Home, SignUp, Form, Details, Profile } 
+export { Login, NavBar, Home, SignUp, Form, Details, Profile, Booking } 
