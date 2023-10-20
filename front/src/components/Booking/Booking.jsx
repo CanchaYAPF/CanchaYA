@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import Modal from 'react-modal';
 import styles from './Booking.module.css'; // Asegúrate de importar tu archivo CSS
 import { postBooking } from '../../Redux/actions/form_actions';
+
+Modal.setAppElement('#root'); // Reemplaza '#root' con el selector del elemento raíz de tu aplicación
+
 
 const Booking = () => {
 
@@ -19,6 +22,10 @@ const Booking = () => {
 
   const [isFormComplete, setIsFormComplete] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [paymentMethod, setPaymentMethod] = useState('');
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -30,20 +37,51 @@ const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(postBooking(formData));
-    alert("reserva creada")
-    setFormData({
-        day: '',
-        initialHour: '',
-        finalHour: '',
-        totalTime: '',
-        fieldName: '',
-        userId: '',
-      });
+
+    setIsModalOpen(true);
+    // dispatch(postBooking(formData));
+    // alert("reserva creada")
+    // setFormData({
+    //     day: '',
+    //     initialHour: '',
+    //     finalHour: '',
+    //     totalTime: '',
+    //     fieldName: '',
+    //     userId: '',
+    //   });
     
   };
 
+  const handlePayment = (method) => {
+    // Realizar la acción correspondiente según el método de pago seleccionado
+    if (method === 'efectivo') {
+      // Realizar el POST
+      dispatch(postBooking(formData));
+      alert('Reserva creada');
+    } else if (method === 'mercadopago') {
+      // Mostrar un mensaje o redirigir a una página de MercadoPago
+      alert('Estamos trabajando en eso');
+    }
+
+    // Cerrar el modal
+    setIsModalOpen(false);
+
+    // Limpiar los datos del formulario
+    setFormData({
+      day: '',
+      initialHour: '',
+      finalHour: '',
+      totalTime: '',
+      fieldName: '',
+      userId: '',
+    });
+  };
+
+
+
+
   return (
+    <div>
     <div className={styles.containerbooking}>
       <div className={styles.bookingContainer}>
         <form onSubmit={handleSubmit}>
@@ -96,12 +134,24 @@ const Booking = () => {
             className={styles.formInput}
           />
           
+          
             <button type="submit" className={styles.formButton}>Reservar</button>
            
         </form>
       </div>
     </div>
-  );
+    <Modal
+    isOpen={isModalOpen}
+    onRequestClose={() => setIsModalOpen(false)}
+    contentLabel="Seleccionar método de pago"
+  >
+    <h2>Selecciona el método de pago</h2>
+    <button onClick={() => handlePayment('efectivo')}>Efectivo</button>
+    <button onClick={() => handlePayment('mercadopago')}>MercadoPago</button>
+  </Modal>
+  </div>
+
+);
 };
 
 export default Booking;
