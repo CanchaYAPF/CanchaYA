@@ -20,3 +20,6 @@ export const FORM_BOOKING_SUCCESS= 'FORM_BOOKING_SUCCESS';
 
 
 
+export const ADD_FAV= 'ADD_FAV';
+export const DELETE_FAV= 'DELETE_FAV';
+export const GET_FAV= 'GET_FAV';

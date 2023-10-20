@@ -1,5 +1,9 @@
 
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES, FILTER_HORARIO, GET_HORARIOS,FORM_BOOKING_SUCCESS} from "../types/form_types";
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, 
+  USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS,
+   ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES,
+    FILTER_HORARIO, GET_HORARIOS,ADD_FAV, FORM_BOOKING_SUCCESS} from "../types/form_types";
+
 
 import axios from "axios";
 
@@ -115,6 +119,57 @@ export function formCancha(data) {
     }
   };
 }
+
+
+
+
+
+export function addFav(fav) {
+  return async function (dispatch) {
+    const token = sessionStorage.getItem('token')
+    console.log(token)
+    try {
+      await axios.post(
+        `http://localhost:3001/favorite/`,fav,{
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+
+      
+
+        }
+     } );
+      const favs = await axios.get(`http://localhost:3001/favorite/${token}`,
+      )
+      const alReducer = favs.data
+
+      return dispatch({
+        type: ADD_FAV,
+        payload: alReducer,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+
+export function getFavById(token) {
+  return async function(dispatch){
+    const token = sessionStorage.getItem('token')
+    try{
+      const favs = await axios.get(`http://localhost:3001/favorite/${token}`)
+      const alReducer = favs.data
+      console.log(alReducer)
+      return dispatch({type: ADD_FAV, payload: alReducer});
+    }
+    catch (error) {
+      alert("error")
+    }
+  }
+}
+
+
 export function getFieldById(id) {
   return async function(dispatch){
     try{
