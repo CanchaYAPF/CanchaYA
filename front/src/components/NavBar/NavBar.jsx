@@ -1,26 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react';
 import style from './Navbar.module.css';
 import { Link, useLocation } from 'react-router-dom';
 
 const NavBar = ({ handleSearchChange }) => {
   const location = useLocation();
-  const isHomePage = location.pathname === "/home"
+  const isHomePage = location.pathname === "/home";
+
+ 
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+
+  const toggleProfileMenu = () => {
+    setIsProfileMenuOpen(!isProfileMenuOpen);
+  };
+
+  const logoutFunction = () => {
+  
+  };
 
   return (
     <div className={style.homeContainer}>
       <div className={style.navbar}>
         <div className={style.logo}>
-          <Link to={"/home"} style={{ font: '28px Poppins, sans-serif' }}>Canchas Ya</Link>
+          <Link to="/home" style={{ font: '28px Poppins, sans-serif' }}>
+            Canchas Ya
+          </Link>
         </div>
         <div className={style.search}>
           <input
             type="search"
-            placeholder="Buscar cancha por nombre" 
+            placeholder="Buscar cancha por nombre"
             onChange={handleSearchChange}
           />
         </div>
         <div className={style.btnContainer}>
-          <Link to={'/form'}><button className={style.btn}>Agregar Cancha</button></Link>
+          <Link to="/form">
+            <button className={style.btn}>Agregar Cancha</button>
+          </Link>
+        </div>
+        <div className={style.profileButton}>
+          <button className={style.btn} onClick={toggleProfileMenu}>
+            Mi Perfil
+          </button>
+          {isProfileMenuOpen && (
+            <div className={style.profileMenu}>
+              <Link to="/Profile">Ver Mi Perfil</Link>
+              <button onClick={logoutFunction}>Cerrar Sesión</button>
+            </div>
+          )}
         </div>
       </div>
       <div className={style.text}>
@@ -30,7 +56,7 @@ const NavBar = ({ handleSearchChange }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
