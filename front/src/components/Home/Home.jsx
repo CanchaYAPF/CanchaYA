@@ -90,7 +90,7 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const allSports = useSelector((state) => state.sportData);
+  
   const allFields = useSelector((state) => state.fieldData);
 
 
