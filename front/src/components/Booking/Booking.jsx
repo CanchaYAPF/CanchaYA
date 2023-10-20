@@ -97,7 +97,7 @@ const Booking = () => {
           />
           
             <button type="submit" className={styles.formButton}>Reservar</button>
-          
+           
         </form>
       </div>
     </div>
