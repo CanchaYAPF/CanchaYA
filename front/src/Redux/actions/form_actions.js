@@ -1,5 +1,5 @@
 
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES, FILTER_HORARIO, GET_HORARIOS} from "../types/form_types";
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS, ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES, FILTER_HORARIO, GET_HORARIOS,FORM_BOOKING_SUCCESS} from "../types/form_types";
 
 import axios from "axios";
 
@@ -76,6 +76,24 @@ export function userSignup(data) {
     });
   }
 }
+export function postBooking(booking) {
+  return async function (dispatch) {
+    const token = sessionStorage.getItem('token')
+    try {
+      await axios.post('http://localhost:3001/booking', booking,{
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      dispatch({
+        type: FORM_BOOKING_SUCCESS,
+        payload: booking
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };}
 
 export function formCancha(data) {
   return async function (dispatch) {
@@ -165,3 +183,4 @@ export const filterCities = (selectedCity) => {
     payload: selectedCity, // La ciudad seleccionada por el usuario
   };
 };
+
