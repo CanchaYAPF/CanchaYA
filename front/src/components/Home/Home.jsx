@@ -82,7 +82,7 @@ import Filters from '../Filters/Filters';
 import Cards from '../Cards/Cards';
 import style from './Home.module.css';
 import Paginate from '../Pagination/Paginate';
-import NavBar from '../NavBar/NavBar';
+/* import NavBar from '../NavBar/NavBar'; */
 import OrderByPrice from '../Order/orderByPrice';
 
 const Home = () => {
@@ -128,7 +128,7 @@ const Home = () => {
 
   return (
     <div>
-      <NavBar handleSearchChange={handleSearchChange} />
+    {/*   <NavBar handleSearchChange={handleSearchChange} /> */}
       <div className={style.homeContainer}>
         <div className={style.leftBox}>
           <Filters />

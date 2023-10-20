@@ -4,7 +4,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import styles from './Form.module.css';
 import { formCancha, getSports, getCities } from '../../Redux/actions/form_actions';
 import Swal from 'sweetalert2'
-import NavBar from '../NavBar/NavBar';
+/* import NavBar from '../NavBar/NavBar'; */
 import axios from "axios"
 
 const validate = ({name, image, sports, address, city, phone, price, shift, paymentMethod, service}) => {
@@ -225,12 +225,9 @@ const FormularioCancha = () => {
   };
 
   return (
-    <div className={styles.master}>
-      <NavBar />
-      
+    <div className={styles.master}>      
     <div className={styles.container}>
-    <div className={styles.formContainer}>
-      <Link className={styles.link} to="/">Volver al Inicio</Link>
+    <div className={styles.formContainer}>      
       <label className={styles.formLabel}>Nombre de Cancha:</label>
       <form onSubmit={handleSubmit}>
       <input
