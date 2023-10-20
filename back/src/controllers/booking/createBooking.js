@@ -9,7 +9,7 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldName, 
         if (!day || !initialHour || !finalHour || !totalTime || !fieldName || !token) {
             throw new Error("Faltan datos por completar");
         }
-
+ 
         const decoded = jwt.verify(token, 'secretKey');
         console.log("decode", decoded.userId);
         const userId = decoded.userId;
