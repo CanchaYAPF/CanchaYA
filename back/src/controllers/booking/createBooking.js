@@ -1,12 +1,18 @@
 const { Booking, User, Field } = require('../../db');
+const jwt = require('jsonwebtoken'); // Asegúrate de importar jwt si aún no lo has hecho.
+
 
 module.exports = createBooking;
 
-async function createBooking(day, initialHour, finalHour, totalTime, fieldName, userId) {
+async function createBooking(day, initialHour, finalHour, totalTime, fieldName, token) {
     try {
-        if (!day || !initialHour || !finalHour || !totalTime || !fieldName || !userId) {
+        if (!day || !initialHour || !finalHour || !totalTime || !fieldName || !token) {
             throw new Error("Faltan datos por completar");
         }
+ 
+        const decoded = jwt.verify(token, 'secretKey');
+        console.log("decode", decoded.userId);
+        const userId = decoded.userId;
 
         const busySchedule = await Booking.findAll({ where: { initialHour } });
         if (busySchedule.length) {
@@ -24,6 +30,7 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldName, 
         if (!user) {
             throw new Error("Usuario no encontrado");
         }
+        
 
         const booking = await Booking.create({
             day,
