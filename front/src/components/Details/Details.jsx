@@ -13,15 +13,17 @@ function Details() {
 
       const paymentData = {
         id: field.id, 
+        items:1,
         title: field.name, 
         description: `Reserva de la cancha ${field.name}`, 
         image: field.image, 
         price: field.price, 
       };
 
+      console.log(paymentData);
   
     axios
-      .post("http://localhost:3001/createOrder", paymentData)
+      .post("http://localhost:3001/payment/createOrder", paymentData)
       .then((response) => {
         window.location.href = response.data.body.init_point;
       })
