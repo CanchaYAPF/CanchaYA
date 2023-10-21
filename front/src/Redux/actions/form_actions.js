@@ -2,10 +2,12 @@
 import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, 
   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS,
    ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES,
-    FILTER_HORARIO, GET_HORARIOS,ADD_FAV, FORM_BOOKING_SUCCESS} from "../types/form_types";
+    FILTER_HORARIO, GET_HORARIOS,ADD_FAV, FORM_BOOKING_SUCCESS, RESET_CITY_FILTER,RESET_HORARIO_FILTER,RESET_SPORT_FILTER, FILTER_PRICE_RANGE, RESET_PRICE_RANGE_FILTER} from "../types/form_types";
 
+    
 
 import axios from "axios";
+
 
 export function createBooking(data) {
   return { type: CREATE_BOOKING, data };
@@ -233,6 +235,24 @@ export function getCities() {
   };
 }
 
+export const resetSportFilter = () => {
+  return {
+    type: RESET_SPORT_FILTER,
+  };
+};
+
+export const resetCityFilter = () => {
+  return {
+    type: RESET_CITY_FILTER,
+  };
+};
+
+export const resetHorarioFilter = () => {
+  return {
+    type: RESET_HORARIO_FILTER,
+  };
+};
+
 export const filterCities = (selectedCity) => {
   return {
     type: FILTER_CITIES,
@@ -240,3 +260,15 @@ export const filterCities = (selectedCity) => {
   };
 };
 
+export const filterPriceRange = (priceRange) => {
+  return {
+    type: FILTER_PRICE_RANGE,
+    payload: priceRange,
+  };
+};
+
+export const resetPriceRangeFilter = () => {
+  return {
+    type: RESET_PRICE_RANGE_FILTER,
+  };
+};
