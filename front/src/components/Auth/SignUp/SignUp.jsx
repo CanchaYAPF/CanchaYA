@@ -5,6 +5,14 @@ import { userSignup } from "../../../Redux/actions/form_actions"
 import style from './signup.module.css'
 import showPwdImg from './show-password.svg';
 import hidePwdImg from './hide-password.svg';
+import {isBirthdateValid,
+        isNameValid,
+        isLastnameValid,
+        isPasswordValid,
+        isPasswordRepeated,
+        isPhoneValid}
+    from '../../../utils/utils'
+// import axios from "axios"
 
 const SignUp = () => {
     const dispatch = useDispatch();
@@ -39,8 +47,10 @@ const SignUp = () => {
 
         try {
             const response = await dispatch(userSignup(userRegister))
+            console.log(response.payload)
             sessionStorage.setItem('token', response.payload.token);
             navigate("/home");
+            console.log("response action",response)
         } catch (error) {
             return error;
         }
@@ -148,31 +158,6 @@ const SignUp = () => {
         return isValid;
     }
 
-    const isNameValid = (name) => {
-        return /^[A-Za-z]+$/.test(name);
-    };
-
-    const isLastnameValid = (lastname) => {
-        return /^[A-Za-z]+$/.test(lastname);
-    };
-
-    const isPasswordValid = (password) => {
-        return password.length >= 6 &&
-            /[A-Z]/.test(password) &&
-            /[0-9]/.test(password) &&
-            /[^A-Za-z0-9]/.test(password);
-    };
-
-    const isPasswordRepeated = (password, repeatPassword) => {
-        return password === repeatPassword;
-    };
-
-    const isBirthdateValid = (birthdate) => {
-    };
-
-    const isPhoneValid = (phone) => {
-        return /^[0-9]+$/.test(phone);
-    };
     const [pwd, setPwd] = useState('');
     const [isRevealPwd, setIsRevealPwd] = useState(false);
 
@@ -188,27 +173,33 @@ const SignUp = () => {
                 </div>
                 <form onSubmit={handleRegisterSubmit}>
                     <div className={style.inputs}>
-                        <label htmlFor="Nombre">Nombre: </label>
+                        <label htmlFor="name">Nombre: </label>
                         <input
-                            placeholder="Nombre"
+                            placeholder="Nombre"                        
+                            id="name"
+                            name="name"
                             value={userRegister.name}
                             onChange={handleNameChange}
                         />
                         {errors.name && <div className={style.error}>{errors.name}</div>}
                     </div>
                     <div className={style.inputs}>
-                        <label htmlFor="Apellidos">Apellidos: </label>
+                        <label htmlFor="lastname">Apellidos: </label>
                         <input
                             placeholder="Apellidos"
+                            id="lastname"
+                            name="lastname"
                             value={userRegister.lastname}
                             onChange={handleLastNameChange}
                         />
                         {errors.lastname && <div className={style.error}>{errors.lastname}</div>}
                     </div>
                     <div className={style.inputs}>
-                        <label htmlFor="Correo Electronico">Correo Electrónico: </label>
+                        <label htmlFor="mail">Correo Electrónico: </label>
                         <input
                             placeholder="Correo Electrónico"
+                            id="mail"
+                            name="name"
                             value={userRegister.mail}
                             onChange={handleEmailChange}
                             type="email"
@@ -216,10 +207,12 @@ const SignUp = () => {
                         {errors.mail && <div className={style.error}>{errors.mail}</div>}
                     </div>
                     <div className={style.inputs}>
-                    <label htmlFor="Contraseña">Contraseña: </label>
+                    <label htmlFor="password">Contraseña: </label>
                     <div className={style.passwordContainer}>
                     <input
                         placeholder="Contraseña"
+                        id="password"
+                        name="password"
                         value={userRegister.password}
                         onChange={handlePasswordChange}
                         type={isRevealPwd ? "text" : "password"}
@@ -242,8 +235,10 @@ const SignUp = () => {
                     )}
                     </div>
                     <div className={style.inputs}>
-                        <label htmlFor="Repetir Contraseña">Repetir Contraseña: </label>
+                        <label htmlFor="repeatPassword">Repetir Contraseña: </label>
                         <input
+                            id="repeatPassword"
+                            name="repeatPassword"
                             placeholder="Repetir Contraseña"
                             value={userRegister.repeatPassword}
                             onChange={handlePasswordRepeatChange}
@@ -262,9 +257,11 @@ const SignUp = () => {
                         {errors.birthdate && <div className={style.error}>{errors.birthdate}</div>}
                     </div>
                     <div className={style.inputs}>
-                        <label htmlFor="Teléfono">Teléfono: </label>
+                        <label htmlFor="phone">Teléfono: </label>
                         <input
-                            placeholder="Teléfono"
+                            id="phone"
+                            name="phone"
+                            placeholder="phone"
                             value={userRegister.phone}
                             onChange={handlePhoneChange}
                             type="tel"

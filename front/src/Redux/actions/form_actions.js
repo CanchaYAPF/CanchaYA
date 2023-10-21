@@ -71,6 +71,7 @@ export function userLogin(data) {
 }
 
 export function userSignup(data) {
+  console.log("data actions",data)
   return async function (dispatch) {
     const res = await axios.post(`http://localhost:3001/user/signup`, data);
     const register = res.data;
