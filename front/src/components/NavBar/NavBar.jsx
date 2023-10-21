@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import style from './Navbar.module.css';
 import { Link, useLocation } from 'react-router-dom';
+import  logo  from './logotipo-canchasya.png';
 
 const NavBar = ({ handleSearchChange }) => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const NavBar = ({ handleSearchChange }) => {
         <div className={style.navbar}>
           <div className={style.logo}>
             <Link to="/home" style={{ font: '28px Poppins, sans-serif' }}>
-              Canchas Ya
+              <img src={logo} alt="" />
             </Link>
           </div>
           <div className={style.search}>
@@ -55,8 +56,8 @@ const NavBar = ({ handleSearchChange }) => {
                 <h1 className={style.verde}>NO TE QUEDES SIN JUGAR</h1>
                 <h1 className={style.blanco}>ENCUENTRA LA CANCHA MAS CERCANA A TI</h1>
               </div>
-            </div>
         </div>
+            </div>
       )}
     </div>
   );

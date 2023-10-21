@@ -13,7 +13,10 @@
   text-decoration:none
 }
 .logo{
-  margin-left: 300px;
+  margin-left:80px;
+}
+.logo img{
+  max-width: 260px;
 }
   .btn {
     
@@ -58,10 +61,10 @@
   .text{
     background-color: #0D3A5D;
     color: #fff;
-    margin: 0;
+    margin: 0 auto;
     padding: 10px;
   font-size: 12px;
-  
+  width: 800px;
   }
   .verde{
     color: #81BA27;
@@ -97,6 +100,9 @@
     margin: 10px;
   }
 .filtros{
-  margin-right: 20px;
+  margin: 0 auto;
   border: #0D3A5D;
+  display: flex;
+    align-items: center;
+    margin-left: -620px;
 }

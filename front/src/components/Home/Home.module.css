@@ -48,4 +48,24 @@
     align-items: center;  
    
   }
+.button{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: -55px;
   
+}
+.button button{
+  margin-left: 180px; 
+  margin-right: 180px;
+  background-color: #0D3A5D;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

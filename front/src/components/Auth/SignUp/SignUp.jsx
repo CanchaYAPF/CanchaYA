@@ -5,6 +5,7 @@ import { userSignup } from "../../../Redux/actions/form_actions"
 import style from './signup.module.css'
 import showPwdImg from './show-password.svg';
 import hidePwdImg from './hide-password.svg';
+import  logo  from './logotipo-canchasya.png';
 import {isBirthdateValid,
         isNameValid,
         isLastnameValid,
@@ -168,8 +169,14 @@ const SignUp = () => {
     return (
         <div className={style.master}>
             <div className={style.logo}>
-                <h1>Canchas Ya</h1>
-            </div>
+            <h1><img src={logo} alt="" /></h1>
+            </div> 
+            <div className={style.texto}>
+      <h1 className={style.top}>ENCUENTRA, RESERVA Y JUEGA:</h1>
+      <h1 className={style.blanco}>LA CANCHA IDEAL A SOLO UN CLIC DE DISTANCIA</h1>
+      <h3 className={style.blanco}>Descubre la forma más sencilla y rápida de reservar canchas deportivas. En <span className={style.resaltado}>CANCHAS YA</span> ponemos el deporte al alcance de tus manos . Encuentra, reserva y juega en las mejores instalaciones en segundos. Tu cancha perfecta, tu juego perfecto. ¡Únete a la comunidad deportiva ahora!</h3>
+      </div>
+      <br />
             <div className={style.container}>
                 <div className={style.sesion}>
                     <h1 className={style.text}>Inscríbete para comenzar</h1>

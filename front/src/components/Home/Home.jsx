@@ -174,10 +174,11 @@ else if(event.target.name=== "prev" && startIndex!==0 ) setCurrentPage(currentPa
         </div>
 
        
-     
+     <Paginate total={totalPages} page={pageHandler}/>
+     <div className={style.button}>
      <button name="prev" onClick={pagination}>Prev Page</button>
      <button name="next" onClick={pagination}>Next Page</button>
-     <Paginate total={totalPages} page={pageHandler}/>
+     </div>
 
    
 
