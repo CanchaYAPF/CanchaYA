@@ -101,7 +101,7 @@ const Booking = () => {
 
 
   return (
-    <div>
+    <div className={styles.master}>
     <div className={styles.containerbooking}>
       <div className={styles.bookingContainer}>
         <form onSubmit={handleSubmit}>
@@ -143,7 +143,7 @@ const Booking = () => {
             name="fieldName"
             value={formData.fieldName}
             onChange={handleChange}
-            className={styles.formInput}
+            className={styles.formInput2}
             readOnly
           />
           <label className={styles.formLabel}>User ID:</label>
@@ -152,10 +152,10 @@ const Booking = () => {
             name="userId"
             value={formData.userId}
             onChange={handleChange}
-            className={styles.formInput}
+            className={styles.formInput2}
           />
           {isFormComplete && (
-            <button type="submit" className="formButton">Reservar</button>
+            <button type="submit" className={styles.bookingButton}>Reservar</button>
           )}
            
         </form>
@@ -167,8 +167,10 @@ const Booking = () => {
     contentLabel="Seleccionar método de pago"
   >
     <h2>Selecciona el método de pago</h2>
+    <div className={styles.botonPago}>
     <button onClick={() => handlePayment('efectivo')}>Efectivo</button>
     <button onClick={() => handlePayment('mercadopago')}>MercadoPago</button>
+    </div>
   </Modal>
   </div>
 

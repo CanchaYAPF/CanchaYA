@@ -64,8 +64,8 @@ const Login = () => {
         </div>
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>
-        <Link to="/signup">
-          <button className={style.link}>No tengo una cuenta</button>
+        <Link className={style.link} to="/signup">
+           No tengo una cuenta
         </Link>
         </div>
       </form>
