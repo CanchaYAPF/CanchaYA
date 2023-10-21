@@ -29,8 +29,8 @@
 }
 
 .formInput {
-  width: 100%;
-  padding: 10px;
+  max-width: 98%;
+  padding: 5px;
   margin: 5px 0;
   border: 1px solid #0D3A5D;
   border-radius: 35px;
@@ -113,4 +113,8 @@ margin: 0;
 .resaltado {
   color: #0D3A5D;
   font-weight: bold;
+}
+.formSelect{
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
 }

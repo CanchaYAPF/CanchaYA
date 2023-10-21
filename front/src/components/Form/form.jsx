@@ -252,6 +252,18 @@ const FormularioCancha = () => {
         />      
        {errors.name && <p className={styles.error}>{errors.name}</p>}
 
+        <label className={styles.formLabel}>Deportes: </label>
+          <select className={styles.formSelect} onChange={handleChange} name="sports">
+          {allSports?.map(s=>  <option value={s.name} key={s.id}> {  s.name  } </option>   )}
+        </select>
+           <div>
+            {
+              formData.sports.map((s)=> <div key={s}> {s} 
+              <button  name='sport' id={s}  ></button>
+              </div> )
+            }
+            </div> 
+            {errors.sports && <p className={styles.error} >{errors.sports}</p>}
 
       <label className={styles.formLabel}>Imagen:</label>
       <input
@@ -261,44 +273,17 @@ const FormularioCancha = () => {
         name="image"
         onChange={handleImageChange}
         style={{ 
-    width: '99.5%', 
-    padding: '7px', 
+    width: '100%', 
+    padding: '5px', 
     margin: '5px 0', 
     border: '1px solid #292929', 
-    borderRadius: '3px', 
+    borderRadius: '25px', 
   }}
         />
 
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" style={{maxWidth: "50%", height: 'auto',}}/>}
       
       
-      <label className={styles.formLabel}>Deportes: </label>
-        <select onChange={handleChange} name="sports">
-        {allSports?.map(s=>  <option value={s.name} key={s.id}> {  s.name  } </option>   )}
-      </select>
-
-         <div>
-          {
-            formData.sports.map((s)=> <div key={s}> {s} 
-            <button  name='sport' id={s}  ></button>
-            
-            
-            </div> )
-          }</div> 
-          {errors.sports && <p className={styles.error} >{errors.sports}</p>}
-
-
-      <label className={styles.formLabel}>Dirección de la Cancha:</label>
-      <input
-        type="text"
-        className={styles.formInput}
-        name="address"
-        value={formData.address}
-        onChange={handleChange}
-        />
-        {errors.address && <p className={styles.error} >{errors.address}</p>}
-
-
 <label className={styles.formLabel}>Ciudad:</label>
 <select
   className={styles.formSelect}
@@ -314,6 +299,19 @@ const FormularioCancha = () => {
   ))}
   </select>
        {errors.city && <p className={styles.error}>{errors.city}</p>}
+
+
+      <label className={styles.formLabel}>Dirección de la Cancha:</label>
+      <input
+        type="text"
+        className={styles.formInput}
+        name="address"
+        value={formData.address}
+        onChange={handleChange}
+        />
+        {errors.address && <p className={styles.error} >{errors.address}</p>}
+
+
 
 
 
