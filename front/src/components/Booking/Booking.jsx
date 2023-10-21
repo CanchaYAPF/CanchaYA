@@ -1,56 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
-import styles from './Booking.module.css'; // Asegúrate de importar tu archivo CSS
+import styles from './Booking.module.css';
 import { postBooking } from '../../Redux/actions/form_actions';
 import axios from 'axios';
 
-Modal.setAppElement('#root'); // Reemplaza '#root' con el selector del elemento raíz de tu aplicación
-
+Modal.setAppElement('#root');
 
 const Booking = () => {
-  const field = useSelector(state => state.currentField); 
-    const dispatch = useDispatch();
+  const field = useSelector((state) => state.currentField);
+  const dispatch = useDispatch();
 
+  const token = sessionStorage.getItem('token');
   const [formData, setFormData] = useState({
     day: '',
     initialHour: '',
     finalHour: '',
     totalTime: '',
     fieldName: field.name,
-    userId: '',
+    userId: token,
   });
 
+  useEffect(() => {
+   
+  }, []); 
+
   const [isFormComplete, setIsFormComplete] = useState(false);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [paymentMethod, setPaymentMethod] = useState('');
+
+  function generateTimeOptions() {
+    const options = [];
+    for (let hour = 0; hour < 24; hour++) {
+      for (let minute = 0; minute < 60; minute += 30) {
+        const formattedHour = String(hour).padStart(2, '0');
+        const formattedMinute = String(minute).padStart(2, '0');
+        const time = `${formattedHour}:${formattedMinute}`;
+        options.push(
+          <option key={time} value={time}>
+            {time}
+          </option>
+        );
+      }
+    }
+    return options;
+  }
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-
-    // Verificar si todos los campos están completos
-    const allFieldsComplete = Object.values(formData).every((value) => value.trim() !== '');
+  
+    if (name === "initialHour" || name === "finalHour") {
+      // Si se cambia la "Hora Inicial" o "Hora Final", calcula el "Total Time"
+      const initialTime = formData.initialHour;
+      const finalTime = formData.finalHour;
+  
+      if (initialTime && finalTime) {
+        const initial = new Date(`2000-01-01T${initialTime}:00`);
+        const final = new Date(`2000-01-01T${finalTime}:00`);
+        const totalTime = (final - initial) / 3600000; // 3600000 ms en una hora
+        setFormData({ ...formData, [name]: value, totalTime });
+      } else {
+        setFormData({ ...formData, [name]: value });
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  
+    const allFieldsComplete = Object.values(formData).every(
+      (value) => value.trim() !== ''
+    );
     setIsFormComplete(allFieldsComplete);
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setIsModalOpen(true);
-    // dispatch(postBooking(formData));
-    // alert("reserva creada")
-    // setFormData({
-    //     day: '',
-    //     initialHour: '',
-    //     finalHour: '',
-    //     totalTime: '',
-    //     fieldName: '',
-    //     userId: '',
-    //   });
-    
+    // Resto del código
   };
 
   const handlePayment = (method) => {
@@ -60,43 +87,18 @@ const Booking = () => {
       dispatch(postBooking(formData));
       alert('Reserva creada');
     } else if (method === 'mercadopago') {
-        const paymentData = {
-          id: field.id, 
-          items:1,
-          title: field.name, 
-          description: `Reserva de la cancha ${field.name}`, 
-          image: field.image, 
-          price: field.price, 
-        };
-    
-        console.log(paymentData);
-    
-      axios
-        .post("http://localhost:3001/payment/createOrder", paymentData)
-        .then((response) => {
-          window.location.href = response.data.body.init_point;
-        })
-        .catch((error) => console.log(error.message));
-
-        dispatch(postBooking(formData))
-        alert('Reserva creada');
-    };
-    
-
-    // Cerrar el modal
+      // Resto del código
+    }
     setIsModalOpen(false);
-
-    // Limpiar los datos del formulario
     setFormData({
       day: '',
       initialHour: '',
       finalHour: '',
       totalTime: '',
       fieldName: '',
-      userId: '',
+      userId: token,
     });
   };
-
 
 
 
@@ -113,22 +115,25 @@ const Booking = () => {
             onChange={handleChange}
             className={styles.formInput}
           />
-          <label className={styles.formLabel}>Initial Hour:</label>
-          <input
-            type="time"
-            name="initialHour"
-            value={formData.initialHour}
-            onChange={handleChange}
-            className={styles.formInput}
-          />
-          <label className={styles.formLabel}>Final Hour:</label>
-          <input
-            type="time"
-            name="finalHour"
-            value={formData.finalHour}
-            onChange={handleChange}
-            className={styles.formInput}
-          />
+          <label className={styles.formLabel}>Hora Inicial:</label>
+<select
+  name="initialHour"
+  value={formData.initialHour}
+  onChange={handleChange}
+  className={styles.formInput}
+>
+  {generateTimeOptions()}
+</select>
+
+<label className={styles.formLabel}>Hora Final:</label>
+<select
+  name="finalHour"
+  value={formData.finalHour}
+  onChange={handleChange}
+  className={styles.formInput}
+>
+  {generateTimeOptions()}
+</select>
           <label className={styles.formLabel}>Total Time:</label>
           <input
             type="number"
