@@ -18,28 +18,23 @@ function Details() {
   }, [dispatch, id]);
 
   return (
-    <div>
-     {/*  <NavBar /> */}
     <div className={style.container}>
-      
-      <div className={style.contenido}>
-      <h1>{field.name}</h1>
+    <div className={style.leftContent}>
       <img src={field.image} alt={field.name} />
-      
+    </div>
+    <div className={style.rightContent}>
+      <h1>{field.name}</h1>
       <h2>Deporte: {field.sports}</h2>
       <h2>Ciudad: {field.city}</h2>
       <h2>Dirección: {field.address}</h2>
-      <h2>Horario: {field.shift}</h2>
-      <h2>Servicio: {field.service}</h2>
-      <h2>Teléfono: {field.phone}</h2>
-      <h2>Precio: {field.price}</h2>
-      <h2>Metodos de Pago: {field.paymentMethod}</h2>
+      <h2>Precio por hora: {field.price}</h2>
+      <h2>Turno: {field.shift}</h2>
+      <h2>Servicios extras: {field.service}</h2>
       <Link to="/booking" className={style.link}>
-            Reservar
-          </Link>
-      </div>
+        Reservar
+      </Link>
     </div>
-      </div>
+  </div>
   );
 }
 

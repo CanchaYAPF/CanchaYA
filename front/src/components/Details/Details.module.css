@@ -1,81 +1,79 @@
-.container{
+.container {
+    display: flex;
     background-color: #fff;
     background-repeat: no-repeat;
     background-size: 250vh;
     background-position: center center;
-    
     backdrop-filter: blur(5px);
     height: 110vh;
-}
+  }
+  
+  .leftContent {
+    flex: 1;
+    margin-top: 160px;
+    margin-left: 350px;
+    margin-right: -200px; 
 
-
-.container .contenido img{
-    right: 25px;
-    width: 700px;
+  }
+  
+  .leftContent img {
+    width: 100%; 
+    max-width: 600px; 
     height: auto;
     border: 2px solid #fff;
     border-radius: 10px;
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto;
-    margin-bottom: 40px;
-    margin-top: 50px;
-}
-
-
-.container .contenido h1{
-    margin: 30px auto 40px;
-    width: 300px;
+    margin-bottom: 10px; 
+    height: 50vh;
+  }
+  
+  .rightContent {
+    flex: 2; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 500px;
+    margin-left: -300px;
+    margin-top: 100px;
+    height: 60vh;
+    width: 100%; 
+    max-width: 400px;
+  }
+  
+  h1 {
+    margin: 0; 
+    width: 100%;
     text-align: center;
     border-radius: 10px;
     color: #81BA27;
-    margin-bottom: 20px;
-}
-
-.container .contenido h2{
-    width: 99.5%;
+    margin-bottom: 10px; 
+  }
+  
+  h2 {
+    width: 100%;
     text-align: center;
     font-size: 18px;
-    margin-bottom: 30px;
-    color: #000000;
+    margin-bottom: 10px;
+    color: #0D3A5D;
     border-radius: 5px;
-    display: block; 
-}
-
-
-.container .contenido h3{
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    color: #000000;
-}
-
-.linkContainer {
-    position: absolute;
-    top: 390px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    z-index: 2; /* Valor superior para el contenedor de enlace */
   }
   
   .link {
     display: inline-block;
-    padding: 10px 1px;
-    background-color: #f1f1f1;
-    color: #333;
+    padding: 10px 20px; 
+    background-color: #81BA27;
+    color: #ffffff;
     text-decoration: none;
     border: 1px solid #ccc;
     border-radius: 6px;
     cursor: pointer;
-    height: 5px;
-    width: 90px;;
-    text-align: center; /* Centra el texto horizontalmente */
-    line-height: 4px;
-     margin-right: 5px;
-}
-.link:hover {
+    text-align: center;
+    line-height: 20px; 
+    margin-top: 20px; 
+  }
+  
+  .link:hover {
     transform: scale(1.05);
-    color: cyan;
-}
+    color: #0D3A5D;
+  }
+  
