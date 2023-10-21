@@ -6,6 +6,7 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.UUID,
+        allowNull:false,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
@@ -41,7 +42,7 @@ module.exports = (sequelize) => {
       },
       phone:{
         type: DataTypes.STRING,
-        allowNull:true
+        allowNull:true,
       },
       roles: {
         type: DataTypes.STRING,

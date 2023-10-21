@@ -23,7 +23,7 @@ const Login = () => {
       sessionStorage.setItem('token', response.payload.token);
       navigate("/home")
     } catch (error) {
-      console.error("Error al iniciar sesión:", error);
+      alert("Error al iniciar sesión: " + error.message);
     }
   }
   const handleEmailChange = (e) => {
@@ -40,16 +40,16 @@ const Login = () => {
     })
   }
 
-  ///GoogleSignup
+  ///GoogleSignup:
+
   const credentialResponse = async (credentialResponse) =>{
     try {
-      
         await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
         sessionStorage.setItem('googleToken', credentialResponse.credential);
         navigate("/home");
     } catch (error) {
-        return error
-    }
+      alert("Error al iniciar sesión: " + error.message);
+    } 
  }
   return (
     <div className={style.master}>
@@ -68,12 +68,12 @@ const Login = () => {
       </div>
       <form onSubmit={handleLoginSubmit}>
         <div className={style.inputs}>
-        <label htmlFor="E-mail">E-mail: </label>
-          <input placeholder="Escribí tu e-mail" onChange={handleEmailChange} value={usernameLogin.mail} />
+        <label htmlFor="mail">E-mail: </label>
+          <input placeholder="Escribí tu e-mail" onChange={handleEmailChange} value={usernameLogin.mail} name="mail" id="mail" type="email" />
         </div>
         <div className={style.inputs}>
-        <label htmlFor="Contraseña">Contraseña: </label>
-          <input placeholder="Escribí tu contraseña" onChange={handlePasswordChange} value={usernameLogin.password} type='password'/>
+        <label htmlFor="password">Contraseña: </label>
+          <input placeholder="Escribí tu contraseña" onChange={handlePasswordChange} value={usernameLogin.password} id="password" name="password" type='password'/>
         </div>
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>

@@ -36,7 +36,7 @@ const googleLogin=async(token)=>{
      mail:ticket.payload.email,
      password: encryptPassword,
    });
-
+    console.log("newUser: ",newUser)
     return newUser
  }    
 
