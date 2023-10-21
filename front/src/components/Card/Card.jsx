@@ -59,7 +59,7 @@ const dispatch = useDispatch();
         ) : (
           <button onClick={handleFavorite}>🤍</button>
         )}
-        {isFav ? null : <button onClick={() => onClose(id)}>X</button>}
+        
       </div>
 
 
