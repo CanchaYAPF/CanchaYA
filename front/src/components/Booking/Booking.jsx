@@ -17,7 +17,7 @@ const Booking = () => {
     initialHour: '',
     finalHour: '',
     totalTime: '',
-    fieldName: '',
+    fieldName: field.name,
     userId: '',
   });
 
@@ -144,6 +144,7 @@ const Booking = () => {
             value={formData.fieldName}
             onChange={handleChange}
             className={styles.formInput}
+            readOnly
           />
           <label className={styles.formLabel}>User ID:</label>
           <input
