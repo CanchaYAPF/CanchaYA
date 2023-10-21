@@ -11,7 +11,7 @@ import {isBirthdateValid,
         isPasswordValid,
         isPasswordRepeated,
         isPhoneValid}
-    from '../../../utils/utils'
+    from '../../../utils/validationSignUp'
 
 
 const SignUp = () => {
