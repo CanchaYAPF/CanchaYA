@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import style from './profile.module.css';
+import Favorites from "../Favorites/Favorites"
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('mi-informacion');
@@ -42,8 +43,9 @@ const Profile = () => {
             </div>
           )}
           {activeTab === 'mis-favoritos' && (
-            <div>
-              <h2 className={style['tab-title']}>Mis Favoritos</h2>
+            <div >
+              <h2 className={style['mis-favoritos']}>Mis Favoritos</h2>
+              <Favorites/>
               
             </div>
           )}
