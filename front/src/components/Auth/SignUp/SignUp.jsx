@@ -12,7 +12,7 @@ import {isBirthdateValid,
         isPasswordRepeated,
         isPhoneValid}
     from '../../../utils/utils'
-// import axios from "axios"
+
 
 const SignUp = () => {
     const dispatch = useDispatch();
@@ -92,6 +92,9 @@ const SignUp = () => {
 
         if (value.length < 6) {
             passwordErrors.push("La contraseña debe contener al menos 6 caracteres.");
+        }
+        if (value.length > 15) {
+            passwordErrors.push("La contraseña no debe contener más de 20 caracteres.");
         }
         if (!/[A-Z]/.test(value)) {
             passwordErrors.push("La contraseña debe contener al menos una letra mayúscula.");

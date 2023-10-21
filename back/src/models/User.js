@@ -22,20 +22,30 @@ module.exports = (sequelize) => {
         allowNull: false,
         validate:{
           len:{
-            arg:[5,15],
-            msg:"La contraseña debe de tener entre 5 y 15 caracteres"
+            arg:[6,20],
+            msg:"La contraseña debe de tener entre 6 y 20 caracteres"
           }
         }
       },
       mail: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique:true,
         validate: {
           isEmail: true,
         }
       },
-      user_type: {
+      birthdate:{
+        type: DataTypes.DATEONLY,
+        allowNull:false,
+      },
+      phone:{
         type: DataTypes.STRING,
+        allowNull:false
+      },
+      roles: {
+        type: DataTypes.STRING,
+        defaultValue: "regular"
       }
     },
     { timestamps: false }
