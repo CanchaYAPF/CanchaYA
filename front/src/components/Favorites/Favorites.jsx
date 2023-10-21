@@ -4,7 +4,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import {getFavById, getField} from '../../Redux/actions/form_actions';
 import Card from "../Card/Card";
 
-
+import'./Favorites.module.css';
 
 export default function Favorites() {
 
@@ -38,7 +38,7 @@ console.log(toCard)
    
   
   return (
-    <div >
+    <div className='mis-favoritos' >
       
       {toCard.map((fav) => {
        const field =fav[0]
