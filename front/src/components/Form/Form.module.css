@@ -1,37 +1,48 @@
 
 .formContainer {
-  max-width: 600px;
-  margin: 0 auto;
+  flex: 1;
+  max-width: 400px;
+  margin-left: 120px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
- background-color: #fff;
-  margin-top: 40px;
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
+ background-color: #0D3A5D;
+  margin-top: 18px;
+  color: #fcfcfc;
+  margin-right: 300px;
 }
 .container{
-  background-color: #0D3A5D;
+  background-color: #ffffff;
   height: 117vh;
+  
+}
+.master{
+  display: flex;
 }
 
 .formLabel {
   display: block;
   margin: 5px 0;
   font-weight: bold;
-  
+  color: #fff;
+  border-radius: 35px;
 }
 
 .formInput {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
-  border: 1px solid #292929;
-  border-radius: 3px;
-  
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
+  background-color: #ffffff;
+  color: #fff;
 }
 
 .formCheckbox {
   margin-right: 5px;
-  border: 1px solid #292929;
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
+  color: #fff;
 }
 
 .formButton {
@@ -55,16 +66,51 @@
 }
 .formContainer input{
 border: 1px solid #292929;
+color: #fff;
 }
 .link{
   color: #0056b3;
   text-decoration: none;
 }
 .master{
-  background-color: #0D3A5D;
+  background-color: #ffffff;
 }
 .error {
   color: #e63946;
   font-size: 16px;
   margin-top: 5px;
+}
+.label {
+  margin-bottom: 20px ;
+  margin-top: 30px;
+  
+}
+.verde{
+  color: #81BA27;
+  margin-right: 310px;
+  margin-bottom: 0;
+  margin-top: 80px;
+  margin-left: 125px;
+}
+.leftContainer{
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 35px;
+  background-color: #ffffff;
+  color: #2a638f;
+  margin-left: 400px;
+  margin-top: 70px;
+}
+.leftContainer img{
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+.leftContainer h2{
+color: #81BA27;
+margin: 0;
+}
+.resaltado {
+  color: #0D3A5D;
+  font-weight: bold;
 }

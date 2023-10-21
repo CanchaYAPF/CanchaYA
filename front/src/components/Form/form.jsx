@@ -6,6 +6,7 @@ import { formCancha, getSports, getCities } from '../../Redux/actions/form_actio
 import Swal from 'sweetalert2'
 /* import NavBar from '../NavBar/NavBar'; */
 import axios from "axios"
+import img from "./jovenes-seguidores-apostando-linea.jpg"
 
 const validate = ({name, image, sports, address, city, phone, price, shift, paymentMethod, service}) => {
   let errors = {}
@@ -226,8 +227,20 @@ const FormularioCancha = () => {
 
   return (
     <div className={styles.master}>      
+    <div className={styles.leftContainer}>
+      <img src={img} alt="" />
+      <h2 >POTENCIA TUS INGRESOS:</h2>
+      <h2 >ÚNETE A NOSOTROS Y ALQUILA TUS CANCHAS EN LÍNEA</h2>
+      <h4>¿Por qué unirte a <span className={styles.resaltado}>CANCHAS YA</span>? Aquí te contamos algunas razones convincentes:</h4>
+      <h4><span className={styles.resaltado}>VISIBILIDAD AUMENTADA:</span> ALCANZA A UN PÚBLICO MÁS AMPLIO.</h4>
+      <h4><span className={styles.resaltado}>INCREMENTA INGRESOS:</span> ATRAE NUEVOS CLIENTES Y AUMENTA TUS GANANCIAS.</h4>
+      <h4><span className={styles.resaltado}>GESTIÓN SENCILLA:</span> SIMPLIFICA LA ADMINISTRACIÓN DE TUS CANCHAS.</h4>
+      <h4><span className={styles.resaltado}>RESEÑAS Y MEJORA CONTINUA:</span> RECIBE RETROALIMENTACIÓN PARA MEJORAR TUS SERVICIOS.</h4>
+      <h4><span className={styles.resaltado}>SEGUIDAD Y CONFIANZA:</span> TRANSACCIONES SEGURAS PARA TODOS.</h4>
+    </div>
     <div className={styles.container}>
-    <div className={styles.formContainer}>      
+    <h1 className={styles.verde}>INSCRIBE TU CANCHA AQUI</h1>   
+    <div className={styles.formContainer}>   
       <label className={styles.formLabel}>Nombre de Cancha:</label>
       <form onSubmit={handleSubmit}>
       <input
@@ -259,7 +272,7 @@ const FormularioCancha = () => {
       {formData.image && <img src={formData.image} alt="Imagen de la cancha" style={{maxWidth: "50%", height: 'auto',}}/>}
       
       
-      <label>Deportes: </label>
+      <label className={styles.formLabel}>Deportes: </label>
         <select onChange={handleChange} name="sports">
         {allSports?.map(s=>  <option value={s.name} key={s.id}> {  s.name  } </option>   )}
       </select>
@@ -328,7 +341,7 @@ const FormularioCancha = () => {
 
         
  
-
+      <div className={styles.label}>
       <div className={styles.formLabel}>Turnos Disponibles:</div>
       <input
         type="checkbox"
@@ -358,9 +371,9 @@ const FormularioCancha = () => {
         />
       Noche
       {errors.shift && <p className={styles.error} >{errors.shift}</p>}
-
+      </div>
       
-
+      <div className={styles.label}>
       <div className={styles.formLabel}>Métodos de Pago:</div>
       <input
         type="checkbox"
@@ -399,9 +412,9 @@ const FormularioCancha = () => {
         />
       MercadoPago
       {errors.paymentMethod && <p className={styles.error} >{errors.paymentMethod}</p>}
-
+      </div>
       
-
+      <div className={styles.label}>  
       <div className={styles.formLabel}>Servicios:</div>
       <input
         type="checkbox"
@@ -449,7 +462,7 @@ const FormularioCancha = () => {
         />
       Kiosco
       {errors.service && <p className={styles.error} >{errors.service}</p>}
-
+      </div>
 
       <button className={styles.formButton} >Agregar</button>
       </form>
