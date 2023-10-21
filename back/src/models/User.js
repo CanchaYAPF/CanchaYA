@@ -37,11 +37,11 @@ module.exports = (sequelize) => {
       },
       birthdate:{
         type: DataTypes.DATEONLY,
-        allowNull:false,
+        allowNull:true,
       },
       phone:{
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull:true
       },
       roles: {
         type: DataTypes.STRING,

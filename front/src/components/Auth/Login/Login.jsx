@@ -1,10 +1,11 @@
-import React from 'react'
 import { useState } from 'react'
 import { userLogin } from '../../../Redux/actions/form_actions'
 import { useDispatch } from "react-redux"
 import { Link,useNavigate } from 'react-router-dom'
 import style from './login.module.css'
 import  logo  from './logotipo-canchasya.png';
+import axios from 'axios'
+import { GoogleLogin } from '@react-oauth/google';
 
 
 const Login = () => {
@@ -38,6 +39,18 @@ const Login = () => {
       password: e.target.value
     })
   }
+
+  ///GoogleSignup
+  const credentialResponse = async (credentialResponse) =>{
+    try {
+      
+        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
+        sessionStorage.setItem('googleToken', credentialResponse.credential);
+        navigate("/home");
+    } catch (error) {
+        return error
+    }
+ }
   return (
     <div className={style.master}>
       <div className={style.logo}>
@@ -64,6 +77,9 @@ const Login = () => {
         </div>
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>
+
+        <GoogleLogin onSuccess={credentialResponse}/>
+        
         <Link to="/signup">
           <button className={style.link}>No tengo una cuenta</button>
         </Link>
