@@ -16,63 +16,25 @@ const getAllFavs = async (id) => {
 
 
   
-const ids = allFavoRelations.map(fav=>fav.idsFields)
-
-// idsDb = ids.filter(id => isNaN(id))
-
-// idsApi = ids.filter(id => !isNaN(id))
+// const ids = allFavoRelations.map( fav=>fav.idsFields)
+// const idsUU = ids.filter( id=> id.length> 10)
 
 
-// const fieldDb = idsDb.forEach(id => {
-//   const resultDb = Field.findAll({where:{id : id}})
-//   return resultDb
-// });
-
-
-
-// const fieldtApi = idsApi.forEach(id => {
-//   const resultApi = mock.filter(f => f.id===id)
-//   return resultApi
-// });
-
-
-
-
-// const response = [...fieldDb,...fieldtApi]
-
-
-
-
-
-
-
-
-
-
-
-  const response = ids.map( id => {
-     const source = isNaN(id) ? "bdd" : "api";
-
-const result = source === "api" ? mock.filter(f => f.id===id):
-
-
-   Field.findAll({where:{id : id}}) 
-
-return result
-
-  })
+// const resposeDb = idsUU.map(id =>{
   
+// return  Field.findAll({where:{id : id}})
+
+// })
+
+
+//   const responseApi = allFavoRelations.map( relation => {
+//     id = relation.idsFields
+//     return mock.filter(f => f.id===id)
+//   })
 
 
 
-  
-
-
-
-
-
-
-return response;
+ return allFavoRelations;
 
 };
 
