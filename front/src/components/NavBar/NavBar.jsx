@@ -16,7 +16,7 @@ const NavBar = ({ handleSearchChange }) => {
   };
 
   const logoutFunction = async () => {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
 
     navigate('/login');
   };
