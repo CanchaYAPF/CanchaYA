@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import style from './Navbar.module.css';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import logo from './logotipo-canchasya.png';
 
 const NavBar = ({ handleSearchChange }) => {
   const location = useLocation();
+  const navigate = useNavigate(); 
+
   const isHomePage = location.pathname === '/home';
 
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -13,12 +15,13 @@ const NavBar = ({ handleSearchChange }) => {
     setIsProfileMenuOpen(!isProfileMenuOpen);
   };
 
-  const logoutFunction = () => {
-    // Implement your logout functionality here
+  const logoutFunction = async () => {
+    localStorage.removeItem('token');
+
+    navigate('/login');
   };
 
-  const isLoginOrSignup =
-    location.pathname === '/login' || location.pathname === '/signup';
+  const isLoginOrSignup = location.pathname === '/login' || location.pathname === '/signup';
 
   return (
     <div className={style.homeContainer}>
