@@ -60,12 +60,15 @@ margin-top: auto;
   flex-direction: column;
   align-items: center; 
   justify-content: center; 
-  height: 115px;
+  height: 10vh;
   margin-top: 40px;
+  padding: 10px 20px;
   }
   .button button {
-    margin: 10px 0; 
+    margin: 5px 10px; 
     padding: 10px 20px;
+    display: inline;
+    
   }
   .verde{
     background-color: #81BA27;
@@ -75,12 +78,13 @@ margin-top: auto;
     margin-top: 15px;
   }
   .link{
-    color: #01599c;
+    color: #0D3A5D;
     text-decoration: none;
     border: none;
     background-color: transparent;
     cursor: pointer;
-margin-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 10px;
   }
   .texto{
     margin-left: 500px;

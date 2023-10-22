@@ -49,7 +49,7 @@ const dispatch = useDispatch();
 
 
       
-      <div className="cardContainer">
+      <div className={style.container2}>
 
 
 
@@ -66,10 +66,10 @@ const dispatch = useDispatch();
 
 
         <Link to ={`/${id}`} >
-        <div className={style.container2}>
+        <div className={style.container}>
           
-          <h1>Name: {field.name}</h1>
-          <h2>City: {field.city}</h2>
+          <h3 className={style.h3}>Name: {field.name}</h3>
+          <h3>City: {field.city}</h3>
           <h3>Price: {field.price}</h3>
           <div className={style.imagen}>
             <img src={field.image}  alt="Charging..." />
