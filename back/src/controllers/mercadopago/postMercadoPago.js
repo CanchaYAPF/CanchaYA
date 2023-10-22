@@ -2,7 +2,6 @@ const mercadopago = require('mercadopago');
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 
 
-// Configure MercadoPago
 mercadopago.configure({
     access_token: ACCESS_TOKEN,
 });
@@ -21,20 +20,30 @@ const createOrder = (req, res) => {
             picture_url: image,
             description,
         }
+
     ];
+
 
     const preference = {
         items,
+        back_urls: {
+            success: "http://localhost:3001/payment/success",
+            failure: "http://localhost:3001/payment/failure",
+            pending: "http://localhost:3001/payment/pending",
+        }
     };
     mercadopago.preferences.create(preference)
-        .then((response) => res.json(response))
+        .then((response) => {
+            console.log("Respuesta de createOrder:", response);
+
+            res.json(response);
+        })
         .catch((error) => res.status(500).json({ error: error.message }));
 };
 
 const handleSuccess = (req, res) => {
     console.log(req.query);
-    
-    res.redirect("http://localhost:5173/payment/success");
+    res.redirect("http://localhost:5173/1");
 };
 
 module.exports = {
