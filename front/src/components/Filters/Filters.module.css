@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: space-between;
     border: #0D3A5D;
+    margin-left: 85px;
   }
   
   .select {
@@ -27,7 +28,7 @@
     align-items: center;
     padding: 3px 10px;
     gap: 10px; 
-    margin-left: 1010px;
+    margin-left: 810px;
     
   }
   button{
