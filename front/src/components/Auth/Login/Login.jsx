@@ -4,6 +4,7 @@ import { userLogin } from '../../../Redux/actions/form_actions'
 import { useDispatch } from "react-redux"
 import { Link,useNavigate } from 'react-router-dom'
 import style from './login.module.css'
+import  logo  from './logotipo-canchasya.png';
 
 
 const Login = () => {
@@ -40,7 +41,7 @@ const Login = () => {
   return (
     <div className={style.master}>
       <div className={style.logo}>
-        <h1>Canchas Ya</h1>
+        <h1><img src={logo} alt="" /></h1>
       </div>
       <div className={style.texto}>
       <h1 className={style.top}>ENCUENTRA, RESERVA Y JUEGA:</h1>
@@ -63,8 +64,8 @@ const Login = () => {
         </div>
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>
-        <Link to="/signup">
-          <button className={style.link}>No tengo una cuenta</button>
+        <Link className={style.link} to="/signup">
+           No tengo una cuenta
         </Link>
         </div>
       </form>

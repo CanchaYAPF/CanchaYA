@@ -29,8 +29,8 @@
 }
 
 .formInput {
-  width: 100%;
-  padding: 10px;
+  max-width: 98%;
+  padding: 5px;
   margin: 5px 0;
   border: 1px solid #0D3A5D;
   border-radius: 35px;
@@ -87,10 +87,10 @@ color: #fff;
 }
 .verde{
   color: #81BA27;
-  margin-right: 310px;
+  margin-right: 0px;
   margin-bottom: 0;
   margin-top: 80px;
-  margin-left: 125px;
+  margin-left: -90px;
 }
 .leftContainer{
   flex: 1;
@@ -113,4 +113,8 @@ margin: 0;
 .resaltado {
   color: #0D3A5D;
   font-weight: bold;
+}
+.formSelect{
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
 }

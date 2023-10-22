@@ -1,5 +1,5 @@
 
-import './Paginate.module.css'
+import style from './Paginate.module.css'
 
 function Paginate({page, total}) {
   //recibe los handlers de paginado
@@ -10,7 +10,7 @@ function Paginate({page, total}) {
     }
   //mapea y renderiza el total de numeros en botones
     return (
-      <div>
+      <div className={style.container}>
         {pageNumbers.map((pageNumber) => (
           <button key={pageNumber} className="num" onClick={() => page(pageNumber)}>{pageNumber}</button>
         ))}
