@@ -22,26 +22,29 @@ const Booking = () => {
   });
 
   useEffect(() => {
-   
-  }, []); 
+    // Aquí, verifica si el campo "totalTime" cumple con los requisitos
+    if (!isNaN(formData.totalTime) && formData.totalTime > 0 && formData.totalTime < 9) {
+      setIsFormComplete(true);
+    } else {
+      setIsFormComplete(false);
+    }
+  }, [formData.totalTime]);
 
   const [isFormComplete, setIsFormComplete] = useState(false);
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('');
 
   function generateTimeOptions() {
     const options = [];
     for (let hour = 0; hour < 24; hour++) {
-      for (let minute = 0; minute < 60; minute += 30) {
-        const formattedHour = String(hour).padStart(2, '0');
-        const formattedMinute = String(minute).padStart(2, '0');
-        const time = `${formattedHour}:${formattedMinute}`;
-        options.push(
-          <option key={time} value={time}>
-            {time}
-          </option>
-        );
-      }
+      const formattedHour = String(hour).padStart(2, '0');
+      const time = `${formattedHour}:00`;
+      options.push(
+        <option key={time} value={time}>
+          {time}
+        </option>
+      );
     }
     return options;
   }
@@ -49,13 +52,27 @@ const Booking = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(value)
+
+    
   
-    if (name === "initialHour" || name === "finalHour") {
-      // Si se cambia la "Hora Inicial" o "Hora Final", calcula el "Total Time"
+    if (name === "initialHour") {
+      const initialTime = value;
+      const finalTimeOptions = generateTimeOptions().filter((timeOption) => {
+        const time = timeOption.props.value;
+        return time >= initialTime;
+      });
+      setFormData({
+        ...formData,
+        initialHour: value,
+        finalHour: finalTimeOptions[0].props.value, 
+        totalTime: '',
+      });
+    } else if (name === "finalHour") {
       const initialTime = formData.initialHour;
-      const finalTime = formData.finalHour;
+      const finalTime = value;
   
-      if (initialTime && finalTime) {
+      if (initialTime) {
         const initial = new Date(`2000-01-01T${initialTime}:00`);
         const final = new Date(`2000-01-01T${finalTime}:00`);
         const totalTime = (final - initial) / 3600000; // 3600000 ms en una hora
@@ -66,12 +83,22 @@ const Booking = () => {
     } else {
       setFormData({ ...formData, [name]: value });
     }
+    
   
-    const allFieldsComplete = Object.values(formData).every(
-      (value) => value.trim() !== ''
-    );
+    const allFieldsComplete = Object.values(formData).every((value, name) => {
+      if (name === 'totalTime') {
+        return !isNaN(value) && value > 0 && value < 9;
+      } else if (typeof value === 'string') {
+        return value.trim() !== '';
+      }
+      return true;
+    });
+  
+    
     setIsFormComplete(allFieldsComplete);
   };
+  
+  
   
 
   const handleSubmit = async (e) => {
@@ -107,7 +134,7 @@ const Booking = () => {
     <div className={styles.containerbooking}>
       <div className={styles.bookingContainer}>
         <form onSubmit={handleSubmit}>
-          <label className={styles.formLabel}>Day:</label>
+          <label className={styles.formLabel}>Día:</label>
           <input
             type="date"
             name="day"
@@ -134,15 +161,16 @@ const Booking = () => {
 >
   {generateTimeOptions()}
 </select>
-          <label className={styles.formLabel}>Total Time:</label>
+          <label className={styles.formLabel}>Total de horas:</label>
           <input
             type="number"
             name="totalTime"
             value={formData.totalTime}
             onChange={handleChange}
             className={styles.formInput}
+            readOnly
           />
-          <label className={styles.formLabel}>Field Name:</label>
+          <label className={styles.formLabel}>Nombre cancha:</label>
           <input
             type="text"
             name="fieldName"
@@ -151,17 +179,21 @@ const Booking = () => {
             className={styles.formInput2}
             readOnly
           />
-          <label className={styles.formLabel}>User ID:</label>
+          {/* <label className={styles.formLabel}>User ID:</label>
           <input
             type="text"
             name="userId"
             value={formData.userId}
             onChange={handleChange}
+
             className={styles.formInput2}
-          />
-          {isFormComplete && (
-            <button type="submit" className={styles.bookingButton}>Reservar</button>
-          )}
+          /> */}
+          {isFormComplete && formData.totalTime > 0 && formData.totalTime < 9 && (
+  <button type="submit" className={styles.bookingButton}>Reservar</button>
+)}
+
+           
+         
            
         </form>
       </div>
