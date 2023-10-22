@@ -101,7 +101,7 @@ const dispatch = useDispatch();
 //estado local para paginado
 const [currentPage, setCurrentPage] = useState(1);
 
-const cardxPage = 9
+const cardxPage = 8
 const totalPages = Math.ceil(allFields.length / cardxPage);
 
 //primer index -1 por ser array
