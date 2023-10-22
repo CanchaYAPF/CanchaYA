@@ -7,12 +7,12 @@
     border-radius: 20px;
    background-color: #0D3A5D;
     margin-top: 40px;
-    height: 56vh;
+    height: 20%;
     
   }
   .containerbooking{
-    background-color: #ffffff;
-    height: 117vh;
+    background-color: #93adc200;
+    height: 10%;
   }
   
   .formLabel {
@@ -62,10 +62,7 @@
     color: #0056b3;
     text-decoration: none;
   }
-  .master{
-    background-color: #0D3A5D;
-    height: 117vh;
-  }
+
   .error {
     color: #e63946;
     font-size: 16px;

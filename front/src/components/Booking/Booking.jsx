@@ -170,7 +170,7 @@ const Booking = () => {
             className={styles.formInput}
             readOnly
           />
-          <label className={styles.formLabel}>Nombre cancha:</label>
+          {/* <label className={styles.formLabel}>Nombre cancha:</label>
           <input
             type="text"
             name="fieldName"
@@ -178,7 +178,7 @@ const Booking = () => {
             onChange={handleChange}
             className={styles.formInput2}
             readOnly
-          />
+          /> */}
           {/* <label className={styles.formLabel}>User ID:</label>
           <input
             type="text"
