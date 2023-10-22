@@ -25,7 +25,7 @@ const push = allFields.filter(f =>f.id === rel.idsFields )
 toCard.push(push)
 
 })
-console.log(toCard)
+
 
 
 

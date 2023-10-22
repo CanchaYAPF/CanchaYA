@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom"
 import style from "./card.module.css";
-import {addFav} from '../../Redux/actions/form_actions';
+import {addFav, removeFav} from '../../Redux/actions/form_actions';
 import {  useDispatch } from 'react-redux';
 import React, {  useState } from 'react';
+import { connect } from "react-redux";
+import { useEffect } from "react";
 
-
-function Card({field}) {
+function Card({field,myFavorites, removeFav, addFav}) {
 
   const token = sessionStorage.getItem(`token`)
 
@@ -28,7 +29,7 @@ const dispatch = useDispatch();
     if (isFav) {
       setIsFav(false);
       // despachar remove
-      removeFav(id);
+      removeFav(char);
     } else {
       setIsFav(true);
       // despachar addFav
@@ -37,7 +38,13 @@ const dispatch = useDispatch();
   };
 
 
-
+  useEffect(() => {
+    myFavorites.forEach((fav) => {
+      if (fav.id === id) {
+        setIsFav(true);
+      }
+    });
+  }, [myFavorites]);
 
 
 
@@ -83,6 +90,35 @@ const dispatch = useDispatch();
         </div>
       
     );
+
+
+
+
+    
   }
   
-  export default Card
+
+
+
+
+
+
+  function mapState(state) {
+    return {
+      myFavorites: state.myFavorites,
+    };
+  }
+  function mapDispatch(dispatch) {
+    return {
+      addFav: function (char) {
+        dispatch(addFav(char));
+      },
+      removeFav: function (id) {
+        dispatch(removeFav(id));
+      },
+    };
+  }
+
+
+
+  export default connect(mapState, mapDispatch)(Card);
