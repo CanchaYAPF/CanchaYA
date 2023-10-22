@@ -1,7 +1,7 @@
 const { User } = require("../../db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const sgMail = require('@sendgrid/mail')
+const sgMail = require('./sendgridConfig');
 require('dotenv').config();
 
 const signUp = async (name, lastname, mail, password, birthdate, phone) => {
@@ -21,11 +21,12 @@ const signUp = async (name, lastname, mail, password, birthdate, phone) => {
     });
     const msg = {
       to: mail, 
-      from: 'proyectozucca@gmail.com', 
+      from: 'grtechpf@gmail.com', 
       subject: 'Bienvenido a CanchasYA',
-      text: '¡Gracias por unirte a nuestra aplicación!',
+      text: '¡Gracias por unirte a nuestra aplicación, ya podes reservar y agregar canchas!',
       html: '<strong>¡Gracias por unirte a nuestra aplicación!</strong>',
     };
+
     sgMail.send(msg)
       .then(() => console.log('Correo electrónico de bienvenida enviado'))
       .catch((error) => console.error('Error al enviar el correo electrónico de bienvenida', error));
