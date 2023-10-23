@@ -199,16 +199,18 @@ const Booking = () => {
       </div>
     </div>
     <Modal
-    isOpen={isModalOpen}
-    onRequestClose={() => setIsModalOpen(false)}
-    contentLabel="Seleccionar método de pago"
-  >
-    <h2>Selecciona el método de pago</h2>
-    <div className={styles.botonPago}>
+  isOpen={isModalOpen}
+  onRequestClose={() => setIsModalOpen(false)}
+  contentLabel="Seleccionar método de pago"
+  className={styles.modal1} // Agrega la clase CSS del modal aquí
+>
+<button className={styles.modalbutton} onClick={() => setIsModalOpen(false)}>X</button>
+  <h2>Selecciona el método de pago</h2>
+  <div className={styles.botonPago}>
     <button onClick={() => handlePayment('efectivo')}>Efectivo</button>
     <button onClick={() => handlePayment('mercadopago')}>MercadoPago</button>
-    </div>
-  </Modal>
+  </div>
+</Modal>
   </div>
 
 );
