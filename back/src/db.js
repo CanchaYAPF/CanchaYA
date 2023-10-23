@@ -46,14 +46,14 @@ Review.belongsTo(Field);
 
 
 
-User.hasMany(Review);
-Review.belongsTo(User);
+User.hasMany(Review,{ onDelete: 'SET NULL' });
+Review.belongsTo(User,{ onDelete: 'SET NULL' });
 
 Booking.belongsToMany(Field, { through: "BookingField" });
 Field.belongsToMany(Booking, { through: "FieldBooking" });
 
-User.hasMany(Field);
-Field.belongsTo(User);
+User.hasMany(Field,{ onDelete: 'SET NULL' });
+Field.belongsTo(User,{ onDelete: 'SET NULL' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
