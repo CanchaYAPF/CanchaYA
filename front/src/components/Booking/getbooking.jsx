@@ -21,7 +21,6 @@ function MyBookings() {
             <p>Hora de inicio: {booking.initialHour}</p>
             <p>Hora final: {booking.finalHour}</p>
             <p>Tiempo total: {booking.totalTime} horas</p>
-            <p>Nombre del usuario: {booking.userName}</p>
             <p>Nombre de la cancha: {booking.fieldName}</p>
             {booking.fieldImage !== 'N/A' && (
               <img src={booking.fieldImage} alt="Imagen de la cancha" />
