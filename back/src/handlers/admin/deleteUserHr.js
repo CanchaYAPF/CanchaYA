@@ -1,9 +1,9 @@
-const deleteUser = require("../../controllers/admin/getAllUser")
+const deleteUser = require("../../controllers/admin/deleteUser")
 
 const deleteUserHr = async (req, res) => {
-    const {token,id}=req.body
+    const {id}=req.body
     try {
-      const response = await deleteUser(token,id);
+      const response = await deleteUser(id);
       res.status(200).json(response);
     } catch (error) {
       res.status(400).send({ error: error.message });
