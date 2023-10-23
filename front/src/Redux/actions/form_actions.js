@@ -13,9 +13,35 @@ export function createBooking(data) {
   return { type: CREATE_BOOKING, data };
 }
 
-export function getBooking(data) {
+export function getBookingSuccess(data) {
   return { type: GET_BOOKING, data };
 }
+
+// Función asincrónica para realizar la solicitud y despachar la acción
+export function getAllBookings() {
+  return async (dispatch) => {
+    const token = sessionStorage.getItem('token');
+
+    try {
+      const response = await axios.get('http://localhost:3001/booking/', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        const bookings = response.data;
+        dispatch(getBookingSuccess(bookings));
+      } else {
+        console.error('Error al obtener las reservas');
+      }
+    } catch (error) {
+      console.error('Error al obtener las reservas:', error);
+    }
+  };
+}
+
 
 export function createField(data) {
   return { type: CREATE_FIELD, data };

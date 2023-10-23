@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+
+
+
+import MyBookings from '../Booking/getbooking';
+
 import style from './Profile.module.css';
 import Favorites from "../Favorites/Favorites";
+
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('mi-informacion');
@@ -52,7 +58,7 @@ const Profile = () => {
           {activeTab === 'mis-reservas' && (
             <div>
               <h2 className={style['tab-title']}>Mis Reservas</h2>
-              
+              <MyBookings/>
             </div>
           )}
         </div>

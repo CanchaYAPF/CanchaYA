@@ -21,6 +21,8 @@ module.exports = (sequelize) => {
       totalTime: {
         type: DataTypes.INTEGER,
       },
+
+      
     },
     { timestamps: false }
   );
