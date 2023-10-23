@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import style from './Navbar.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import logo from './logotipo-canchasya.png';
+import SearchContext from '../../SearchContext';
 
-const NavBar = ({ handleSearchChange }) => {
+const NavBar = () => {
   const location = useLocation();
   const navigate = useNavigate(); 
 
@@ -20,6 +21,8 @@ const NavBar = ({ handleSearchChange }) => {
   };
 
   const isLoginOrSignup = location.pathname === '/login' || location.pathname === '/signup';
+
+  const handleSearchChange = useContext(SearchContext);
 
   return (
     <div className={style.navbar}>

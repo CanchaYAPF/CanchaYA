@@ -82,16 +82,14 @@ import Cards from '../Cards/Cards';
 import style from './Home.module.css';
 import Paginate from '../Pagination/Paginate';
 import OrderByPrice from '../Order/orderByPrice';
-import NavBar from '../NavBar/NavBar';
 
-const Home = () => {
+const Home = ({ searchTerm }) => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem('token');
   const dispatch = useDispatch();
   const allFields = useSelector((state) => state.fieldData);
   const [currentPage, setCurrentPage] = useState(1);
   const cardxPage = 8;
-  const [searchTerm, setSearchTerm] = useState('');
   const [filteredFields, setFilteredFields] = useState([]);
 
   const normalize = (str) => {
@@ -134,13 +132,8 @@ const Home = () => {
     dispatch(filter(event.target.value));
   };
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
   return (
     <div>
-      <NavBar handleSearchChange={handleSearchChange} />
       <div className={style.homeContainer}>
         <div className={style.leftBox}>
           <Filters />
