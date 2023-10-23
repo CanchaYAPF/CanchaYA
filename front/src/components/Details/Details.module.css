@@ -84,7 +84,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #111111bd;
+    background-color: #11111160;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -99,7 +99,11 @@
     padding: 3em 2.5em;
     border-radius: 6px;
     position: absolute;
-    top:0%; /* Ajusta el porcentaje según tu preferencia */
+    top: 0%;
+    transform: translateX(100%); /* Inicialmente desplazado hacia la derecha */
+    transition: transform 0.5s; /* Agregar transición de 0.5 segundos */
   }
   
-  
+  .animated {
+    transform: translateX(0); /* Cuando se abre, animar hacia la posición original */
+  }

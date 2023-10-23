@@ -3,13 +3,12 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { getFieldById } from '../../Redux/actions/form_actions';
 import style from './Details.module.css';
-import Booking from '../Booking/Booking'; // Asegúrate de que la ruta sea correcta
+import Booking from '../Booking/Booking';
 
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
-
-  const field = useSelector(state => state.currentField); 
+  const field = useSelector(state => state.currentField);
   const [isBookingModalOpen, setBookingModalOpen] = useState(false);
 
   useEffect(() => {
@@ -40,15 +39,16 @@ function Details() {
         <button onClick={openBookingModal}>Reservar</button>
         {isBookingModalOpen && (
           <div className={style.modal}>
-            <div className={style.modalcontent}>
-              <button onClick={closeBookingModal}>Cerrar </button>
+            <div className={`${style.modalcontent} ${isBookingModalOpen ? style.animated : ''}`}>
+              <button onClick={closeBookingModal}>Cerrar</button>
               <Booking />
             </div>
           </div>
         )}
       </div>
-    </div>
+    </div> 
   );
 }
 
 export default Details;
+
