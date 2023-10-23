@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
-
-
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import MyBookings from '../Booking/getbooking';
-
 import style from './Profile.module.css';
 import Favorites from "../Favorites/Favorites";
 
+const getUserDetails = async (token) => {
+  try {
+    const response = await axios.get('http://localhost:3001/user/profile', {
+      headers: {
+        'Authorization': 'Bearer ' + token
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('mi-informacion');
+  const [userDetails, setUserDetails] = useState(null);
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('token'); // Cambiado aquí
+    getUserDetails(token).then(details => setUserDetails(details));
+  }, []);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -40,19 +56,18 @@ const Profile = () => {
         </div>
 
         <div className={style['tab-content']}>
-          {activeTab === 'mi-informacion' && (
+          {activeTab === 'mi-informacion' && userDetails && (
             <div>
               <h2 className={style['tab-title']}>Mi Información</h2>
-              <p className={style['user-info']}>Nombre: Usuario</p>
-              <p className={style['user-info']}>Apellido: Apellido</p>
-              <p className={style['user-info']}>Email: usuario@example.com</p>
+              <p className={style['user-info']}>Nombre: {userDetails.name}</p>
+              <p className={style['user-info']}>Apellido: {userDetails.lastname}</p>
+              <p className={style['user-info']}>Email: {userDetails.mail}</p>
             </div>
           )}
           {activeTab === 'mis-favoritos' && (
             <div >
               <h2 className={style['mis-favoritos']}>Mis Favoritos</h2>
               <Favorites />
-              
             </div>
           )}
           {activeTab === 'mis-reservas' && (

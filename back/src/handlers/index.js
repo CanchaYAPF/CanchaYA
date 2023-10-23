@@ -9,9 +9,10 @@ const postReviewsHr = require("./review/postReviewsHr");
 const getSportsHr = require("./sports/getSportsHr");
 const postSignUpHr = require("./user/postSignUpHr");
 const postLoginHr = require("./user/postLoginHr");
-const postGoogleLoginHr = require("./user/postGoogleLoginHr")
-const getAllUserHr = require("./admin/getAllUserHr")
-const deleteUserHr = require("./admin/deleteUserHr")
+const postGoogleLoginHr = require("./user/postGoogleLoginHr");
+const getUserProfile = require("./user/getUserProfile"); 
+const getAllUserHr = require("./admin/getAllUserHr");
+const deleteUserHr = require("./admin/deleteUserHr");
 
 module.exports = {
   getBookingHr,
@@ -26,6 +27,7 @@ module.exports = {
   postSignUpHr,
   postLoginHr,
   postGoogleLoginHr,
+  getUserProfile, 
   getAllUserHr,
   deleteUserHr
 };
