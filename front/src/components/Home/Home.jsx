@@ -73,7 +73,7 @@
 // };
 
 // export default Home;
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getField, getSports, filter, getCities, getHorarios } from '../../Redux/actions/form_actions';
@@ -86,6 +86,7 @@ import OrderByPrice from '../Order/orderByPrice';
 const Home = ({ searchTerm }) => {
   const navigate = useNavigate();
   const token = sessionStorage.getItem('token');
+  const googleToken= sessionStorage.getItem('googleToken')
   const dispatch = useDispatch();
   const allFields = useSelector((state) => state.fieldData);
   const [currentPage, setCurrentPage] = useState(1);
@@ -101,8 +102,8 @@ const Home = ({ searchTerm }) => {
     dispatch(getSports());
     dispatch(getField());
     dispatch(getCities());
-    if (token === null) navigate('/login');
-  }, [dispatch, token, navigate]);
+    if (token === null && googleToken===null) navigate('/login');
+  }, [dispatch, token,googleToken, navigate]);
 
   useEffect(() => {
     const newFilteredFields = allFields.filter((field) =>

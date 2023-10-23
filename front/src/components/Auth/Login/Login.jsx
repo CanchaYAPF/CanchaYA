@@ -1,10 +1,11 @@
-import React from 'react'
 import { useState } from 'react'
 import { userLogin } from '../../../Redux/actions/form_actions'
 import { useDispatch } from "react-redux"
 import { Link,useNavigate } from 'react-router-dom'
 import style from './login.module.css'
 import  logo  from './logotipo-canchasya.png';
+import axios from 'axios'
+import { GoogleLogin } from '@react-oauth/google';
 
 
 const Login = () => {
@@ -38,6 +39,19 @@ const Login = () => {
       password: e.target.value
     })
   }
+  ///GoogleSignup:
+
+  const credentialResponse = async (credentialResponse) =>{
+    console.log("credenciales del mal: ",credentialResponse.credential )
+    try {
+        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
+        sessionStorage.setItem('googleToken', credentialResponse.credential);
+        navigate("/home");
+    } catch (error) {
+      alert("Error al iniciar sesión: " + error.message);
+    } 
+ }
+
   return (
     <div className={style.master}>
       <div className={style.logo}>
@@ -55,17 +69,20 @@ const Login = () => {
       </div>
       <form onSubmit={handleLoginSubmit}>
         <div className={style.inputs}>
-        <label htmlFor="E-mail">E-mail: </label>
-          <input placeholder="Escribí tu e-mail" onChange={handleEmailChange} value={usernameLogin.mail} />
+        <label htmlFor="mail">E-mail: </label>
+          <input placeholder="Escribí tu e-mail" onChange={handleEmailChange} value={usernameLogin.mail} name="mail" id="mail" type="email" />
         </div>
         <div className={style.inputs}>
-        <label htmlFor="Contraseña">Contraseña: </label>
-          <input placeholder="Escribí tu contraseña" onChange={handlePasswordChange} value={usernameLogin.password} type='password'/>
+        <label htmlFor="password">Contraseña: </label>
+          <input placeholder="Escribí tu contraseña" onChange={handlePasswordChange} value={usernameLogin.password} id="password" name="password" type='password'/>
         </div>
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>
-        <Link className={style.link} to="/signup">
-           No tengo una cuenta
+
+        <GoogleLogin onSuccess={credentialResponse}/>
+        
+        <Link to="/signup">
+          <button className={style.link}>No tengo una cuenta</button>
         </Link>
         </div>
       </form>
