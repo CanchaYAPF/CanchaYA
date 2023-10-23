@@ -271,7 +271,7 @@ const SignUp = () => {
                         <input
                             id="phone"
                             name="phone"
-                            placeholder="phone"
+                            placeholder="Teléfono"
                             value={userRegister.phone}
                             onChange={handlePhoneChange}
                             type="tel"

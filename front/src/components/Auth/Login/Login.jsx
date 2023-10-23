@@ -67,6 +67,9 @@ const Login = () => {
       <div className={style.sesion}>
       <h1 className={style.text}>Inicia Sesión</h1>
       </div>
+      <div className={style.google}>
+        <GoogleLogin onSuccess={credentialResponse}/>
+      </div>
       <form onSubmit={handleLoginSubmit}>
         <div className={style.inputs}>
         <label htmlFor="mail">E-mail: </label>
@@ -79,7 +82,6 @@ const Login = () => {
         <div className={style.button}>
         <button className={style.verde} type="submit">Iniciar Sesion</button>
 
-        <GoogleLogin onSuccess={credentialResponse}/>
         
         <Link to="/signup">
           <button className={style.link}>No tengo una cuenta</button>
