@@ -114,8 +114,31 @@ const Booking = () => {
       dispatch(postBooking(formData));
       alert('Reserva creada');
     } else if (method === 'mercadopago') {
-      // Resto del código
-    }
+      const paymentData = {
+        id: field.id,
+        items: 1,
+        title: field.name,
+        description: `Reserva de la cancha ${field.name}`,
+        image: field.image,
+        price: field.price,
+      };
+  
+      console.log(paymentData);
+  
+      axios
+        .post("http://localhost:3001/payment/createOrder", paymentData)
+        .then((response) => {
+          window.location.href = response.data.body.init_point;
+        })
+        .catch((error) => console.log(error.message));
+  
+      axios.post("http://localhost:3001/success", paymentData)
+        .then((response) => {
+          console.log("Pago confirmado con éxito:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error al confirmar el pago:", error.message);
+        });    }
     setIsModalOpen(false);
     setFormData({
       day: '',
