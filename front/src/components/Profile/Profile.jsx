@@ -75,7 +75,7 @@ const Profile = () => {
           {activeTab === 'mis-reservas' && (
             <div>
               <h2 className={style['tab-title']}>Mis Reservas</h2>
-              {/* <MyBookings/> */}
+               <MyBookings/> 
             </div>
           )}
         </div>
