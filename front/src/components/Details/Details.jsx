@@ -29,13 +29,14 @@ function Details() {
         <img src={field.image} alt={field.name} />
       </div>
       <div className={style.rightContent}>
+        <h2>{field.sports}</h2>
         <h1>{field.name}</h1>
-        <h2>Deporte: {field.sports}</h2>
-        <h2>Ciudad: {field.city}</h2>
-        <h2>Dirección: {field.address}</h2>
-        <h2>Precio por hora: {field.price}</h2>
-        <h2>Turno: {field.shift}</h2>
-        <h2>Servicios extras: {field.service}</h2>
+        <h2>{field.city} | {field.address}</h2>
+        <h2 className={style.precio}>PRECIO POR HORA: ${field.price}</h2>
+        <h2>HORARIOS EN LOS QUE TRABAJAMOS:</h2>
+        <h4>{field.shift}</h4>
+        <h2>SERVICIOS EXTRAS DEL ESTABLECIMIENTO:</h2>
+        <h4>{field.service}</h4>
         <button onClick={openBookingModal}>Reservar</button>
         {isBookingModalOpen && (
           <div className={style.modal}>
