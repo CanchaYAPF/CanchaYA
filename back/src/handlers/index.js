@@ -10,6 +10,8 @@ const getSportsHr = require("./sports/getSportsHr");
 const postSignUpHr = require("./user/postSignUpHr");
 const postLoginHr = require("./user/postLoginHr");
 const postGoogleLoginHr = require("./user/postGoogleLoginHr")
+const getAllUserHr = require("./admin/getAllUserHr")
+const deleteUserHr = require("./admin/deleteUserHr")
 
 module.exports = {
   getBookingHr,
@@ -23,5 +25,7 @@ module.exports = {
   getSportsHr,
   postSignUpHr,
   postLoginHr,
-  postGoogleLoginHr
+  postGoogleLoginHr,
+  getAllUserHr,
+  deleteUserHr
 };

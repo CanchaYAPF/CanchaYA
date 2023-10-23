@@ -7,6 +7,7 @@ const {
   sportsRouter,
   favoriteRouter,
   mercadoPagoRouter,
+  adminRouter
 } = require("./index");
 
 const router = Router();
@@ -17,4 +18,5 @@ router.use("/booking", bookingRouter);
 router.use("/reviews", reviewRouter);
 router.use("/sports", sportsRouter);
 router.use("/favorite", favoriteRouter);
+router.use("/admin",adminRouter)
 module.exports = router;
