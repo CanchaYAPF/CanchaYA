@@ -44,6 +44,8 @@ Field.belongsToMany(Sport, { through: "FieldSport" });
 Field.hasMany(Review);
 Review.belongsTo(Field);
 
+User.hasMany(Booking);
+Booking.belongsTo(User)
 
 
 User.hasMany(Review);
