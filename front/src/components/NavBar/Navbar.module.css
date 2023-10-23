@@ -10,17 +10,87 @@
   margin-top: -100px;
 }
 
+.logo {
+  margin-left: 80px;
+}
+
 .logo a {
   color: rgb(255, 254, 254);
   text-decoration: none;
 }
 
-.logo {
-  margin-left: 80px;
-}
-
 .logo img {
   max-width: 260px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 10%;
+  margin-top: 250px;
+  margin-left: 501px;
+}
+
+.text2{
+  background-color: #0D3A5D;
+  color: #fff;
+  padding: 10px;
+  font-size: 12px;
+  margin-top: 200px;
+  margin-left: -450px;
+  align-items: left;
+}
+
+.text2 .texto{
+  margin-left: -650px;
+}
+
+input{
+  width: 100%;
+}
+
+.text {
+  background-color: #0D3A5D;
+  color: #fff;
+  padding: 10px;
+  font-size: 12px;
+  width: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  margin-top: 200px;
+  justify-content: left;
+  margin-left: -296px;
+  margin-right: auto;
+}
+
+
+
+.verde {
+  color: #81BA27;
+  margin: 0;
+  width: 500px;
+  text-align: left;
+  margin-top: 0;
+  margin-left: -600px;
+  margin-right: auto;
+  justify-content: left;
+  display: flex;
+}
+
+.blanco {
+  color: #fff;
+  margin: 0;
+  width: 700px;
+  text-align: left;
+  margin-top: 0;
+  margin-left: -600px;
+  margin-right: auto;
+  justify-content: left;
+  display: flex;
 }
 
 .btn {
@@ -40,119 +110,57 @@
   background-color: #0056b3;
 }
 
-.nav {
-  display: flex;
-  align-items: center;
-  background-color: #0D3A5D;
-  justify-content: center;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;
-  padding: 5px;
-  width: 311px;
-  margin-top: 250px;
-  margin-left: 500px;
-}
-
-input[type="search"] {
-  border: none;
-  outline: none;
-  width: 100%;
-  padding: 5px;
-}
-
-.texto {
-  width: 100%;
-  display: flex;
+.profileMenu {
+  display: none;
   flex-direction: column;
-  align-items: left;
-  text-align: left;
-}
-
-.text {
-  background-color: #0D3A5D;
-  color: #fff;
-  padding: 10px;
-  font-size: 12px;
-  width: 800px;
-  margin-top: 200px;
-}
-
-.verde {
-  color: #81BA27;
-  margin-bottom: 0;
-  width: 100%;
-  text-align: left;
-  margin-top: 10px;
-  margin-left: -900px;
-}
-
-.blanco {
-  color: #fff;
-  margin: 0;
-  width: 110%;
-  text-align: left;
-  margin-top: 0;
-  margin-left: -900px;
-}
-
-input[type="text"]::placeholder {
-  color: #777;
-}
-
-.btnContainer {
-  margin-left: 10px;
-  margin-right: 0;
-}
-
-.select {
-  display: flex;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.986);
-  margin: 20px 10px;
-  padding: 20px 20px;
-  border-radius: 7px;
-  width: 200px;
-  font-size: 1em;
-  color: black;
-}
-
-.selects {
-  display: flex;
   align-items: center;
-  border: 1px solid #ccc;
-  padding: 5px;
-  margin: 10px;
-}
-
-.filtros {
-  margin: 0 auto;
-  border: #0D3A5D;
-  display: flex;
-  align-items: center;
-  margin-left: -620px;
-}
-
-.btnContainer button {
-  margin-right: 10px;
-}
-.canchaButton {
-  position: relative;
-}
-
-.canchaButton button {
+  position: absolute;
+  top: 100%;
+  left: 0;
   background-color: #81BA27;
   color: #fff;
-  padding: 5px 5px;
-  border: none;
+  z-index: 1;
+  border: 1px solid #0056b3;
+  border-radius: 5px;
   width: 100px;
-  height: 40px;
-  margin-right: 20px;
+}
+.profileMenu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.profileMenu a:hover {
+  background-color: #0056b3;
+}
+
+.profileMenu .button {
+  background-color: #0D3A5D;
+  border: none;
+  color: #fff;
+  padding: 8px;
   cursor: pointer;
-  transition: background-color 0.3s; 
+  transition: background-color 0.3s;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.profileMenu button:hover {
+  background-color: #0056b3;
+}
+
+.profileMenu link{
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  text-align: center;
+  margin: 0;
 }
 
 .profileButton {
@@ -173,45 +181,21 @@ input[type="text"]::placeholder {
 .profileButton:hover .profileMenu {
   display: flex;
 }
-
-.profileMenu {
-  display: none;
-  flex-direction: column;
+.filtros {
+  margin: 0 auto;
+  border: #0D3A5D;
+  display: flex;
   align-items: center;
-  position: absolute;
-  top: 100%;
-  left: 0;
+  margin-left: -620px;
+}
+.canchaButton button {
   background-color: #81BA27;
   color: #fff;
-  z-index: 1;
-  border: 1px solid #0056b3;
-  border-radius: 5px;
-  width: 100px;
-}
-
-.profileMenu a {
-  color: #fff;
-  text-decoration: none;
-  padding: 10px;
-  transition: background-color 0.3s;
-}
-
-.profileMenu a:hover {
-  background-color: #0056b3;
-}
-
-.profileMenu button {
-  background: none;
+  padding: 5px 5px;
   border: none;
-  color: #fff;
-  padding: 10px;
+  width: 100px;
+  height: 40px;
+  margin-right: 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  width: 100%;
-  text-align: center;
-  margin: 0;
-}
-
-.profileMenu button:hover {
-  background-color: #0056b3;
+  transition: background-color 0.3s; 
 }

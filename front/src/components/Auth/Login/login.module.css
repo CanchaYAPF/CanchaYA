@@ -7,11 +7,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin-top: 0;
+    height: 110vh;
+    margin-top: 30px;
   }
   .inputs {
     margin: 5%;
+    margin-top: 10px;
     
   }
   .sesion{
@@ -25,6 +26,7 @@ margin-top: auto;
     padding: 5px;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 12px;
+    margin-top: 5px;
   }
   label {
     display: block;
@@ -36,7 +38,7 @@ margin-top: auto;
     background: rgb(220, 220, 220);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 41vh;
+    height: 45vh;
     margin-top: 0;
   }
   .container {
@@ -122,3 +124,9 @@ margin-top: auto;
     max-width: 260px;
     margin-bottom: 0;
   }  
+  .google{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: none;
+  }
