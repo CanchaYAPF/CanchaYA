@@ -23,7 +23,7 @@ const Profile = () => {
   const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token'); // Cambiado aquí
+    const token = sessionStorage.getItem('token'); 
     getUserDetails(token).then(details => setUserDetails(details));
   }, []);
 
@@ -62,6 +62,8 @@ const Profile = () => {
               <p className={style['user-info']}>Nombre: {userDetails.name}</p>
               <p className={style['user-info']}>Apellido: {userDetails.lastname}</p>
               <p className={style['user-info']}>Email: {userDetails.mail}</p>
+              <p className={style['user-info']}>Fecha de nacimiento: {userDetails.birthdate}</p>
+              <p className={style['user-info']}>Telefono: {userDetails.phone}</p>
             </div>
           )}
           {activeTab === 'mis-favoritos' && (
@@ -73,7 +75,7 @@ const Profile = () => {
           {activeTab === 'mis-reservas' && (
             <div>
               <h2 className={style['tab-title']}>Mis Reservas</h2>
-              <MyBookings/>
+              {/* <MyBookings/> */}
             </div>
           )}
         </div>
