@@ -1,4 +1,4 @@
-const deleteUser = require("../../controllers/admin/getAllUser")
+const deleteUser = require("../../controllers/admin/deleteUser")
 
 const deleteUserHr = async (req, res) => {
     const {id}=req.body

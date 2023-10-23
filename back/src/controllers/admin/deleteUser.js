@@ -1,21 +1,11 @@
 const { User } = require("../../db");
 
-const deleteUser= async (Id)=>{
-    try {
-        const user = await User.findByPk(Id)
-        if(user){
-          await User.destroy({
-            where:{
-              id:user.id
-            }
-          });
-          return {msg: "El usuario ha sido borrado"};
-        } else {
-          return {msg:"El usuario que quieres borrar no existe"};
-        }
-      } catch (error) {
-        console.error(error);
-        return {msg: "Hubo un error al intentar borrar el usuario"};
-      }
+const deleteUser= async (id)=>{
+
+        const deleteUser = await User.destroy({where:{
+                id:id
+        }})
+        return deleteUser, {msg:"Usuario borraro con exito"}
+   
 }
 module.exports=deleteUser
