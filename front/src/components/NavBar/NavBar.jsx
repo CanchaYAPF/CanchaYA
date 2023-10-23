@@ -8,7 +8,6 @@ const NavBar = ({ handleSearchChange }) => {
   const navigate = useNavigate(); 
 
   const isHomePage = location.pathname === '/home';
-
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   const toggleProfileMenu = () => {
@@ -17,16 +16,15 @@ const NavBar = ({ handleSearchChange }) => {
 
   const logoutFunction = async () => {
     sessionStorage.removeItem('token');
-
     navigate('/login');
   };
 
   const isLoginOrSignup = location.pathname === '/login' || location.pathname === '/signup';
 
   return (
-    <div className={style.homeContainer}>
+    <div className={style.navbar}>
       {!isLoginOrSignup && (
-        <div className={style.navbar}>
+        <>
           <div className={style.logo}>
             <Link to="/home" style={{ font: '28px Poppins, sans-serif' }}>
               <img src={logo} alt="" />
@@ -65,7 +63,7 @@ const NavBar = ({ handleSearchChange }) => {
               )}
             </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
