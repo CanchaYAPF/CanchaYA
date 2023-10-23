@@ -1,5 +1,6 @@
 const { Booking, User, Field } = require("../../db");
 
+
 const getBooking = async () => {
   try {
     const allBookings = await Booking.findAll({
