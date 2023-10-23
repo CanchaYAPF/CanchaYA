@@ -105,7 +105,7 @@ export function postBooking(booking) {
 export function formCancha(data) {
   return async function (dispatch) {
     //se obtiene el token del localStorage y se usa para enviar por cabecera para pasar filtro del middleware Auth
-    const token = sessionStorage.getItem('token')
+    const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
       await axios.post('http://localhost:3001/field', data,{
         headers:{

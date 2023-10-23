@@ -1,5 +1,5 @@
 const { Field, Sport } = require("../../db");
-const jwt = require("jsonwebtoken");
+const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")//modularice el decifrado de tokens
 
 const postField = async (name, image, sports, phone, address, city, paymentMethod, price, service, shift, token) => {
   try {
@@ -8,37 +8,35 @@ const postField = async (name, image, sports, phone, address, city, paymentMetho
       const error = new Error("La cancha ya existe");
       error.status = 409;
       throw error;
+    }else {
+      const sportsToAdd = await Sport.findAll({ where: { name: sports } });
+      //Dependiendo de si es googleToken o Token lo decodifica y le da el valor del userId
+      const tokenId=await decodeJwtToken(token)
+      let userId= tokenId ? tokenId: await decodeGoogleToken(token);
+  
+      const newField = await Field.create({
+        name,
+        image,
+        phone,
+        address,
+        city,
+        paymentMethod,
+        price,
+        service,
+        shift,
+        UserId: userId
+      });
+      // console.log(newField); // Agregar un console.log para el error.
+      newField.addSports(sportsToAdd);
+  
+      return newField;
+  
+      }
+      
+    } catch (error) {
+      console.error("Error en postField:", error); // Agregar un console.log para el error.
+      throw error; // Re-lanzar el error para que se propague en la aplicación.
     }
-    
-
-    const sportsToAdd = await Sport.findAll({ where: { name: sports } });
-
-    const decoded = jwt.verify(token, 'secretKey');
-    console.log("decode", decoded.userId);
-    const userId = decoded.userId;
-
-    const newField = await Field.create({
-      name,
-      image,
-      phone,
-      address,
-      city,
-      paymentMethod,
-      price,
-      service,
-      shift,
-      UserId: userId
-    });
-    console.log(newField); // Agregar un console.log para el error.
-
-
-    newField.addSports(sportsToAdd);
-
-    return newField;
-  } catch (error) {
-    console.error("Error en postField:", error); // Agregar un console.log para el error.
-    throw error; // Re-lanzar el error para que se propague en la aplicación.
-  }
 };
 
 module.exports = postField;
