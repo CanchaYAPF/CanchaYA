@@ -4,10 +4,10 @@ const bcrypt = require("bcryptjs");
 const sgMail = require('./sendgridConfig');
 require('dotenv').config();
 
-const signUp = async (name, lastname, mail, password, birthdate, phone) => {
+const signUp = async (name, lastname, mail, password, birthdate, phone,roles) => {
   const user = await User.findOne({ where: { mail } });
   const encryptPassword = await bcrypt.hash(password.toString(), 10);
-  if (!name || !lastname ||!mail || !password || !birthdate || !phone) {
+  if (!name || !lastname ||!mail || !password ) {
     throw new Error("Debes llenar todos los campos");
   } else if (user) throw new Error("Este mail ya existe");
   else {
@@ -18,6 +18,7 @@ const signUp = async (name, lastname, mail, password, birthdate, phone) => {
       password: encryptPassword,
       birthdate,
       phone,
+      roles
     });
     const msg = {
       to: mail, 

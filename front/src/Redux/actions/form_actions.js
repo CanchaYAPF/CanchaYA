@@ -13,9 +13,35 @@ export function createBooking(data) {
   return { type: CREATE_BOOKING, data };
 }
 
-export function getBooking(data) {
+export function getBookingSuccess(data) {
   return { type: GET_BOOKING, data };
 }
+
+// Función asincrónica para realizar la solicitud y despachar la acción
+export function getAllBookings() {
+  return async (dispatch) => {
+    const token = sessionStorage.getItem('token');
+
+    try {
+      const response = await axios.get('http://localhost:3001/booking/', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      if (response.status === 200) {
+        const bookings = response.data;
+        dispatch(getBookingSuccess(bookings));
+      } else {
+        console.error('Error al obtener las reservas');
+      }
+    } catch (error) {
+      console.error('Error al obtener las reservas:', error);
+    }
+  };
+}
+
 
 export function createField(data) {
   return { type: CREATE_FIELD, data };
@@ -105,7 +131,7 @@ export function postBooking(booking) {
 export function formCancha(data) {
   return async function (dispatch) {
     //se obtiene el token del localStorage y se usa para enviar por cabecera para pasar filtro del middleware Auth
-    const token = sessionStorage.getItem('token')
+    const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
       await axios.post('http://localhost:3001/field', data,{
         headers:{

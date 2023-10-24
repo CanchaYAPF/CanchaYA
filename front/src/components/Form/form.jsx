@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link,useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import styles from './Form.module.css';
 import { formCancha, getSports, getCities } from '../../Redux/actions/form_actions';
 import Swal from 'sweetalert2'
@@ -68,6 +68,8 @@ const validate = ({name, image, sports, address, city, phone, price, shift, paym
 
 const FormularioCancha = () => {
   const token = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+
   const navigate= useNavigate()
   const allSports = useSelector(state => state.sportData)
   const allCities = useSelector(state => state.citiesData)
@@ -83,7 +85,7 @@ const FormularioCancha = () => {
   useEffect(() => {
     dispatch(getSports())
     dispatch (getCities())
-   if (token === null) navigate("/login")
+    if (token === null && googleToken===null) navigate('/login');
   }, []);
    
  
@@ -100,19 +102,6 @@ const FormularioCancha = () => {
     service: [],
     token:token
   });
-  // const [errors,setErrors]=useState({
-  //   name: '',
-  //   image: '',
-  //   sport:'',
-  //   address: '',
-  //   city: '',
-  //   phone: '',
-  //   price: '',
-  //   shift: [],
-  //   paymentMethod: [],
-  //   service: [],
-  //   token:token
-  // })
 
   const handleChange = (e) => {
     const { name, value } = e.target;

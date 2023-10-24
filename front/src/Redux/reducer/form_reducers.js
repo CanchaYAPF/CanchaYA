@@ -4,7 +4,7 @@ import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GE
    FILTER_CITIES,FILTER_HORARIO,GET_HORARIOS, ADD_FAV, DELETE_FAV, RESET_CITY_FILTER, RESET_HORARIO_FILTER, RESET_SPORT_FILTER, RESET_PRICE_RANGE_FILTER, FILTER_PRICE_RANGE } from '../types/form_types';
 
 const initialState = {
- bookingData: {},
+ bookingData: [],
  fieldData: [],
  currentField: {} ,
  reviewData: {},

@@ -6,7 +6,7 @@ import React, {  useState } from 'react';
 import { connect } from "react-redux";
 import { useEffect } from "react";
 
-function Card({field,myFavorites, removeFav, addFav}) {
+function Card({field,myFavorites, removeFav, addFav, esFav}) {
 
   const token = sessionStorage.getItem(`token`)
 
@@ -22,7 +22,7 @@ function Card({field,myFavorites, removeFav, addFav}) {
   
 
 const dispatch = useDispatch();
-  const [isFav, setIsFav] = useState(false);
+  const [isFav, setIsFav] = esFav? useState(true):useState(false)
   
   
   const handleFavorite = function () {
