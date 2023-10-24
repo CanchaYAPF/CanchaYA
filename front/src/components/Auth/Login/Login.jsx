@@ -42,7 +42,6 @@ const Login = () => {
   ///GoogleSignup:
 
   const credentialResponse = async (credentialResponse) =>{
-    console.log("credenciales del mal: ",credentialResponse.credential )
     try {
         await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
         sessionStorage.setItem('googleToken', credentialResponse.credential);
