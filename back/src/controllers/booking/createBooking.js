@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken'); // Asegúrate de importar jwt si aún no lo
 
 module.exports = createBooking;
 
-async function createBooking(day, initialHour, finalHour, totalTime, fieldName, token) {
+async function createBooking(day, initialHour, finalHour, totalTime, fieldId, token) {
     try {
-        if (!day || !initialHour || !finalHour || !totalTime || !fieldName || !token) {
+        if (!day || !initialHour || !finalHour || !totalTime || !fieldId || !token) {
             throw new Error("Faltan datos por completar");
         }
  
@@ -19,7 +19,7 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldName, 
             throw new Error("Horario ocupado");
         }
 
-        const field = await Field.findOne({ where: { name: fieldName } });
+        const field = await Field.findOne({ where: { id: fieldId } });
 
         if (!field) {
             throw new Error("Cancha no encontrada");
@@ -37,8 +37,8 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldName, 
             initialHour,
             finalHour,
             totalTime,
-            fieldId: field.id,
-            userId: user.id, 
+            fieldId: field.token,
+            userId: user.token, 
         });
 
         const fieldWithReserva = await Field.findByPk(field.id);
@@ -47,11 +47,26 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldName, 
             throw new Error("Error al recuperar la información de la cancha");
         }
 
-        return {
-            reserva: booking,
-            cancha: fieldWithReserva,
-            usuario: user,
+        const customResponse = {
+            reserva: {
+                id: booking.id,
+                day: booking.day,
+                initialHour: booking.initialHour,
+                finalHour: booking.finalHour,
+                totalTime: booking.totalTime,
+                UserId: booking.userId,
+            },
+            cancha: {
+                id: fieldWithReserva.id,
+                name: fieldWithReserva.name,
+            },
+            usuario: {
+                id: user.id,
+                name: user.name,
+            },
         };
+
+        return customResponse;
     } catch (error) {
         console.error(error);
         throw new Error(error.message);
