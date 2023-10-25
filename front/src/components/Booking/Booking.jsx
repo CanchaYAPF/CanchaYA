@@ -223,7 +223,7 @@ const Booking = () => {
             className={styles.formInput2}
           />  */} 
 
-          /> 
+          
 
           {isFormComplete && formData.totalTime > 0 && formData.totalTime < 9 && (
   <button type="submit" className={styles.bookingButton}>Reservar</button>

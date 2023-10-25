@@ -6,14 +6,12 @@ const getBooking = async () => {
       include: [
         {
           model: User,
-          attributes: ["id", "name", "lastname"], // Agrega todos los campos que necesites de User
+          attributes: ["id", "name", "lastname"],
         },
         {
           model: Field,
           attributes: ["id", "image"],
-
-          // attributes: ["id", "name", "image"], // Agrega todos los campos que necesites de Field
-
+          through: "BookingField",
         },
       ],
     });
@@ -26,12 +24,8 @@ const getBooking = async () => {
         finalHour: booking.finalHour,
         totalTime: booking.totalTime,
         userName: booking.User ? `${booking.User.name} ${booking.User.lastname}` : "N/A",
-
-        //fieldId: booking.Field ? booking.Field.id : "N/A",
         fieldImage: booking.Field ? booking.Field.image : "N/A",
-
-        fieldName: booking.Field ? booking.Field.name : "N/A",
-
+        fieldId: booking.Field ? booking.Field.id : "N/A",
       };
     });
 
@@ -41,5 +35,7 @@ const getBooking = async () => {
     return null;
   }
 };
+
+
 
 module.exports = getBooking;

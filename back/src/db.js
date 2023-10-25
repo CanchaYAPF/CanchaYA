@@ -52,7 +52,7 @@ User.hasMany(Review);
 Review.belongsTo(User);
 
 Booking.belongsToMany(Field, { through: "BookingField" });
-Field.belongsToMany(Booking, { through: "FieldBooking" });
+Field.belongsToMany(Booking, { through: "BookingField" });
 
 User.hasMany(Field);
 Field.belongsTo(User);

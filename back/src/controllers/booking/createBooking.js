@@ -72,9 +72,9 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldId, to
         console.log("decode", decoded.userId);
         const UserId = decoded.userId;
         //verificar si existe field
-       const field=await Field.findOne({where:{id:fieldId}})
+      // const field=await Field.findOne({where:{id:fieldId}})
 
-      // const field=await Field.findByPk(fieldId)
+      const field=await Field.findByPk(fieldId)
 
        //falta opcion para que busque en la bd harcodeada
        if(!field) {
@@ -102,8 +102,12 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldId, to
 
                 const bookingWithField = await Booking.findOne({
                     where: { id: booking.id },
-                    include: Field
-                });
+                    include: {
+                      model: Field,
+                      attributes: ['name'], // Especifica el campo que deseas
+                    },
+                  });
+                  
                 console.log("bookingwithfield",bookingWithField)
                 return bookingWithField
                 
