@@ -51,6 +51,7 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
           <h3 className={style.h3}>Name: {field.name}</h3>
           <h3>City: {field.city}</h3>
           <h3>Price: {field.price}</h3>
+          <h3>Sports: {field.sports}</h3>
           <div className={style.imagen}>
             <img src={field.image}  alt="Charging..." />
           </div>
