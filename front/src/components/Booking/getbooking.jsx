@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBookings } from '../../Redux/actions/form_actions'; 
 
 function MyBookings() {
   const dispatch = useDispatch();
   const bookingData = useSelector((state) => state.bookingData);
-
+  console.log("bookingData: ", bookingData)
   useEffect(() => {
     dispatch(getAllBookings());
   }, [dispatch]);
@@ -21,7 +21,7 @@ function MyBookings() {
             <p>Hora de inicio: {booking.initialHour}</p>
             <p>Hora final: {booking.finalHour}</p>
             <p>Tiempo total: {booking.totalTime} horas</p>
-            <p>Nombre de la cancha: {booking.fieldId}</p>
+            <p>Nombre de la cancha: {booking.fieldName}</p>
             <p>Nombre Usuario: {booking.userName}</p>
 
             {/* {booking.fieldImage !== 'N/A' && (

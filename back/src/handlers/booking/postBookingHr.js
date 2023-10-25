@@ -11,7 +11,6 @@ const postBookingHr = async (req, res) => {
       totalTime,
       fieldId, 
       userId
-
     );
     res.status(200).json({ reserva: postBooking });
   } catch (error) {
