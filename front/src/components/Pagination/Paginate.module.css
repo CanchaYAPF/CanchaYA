@@ -1,15 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .paginado {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    margin: 20px auto;
-  }
+.paginado {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 20px auto;
+  list-style: none; 
+}
   
 .paginado li {
-    margin: 0 4px;
-  }
+  margin: 0 4px;
+}
   
 .paginado button {
   background-color: #0D3A5D;
@@ -17,32 +23,43 @@
   border: none;
   padding: 10px 20px;
   cursor: pointer;
-  margin: 10px;
+  margin: 10px 10px -10px 10px; 
   display: inline;
   justify-content: center;
   align-items: center;
   text-align: center;
+  transition: transform 0.3s ease;
+}
 
-  }
+.paginado button:hover {
+  transform: scale(1.1);
+}
+
+.paginado button:active {
+  transform: scale(1.1);
+}
   
 .paginado button:focus {
-    outline: none;
-  }
+  outline: none;
+}
   
-  .inicioFin {
-    background: grey; 
-    color: rgb(255, 255, 255); 
-    width: 55px;
-  }
+.inicioFin {
+  background: grey; 
+  color: rgb(255, 255, 255); 
+  width: 55px;
+}
   
-  .paginado .number.active button {
-    background-color: #0D3A5D;
-    color: white;
-    border: 1px solid blue;
-    }
+.paginado .number.active button {
+  background-color: #0D3A5D;
+  color: white;
+  border: 1px solid blue;
+}
 .paginado .disabled button {
   background-color: #ccc;
   cursor: not-allowed;
-  }
-  
-  
+}
+
+.pageCounter {
+  text-align: center;
+  margin-top: -5px;
+}

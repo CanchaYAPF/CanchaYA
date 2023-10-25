@@ -6,7 +6,7 @@ export const Paginado = ({ fieldsPerPage, allFields, paginado, currentPage }) =>
 
   useEffect(() => {
     const totalPages = Math.ceil(allFields / fieldsPerPage);
-    const maxDisplayPages = 8; //Cantidad de páginas visibles
+    const maxDisplayPages = 8;
     let startPage = Math.max(currentPage - Math.floor(maxDisplayPages / 2), 1);
     let endPage = Math.min(startPage + maxDisplayPages - 1, totalPages);
 
@@ -47,8 +47,8 @@ export const Paginado = ({ fieldsPerPage, allFields, paginado, currentPage }) =>
   };
 
   return (
-    <nav>
-      <ul className={styles.paginado} style={{ display: "flex", alignItems: "center" }}>
+    <nav className={styles.container}>
+      <ul className={styles.paginado}>
         <li className={currentPage === 1 ? styles.disabled : ""}>
           <button onClick={() => paginado(currentPage - 1)} disabled={currentPage === 1}>
             {"<"}
@@ -68,11 +68,6 @@ export const Paginado = ({ fieldsPerPage, allFields, paginado, currentPage }) =>
           </button>
         </li>
         <li>
-          <p className={styles.inicioFin}>
-            {currentPage} / {Math.ceil(allFields / fieldsPerPage)}
-          </p>
-        </li>
-        <li>
           <input
             type="text"
             value={inputPage}
@@ -85,11 +80,15 @@ export const Paginado = ({ fieldsPerPage, allFields, paginado, currentPage }) =>
             Go
           </button>
         </li>
-        <p style={{ color: "red", marginTop: "5px", height: "8px", marginLeft: "10px" }} disabled={!errorInput}>
-          {errorInput && errorInput}
-        </p>
       </ul>
+      <div className={styles.pageCounter}>
+        <p className={styles.inicioFin}>
+          {currentPage} / {Math.ceil(allFields / fieldsPerPage)}
+        </p>
+      </div>
+      <p style={{ color: "red", marginTop: "5px", height: "8px", marginLeft: "10px" }} disabled={!errorInput}>
+        {errorInput && errorInput}
+      </p>
     </nav>
   );
 }
-  
