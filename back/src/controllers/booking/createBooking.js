@@ -72,7 +72,10 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldId, to
         console.log("decode", decoded.userId);
         const UserId = decoded.userId;
         //verificar si existe field
-       const field=await Field.findByPk(fieldId)
+       const field=await Field.findOne({where:{id:fieldId}})
+
+      // const field=await Field.findByPk(fieldId)
+
        //falta opcion para que busque en la bd harcodeada
        if(!field) {
         throw new Error("Esta cancha no existe")}
@@ -95,7 +98,8 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldId, to
             if(fieldAvailableHours.length === 0){
                 //crea booking y lo asocia con field
                 const booking= await Booking.create({day,initialHour,finalHour,totalTime,UserId})
-                await booking.addField(field)
+                await booking.addField(field);
+
                 const bookingWithField = await Booking.findOne({
                     where: { id: booking.id },
                     include: Field

@@ -10,7 +10,10 @@ const getBooking = async () => {
         },
         {
           model: Field,
-          attributes: ["id", "name", "image"], // Agrega todos los campos que necesites de Field
+          attributes: ["id", "image"],
+
+          // attributes: ["id", "name", "image"], // Agrega todos los campos que necesites de Field
+
         },
       ],
     });
@@ -23,7 +26,12 @@ const getBooking = async () => {
         finalHour: booking.finalHour,
         totalTime: booking.totalTime,
         userName: booking.User ? `${booking.User.name} ${booking.User.lastname}` : "N/A",
+
+        //fieldId: booking.Field ? booking.Field.id : "N/A",
+        fieldImage: booking.Field ? booking.Field.image : "N/A",
+
         fieldName: booking.Field ? booking.Field.name : "N/A",
+
       };
     });
 
