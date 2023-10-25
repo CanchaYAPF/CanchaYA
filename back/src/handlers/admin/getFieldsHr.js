@@ -1,0 +1,12 @@
+const getFields = require("../../controllers/admin/getFields")
+
+const getFieldsHr =async(req,res)=>{
+try {
+    const response= getFields()
+    res.status(200).json(response)
+} catch (error) {
+    res.status(400).send({error: error.message})
+}
+
+} 
+module.exports = getFieldsHr
