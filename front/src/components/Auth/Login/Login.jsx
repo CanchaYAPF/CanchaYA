@@ -21,6 +21,7 @@ const Login = () => {
     try {
       const response = await dispatch(userLogin(usernameLogin))
       sessionStorage.setItem('token', response.payload.token);
+      console.log(response.payload.token)
       navigate("/home")
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
@@ -45,6 +46,7 @@ const Login = () => {
     try {
         await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
         sessionStorage.setItem('googleToken', credentialResponse.credential);
+        console.log(credentialResponse.credential)
         navigate("/home");
     } catch (error) {
       alert("Error al iniciar sesión: " + error.message);
