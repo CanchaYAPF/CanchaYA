@@ -12,7 +12,7 @@ const getBooking = async () => {
         },
         {
           model: Field,
-          attributes: ["name", "image"],
+          attributes: ["id", "image"],
         },
       ],
     });
@@ -25,7 +25,7 @@ const getBooking = async () => {
         finalHour: booking.dataValues.finalHour,
         totalTime: booking.dataValues.totalTime,
         userName: booking.User ? `${booking.User.name} ${booking.User.lastname}` : "N/A",
-        fieldName: booking.Field ? booking.Field.name : "N/A",
+        fieldId: booking.Field ? booking.Field.id : "N/A",
         fieldImage: booking.Field ? booking.Field.image : "N/A",
       };
     });

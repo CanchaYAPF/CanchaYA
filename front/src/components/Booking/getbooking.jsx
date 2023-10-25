@@ -21,10 +21,12 @@ function MyBookings() {
             <p>Hora de inicio: {booking.initialHour}</p>
             <p>Hora final: {booking.finalHour}</p>
             <p>Tiempo total: {booking.totalTime} horas</p>
-            <p>Nombre de la cancha: {booking.fieldName}</p>
-            {booking.fieldImage !== 'N/A' && (
+            <p>Nombre de la cancha: {booking.fieldId}</p>
+            <p>Nombre Usuario: {booking.userName}</p>
+
+            {/* {booking.fieldImage !== 'N/A' && (
               <img src={booking.fieldImage} alt="Imagen de la cancha" />
-            )}
+            )} */}
           </div>
         ))}
       </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
 import styles from './Booking.module.css';
@@ -17,8 +17,8 @@ const Booking = () => {
     initialHour: '',
     finalHour: '',
     totalTime: '',
-    fieldName: field.name,
-    token: token,
+    fieldId: field.id,
+    userId: token,
   });
 
   useEffect(() => {
@@ -34,6 +34,8 @@ const Booking = () => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('');
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
 
   function generateTimeOptions() {
     const options = [];
@@ -103,14 +105,19 @@ const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsModalOpen(true);
-    // Resto del código
+    
+    if (!token) {
+      setIsLoginModalOpen(true);
+    } else if (!formData.userId) {
+      setIsLoginModalOpen(true);
+    } else {
+      setIsModalOpen(true);
+    }
   };
+  
 
   const handlePayment = (method) => {
-    // Realizar la acción correspondiente según el método de pago seleccionado
     if (method === 'efectivo') {
-      // Realizar el POST
       dispatch(postBooking(formData));
       alert('Reserva creada');
     } else if (method === 'mercadopago') {
@@ -145,7 +152,7 @@ const Booking = () => {
       initialHour: '',
       finalHour: '',
       totalTime: '',
-      fieldName: '',
+      fieldId: '',
       userId: token,
     });
   };
@@ -193,16 +200,16 @@ const Booking = () => {
             className={styles.formInput}
             readOnly
           />
-          {/* <label className={styles.formLabel}>Nombre cancha:</label>
+           {/* <label className={styles.formLabel}>Nombre cancha:</label>
           <input
             type="text"
-            name="fieldName"
-            value={formData.fieldName}
+            name="fieldId"
+            value={formData.fieldId}
             onChange={handleChange}
             className={styles.formInput2}
             readOnly
-          /> */}
-          {/* <label className={styles.formLabel}>User ID:</label>
+          /> 
+           <label className={styles.formLabel}>User ID:</label>
           <input
             type="text"
             name="userId"
@@ -210,13 +217,10 @@ const Booking = () => {
             onChange={handleChange}
 
             className={styles.formInput2}
-          /> */}
+          />  */}
           {isFormComplete && formData.totalTime > 0 && formData.totalTime < 9 && (
   <button type="submit" className={styles.bookingButton}>Reservar</button>
 )}
-
-           
-         
            
         </form>
       </div>
@@ -232,6 +236,22 @@ const Booking = () => {
   <div className={styles.botonPago}>
     <button onClick={() => handlePayment('efectivo')}>Efectivo</button>
     <button onClick={() => handlePayment('mercadopago')}>MercadoPago</button>
+  </div>
+</Modal>
+<Modal
+  isOpen={isLoginModalOpen}
+  onRequestClose={() => setIsLoginModalOpen(false)}
+  contentLabel="Iniciar sesión"
+  className={styles.modal1}
+>
+  <button className={styles.modalbutton} onClick={() => setIsLoginModalOpen(false)}>
+    X
+  </button>
+  <h2>Para reservar, es necesario iniciar sesión</h2>
+  <div className={styles.botonPago}>
+    <a href="/login"> {/* Replace with the correct route to your signup component */}
+      <button>Log In</button>
+    </a>
   </div>
 </Modal>
   </div>

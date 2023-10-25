@@ -63,16 +63,17 @@ const { Booking, Field } = require('../../db');
 const jwt = require('jsonwebtoken'); // Asegúrate de importar jwt si aún no lo has hecho.
 const { Op } = require('sequelize');// Para consultas complejas
 
-async function createBooking(day, initialHour, finalHour, totalTime, fieldName, token) {
+async function createBooking(day, initialHour, finalHour, totalTime, fieldId, token) {
+    console.log(day, initialHour, finalHour, totalTime, fieldId, token)
     try {
-        if (!day || !initialHour || !finalHour || !totalTime || !fieldName || !token) {
+        if (!day || !initialHour || !finalHour || !totalTime || !fieldId || !token) {
             throw new Error("Faltan datos por completar");
         }
         const decoded = jwt.verify(token, 'secretKey');
         console.log("decode", decoded.userId);
         const UserId = decoded.userId;
         //verificar si existe field
-       const field=await Field.findOne({where:{name:fieldName}})
+       const field=await Field.findOne({where:{id:fieldId}})
        //falta opcion para que busque en la bd harcodeada
        if(!field) {
         throw new Error("Esta cancha no existe")}
