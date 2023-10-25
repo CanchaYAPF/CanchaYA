@@ -97,9 +97,7 @@ const Home = () => {
   const fieldsPerPage = 8;
   const lastField = currentPage * fieldsPerPage
   const firstField = lastField - fieldsPerPage
-  const currentFields = allFilteredFields
-    .filter(field => field.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    .slice(firstField, lastField);
+  const [currentFields, setCurrentFields] = useState([]);
 
   useEffect(() => { //maneja si la matriz esta vacia 
     if (!allFilteredFields.length) {
@@ -130,6 +128,13 @@ const Home = () => {
     dispatch(getCities());
     if (token === null && googleToken===null) navigate('/login');
   }, [dispatch, token,googleToken, navigate]);
+
+  useEffect(() => {
+    const filteredFields = allFilteredFields
+      .filter(field => field.name.toLowerCase().includes(searchTerm.toLowerCase()))
+      .slice(firstField, lastField);
+    setCurrentFields(filteredFields);
+  }, [searchTerm, allFilteredFields, firstField, lastField]);
 
   return (
     <div>
