@@ -80,7 +80,7 @@ import { getField, getSports, filter, getCities, getHorarios } from '../../Redux
 import Filters from '../Filters/Filters';
 import Cards from '../Cards/Cards';
 import style from './Home.module.css';
-import Paginate from '../Pagination/Paginate';
+import {Paginado} from '../Pagination/Paginate';
 import OrderByPrice from '../Order/orderByPrice';
 
 const Home = ({ searchTerm }) => {
@@ -89,8 +89,36 @@ const Home = ({ searchTerm }) => {
   const googleToken= sessionStorage.getItem('googleToken')
   const dispatch = useDispatch();
   const allFields = useSelector((state) => state.fieldData);
-  const [currentPage, setCurrentPage] = useState(1);
-  const cardxPage = 8;
+  
+  const allFilteredFields = useSelector((state) => state.filteredFields);
+  const [currentPage, setCurrentPage] = useState(parseInt(localStorage.getItem("currentPage")) || 1);
+  const fieldsPerPage = 8;
+  const lastField = currentPage * fieldsPerPage
+  const firstField = lastField - fieldsPerPage
+  const currentFields = allFilteredFields.slice(firstField, lastField)
+
+  useEffect(() => { //maneja si la matriz esta vacia 
+    if (!allFilteredFields.length) {
+      dispatch(getField());
+    }
+  }, [dispatch, allFilteredFields]);
+
+  useEffect(() => {
+    const storedCurrentPage = localStorage.getItem("currentPage");
+    if (storedCurrentPage) {
+      setCurrentPage(parseInt(storedCurrentPage));
+      localStorage.removeItem("currentPage");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage.toString());
+  }, [currentPage]);
+    
+  const paginado = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const [filteredFields, setFilteredFields] = useState([]);
 
   const normalize = (str) => {
@@ -112,26 +140,6 @@ const Home = ({ searchTerm }) => {
     setFilteredFields(newFilteredFields);
   }, [allFields, searchTerm]);
 
-  const totalPages = Math.ceil(filteredFields.length / cardxPage);
-  const startIndex = (currentPage - 1) * cardxPage;
-  const endIndex = startIndex + cardxPage;
-  const currentCards = filteredFields.slice(startIndex, endIndex);
-
-  const pageHandler = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const pagination = (event) => {
-    if (event.target.name === "next" && currentPage  * cardxPage < filteredFields.length ){
-      setCurrentPage(currentPage +1);
-    } else if(event.target.name=== "prev" && startIndex!==0 ) {
-      setCurrentPage(currentPage -1);
-    }
-  };
-
-  const filters = (event) => {
-    dispatch(filter(event.target.value));
-  };
 
   return (
     <div>
@@ -141,13 +149,11 @@ const Home = ({ searchTerm }) => {
           <OrderByPrice />
         </div>
         <div className={style.cards}>
-          <Cards allFields ={currentCards} />
+          <Cards allFields ={currentFields} />
         </div>
-        <Paginate total={totalPages} page={pageHandler}/>
-        <div className={style.button}>
-          <button name="prev" onClick={pagination}>Prev Page</button>
-          <button name="next" onClick={pagination}>Next Page</button>
-        </div>
+        <div className={style.paginadoContainer}>
+                <Paginado fieldsPerPage={fieldsPerPage} paginado={paginado} allFields={allFilteredFields.length} currentPage={currentPage}/>
+            </div>
       </div>
     </div>
   );

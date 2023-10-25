@@ -1,4 +1,5 @@
-.container {
+
+  .paginado {
     display: flex;
     align-items: center;
     text-align: center;
@@ -6,33 +7,42 @@
     margin: 20px auto;
   }
   
-  
-  
-  .button{
-    margin: 16px;
-    text-align: center;
+.paginado li {
+    margin: 0 4px;
   }
   
-  button {
+.paginado button {
+  background-color: #0D3A5D;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  }
+  
+.paginado button:focus {
+    outline: none;
+  }
+  
+  .inicioFin {
+    background: grey; 
+    color: rgb(255, 255, 255); 
+    width: 55px;
+  }
+  
+  .paginado .number.active button {
     background-color: #0D3A5D;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 10px;
-    display: inline;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    color: white;
+    border: 1px solid blue;
+    }
+.paginado .disabled button {
+  background-color: #ccc;
+  cursor: not-allowed;
   }
   
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  .active {
-    background-color: #0D3A5D;
-    color: white; /* Texto en color blanco para que sea visible en el fondo azul */
-    border: 1px solid blue; /* Borde azul */
-  }
   

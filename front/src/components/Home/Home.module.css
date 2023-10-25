@@ -1,5 +1,10 @@
 
-  
+.paginadoContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: -5px;
+}
+
   .select{
     display: flex;
         justify-content: center;

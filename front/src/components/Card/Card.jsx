@@ -7,23 +7,15 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 
 function Card({field,myFavorites, removeFav, addFav, esFav}) {
-
   const token = sessionStorage.getItem(`token`)
-
-
   const id = field.id
-
-  const char= {
-    
+  const char = {
     token: token,
     idsFields: field.id
   }
 
-  
-
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [isFav, setIsFav] = esFav? useState(true):useState(false)
-  
   
   const handleFavorite = function () {
     if (isFav) {
@@ -37,7 +29,6 @@ const dispatch = useDispatch();
     }
   };
 
-
   useEffect(() => {
     myFavorites.forEach((fav) => {
       if (fav.id === id) {
@@ -46,68 +37,36 @@ const dispatch = useDispatch();
     });
   }, [myFavorites]);
 
-
-
-  
-
     return (
-
-
-
-
-      
       <div className={style.container2}>
-
-
-
       <div className={style.close}>
         {isFav ? (
           <button onClick={handleFavorite}>❤️</button>
         ) : (
           <button onClick={handleFavorite}>🤍</button>
         )}
-        
       </div>
-
-
-
-
         <Link to ={`/${id}`} >
         <div className={style.container}>
-          
           <h3 className={style.h3}>Name: {field.name}</h3>
           <h3>City: {field.city}</h3>
           <h3>Price: {field.price}</h3>
+          <h3>Sports: {field.sports}</h3>
           <div className={style.imagen}>
             <img src={field.image}  alt="Charging..." />
           </div>
-        
           </div>
-          
-
-
         </Link>
         </div>
-      
     );
-
-
-
-
-    
   }
-  
-
-
-
-
-
 
   function mapState(state) {
     return {
       myFavorites: state.myFavorites,
     };
   }
+  
   function mapDispatch(dispatch) {
     return {
       addFav: function (char) {
@@ -118,7 +77,5 @@ const dispatch = useDispatch();
       },
     };
   }
-
-
 
   export default connect(mapState, mapDispatch)(Card);
