@@ -116,11 +116,7 @@ const Booking = () => {
   };
   
 
-  const handlePayment = (method) => {
-    if (method === 'efectivo') {
-      dispatch(postBooking(formData));
-      alert('Reserva creada');
-    } else if (method === 'mercadopago') {
+  const handlePayment = () => {
       const paymentData = {
         id: field.id,
         items: 1,
@@ -145,7 +141,7 @@ const Booking = () => {
         })
         .catch((error) => {
           console.error("Error al confirmar el pago:", error.message);
-        });    }
+        });    
     setIsModalOpen(false);
     setFormData({
       day: '',
@@ -241,8 +237,7 @@ const Booking = () => {
 <button className={styles.modalbutton} onClick={() => setIsModalOpen(false)}>X</button>
   <h2>Selecciona el método de pago</h2>
   <div className={styles.botonPago}>
-    <button onClick={() => handlePayment('efectivo')}>Efectivo</button>
-    <button onClick={() => handlePayment('mercadopago')}>MercadoPago</button>
+    <button onClick={() => handlePayment()}>MercadoPago</button>
   </div>
 </Modal>
 <Modal
