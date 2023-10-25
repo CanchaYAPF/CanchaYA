@@ -7,12 +7,8 @@ import SearchContext from './SearchContext';
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
   return (
-    <SearchContext.Provider value={handleSearchChange}>
+    <SearchContext.Provider value={{ searchTerm, setSearchTerm }}>
       <div className="container">
         <NavBar />
         <Routes>
@@ -20,7 +16,7 @@ const App = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/favorites' element={<Favorites />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='home' element={<Home searchTerm={searchTerm} />} />
+          <Route path='home' element={<Home />} />
           <Route path='/form' element={<Form />} />
           <Route path='/:id' element={<Details />} />
           <Route path='/profile' element={<Profile/>} /> 

@@ -73,7 +73,7 @@
 // };
 
 // export default Home;
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getField, getSports, filter, getCities, getHorarios } from '../../Redux/actions/form_actions';
@@ -82,8 +82,10 @@ import Cards from '../Cards/Cards';
 import style from './Home.module.css';
 import {Paginado} from '../Pagination/Paginate';
 import OrderByPrice from '../Order/orderByPrice';
+import SearchContext from '../../SearchContext';
 
-const Home = ({ searchTerm }) => {
+const Home = () => {
+  const { searchTerm } = useContext(SearchContext);
   const navigate = useNavigate();
   const token = sessionStorage.getItem('token');
   const googleToken= sessionStorage.getItem('googleToken')
@@ -95,7 +97,9 @@ const Home = ({ searchTerm }) => {
   const fieldsPerPage = 8;
   const lastField = currentPage * fieldsPerPage
   const firstField = lastField - fieldsPerPage
-  const currentFields = allFilteredFields.slice(firstField, lastField)
+  const currentFields = allFilteredFields
+    .filter(field => field.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .slice(firstField, lastField);
 
   useEffect(() => { //maneja si la matriz esta vacia 
     if (!allFilteredFields.length) {
@@ -119,12 +123,6 @@ const Home = ({ searchTerm }) => {
     setCurrentPage(pageNumber);
   };
 
-  const [filteredFields, setFilteredFields] = useState([]);
-
-  const normalize = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-  };
-
   useEffect(() => {
     dispatch(getHorarios());
     dispatch(getSports());
@@ -132,14 +130,6 @@ const Home = ({ searchTerm }) => {
     dispatch(getCities());
     if (token === null && googleToken===null) navigate('/login');
   }, [dispatch, token,googleToken, navigate]);
-
-  useEffect(() => {
-    const newFilteredFields = allFields.filter((field) =>
-      normalize(field.name).includes(normalize(searchTerm))
-    );
-    setFilteredFields(newFilteredFields);
-  }, [allFields, searchTerm]);
-
 
   return (
     <div>
@@ -152,8 +142,8 @@ const Home = ({ searchTerm }) => {
           <Cards allFields ={currentFields} />
         </div>
         <div className={style.paginadoContainer}>
-                <Paginado fieldsPerPage={fieldsPerPage} paginado={paginado} allFields={allFilteredFields.length} currentPage={currentPage}/>
-            </div>
+          <Paginado fieldsPerPage={fieldsPerPage} paginado={paginado} allFields={allFilteredFields.length} currentPage={currentPage}/>
+        </div>
       </div>
     </div>
   );
