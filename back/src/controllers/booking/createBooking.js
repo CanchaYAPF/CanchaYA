@@ -63,17 +63,17 @@ const { Booking, Field } = require('../../db');
 const jwt = require('jsonwebtoken'); // Asegúrate de importar jwt si aún no lo has hecho.
 const { Op } = require('sequelize');// Para consultas complejas
 
-async function createBooking(day, initialHour, finalHour, totalTime, fieldId, token) {
+async function createBooking(day, initialHour, finalHour, totalTime, fieldId, userId) {
     try {
-        if (!day || !initialHour || !finalHour || !totalTime || !fieldId || !token) {
+        if (!day || !initialHour || !finalHour || !totalTime || !fieldId || !userId) {
             throw new Error("Faltan datos por completar");
         }
-        const decoded = jwt.verify(token, 'secretKey');
+        const decoded = jwt.verify(userId, 'secretKey');
         console.log("decode", decoded.userId);
         const UserId = decoded.userId;
         //verificar si existe field
       // const field=await Field.findOne({where:{id:fieldId}})
-
+    
       const field=await Field.findByPk(fieldId)
 
        //falta opcion para que busque en la bd harcodeada
@@ -97,8 +97,8 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldId, to
 
             if(fieldAvailableHours.length === 0){
                 //crea booking y lo asocia con field
-                const booking= await Booking.create({day,initialHour,finalHour,totalTime,UserId})
-                await booking.addField(field);
+                const booking= await Booking.create({day,initialHour,finalHour,totalTime,UserId,FieldId:fieldId})
+                // await booking.addField(field);
 
                 const bookingWithField = await Booking.findOne({
                     where: { id: booking.id },

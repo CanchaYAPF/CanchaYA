@@ -51,8 +51,8 @@ Booking.belongsTo(User)
 User.hasMany(Review);
 Review.belongsTo(User);
 
-Booking.belongsToMany(Field, { through: "BookingField" });
-Field.belongsToMany(Booking, { through: "BookingField" });
+Booking.belongsTo(Field);
+Field.hasMany(Booking);
 
 User.hasMany(Field);
 Field.belongsTo(User);
