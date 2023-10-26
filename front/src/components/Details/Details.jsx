@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { getFieldById } from '../../Redux/actions/form_actions';
@@ -42,7 +42,7 @@ function Details() {
           <div className={style.modal}>
             <div className={`${style.modalcontent} ${isBookingModalOpen ? style.animated : ''}`}>
               <button onClick={closeBookingModal}>Cerrar</button>
-              <Booking />
+              <Booking  />
             </div>
           </div>
         )}

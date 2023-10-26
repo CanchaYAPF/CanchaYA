@@ -9,6 +9,8 @@ Modal.setAppElement('#root');
 
 const Booking = () => {
   const field = useSelector((state) => state.currentField);
+  const shift = field.shift; // Asumiendo que "shift" está dentro del objeto "currentField"
+
   const dispatch = useDispatch();
   const token = sessionStorage.getItem('token');
   const [formData, setFormData] = useState({
@@ -35,18 +37,28 @@ const Booking = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   function generateTimeOptions() {
-    const options = [];
-    for (let hour = 0; hour < 24; hour++) {
-      const formattedHour = String(hour).padStart(2, '0');
-      const time = `${formattedHour}:00`;
-      options.push(
-        <option key={time} value={time}>
-          {time}
-        </option>
-      );
+    let shiftHours = [];
+  
+    const shifts = shift.split(", ");
+  
+    if (shifts.includes("Mañana")) {
+      shiftHours = shiftHours.concat(["09:00", "10:00", "11:00", "12:00", "13:00", "14:00"]);
     }
+    if (shifts.includes("Tarde")) {
+      shiftHours = shiftHours.concat(["15:00","16:00", "17:00", "18:00", "19:00"]);
+    }
+    if (shifts.includes("Noche")) {
+      shiftHours = shiftHours.concat(["20:00", "21:00", "22:00", "23:00"]);
+    }
+  
+    const options = shiftHours.map((hour) => (
+      <option key={hour} value={hour}>
+        {hour}
+      </option>
+    ));
     return options;
   }
+  
   
   const handleChange = (e) => {
     const { name, value } = e.target;
