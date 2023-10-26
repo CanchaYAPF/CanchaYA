@@ -1,7 +1,7 @@
 import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW,
-  USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS , 
+  USER_LOGIN, USER_SIGNUP, GET_SPORTS , 
   GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE, GET_CITIES,
-   FILTER_CITIES,FILTER_HORARIO,GET_HORARIOS, ADD_FAV, DELETE_FAV, RESET_CITY_FILTER, RESET_HORARIO_FILTER, RESET_SPORT_FILTER, RESET_PRICE_RANGE_FILTER, FILTER_PRICE_RANGE } from '../types/form_types';
+   FILTER_CITIES,FILTER_HORARIO,GET_HORARIOS, ADD_FAV, DELETE_FAV, RESET_CITY_FILTER, RESET_HORARIO_FILTER, RESET_SPORT_FILTER, RESET_PRICE_RANGE_FILTER, FILTER_PRICE_RANGE,GET_USERS, NOT_ALLOW } from '../types/form_types';
 
 const initialState = {
  bookingData: [],
@@ -23,6 +23,8 @@ const initialState = {
    horario: "",
    priceRange: { min: '', max: '' },
  },
+ getAllUsers: [],
+ error:""
 };
 
 export default function formReducer(state = initialState, action) {
@@ -222,6 +224,19 @@ case RESET_PRICE_RANGE_FILTER:
        ...state,
        myFavorites: action.payload,
      };
+     case GET_USERS:
+      
+     return {
+       ...state,
+       getAllUsers: action.payload,
+       error:""
+     };
+     case NOT_ALLOW:
+
+     return{
+      ...state,
+      error:action.error
+     }
    default:
      return state;
  }
