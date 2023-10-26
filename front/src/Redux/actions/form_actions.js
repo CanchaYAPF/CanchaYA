@@ -79,13 +79,55 @@ catch (error) {
 
 
 
-export function createReview(data) {
-  return { type: CREATE_REVIEW, data };
+
+
+export function  createReview(data) {
+
+return async function(dispatch){
+  try{
+    const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
+    const result = await axios.post(`http://localhost:3001/reviews/`, data,{
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    const reviews = await axios.get(`http://localhost:3001/favorite/${token}`,)
+    const alRedu = reviews.data
+
+
+
+    return dispatch({
+      type: GET_REVIEW,
+      payload: alRedu
+    });
+    
+
+// return dispatch({type: GET_SPORTS, payload: sports});
 }
+catch (error) {
+    alert("error sports")
+}
+
+  
+}}
+
+
+
+
 
 export function getReview(data) {
   return { type: GET_REVIEW, data };
+
+  
 }
+
+
+
+
+
+
 
 export function userLogin(data) {
   return async function (dispatch) {
