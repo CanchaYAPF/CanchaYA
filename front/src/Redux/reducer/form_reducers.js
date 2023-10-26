@@ -7,7 +7,7 @@ const initialState = {
  bookingData: [],
  fieldData: [],
  currentField: {} ,
- reviewData: {},
+ reviewData: [],
  userData: {},
  sportData: [],
  allFieldsBackUp: [],

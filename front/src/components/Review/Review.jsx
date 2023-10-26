@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import "./Review.module.css"
 import {Link} from "react-router-dom"
-
+import {createReview} from "../../Redux/actions/form_actions"
 
 const FormReview = () => {
 
@@ -12,8 +12,8 @@ const FormReview = () => {
   const [state, setState] = useState({
     rate:0,
     description:"",
-    FieldId,
-    UserId,
+    // FieldId,
+    // UserId,
     
     
     
@@ -72,7 +72,7 @@ const FormReview = () => {
 
   const handleSubmit = (event) =>{
     event.preventDefault()
-    dispatch(postReview(state))
+    dispatch(createReview(state))
   }
 
 
