@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { getFieldById } from '../../Redux/actions/form_actions';
@@ -29,6 +29,7 @@ function Details() {
         <img src={field.image} alt={field.name} />
       </div>
       <div className={style.rightContent}>
+
         <div className={style.contentWrapper}>
           <h2>{field.sports}</h2>
           <h1>{field.name}</h1>
@@ -45,6 +46,7 @@ function Details() {
                 <button onClick={closeBookingModal}>Cerrar</button>
                 <Booking />
               </div>
+
             </div>
           )}
         </div>
