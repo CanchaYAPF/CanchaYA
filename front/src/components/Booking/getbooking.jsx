@@ -24,14 +24,14 @@ function MyBookings() {
             <p>Nombre de la cancha: {booking.fieldName}</p>
             <p>Nombre Usuario: {booking.userName}</p>
 
-            {/* {booking.fieldImage !== 'N/A' && (
+           
 
             <p>Nombre de la cancha: {booking.fieldName}</p>
             <p>Nombre de la cancha: {booking.userName}</p>
             {booking.fieldImage !== 'N/A' && (
 
               <img src={booking.fieldImage} alt="Imagen de la cancha" />
-            )} */}
+            )}
           </div>
         ))}
       </div>
