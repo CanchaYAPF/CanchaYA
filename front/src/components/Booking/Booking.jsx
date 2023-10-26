@@ -10,7 +10,6 @@ Modal.setAppElement('#root');
 const Booking = () => {
   const field = useSelector((state) => state.currentField);
   const dispatch = useDispatch();
-
   const token = sessionStorage.getItem('token');
   const [formData, setFormData] = useState({
     day: '',
@@ -31,11 +30,9 @@ const Booking = () => {
   }, [formData.totalTime]);
 
   const [isFormComplete, setIsFormComplete] = useState(false);
-  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-
 
   function generateTimeOptions() {
     const options = [];
@@ -51,13 +48,10 @@ const Booking = () => {
     return options;
   }
   
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(value)
 
-    
-  
     if (name === "initialHour") {
       const initialTime = value;
       const finalTimeOptions = generateTimeOptions().filter((timeOption) => {
@@ -73,7 +67,6 @@ const Booking = () => {
     } else if (name === "finalHour") {
       const initialTime = formData.initialHour;
       const finalTime = value;
-  
       if (initialTime) {
         const initial = new Date(`2000-01-01T${initialTime}:00`);
         const final = new Date(`2000-01-01T${finalTime}:00`);
@@ -85,8 +78,6 @@ const Booking = () => {
     } else {
       setFormData({ ...formData, [name]: value });
     }
-    
-  
     const allFieldsComplete = Object.values(formData).every((value, name) => {
       if (name === 'totalTime') {
         return !isNaN(value) && value > 0 && value < 9;
@@ -95,14 +86,9 @@ const Booking = () => {
       }
       return true;
     });
-  
-    
     setIsFormComplete(allFieldsComplete);
   };
   
-  
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -114,9 +100,14 @@ const Booking = () => {
       setIsModalOpen(true);
     }
   };
-  
 
-  const handlePayment = () => {
+  const handlePayment = (method) => {
+    // Realizar la acción correspondiente según el método de pago seleccionado
+    if (method === 'efectivo') {
+      // Realizar el POST
+      dispatch(postBooking(formData));
+      alert('Reserva creada');
+    } else if (method === 'mercadopago') {
       const paymentData = {
         id: field.id,
         items: 1,
@@ -142,13 +133,16 @@ const Booking = () => {
         .catch((error) => {
           console.error("Error al confirmar el pago:", error.message);
         });    
+        dispatch(postBooking(formData));
+        alert('Reserva creada');
+      }
     setIsModalOpen(false);
     setFormData({
       day: '',
       initialHour: '',
       finalHour: '',
       totalTime: '',
-      fieldId: '',
+      fieldName: '',
       userId: token,
     });
   };
@@ -238,7 +232,7 @@ const Booking = () => {
 <button className={styles.modalbutton} onClick={() => setIsModalOpen(false)}>X</button>
   <h2>Selecciona el método de pago</h2>
   <div className={styles.botonPago}>
-    <button onClick={() => handlePayment()}>MercadoPago</button>
+  <button onClick={() => handlePayment('mercadopago')}>MercadoPago</button>
   </div>
 </Modal>
 <Modal
