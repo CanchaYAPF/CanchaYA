@@ -33,7 +33,6 @@ const Booking = () => {
   const [isFormComplete, setIsFormComplete] = useState(false);
   
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState('');
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
 
@@ -116,7 +115,15 @@ const Booking = () => {
   };
   
 
-  const handlePayment = () => {
+  const handlePayment = (method) => {
+    // Realizar la acción correspondiente según el método de pago seleccionado
+    if (method === 'efectivo') {
+      // Realizar el POST
+      dispatch(postBooking(formData));
+      alert('Reserva creada');
+    } else if (method === 'mercadopago') {
+      // Resto del código
+    }
       const paymentData = {
         id: field.id,
         items: 1,
@@ -125,33 +132,33 @@ const Booking = () => {
         image: field.image,
         price: field.price,
       };
-  
+
       console.log(paymentData);
-  
+
       axios
         .post("http://localhost:3001/payment/createOrder", paymentData)
         .then((response) => {
           window.location.href = response.data.body.init_point;
         })
         .catch((error) => console.log(error.message));
-  
+
       axios.post("http://localhost:3001/success", paymentData)
         .then((response) => {
           console.log("Pago confirmado con éxito:", response.data);
         })
         .catch((error) => {
           console.error("Error al confirmar el pago:", error.message);
-        });    
+        });    }
     setIsModalOpen(false);
     setFormData({
       day: '',
       initialHour: '',
       finalHour: '',
       totalTime: '',
-      fieldId: '',
+      fieldName: '',
       userId: token,
     });
-  };
+  
 
 
 
@@ -238,8 +245,7 @@ const Booking = () => {
 <button className={styles.modalbutton} onClick={() => setIsModalOpen(false)}>X</button>
   <h2>Selecciona el método de pago</h2>
   <div className={styles.botonPago}>
-    <button onClick={() => handlePayment()}>MercadoPago</button>
-  </div>
+  <button onClick={() => handlePayment('mercadopago')}>MercadoPago</button>  </div>
 </Modal>
 <Modal
   isOpen={isLoginModalOpen}
@@ -260,6 +266,5 @@ const Booking = () => {
   </div>
 
 );
-};
-
+          }
 export default Booking;
