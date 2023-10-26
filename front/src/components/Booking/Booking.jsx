@@ -133,8 +133,8 @@ const Booking = () => {
       //   .catch((error) => {
       //     console.error("Error al confirmar el pago:", error.message);
       //   });    
-      //   dispatch(postBooking(formData));
-      //   alert('Reserva creada');
+         dispatch(postBooking(formData));
+         alert('Reserva creada');
       }
     setIsModalOpen(false);
     setFormData({
