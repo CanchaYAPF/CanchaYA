@@ -14,12 +14,26 @@ const UsersAdmin=()=>{
         dispatch(getUsers())
     },[dispatch])
 
+    const handlerDelete = (e)=>{
+
+    }
+
     return(
     <div>
+         <div>
+            <p>Nombre</p>
+            <p>Apellido</p>
+            <p>E-mail</p>
+            <p>Contraseña</p>
+            <p>Teléfono</p>
+            <p>Fecha de Nacimiento</p>
+            <p>Role</p>
+        </div>
         {notAllow ? <p>{notAllow}</p>:getAllUsers?.map(user=>{
-         return <UserCard user={user} key={user.id}/>
+         return <div key={user.id} id={user.id}><UserCard user={user} /> <button>Editar</button> <button onClick={handlerDelete}>Borrar</button></div>
         })}
     </div>
     )
 }
 export default UsersAdmin
+

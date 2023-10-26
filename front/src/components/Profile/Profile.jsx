@@ -81,7 +81,6 @@ const Profile = () => {
           )}
             {activeTab === 'administracion' && (
             <div >
-              <h2 className={style['tab-title']}>Administracion</h2>
               <Admin />
             </div>
           )}

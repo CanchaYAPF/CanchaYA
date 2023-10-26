@@ -46,6 +46,10 @@ module.exports = (sequelize) => {
       roles: {
         type: DataTypes.STRING,
         defaultValue: "regular"
+      },
+      status: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
       }
     },
     { timestamps: false }
