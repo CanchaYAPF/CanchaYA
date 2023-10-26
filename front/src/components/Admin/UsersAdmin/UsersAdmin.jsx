@@ -17,7 +17,7 @@ const UsersAdmin=()=>{
     return(
     <div>
         {notAllow ? <p>{notAllow}</p>:getAllUsers?.map(user=>{
-         return <UserCard user={user} key={user.id}/>
+         return <div key={user.id}><UserCard user={user} /> <button>Editar</button> <button>Borrar</button></div>
         })}
     </div>
     )
