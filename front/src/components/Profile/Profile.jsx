@@ -24,7 +24,9 @@ const Profile = () => {
   const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token'); 
+    const JwtToken = sessionStorage.getItem(`token`)
+    const googleToken= sessionStorage.getItem('googleToken')
+    const token= JwtToken ? JwtToken : googleToken //para agarre cualquiera de los token que este disponibles
     getUserDetails(token).then(details => setUserDetails(details));
   }, []);
 

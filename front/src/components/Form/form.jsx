@@ -100,7 +100,7 @@ const FormularioCancha = () => {
     shift: [],
     paymentMethod: [],
     service: [],
-    token:token
+    token:token ? token : googleToken
   });
 
   const handleChange = (e) => {

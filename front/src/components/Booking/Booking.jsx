@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Modal from 'react-modal';
@@ -11,14 +12,16 @@ const Booking = () => {
   const field = useSelector((state) => state.currentField);
   const dispatch = useDispatch();
 
-  const token = sessionStorage.getItem('token');
+  const JwtToken = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const token= JwtToken ? JwtToken : googleToken //para agarre cualquiera de los token que este disponibles
   const [formData, setFormData] = useState({
     day: '',
     initialHour: '',
     finalHour: '',
     totalTime: '',
     fieldId: field.id,
-    userId: token,
+    userId: token
   });
 
   useEffect(() => {

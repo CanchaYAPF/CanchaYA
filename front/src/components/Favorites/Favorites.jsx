@@ -8,7 +8,9 @@ import style from './Favorites.module.css';
 
 export default function Favorites() {
 
-  const token = sessionStorage.getItem(`token`)
+  const JwtToken = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const token= JwtToken ? JwtToken : googleToken //para agarre cualquiera de los token que este disponibles
 
   const allFields = useSelector((state) => state.fieldData);
 
