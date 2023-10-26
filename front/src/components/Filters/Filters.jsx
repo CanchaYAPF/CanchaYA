@@ -82,7 +82,7 @@ function Filters() {
 
   return (
     <div className={style.selects}>
-      <select className={style.select} onChange={handleFilterChange} name="filter">
+      <select className={`${style.select} ${style.btn}`} onChange={handleFilterChange} name="filter">
         <option value="">Deportes</option>
         {allSports.map((s) => (
           <option value={s.name} key={s.id}>
@@ -90,7 +90,7 @@ function Filters() {
           </option>
         ))}
       </select>
-      <select className={style.select} onChange={handleCityChange} name="city">
+      <select className={`${style.select} ${style.btn}`} onChange={handleCityChange} name="city">
         <option value="">Todas las ciudades</option>
         {allCities.map((city) => (
           <option value={city} key={city}>
@@ -98,7 +98,7 @@ function Filters() {
           </option>
         ))}
       </select>
-      <select className={style.select} onChange={handleHorario} name="city">
+      <select className={`${style.select} ${style.btn}`} onChange={handleHorario} name="city">
         <option value="">Horarios</option>
         {allHorarios.map((hora, index) => (
           <option value={hora} key={hora + index}>
@@ -124,7 +124,7 @@ function Filters() {
           className={style.priceInput}
         />
       </div>
-      <button onClick={handleResetFilters}>Restablecer filtros</button>
+      <button onClick={handleResetFilters} className={`${style.btn} ${style.resetButton}`}>Restablecer filtros</button>
     </div>
   );
 }
