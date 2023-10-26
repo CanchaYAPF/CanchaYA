@@ -15,7 +15,7 @@ const authAdmin = async (req,res,next)=>{
             roles:"admin"
         }
       })
-      if(adminUser?.length>0){
+      if(adminUser!== null){
         next()
       }else{
         res.status(403).json({msg:"No tiene los permisos de acceso necesarios"});
