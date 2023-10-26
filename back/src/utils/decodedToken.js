@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const { OAuth2Client } = require('google-auth-library');//para validacion de googleToken
 const { User} = require("../db");
 
-const decodeJwtToken = (token) => {
+const decodeJwtTokenId = (token) => {
     const SECRET_KEY='secretKey'//debe ir en el env
     try {
       const decoded = jwt.verify(token, SECRET_KEY);
@@ -13,7 +13,7 @@ const decodeJwtToken = (token) => {
     }
   };
 
-  const decodeGoogleToken = async (token) => {
+  const decodeGoogleTokenId = async (token) => {
   const GOOGLE_ID="643395136180-j6pn9slv1rsdsrkq88d1aa1s60i39eob.apps.googleusercontent.com" //debe ir en el env
   const client = new OAuth2Client(GOOGLE_ID);
     try {
@@ -35,4 +35,4 @@ const decodeJwtToken = (token) => {
     }
   };
 
-  module.exports= {decodeJwtToken, decodeGoogleToken}
+  module.exports= {decodeJwtTokenId, decodeGoogleTokenId}

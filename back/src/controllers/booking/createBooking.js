@@ -62,7 +62,7 @@
 const { Booking, Field } = require('../../db');
 const jwt = require('jsonwebtoken'); // Asegúrate de importar jwt si aún no lo has hecho.
 const { Op } = require('sequelize');// Para consultas complejas
-const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")//modularice el decifrado de tokens
+const { decodeJwtTokenId, decodeGoogleTokenId} = require("../../utils/decodedToken")//modularice el decifrado de tokens
 
 async function createBooking(day, initialHour, finalHour, totalTime, fieldId, userId) {
     try {
@@ -70,8 +70,8 @@ async function createBooking(day, initialHour, finalHour, totalTime, fieldId, us
             throw new Error("Faltan datos por completar");
         }
 
-        let UserId= decodeJwtToken(userId)
-        UserId = UserId ? UserId : decodeGoogleToken(userId)
+        let UserId= decodeJwtTokenId(userId)
+        UserId = UserId ? UserId : decodeGoogleTokenId(userId)
         //verificar si existe field
       // const field=await Field.findOne({where:{id:fieldId}}) 
     
