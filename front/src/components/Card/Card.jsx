@@ -63,7 +63,7 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
 
   function mapState(state) {
     return {
-      myFavorites: state.myFavorites,
+      myFavorites: state.form.myFavorites,
     };
   }
   

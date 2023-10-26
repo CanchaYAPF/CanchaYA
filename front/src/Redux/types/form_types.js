@@ -25,3 +25,4 @@ export const RESET_PRICE_RANGE_FILTER = 'RESET_PRICE_RANGE_FILTER';
 export const ADD_FAV= 'ADD_FAV';
 export const DELETE_FAV= 'DELETE_FAV';
 export const GET_FAV= 'GET_FAV';
+export const GET_USERS = 'GET_USERS'

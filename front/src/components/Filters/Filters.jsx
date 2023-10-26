@@ -5,10 +5,10 @@ import style from './Filters.module.css';
 
 function Filters() {
   const dispatch = useDispatch();
-  const allSports = useSelector((state) => state.sportData);
-  const allCities = useSelector((state) => state.citiesData); 
-  const allHorarios = useSelector((state) => state.horariosData);
-  const allFieldsBackUp = useSelector((state) => state.allFieldsBackUp);
+  const allSports = useSelector((state) => state.form.sportData);
+  const allCities = useSelector((state) => state.form.citiesData); 
+  const allHorarios = useSelector((state) => state.form.horariosData);
+  const allFieldsBackUp = useSelector((state) => state.form.allFieldsBackUp);
 
   const [filters, setFilters] = useState({
     sport: "",

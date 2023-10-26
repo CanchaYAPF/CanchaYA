@@ -8,7 +8,7 @@ import axios from 'axios';
 Modal.setAppElement('#root');
 
 const Booking = () => {
-  const field = useSelector((state) => state.currentField);
+  const field = useSelector((state) => state.form.currentField);
   const dispatch = useDispatch();
 
   const token = sessionStorage.getItem('token');

@@ -10,9 +10,9 @@ export default function Favorites() {
 
   const token = sessionStorage.getItem(`token`)
 
-  const allFields = useSelector((state) => state.fieldData);
+  const allFields = useSelector((state) => state.form.fieldData);
 
-  const  myFavorites = useSelector(state => state.myFavorites);
+  const  myFavorites = useSelector((state) => state.form.myFavorites);
   const dispatch = useDispatch();
  
 

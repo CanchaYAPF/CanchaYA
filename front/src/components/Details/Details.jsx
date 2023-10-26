@@ -8,7 +8,7 @@ import Booking from '../Booking/Booking';
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const field = useSelector(state => state.currentField);
+  const field = useSelector(state => state.form.currentField);
   const [isBookingModalOpen, setBookingModalOpen] = useState(false);
 
   useEffect(() => {

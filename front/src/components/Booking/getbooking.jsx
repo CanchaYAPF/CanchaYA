@@ -4,7 +4,7 @@ import { getAllBookings } from '../../Redux/actions/form_actions';
 
 function MyBookings() {
   const dispatch = useDispatch();
-  const bookingData = useSelector((state) => state.bookingData);
+  const bookingData = useSelector((state) => state.form.bookingData);
   console.log("bookingData: ", bookingData)
   useEffect(() => {
     dispatch(getAllBookings());

@@ -90,9 +90,9 @@ const Home = () => {
   const token = sessionStorage.getItem('token');
   const googleToken= sessionStorage.getItem('googleToken')
   const dispatch = useDispatch();
-  const allFields = useSelector((state) => state.fieldData);
+  const allFields = useSelector((state) => state.form.fieldData);
   
-  const allFilteredFields = useSelector((state) => state.filteredFields);
+  const allFilteredFields = useSelector((state) => state.form.filteredFields);
   const [currentPage, setCurrentPage] = useState(parseInt(localStorage.getItem("currentPage")) || 1);
   const fieldsPerPage = 8;
   const lastField = currentPage * fieldsPerPage

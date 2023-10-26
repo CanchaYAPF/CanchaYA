@@ -71,8 +71,8 @@ const FormularioCancha = () => {
   const googleToken= sessionStorage.getItem('googleToken')
 
   const navigate= useNavigate()
-  const allSports = useSelector(state => state.sportData)
-  const allCities = useSelector(state => state.citiesData)
+  const allSports = useSelector(state => state.form.sportData)
+  const allCities = useSelector(state => state.form.citiesData)
 
 
 
