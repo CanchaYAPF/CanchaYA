@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Login, SignUp, Form, Details, Profile, Favorites, Booking, NavBar } from "./components/index";
+import { Home, Login, SignUp, Form, Details, Profile, Favorites, Booking, NavBar, Review } from "./components/index";
 import './App.css'; 
 import SearchContext from './SearchContext';
 
@@ -14,7 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/favorites' element={<Favorites />} />
+          <Route path='/favorites' element={<Review />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='home' element={<Home />} />
           <Route path='/form' element={<Form />} />
