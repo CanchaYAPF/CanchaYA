@@ -26,6 +26,7 @@ const createOrder = (req, res) => {
       pending: "http://localhost:3001/payment/pending",
     },
     notification_url: "https://c252-181-170-139-159.ngrok-free.app/webhook",
+    auto_return: "approved",
   };
   mercadopago.preferences
     .create(preference)
