@@ -7,38 +7,38 @@ mercadopago.configure({
 
 const createOrder = (req, res) => {
   const { id, title, description, image, price } = req.body;
-  const paymentData = req.body.paymentData;
-  console.log(paymentData);
-  const items = [
-    {
-      id,
-      title,
-      quantity: 1,
-      unit_price: price,
-      currency_id: "ARS",
-      picture_url: image,
-      description,
-      // day: paymentData.day,
-      // initialHour: paymentData.initialHour,
-      // finalHour: paymentData.finalHour,
-      // totalTime: paymentData.totalTime,
-      // fieldName: paymentData.fieldName,
-      // userId: paymentData.userId,
-    },
-  ];
 
-  const preference = {
-    items,
+  let preference = {
+    items: [
+      {
+        id,
+        title,
+        quantity: 1,
+        unit_price: price,
+        currency_id: "ARS",
+        picture_url: image,
+        description,
+      },
+    ],
+    back_urls: {
+      success: "http://localhost:3001/payment/success",
+      failure: "http://localhost:3001/payment/failure",
+      pending: "http://localhost:3001/payment/pending",
+    },
+    notification_url: "https://c252-181-170-139-159.ngrok-free.app/webhook",
   };
   mercadopago.preferences
     .create(preference)
     .then((response) => res.json(response))
-    .catch((error) => res.status(500).json({ error: error.message }));
+    .catch((error) => {
+      message: error.message;
+    });
 };
 
 const handleSuccess = (req, res) => {
   console.log(req.query);
-  res.redirect(`http://localhost:5173/${id}`);
+  // res.send("Pago realizado");
+  res.redirect(`http://localhost:5173/home`);
 };
 
 module.exports = {

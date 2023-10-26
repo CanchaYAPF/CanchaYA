@@ -102,12 +102,7 @@ const Booking = () => {
   };
 
   const handlePayment = (method) => {
-    // Realizar la acción correspondiente según el método de pago seleccionado
-    if (method === 'efectivo') {
-      // Realizar el POST
-      dispatch(postBooking(formData));
-      alert('Reserva creada');
-    } else if (method === 'mercadopago') {
+     if (method === 'mercadopago') {
       const paymentData = {
         id: field.id,
         items: 1,
@@ -115,14 +110,13 @@ const Booking = () => {
         description: `Reserva de la cancha ${field.name}`,
         image: field.image,
         price: field.price,
-        // day: formData.day,
-        // initialHour: formData.initialHour,
-        // finalHour: formData.finalHour,
-        // totalTime: formData.totalTime,
-        // fieldName: formData.fieldName,
-        // userId: formData.userId,
+        day: formData.day,
+        initialHour: formData.initialHour,
+        finalHour: formData.finalHour,
+        totalTime: formData.totalTime,
+        fieldName: formData.fieldName,
+        userId: formData.userId,
       };
-  
       console.log(paymentData);
   
       axios
@@ -132,15 +126,15 @@ const Booking = () => {
         })
         .catch((error) => console.log(error.message));
   
-      axios.post("http://localhost:3001/success", paymentData)
-        .then((response) => {
-          console.log("Pago confirmado con éxito:", response.data);
-        })
-        .catch((error) => {
-          console.error("Error al confirmar el pago:", error.message);
-        });    
-        dispatch(postBooking(formData));
-        alert('Reserva creada');
+      // axios.post("http://localhost:3001/payment/success", paymentData)
+      //   .then((response) => {
+      //     console.log("Pago confirmado con éxito:", response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error al confirmar el pago:", error.message);
+      //   });    
+      //   dispatch(postBooking(formData));
+      //   alert('Reserva creada');
       }
     setIsModalOpen(false);
     setFormData({
