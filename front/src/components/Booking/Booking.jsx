@@ -122,12 +122,12 @@ const Booking = () => {
         description: `Reserva de la cancha ${field.name}`,
         image: field.image,
         price: field.price,
-        day: formData.day,
-        initialHour: formData.initialHour,
-        finalHour: formData.finalHour,
-        totalTime: formData.totalTime,
-        fieldName: formData.fieldName,
-        userId: formData.userId,
+        // day: formData.day,
+        // initialHour: formData.initialHour,
+        // finalHour: formData.finalHour,
+        // totalTime: formData.totalTime,
+        // fieldName: formData.fieldName,
+        // userId: formData.userId,
       };
       console.log(paymentData);
   
