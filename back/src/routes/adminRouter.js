@@ -8,7 +8,7 @@ const adminRouter=Router();
 adminRouter.get("/", authAdmin, getAllUserHr)
 adminRouter.delete("/",authAdmin, deleteUserHr)
 adminRouter.put("/:id", authAdmin,editUserHr)
-adminRouter.patch("/:id",desactiveUserHr)
+adminRouter.patch("/desactive/:id", desactiveUserHr)
 //Canchas:
 adminRouter.get("/fields", getFieldsHr)
 adminRouter.put("/fields/:id", editFieldHr)
