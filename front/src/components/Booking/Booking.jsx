@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import styles from './Booking.module.css';
 import { postBooking } from '../../Redux/actions/form_actions';
 import axios from 'axios';
+import {redirect} from "react-router-dom"
 
 Modal.setAppElement('#root');
 
@@ -122,12 +123,6 @@ const Booking = () => {
         description: `Reserva de la cancha ${field.name}`,
         image: field.image,
         price: field.price,
-        // day: formData.day,
-        // initialHour: formData.initialHour,
-        // finalHour: formData.finalHour,
-        // totalTime: formData.totalTime,
-        // fieldName: formData.fieldName,
-        // userId: formData.userId,
       };
       console.log(paymentData);
   
@@ -137,16 +132,6 @@ const Booking = () => {
           window.location.href = response.data.body.init_point;
         })
         .catch((error) => console.log(error.message));
-  
-      // axios.post("http://localhost:3001/payment/success", paymentData)
-      //   .then((response) => {
-      //     console.log("Pago confirmado con éxito:", response.data);
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error al confirmar el pago:", error.message);
-      //   });    
-         dispatch(postBooking(formData));
-         alert('Reserva creada');
       }
     setIsModalOpen(false);
     setFormData({
@@ -159,6 +144,15 @@ const Booking = () => {
     });
   };
 
+    useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('status');  
+    if ( myParam === "approved") {
+      dispatch(postBooking(formData));
+      return redirect("/home")
+    }
+  })
+  
   return (
     <div className={styles.master}>
     <div className={styles.containerbooking}>

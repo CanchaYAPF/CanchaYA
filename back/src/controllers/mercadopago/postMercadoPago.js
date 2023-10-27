@@ -21,7 +21,7 @@ const createOrder = (req, res) => {
       },
     ],
     back_urls: {
-      success: "http://localhost:3001/payment/success",
+      success: `http://localhost:5173/${id}`,
       failure: "http://localhost:3001/payment/failure",
       pending: "http://localhost:3001/payment/pending",
     },
@@ -37,9 +37,10 @@ const createOrder = (req, res) => {
 };
 
 const handleSuccess = (req, res) => {
+  const { id } = req.body;
   console.log(req.query);
   // res.send("Pago realizado");
-  res.redirect(`http://localhost:5173/home`);
+  res.redirect(`http://localhost:5173/${id}`);
 };
 
 module.exports = {
