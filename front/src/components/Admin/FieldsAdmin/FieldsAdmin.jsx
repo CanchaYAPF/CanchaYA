@@ -24,7 +24,7 @@ const FieldsAdmin = ()=>{
     return(
         <div>
             {allFields?.map(field=>(
-                <FieldCard key={field.id}/>
+                <FieldCard key={field.id} field={field}/> // Aquí pasamos el objeto field como una propiedad
             ))}
 
         </div>

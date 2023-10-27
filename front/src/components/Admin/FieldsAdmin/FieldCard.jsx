@@ -1,4 +1,4 @@
-const FieldCard = (field)=>{
+const FieldCard = ({field})=>{ // Aquí desestructuramos field de las props
 
     return(
         <tr key={field.id}>
