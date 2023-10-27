@@ -1,0 +1,12 @@
+.tableContainer {
+    max-height: 500px;
+    overflow-x: auto;
+  }
+  
+  .tableContainer table {
+    min-width: 600px;
+  }
+  
+  .tableContainer td, .tableContainer th {
+    white-space: nowrap; 
+  }

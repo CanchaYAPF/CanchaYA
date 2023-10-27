@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import {getField} from "../../../Redux/actions/form_actions"
 import FieldCard from "./FieldCard"
+import styles from './FieldsAdmin.module.css'; // Importa el archivo CSS
 
 const FieldsAdmin = ()=>{
 
@@ -22,11 +23,24 @@ const FieldsAdmin = ()=>{
     })
 
     return(
-        <div>
-            {allFields?.map(field=>(
-                <FieldCard key={field.id} field={field}/> // Aquí pasamos el objeto field como una propiedad
-            ))}
-
+        <div className={styles.tableContainer}> {/* Usa la clase tableContainer */}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Deportes</th>
+                        <th>Ciudad</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {allFields?.map(field=>(
+                        <FieldCard key={field.id} field={field}/> 
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
