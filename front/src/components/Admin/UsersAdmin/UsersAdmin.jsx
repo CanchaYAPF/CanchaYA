@@ -7,8 +7,7 @@ import axios from "axios";
 import UserCard from './UserCard';
 
 const UsersAdmin = () => {
-  const getAllUsers = useSelector(state => state.getAllUsers);
-  const notAllow = useSelector(state => state.error);
+  const allUsers = useSelector(state => state.getAllUsers);
   const dispatch = useDispatch();
   const navigate= useNavigate();
 
@@ -17,47 +16,43 @@ const UsersAdmin = () => {
   let token= jwtToken ? jwtToken : googleToken
 
   useEffect(() => {
-    if (getAllUsers?.length === 0) {
+    if (allUsers?.length === 0) {
       dispatch(getUsers());
       if (jwtToken === null && googleToken===null) navigate('/login');
     }
   }, [dispatch]);
 
-  const handlerDesactive =async (id) => {
+  const handlerDesactive = async (id) => {
      try {
         const {data} = await axios.patch(`http://localhost:3001/admin/${id}`)
+        dispatch(getUsers()); 
      } catch (error) {
         console.log(error)
      }
-
   };
 
   return (
     <div>
-      {notAllow ? (
-        <p>{notAllow}</p>
-      ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>E-mail</th>
-              <th>Contraseña</th>
-              <th>Teléfono</th>
-              <th>Fecha de Nacimiento</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {getAllUsers?.map(user => (
-              <UserCard key={user.id} user={user} handlerDesactive={handlerDesactive} />
-            ))}
-          </tbody>
-        </table>
-      )}
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>E-mail</th>
+            <th>Contraseña</th>
+            <th>Teléfono</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allUsers?.map(user => (
+            <UserCard key={user.id} user={user} handlerDesactive={handlerDesactive} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
