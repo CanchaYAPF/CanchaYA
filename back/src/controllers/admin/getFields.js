@@ -1,5 +1,5 @@
 // const { Op } = require('sequelize');// Para consultas complejas
-const { Field, Booking } = require("../../db");
+const { Field } = require("../../db");
 const getFields =()=>{
     // if(name){
     //     const allFieldsbyName= Field.findAll({
