@@ -6,7 +6,6 @@ import { getUsers } from '../../../Redux/actions/admin_actions';
 import axios from "axios";
 import UserCard from './UserCard';
 
-
 const UsersAdmin = () => {
   const getAllUsers = useSelector(state => state.getAllUsers);
   const notAllow = useSelector(state => state.error);
@@ -38,26 +37,27 @@ const UsersAdmin = () => {
       {notAllow ? (
         <p>{notAllow}</p>
       ) : (
-        <div>
-          <p>Nombre</p>
-          <p>Apellido</p>
-          <p>E-mail</p>
-          <p>Contraseña</p>
-          <p>Teléfono</p>
-          <p>Fecha de Nacimiento</p>
-          <p>Role</p>
-          <p>Status</p>
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>E-mail</th>
+              <th>Contraseña</th>
+              <th>Teléfono</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {getAllUsers?.map(user => (
+              <UserCard key={user.id} user={user} handlerDesactive={handlerDesactive} />
+            ))}
+          </tbody>
+        </table>
       )}
-      <div>
-        {getAllUsers?.map(user => (
-          <div key={user.id} id={user.id}>
-            <UserCard user={user} />
-            <button>Editar</button>
-            <button onClick={()=>handlerDesactive(user.id)}>Desactivar</button>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
