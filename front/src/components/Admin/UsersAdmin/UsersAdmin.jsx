@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -23,14 +22,13 @@ const UsersAdmin = () => {
   }, [dispatch]);
 
   const handlerDesactive = async (id) => {
-     try {
-        const {data} = await axios.patch(`http://localhost:3001/admin/${id}`)
-        dispatch(getUsers()); 
-     } catch (error) {
-        console.log(error)
-     }
+    try {
+      const {data} = await axios.patch(`http://localhost:3001/admin/desactive/${id}`)
+      dispatch(getUsers()); 
+    } catch (error) {
+      console.log(error)
+    }
   };
-
 
   return (
     <div style={{ overflow: 'auto', maxHeight: '500px' }}>
@@ -50,7 +48,7 @@ const UsersAdmin = () => {
         </thead>
         <tbody>
           {allUsers?.map(user => (
-            <UserCard key={user.id} user={user} handlerDesactive={handlerDesactive} />
+            <UserCard key={user.id} user={user} handlerDesactive={handlerDesactive} getUsers={getUsers} />
           ))}
         </tbody>
       </table>

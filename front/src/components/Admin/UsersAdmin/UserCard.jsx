@@ -1,18 +1,8 @@
-/* eslint-disable react/prop-types */
 import style from './UserCard.module.css';
-import { useState } from 'react';
 import UserEdit from './UserEdit';
-const UserCard = ({user, handlerDesactive}) => {
-      //modal para form de edit
-  const[setEditUserModalOpen] = useState(false);
-  const openEditUserModal=()=>{
-    setEditUserModalOpen(true)
-  }
-  const closeEditUserModal=()=>{
-    setEditUserModalOpen(false)
-  }
+
+const UserCard = ({user, handlerDesactive, getUsers}) => {
     return(
-        <div>
         <tr key={user.id}>
             <td>{user.name}</td>
             <td>{user.lastname}</td>
@@ -23,14 +13,13 @@ const UserCard = ({user, handlerDesactive}) => {
             <td>{user.roles}</td>
             <td>{user.status ? "Activo": "Desactivo"}</td>
             <td>
-                <button className={style['btn-table']} onClick={()=>openEditUserModal()}>Editar</button>
-                <button className={style['btn-table']} onClick={()=>handlerDesactive(user.id)}>Desactivar</button>
+                <div className={style['button-container']}> {/* Añade este div */}
+                    <UserEdit user={user} getUsers={getUsers} />
+                    <button className={style['btn-table']} onClick={()=>handlerDesactive(user.id)}>Desactivar</button>
+                </div>
             </td>
         </tr>
-        <div>
-            <button onClick={closeEditUserModal}>Cerrar</button>
-            <UserEdit/></div>
-        </div>
     )
 };
+
 export default UserCard;
