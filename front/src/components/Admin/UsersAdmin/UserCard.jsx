@@ -10,6 +10,7 @@ const UserCard = ({user}) => {
             <p>{user.phone}</p>
             <p>{user.birthdate}</p>
             <p>{user.roles}</p>
+            <p>{user.status ? "Activo": "Desactivo"}</p>
         </div>
         </div>
     )
