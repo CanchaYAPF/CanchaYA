@@ -8,6 +8,6 @@ import Details from "./Details/Details";
 import Profile from "./Profile/Profile";
 import Booking from "./Booking/Booking";
 import Favorites from "./Favorites/Favorites"
+import Reviews from "./Review/getReviews"
 
-
-export { Login, NavBar, Home, SignUp, Form, Details, Profile, Booking, Favorites, Review } 
+export { Login, NavBar, Home, SignUp, Form, Details, Profile, Booking, Favorites, Review, Reviews } 

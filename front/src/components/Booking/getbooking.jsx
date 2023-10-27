@@ -47,7 +47,7 @@ function MyBookings() {
                 <img src={booking.fieldImage} alt="Imagen de la cancha" />
               )}
               {isCompleted && (
-                <Link to="/home">
+                <Link to={`/review/${booking.fieldId}`}>
                   <button>Calificanos</button>
                 </Link>
               )}

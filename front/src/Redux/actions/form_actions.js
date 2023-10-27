@@ -79,12 +79,47 @@ catch (error) {
 
 
 
-export function createReview(data) {
-  return { type: CREATE_REVIEW, data };
+export function  createReview(data) {
+
+  return async function(dispatch){
+    try{
+      
+      const result = await axios.post(`http://localhost:3001/reviews/`, data)
+  
+      const reviews = await axios.get(`http://localhost:3001/reviews/`)
+      const alRedu = reviews.data
+  
+  
+  
+      return dispatch({
+        type: GET_REVIEW,
+        payload: alRedu
+      });
+      
+  
+  // return dispatch({type: GET_SPORTS, payload: sports});
+  }
+  catch (error) {
+      alert("error sports")
+  }
+  
+    
+  }}
+
+export function getReviews() {
+return async function (dispatch){
+
+  const res = await axios.get(`http://localhost:3001/reviews/`)
+const alReducer = res.data
+
+console.log(alReducer)
+return dispatch({
+  type: GET_REVIEW,
+  payload: alReducer
+});
+
 }
 
-export function getReview(data) {
-  return { type: GET_REVIEW, data };
 }
 
 export function userLogin(data) {

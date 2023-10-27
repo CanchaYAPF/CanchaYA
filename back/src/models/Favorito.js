@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
 
 
       idUser: {
-        type: DataTypes.UUID,
+        type: DataTypes.TEXT,
         
       },
       idsFields: {
