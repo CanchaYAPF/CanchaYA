@@ -32,7 +32,7 @@ const UsersAdmin = () => {
   };
 
   return (
-    <div>
+    <div style={{ overflow: 'auto', maxHeight: '500px' }}>
       <table>
         <thead>
           <tr>
