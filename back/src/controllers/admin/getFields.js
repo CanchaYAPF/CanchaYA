@@ -2,7 +2,7 @@ const { Field, Sport } = require("../../db");
 
 const mock = require ("../../../../mockUp")
 
-const getAllFields = async (name) => {
+const getAllFields = async () => {
   const allFields = await Field.findAll({
     include: {
       model: Sport,
@@ -10,21 +10,7 @@ const getAllFields = async (name) => {
       through: { attributes: [] },
     },
   });
-
-  if (name) {
-    fieldsByName = allFields.filter((field) =>
-      field.name.toLowerCase().startsWith(name.toLowerCase())
-    );
-
-    if (fieldsByName.length) {
-      return fieldsByName.slice(0, 15);
-    } else {
-      throw new Error(`No se encontró a ninguna cancha por el nombre: ${name}`);
-    }
-  }
-
-
-  
+  console.log("allfields: ",allFields)
 
 
   const normalize = (arr) => 
@@ -54,18 +40,14 @@ const getAllFields = async (name) => {
         price:field.price,
         shift:shifs,
         paymentMethod:pays,
-        service:servs
-          
-          
-          
+        service:servs,
+        status:field.status
       };
   });
 
-
-const mockNormal = normalize(mock)
 const database = normalize(allFields)
-
-  return [...database,...mockNormal];
+const mockUp=normalize(mock)
+  return [...database,...mockUp];
 };
 
 module.exports = getAllFields;
