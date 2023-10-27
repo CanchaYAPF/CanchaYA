@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {getAllUserHr,deleteUserHr,editUserHr,editFieldHr, getFieldsHr, getAllBookingHr, editBookingHr, desactiveUserHr}= require("../handlers/index")
+const {getAllUserHr,deleteUserHr,editUserHr,editFieldHr, getFieldsHr, getAllBookingHr, editBookingHr, desactiveUserHr, desactiveFieldHr}= require("../handlers/index")
 const authAdmin= require("../middlewares/authAdmin");
 
 
@@ -12,6 +12,7 @@ adminRouter.patch("/:id",desactiveUserHr)
 //Canchas:
 adminRouter.get("/fields", getFieldsHr)
 adminRouter.put("/fields/:id", editFieldHr)
+adminRouter.patch("/fields:id",desactiveFieldHr)
 //Booking:
 adminRouter.get("/booking",getAllBookingHr)
 adminRouter.put("/booking/:id", editBookingHr)
