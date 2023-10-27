@@ -4,7 +4,7 @@ const server = require("./src/app");
 const PORT = 3001;
 
 
-  .sync({ force: false })
+  conn.sync({ force: false })
 
   .then(() => {
     server.listen(PORT, () => {
