@@ -2,6 +2,7 @@ const { Field } = require("../../db");
 
 const desactiveField = async (id) => {
   const field = await Field.findByPk(id);
+  console.log("fieldctrl: ",field)
   const newStatus= !field.status
   if (!field) {
     throw new Error("Cancha no encontrado");

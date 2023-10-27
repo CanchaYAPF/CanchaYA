@@ -1,5 +1,5 @@
 const desactiveField=require("../../controllers/admin/desactiveField")
-const desactiveFieldHr = async (req,res) =>{
+const desactiveFieldHr =  async(req,res) =>{
     const {id} = req.params
    try {
     const response= await desactiveField(id)
@@ -7,5 +7,7 @@ const desactiveFieldHr = async (req,res) =>{
    } catch (error) {
     res.status(400).send({error:error.message})
    }
+
+
 }
 module.exports = desactiveFieldHr

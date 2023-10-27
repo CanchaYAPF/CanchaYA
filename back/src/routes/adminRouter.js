@@ -12,7 +12,7 @@ adminRouter.patch("/:id",desactiveUserHr)
 //Canchas:
 adminRouter.get("/fields", getFieldsHr)
 adminRouter.put("/fields/:id", editFieldHr)
-adminRouter.patch("/fields:id",desactiveFieldHr)
+adminRouter.patch("/fields/:id",desactiveFieldHr)
 //Booking:
 adminRouter.get("/booking",getAllBookingHr)
 adminRouter.put("/booking/:id", editBookingHr)
