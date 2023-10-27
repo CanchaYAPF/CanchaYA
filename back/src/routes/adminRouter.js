@@ -10,7 +10,7 @@ adminRouter.delete("/",authAdmin, deleteUserHr)
 adminRouter.put("/:id", authAdmin,editUserHr)
 adminRouter.patch("/:id",desactiveUserHr)
 //Canchas:
-adminRouter.get("/", getFieldsHr)
+adminRouter.get("/fields", getFieldsHr)
 adminRouter.put("/fields/:id", editFieldHr)
 //Booking:
 adminRouter.get("/booking",getAllBookingHr)
