@@ -23,7 +23,8 @@ const getBooking = async () => {
         totalTime: booking.totalTime,
         userName: booking.User ? `${booking.User.name} ${booking.User.lastname}` : "N/A",
         fieldImage: booking.Field?.image || "N/A",
-        fieldName: booking.Field?.name || "N/A"
+        fieldName: booking.Field?.name || "N/A",
+        fieldId: booking.Field?.id || "N/A",
       };
     });
 

@@ -1,40 +1,53 @@
 const { Review, Field, User } = require("../../db");
+const jwt = require("jsonwebtoken")
+const postReviews = async (rate, description, FieldId, token) => {
+  
 
-const postReviews = async (rate, description, FieldId, UserId) => {
-  try {
+
+    
+  
+
+
     if (!rate || !description) {
       throw new Error("Faltan datos por completar");
     }
 
-    const user = await User.findOne({ where: { id: UserId } });
-    const field = await Field.findOne({ where: { id: FieldId } });
-  
-    if (!field) {
-      throw new Error("Cancha no encontrada");
-  }
+
+    const decoded = jwt.verify(token, 'secretKey');
+    
+    const UserId = decoded.userId
+
+
+     const user =  await User.findAll({where:{id : UserId},})
+    const field = await Field.findAll({where:{id : FieldId}})
+  const  fieldd = field.id
+const userr = user.id
+
+    
+    
+  //   if (!field) {
+  //     throw new Error("Cancha no encontrada");
+  // }
 
     const review = await Review.create({
       rate,
       description,
-      FieldId : field.id,
-      UserId : user.id
+      FieldId,
+      UserId,
       
     });
 
-    const fieldWithReview = await Field.findByPk(field.id);
-    const userdWithReview = await User.findByPk(user.id);
+    // const fieldWithReview = await Field.findByPk(FieldId);
+    // const userdWithReview = await User.findByPk(userId);
 
     return {
       review: review,
-      cancha: fieldWithReview ,
-      user: userdWithReview,
+       cancha: user ,
+       user: field,
   };
     
     
-  } catch (error) {
-    console.error(error);
-    throw new Error(error.message);
-  }
+  
 };
 
 module.exports = postReviews;

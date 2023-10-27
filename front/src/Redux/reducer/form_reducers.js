@@ -7,7 +7,7 @@ const initialState = {
  bookingData: [],
  fieldData: [],
  currentField: {} ,
- reviewData: {},
+ reviewData: [],
  userData: {},
  sportData: [],
  allFieldsBackUp: [],
@@ -58,8 +58,8 @@ export default function formReducer(state = initialState, action) {
      };
    case GET_REVIEW:
      return {
-       ...state,
-       reviewData: action.data
+      ...state,
+      reviewData: [...action.payload],
      };
    case USER_LOGIN:
      return {

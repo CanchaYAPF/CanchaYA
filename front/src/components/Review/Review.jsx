@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from "react-router-dom";
 import "./Review.module.css"
+import {createReview} from "../../Redux/actions/form_actions"
 import {Link} from "react-router-dom"
+import style from './Review.module.css';
 
 
 const FormReview = () => {
 
 
+  const token = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const dispatch = useDispatch()
+
+
+
+  const {id} = useParams();
 
 //estado local para cada input
   const [state, setState] = useState({
     rate:0,
     description:"",
-    FieldId,
-    UserId,
+    FieldId: id,
+     UserId: token
     
     
     
@@ -72,7 +82,7 @@ const FormReview = () => {
 
   const handleSubmit = (event) =>{
     event.preventDefault()
-    dispatch(postReview(state))
+    dispatch(createReview(state))
   }
 
 

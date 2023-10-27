@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getFieldById } from '../../Redux/actions/form_actions';
 import style from './Details.module.css';
 import Booking from '../Booking/Booking';
+import Reviews from "../Review/getReviews"
 
 function Details() {
   const { id } = useParams();
@@ -46,11 +47,13 @@ function Details() {
                 <button onClick={closeBookingModal}>Cerrar</button>
                 <Booking />
               </div>
-
+             
             </div>
           )}
         </div>
+        
       </div>
+      < Reviews/>
     </div> 
   );
 }
