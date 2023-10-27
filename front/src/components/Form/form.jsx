@@ -370,7 +370,7 @@ const FormularioCancha = () => {
         checked={formData.paymentMethod.includes('Efectivo')}
         onChange={handleMetodoPagoChange}
         />
-      Efectivo
+      {/* Efectivo
       <input
         type="checkbox"
         className={styles.formCheckbox}
@@ -378,7 +378,7 @@ const FormularioCancha = () => {
         value="Débito"
         checked={formData.paymentMethod.includes('Débito')}
         onChange={handleMetodoPagoChange}
-        />
+        /> */}
       Débito
       <input
         type="checkbox"
