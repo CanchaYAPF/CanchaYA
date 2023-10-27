@@ -13,6 +13,7 @@ const postGoogleLoginHr = require("./user/postGoogleLoginHr");
 const getUserProfile = require("./user/getUserProfile"); 
 const getAllUserHr = require("./admin/getAllUserHr");
 const deleteUserHr = require("./admin/deleteUserHr");
+const desactiveUserHr = require("./admin/desactiveUserHr")
 const editUserHr = require("./admin/editUsersHr");
 const getFieldsHr = require("./admin/getFieldsHr")
 const editFieldHr = require("./admin/editFieldHr");
@@ -39,5 +40,6 @@ module.exports = {
   editFieldHr,
   getFieldsHr,
   getAllBookingHr,
-  editBookingHr
+  editBookingHr,
+  desactiveUserHr
 };
