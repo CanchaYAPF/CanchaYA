@@ -4,7 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getFieldById } from '../../Redux/actions/form_actions';
 import style from './Details.module.css';
 import Booking from '../Booking/Booking';
+
 import Reviews from "../Review/getReviews"
+
+import GoogleMap from './GoogleMap'; // Importa el componente de GoogleMap
+
 
 function Details() {
   const { id } = useParams();
@@ -28,9 +32,9 @@ function Details() {
     <div className={style.container}>
       <div className={style.leftContent}>
         <img src={field.image} alt={field.name} />
+        <GoogleMap googleMapsUrl={field.googleMapsUrl} /> {/* Agrega el componente GoogleMap aquí */}
       </div>
       <div className={style.rightContent}>
-
         <div className={style.contentWrapper}>
           <h2>{field.sports}</h2>
           <h1>{field.name}</h1>
@@ -47,7 +51,7 @@ function Details() {
                 <button onClick={closeBookingModal}>Cerrar</button>
                 <Booking />
               </div>
-             
+
             </div>
           )}
         </div>
