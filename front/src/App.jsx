@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Login, SignUp, Form, Details, Profile, Favorites, Booking, NavBar, Review, Reviews } from "./components/index";
-import './App.css'; 
+import { Home, Login, SignUp, Form, Details, Profile, Favorites, Booking, NavBar, Review, Reviews, } from "./components/index";
 import SearchContext from './SearchContext';
 
 const App = () => {
