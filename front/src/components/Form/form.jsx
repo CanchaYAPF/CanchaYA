@@ -241,18 +241,17 @@ const FormularioCancha = () => {
         />      
        {errors.name && <p className={styles.error}>{errors.name}</p>}
 
-        <label className={styles.formLabel}>Deportes: </label>
-          <select className={styles.formSelect} onChange={handleChange} name="sports">
-          {allSports?.map(s=>  <option value={s.name} key={s.id}> {  s.name  } </option>   )}
-        </select>
-           <div>
+       <label className={styles.formLabel}>Deportes: </label>
+       <select className={styles.formSelect} onChange={handleChange} name="sports">
+              <option value="">Selecciona un deporte</option>
+              {allSports?.map(s =>  <option value={s.name} key={s.id}> {s.name} </option>   )}
+            </select>
+          <div>
             {
-              formData.sports.map((s)=> <div key={s}> {s} 
-              <button  name='sport' id={s}  ></button>
-              </div> )
+              formData.sports.map((s) => <div key={s}> {s} <button  name='sport' id={s}  ></button></div>)
             }
-            </div> 
-            {errors.sports && <p className={styles.error} >{errors.sports}</p>}
+          </div> 
+          {errors.sports && <p className={styles.error}>{errors.sports}</p>}
 
       <label className={styles.formLabel}>Imagen:</label>
       <input
