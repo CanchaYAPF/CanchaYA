@@ -54,7 +54,8 @@ const getAllFields = async (name) => {
         price:field.price,
         shift:shifs,
         paymentMethod:pays,
-        service:servs
+        service:servs,
+        status:field.status
           
           
           

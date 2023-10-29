@@ -41,6 +41,10 @@ module.exports = (sequelize) => {
       shift:{
         type:DataTypes.ARRAY(DataTypes.STRING)
       },
+      status:{
+        type:DataTypes.BOOLEAN,
+        defaultValue: true
+      }
       
 
     },
