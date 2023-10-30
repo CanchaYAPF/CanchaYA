@@ -3,7 +3,7 @@ const { Router } = require("express");
 
 const reviewRouter = Router();
 
-reviewRouter.get("/", getReviewsHr);
+reviewRouter.get("/:id", getReviewsHr);
 reviewRouter.post("/", postReviewsHr);
 
 module.exports = reviewRouter;
