@@ -52,10 +52,10 @@ const getAllFields = async (name) => {
       };
     });
 
-  const mockNormal = normalize(mock);
+  // const mockNormal = normalize(mock);...mockNormal
   const database = normalize(allFields);
 
-  return [...database, ...mockNormal];
+  return [...database];
 };
 
 module.exports = getAllFields;

@@ -5,6 +5,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 const routes = require("./routes/router.js");
 
+const generateFields = require("../src/utils/bulk.js");
+
 require("./db.js");
 
 const server = express();
@@ -37,5 +39,7 @@ server.use((err, req, res, next) => {
   console.error(err);
   res.status(status).send(message);
 });
+
+generateFields();
 
 module.exports = server;
