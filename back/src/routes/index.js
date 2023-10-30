@@ -6,6 +6,7 @@ const sportsRouter = require("./sportsRouter");
 const favoriteRouter = require("./favoriteRouter");
 const mercadoPagoRouter = require("./mpRoutes");
 const adminRouter= require("./adminRouter");
+const recoveryRouter = require("./recoveryRouter");
 
 module.exports = {
   userRouter,
@@ -15,5 +16,6 @@ module.exports = {
   sportsRouter,
   favoriteRouter,
   mercadoPagoRouter,
-  adminRouter
+  adminRouter,
+  recoveryRouter
 };

@@ -75,8 +75,7 @@ const handleForgotPasswordClick = () => {
     }
 
     try {
-      // Enviar una solicitud al servidor para iniciar el proceso de recuperación de contraseña.
-      const response = await axios.post('ruta_del_servicio_de_recuperacion_de_contrasena', {
+      const response = await axios.post('/forgot-password', {
         email: email,
       });
 
