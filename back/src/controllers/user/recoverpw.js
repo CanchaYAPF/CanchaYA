@@ -27,13 +27,15 @@ const requestPasswordRecovery = (req, res) => {
       if (!emailExists) {
         return res.status(404).json({ error: 'Correo electrónico no encontrado' });
       }
-    
+
+      // Genera un token de recuperación único que incluye la dirección de correo electrónico.
       const token = jwt.sign({ mail }, JWT_SECRET, { expiresIn: '1h' });
 
-     
+      // Crea un enlace de recuperación que incluye el token.
       const recoveryLink = `http://127.0.0.1:5173/reset-password?token=${token}`;
 
-          const msg = {
+      // Envia un correo electrónico al usuario con el enlace de recuperación.
+      const msg = {
         to: mail,
         from: 'grtechPF@gmail.com',
         subject: 'Recuperación de contraseña',
