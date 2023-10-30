@@ -8,7 +8,7 @@ const initialState = {
  fieldData: [],
  currentField: {} ,
  reviewData: [],
- userData: {},
+ userData: [],
  sportData: [],
  allFieldsBackUp: [],
  filteredFields: [],
