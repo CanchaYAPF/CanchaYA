@@ -7,8 +7,10 @@ import {Link} from "react-router-dom"
 import style from './Review.module.css';
 
 
-const FormReview = () => {
+const FormReview = (fieldId) => {
 
+
+  const id = fieldId.fieldId
 
   const token = sessionStorage.getItem(`token`)
   const googleToken= sessionStorage.getItem('googleToken')
@@ -16,7 +18,7 @@ const FormReview = () => {
 
 
 
-  const {id} = useParams();
+  
 
 //estado local para cada input
   const [state, setState] = useState({

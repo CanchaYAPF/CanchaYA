@@ -1,10 +1,11 @@
 const { Review } = require("../../db");
 
-const getReviews = async () => {
-
+const getReviews = async (id ) => {
+console.log(id)
 
   try {
-    const allReviews = await Review.findAll();
+    const allReviews = await Review.findAll({where: { FieldId: id  }});
+    
     return allReviews;
 
 
