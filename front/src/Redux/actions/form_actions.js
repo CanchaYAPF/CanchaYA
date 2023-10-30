@@ -86,15 +86,11 @@ export function  createReview(data) {
       
       const result = await axios.post(`http://localhost:3001/reviews/`, data)
   
-      const reviews = await axios.get(`http://localhost:3001/reviews/`)
-      const alRedu = reviews.data
+      
   
   
   
-      return dispatch({
-        type: GET_REVIEW,
-        payload: alRedu
-      });
+      return result
       
   
   // return dispatch({type: GET_SPORTS, payload: sports});
