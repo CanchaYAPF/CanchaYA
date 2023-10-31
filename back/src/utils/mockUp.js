@@ -10,7 +10,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde", "Noche"],
     price: 18000,
-    Sports: [{ name: "Básquet" }, { name: "Fútbol" }],
+    Sports: [{ name: "Básquet" }],
     status: true,
   },
   {
@@ -80,7 +80,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Noche"],
     price: 14000,
-    Sports: [{ name: "Padel" }, { name: "Básquet" }],
+    Sports: [{ name: "Padel" }],
     status: true,
   },
   {
@@ -94,7 +94,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Tarde", "Noche"],
     price: 8000,
-    Sports: [{ name: "Tenis" }, { name: "Vóley" }],
+    Sports: [{ name: "Tenis" }],
     status: true,
   },
   {
@@ -122,7 +122,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Noche"],
     price: 7000,
-    Sports: [{ name: "Tenis" }, { name: "Vóley" }],
+    Sports: [{ name: "Tenis" }],
     status: true,
   },
   {
@@ -178,7 +178,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Noche"],
     price: 10000,
-    Sports: [{ name: "Fútbol" }, { name: "Padel" }],
+    Sports: [{ name: "Fútbol" }],
     status: true,
   },
   {
@@ -234,7 +234,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde"],
     price: 11500,
-    Sports: [{ name: "Fútbol" }, { name: "Padel" }],
+    Sports: [{ name: "Padel" }],
     status: true,
   },
   {
@@ -276,7 +276,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Tarde", "Noche"],
     price: 4500,
-    Sports: [{ name: "Básquet" }, { name: "Vóley" }],
+    Sports: [{ name: "Básquet" }],
     status: true,
   },
   {
@@ -290,7 +290,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Noche"],
     price: 13000,
-    Sports: [{ name: "Básquet" }, { name: "Vóley" }],
+    Sports: [{ name: "Vóley" }],
     status: true,
   },
   {
@@ -304,7 +304,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde"],
     price: 10000,
-    Sports: [{ name: "Vóley" }, { name: "Padel" }],
+    Sports: [{ name: "Padel" }],
     status: true,
   },
   {
@@ -360,7 +360,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Tarde", "Noche"],
     price: 6000,
-    Sports: [{ name: "Padel" }, { name: "Vóley" }],
+    Sports: [{ name: "Padel" }],
     status: true,
   },
   {
@@ -374,7 +374,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Noche"],
     pice: 8900,
-    Sports: [{ name: "Tenis" }, { name: "Básquet" }],
+    Sports: [{ name: "Básquet" }],
     status: true,
   },
   {
@@ -402,7 +402,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde", "Noche"],
     pice: 9200,
-    Sports: [{ name: "Fútbol" }, { name: "Básquet" }],
+    Sports: [{ name: "Básquet" }],
     status: true,
   },
   {
@@ -430,7 +430,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Tarde", "Noche"],
     price: 13000,
-    Sports: [{ name: "Padel" }, { name: "Básquet" }],
+    Sports: [{ name: "Padel" }],
     status: true,
   },
   {
@@ -472,7 +472,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Noche"],
     price: 14000,
-    Sports: [{ name: "Fútbol" }, { name: "Básquet" }],
+    Sports: [{ name: "Básquet" }],
     status: true,
   },
   {
@@ -486,7 +486,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde"],
     price: 9000,
-    Sports: [{ name: "Tenis" }, { name: "Fútbol" }],
+    Sports: [{ name: "Tenis" }],
     status: true,
   },
   {
@@ -500,7 +500,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde"],
     price: 16000,
-    Sports: [{ name: "Básquet" }, { name: "Fútbol" }, { name: "Tenis" }],
+    Sports: [{ name: "Fútbol" }],
     status: true,
   },
   {
@@ -514,7 +514,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde", "Noche"],
     price: 11000,
-    Sports: [{ name: "Vóley" }, { name: "Fútbol" }, { name: "Tenis" }],
+    Sports: [{ name: "Vóley" }],
     status: true,
   },
   {
@@ -528,7 +528,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde", "Noche"],
     price: 9000,
-    Sports: [{ name: "Padel" }, { name: "Fútbol" }],
+    Sports: [{ name: "Fútbol" }],
     status: true,
   },
   {
@@ -570,7 +570,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Tarde"],
     price: 11600,
-    Sports: [{ name: "Tenis" }, { name: "Fútbol" }],
+    Sports: [{ name: "Tenis" }],
     status: true,
   },
   {
@@ -626,7 +626,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Noche"],
     price: 12000,
-    Sports: [{ name: "Tenis" }, { name: "Fútbol" }],
+    Sports: [{ name: "Tenis" }],
     status: true,
   },
   {
@@ -640,7 +640,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde"],
     price: 11000,
-    Sports: [{ name: "Tenis" }, { name: "Padel" }, { name: "Básquet" }],
+    Sports: [{ name: "Básquet" }],
     status: true,
   },
   {
@@ -653,7 +653,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde", "Noche"],
     price: 11500,
-    Sports: [{ name: "Fútbol" }, { name: "Vóley" }, { name: "Básquet" }],
+    Sports: [{ name: "Fútbol" }],
     status: true,
   },
   {
@@ -667,7 +667,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde"],
     price: 10500,
-    Sports: [{ name: "Vóley" }, { name: "Básquet" }],
+    Sports: [{ name: "Vóley" }],
     status: true,
   },
   {
@@ -681,7 +681,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde"],
     price: 7000,
-    Sports: [{ name: "Vóley" }, { name: "Tenis" }],
+    Sports: [{ name: "Tenis" }],
     status: true,
   },
   {
@@ -694,7 +694,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana"],
     price: 9500,
-    Sports: [{ name: "Padel" }, { name: "Vóley" }, { name: "Básquet" }],
+    Sports: [{ name: "Padel" }],
     status: true,
   },
   {
@@ -708,7 +708,7 @@ const mock = [
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde", "Noche"],
     price: 10000,
-    Sports: [{ name: "Padel" }, { name: "Básquet" }],
+    Sports: [{ name: "Fútbol" }],
     status: true,
   },
 ];
