@@ -3,8 +3,8 @@ const sgMail = require('./sendgridConfig');
 const { JWT_SECRET } = process.env;
 const { User } = require("../../db");
 
-const checkIfEmailExists = (email) => {
-  return User.findOne({
+const checkIfEmailExists = async (email) => {
+  return await User.findOne({
     where: {
       mail: email,
     },
@@ -17,17 +17,17 @@ const checkIfEmailExists = (email) => {
     });
 };
 
-const requestPasswordRecovery = (req, res) => {
+const requestPasswordRecovery = async (req, res) => {
   const { mail } = req.body;
-
-  checkIfEmailExists(mail)
+  console.log(await checkIfEmailExists(mail))
+  await checkIfEmailExists(mail)
     .then((emailExists) => {
       if (!emailExists) {
         return res.status(404).json({ error: 'Correo electrónico no encontrado' });
       }
 
       // Genera un token de recuperación único que incluye la dirección de correo electrónico.
-      const token = jwt.sign({ mail }, JWT_SECRET, { expiresIn: '1h' });
+      const token = jwt.sign({ mail }, 'secretKey', { expiresIn: '1h' });
 
       // Crea un enlace de recuperación que incluye el token.
       const recoveryLink = `http://127.0.0.1:5173/reset-password?token=${token}`;

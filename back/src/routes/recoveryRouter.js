@@ -4,7 +4,7 @@ const { Router } = require("express");
 
 const recoveryRouter = Router();
 
-recoveryRouter.post('/forgot-password', recoveryController.requestPasswordRecovery);
+recoveryRouter.post('/', recoveryController.requestPasswordRecovery);
 recoveryRouter.post('/reset-password', resetController.resetPassword);
 
 module.exports = recoveryRouter;

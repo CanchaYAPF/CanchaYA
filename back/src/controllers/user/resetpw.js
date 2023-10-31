@@ -5,7 +5,7 @@ const { User } = require("../../db");
 const resetPassword = (req, res) => {
   const { token, newPassword } = req.body;
 
-  jwt.verify(token, JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, 'secretKey', (err, decoded) => {
     if (err) {
       return res.status(400).json({ error: 'Token de recuperación no válido' });
     }
