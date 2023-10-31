@@ -10,7 +10,7 @@ const { DATABASE_URL } = process.env;
 
 const server = express();
 const pool = new pg.Pool({
-  connectionString: "postgres://vapret:RIGPh3z8xf0jtBZTUWG5lOquswM22hn5@dpg-cl052v2s1bgc738t02rg-a.oregon-postgres.render.com/canchasya",
+  connectionString: "postgres://vapret:RIGPh3z8xf0jtBZTUWG5lOquswM22hn5@dpg-cl052v2s1bgc738t02rg-a/canchasya",
   // ssl: true
 });
 
