@@ -8,7 +8,7 @@ const pg= require ("pg")
 const { DATABASE_URL } = process.env;
 
 const server = express();
-const pool = new pg.Pool({
+const pool = new pg.Pool({ 
   connectionString: process.env.DATABASE_URL,
    ssl: true
 });
@@ -19,7 +19,7 @@ pool.query('SELECT NOW()', (err, result) => {
   } else {
     console.log('Current date and time from the database:', result.rows[0].now);
   }
-  pool.end(); // Cierra la piscina de conexiones cuando hayas terminado.
+  pool.end(); 
 });
 
 server.name = "API";
