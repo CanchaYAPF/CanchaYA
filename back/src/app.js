@@ -4,10 +4,14 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const routes = require("./routes/router.js");
-
-require("./db.js");
+const pg= require ("pg")
+const { DATABASE_URL } = process.env;require("./db.js");
 
 const server = express();
+new pg.Pool ({
+  connectionString: process.env.DATABASE_URL,
+  // ssl:true
+})
 
 server.name = "API";
 
