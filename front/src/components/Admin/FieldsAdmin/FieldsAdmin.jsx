@@ -9,6 +9,7 @@ import styles from './FieldsAdmin.module.css'; // Importa el archivo CSS
 const FieldsAdmin = ()=>{
 
     const allFields =  useSelector(state=>state.allFieldsBackUp);
+    console.log("allfields", allFields)
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const jwtToken = sessionStorage.getItem(`token`)
@@ -26,6 +27,7 @@ const FieldsAdmin = ()=>{
         try {
            const {data} = await axios.patch(`http://localhost:3001/admin/fields/${id}`)
            dispatch(getField()); 
+           return data
         } catch (error) {
            console.log(error)
         }

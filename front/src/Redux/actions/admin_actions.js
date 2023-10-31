@@ -1,4 +1,4 @@
-import { GET_USERS,NOT_ALLOW, DESACTIVE_FIELD } from "../types/form_types";
+import { GET_USERS,NOT_ALLOW } from "../types/form_types";
 import axios from 'axios'
 
 export const getUsers = ()=> async dispatch => {
@@ -21,7 +21,6 @@ export const getUsers = ()=> async dispatch => {
           error: error.response.data.msg });
       }
     }
-  
   }
 
   // export const desactiveField = (id )=> async dispatch => {

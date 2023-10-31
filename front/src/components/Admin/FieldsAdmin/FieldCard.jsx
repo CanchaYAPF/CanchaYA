@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 const FieldCard = ({field, handlerDesactive})=>{ // Aquí desestructuramos field de las props
-
+  console.log(field.status ? "Activo": "Desactivo")
     return(
         <tr key={field.id}>
         <td>{field.name}</td>

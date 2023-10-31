@@ -1,7 +1,5 @@
 const { Field, Sport } = require("../../db");
 
-const mock = require ("../../../mockUp")
-
 const getAllFields = async () => {
   const allFields = await Field.findAll({
     include: {
@@ -46,8 +44,8 @@ const getAllFields = async () => {
   });
 
 const database = normalize(allFields)
-const mockUp=normalize(mock)
-  return [...database,...mockUp];
+
+  return database
 };
 
 module.exports = getAllFields;
