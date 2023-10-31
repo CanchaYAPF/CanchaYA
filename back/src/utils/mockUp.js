@@ -31,7 +31,7 @@ const mock = [
     name: "Saavedra Básquet",
     image:
       "https://media.tycsports.com/files/2020/06/29/105088/futbol-5_416x234.jpg?v=2",
-    service: "Kiosco",
+    service: ["Kiosco"],
     address: "Buenos Aires 353",
     city: "Buenos Aires",
     phone: "1148219199",
@@ -45,7 +45,7 @@ const mock = [
     name: "Canchas Vóley",
     image:
       "https://i2.wp.com/lacalleclub.com/wp-content/uploads/2018/11/alquiler-cancha-futbol-la-calle-proximamente-2.jpg?fit=1500%2C750&ssl=1",
-    service: "Kiosco",
+    service: ["Kiosco"],
     address: "Av José Ignacio de la Roza Oeste 1946",
     city: "Buenos Aires",
     phone: "1144834219",
@@ -106,7 +106,7 @@ const mock = [
     city: "Buenos Aires",
     phone: "1137554228",
     paymentMethod: ["MercadoPago"],
-    shift: "Noche",
+    shift: ["Noche"],
     price: 9000,
     Sports: [{ name: "Fútbol" }],
     status: true,
@@ -134,7 +134,7 @@ const mock = [
     city: "Rosario",
     phone: "1134248988",
     paymentMethod: ["MercadoPago"],
-    shift: "Mañana",
+    shift: ["Mañana"],
     price: 6000,
     Sports: [{ name: "Fútbol" }],
     status: true,
@@ -176,7 +176,7 @@ const mock = [
     city: "Buenos Aires",
     phone: "1137224367",
     paymentMethod: ["MercadoPago"],
-    shift: "Noche",
+    shift:[ "Noche"],
     price: 10000,
     Sports: [{ name: "Fútbol" }, { name: "Padel" }],
     status: true,
@@ -255,7 +255,7 @@ const mock = [
     name: "Chapu Canchas",
     image:
       "https://i.pinimg.com/550x/00/d4/ea/00d4eaf5da36ee2f3fb79de64292ebd5.jpg",
-    service: "Kiosco",
+    service: ["Kiosco"],
     address: "Av General Las Heras 558",
     city: "Rosario",
     phone: "1153447174",
@@ -269,7 +269,7 @@ const mock = [
     name: "Blanco Encalada Básquet",
     image:
       "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-    service: "Kiosco",
+    service: ["Kiosco"],
     address: "Av 24 de Septiembre 893",
     city: "Rosario",
     phone: "1190142133",
@@ -283,7 +283,7 @@ const mock = [
     name: "San Lorenzo de Rosario",
     image:
       "https://media.tycsports.com/files/2020/06/29/105088/futbol-5_416x234.jpg?v=2",
-    service: "Kiosco",
+    service: ["Kiosco"],
     address: "Av Entre Ríos 2139",
     city: "Rosario",
     phone: "1114921112",
@@ -297,7 +297,7 @@ const mock = [
     name: "Constitución",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-pfhKhLFIolfVwVPzlKHgp1k2UOzON_tE6A&usqp=CAU",
-    service: "Estacionamiento",
+    service: ["Estacionamiento"],
     address: "Maitén 7869",
     city: "Rosario",
     phone: "1154225523",
@@ -311,7 +311,7 @@ const mock = [
     name: "Messi D10S",
     image:
       "https://i2.wp.com/lacalleclub.com/wp-content/uploads/2018/11/alquiler-cancha-futbol-la-calle-proximamente-2.jpg?fit=1500%2C750&ssl=1",
-    service: "Estacionamiento",
+    service: ["Estacionamiento"],
     address: "	Av Pres. Figueroa Alcorta 6402",
     city: "Rosario",
     phone: "1138334252",
@@ -325,7 +325,7 @@ const mock = [
     name: "Di María Fútbol",
     image:
       "https://i.pinimg.com/550x/00/d4/ea/00d4eaf5da36ee2f3fb79de64292ebd5.jpg",
-    service: "Estacionamiento",
+    service: ["Estacionamiento"],
     address: "Av Rafael Núñez 4684",
     city: "Rosario",
     phone: "1145422552",
@@ -339,7 +339,7 @@ const mock = [
     name: "Vóley Rosario",
     image:
       "https://media.tycsports.com/files/2020/06/29/105088/futbol-5_416x234.jpg?v=2",
-    service: "Estacionamiento",
+    service: ["Estacionamiento"],
     address: "9 de Julio",
     city: "Rosario",
     phone: "1111474565",
@@ -353,7 +353,7 @@ const mock = [
     name: "Rosario Sur",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-pfhKhLFIolfVwVPzlKHgp1k2UOzON_tE6A&usqp=CAU",
-    service: "Tribunas",
+    service: ["Tribunas"],
     address: "Dique I Puerto Santa Fe",
     city: "Rosario",
     phone: "1142249052",
@@ -367,7 +367,7 @@ const mock = [
     name: "Rosario Norte",
     image:
       "https://i2.wp.com/lacalleclub.com/wp-content/uploads/2018/11/alquiler-cancha-futbol-la-calle-proximamente-2.jpg?fit=1500%2C750&ssl=1",
-    service: "Vestuarios",
+    service: ["Vestuarios"],
     address: "Av Concepción Arenal",
     city: "Rosario",
     phone: "1154212006",
@@ -381,7 +381,7 @@ const mock = [
     name: "F5 Ahora",
     image:
       "https://i.pinimg.com/550x/00/d4/ea/00d4eaf5da36ee2f3fb79de64292ebd5.jpg",
-    service: "Duchas",
+    service: ["Duchas"],
     address: "Av Duarte Quirós 69",
     city: "Rosario",
     phone: "1174262114",
@@ -479,7 +479,7 @@ const mock = [
     name: "Federico Lacroze",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBDc0iMRXbcqGBgO94oPh8EM0DQmF9-h7smw&usqp=CAU",
-    service: "Kiosco",
+    service: ["Kiosco"],
     address: "Juncal 1230",
     city: "Córdoba",
     phone: "1142166038",
@@ -493,7 +493,7 @@ const mock = [
     name: "Sol de Mayo",
     image:
       "https://media.tycsports.com/files/2020/06/29/105088/futbol-5_416x234.jpg?v=2",
-    service: "Duchas",
+    service: ["Duchas"],
     address: "Av Del Libertador 2047",
     city: "Córdoba",
     phone: "1114214910",
@@ -507,7 +507,7 @@ const mock = [
     name: "Club Parque",
     image:
       "https://i.pinimg.com/550x/00/d4/ea/00d4eaf5da36ee2f3fb79de64292ebd5.jpg",
-    service: "Duchas",
+    service: ["Duchas"],
     address: "Av Rafael Núñez 5019",
     city: "Córdoba",
     phone: "1124372836",
@@ -521,7 +521,7 @@ const mock = [
     name: "Cullen Padel",
     image:
       "https://i2.wp.com/lacalleclub.com/wp-content/uploads/2018/11/alquiler-cancha-futbol-la-calle-proximamente-2.jpg?fit=1500%2C750&ssl=1",
-    service: "Duchas",
+    service: ["Duchas"],
     address: "José Aaron Salmún Feijóo 928",
     city: "Córdoba",
     phone: "1183432027",
@@ -568,7 +568,7 @@ const mock = [
     city: "Córdoba",
     phone: "1174843653",
     paymentMethod: ["MercadoPago"],
-    shift: "Tarde",
+    shift: ["Tarde"],
     price: 11600,
     Sports: [{ name: "Tenis" }, { name: "Fútbol" }],
     status: true,
@@ -582,7 +582,7 @@ const mock = [
     city: "Córdoba",
     phone: "1114980835",
     paymentMethod: ["MercadoPago"],
-    shift: "Tarde",
+    shift:[ "Tarde"],
     price: 6000,
     Sports: [{ name: "Vóley" }],
     status: true,
