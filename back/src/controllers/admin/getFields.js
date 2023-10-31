@@ -1,6 +1,6 @@
 const { Field, Sport } = require("../../db");
 
-const mock = require ("../../../../mockUp")
+const mock = require ("../../../mockUp")
 
 const getAllFields = async () => {
   const allFields = await Field.findAll({
