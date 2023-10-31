@@ -9,9 +9,11 @@ const getAllFields = async (name) => {
       through: { attributes: [] },
     },
   });
+
   if (!allFields.length) {
     const bulk = await Field.bulkCreate(mock, { include: [Sport] });
   }
+
   const allFieldsFinal = await Field.findAll({
     include: {
       model: Sport,
@@ -19,6 +21,7 @@ const getAllFields = async (name) => {
       through: { attributes: [] },
     },
   });
+
   if (name) {
     fieldsByName = allFields.filter((field) =>
       field.name.toLowerCase().startsWith(name.toLowerCase())
@@ -29,6 +32,7 @@ const getAllFields = async (name) => {
       throw new Error(`No se encontró a ninguna cancha por el nombre: ${name}`);
     }
   }
+
   const normalize = (arr) =>
     arr?.map((field) => {
       const sport = field.Sports?.map((objeto) => objeto.name);

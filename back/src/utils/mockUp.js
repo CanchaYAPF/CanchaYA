@@ -47,7 +47,7 @@ const mock = [
       "https://i2.wp.com/lacalleclub.com/wp-content/uploads/2018/11/alquiler-cancha-futbol-la-calle-proximamente-2.jpg?fit=1500%2C750&ssl=1",
     service: ["Kiosco"],
     address: "Av José Ignacio de la Roza Oeste 1946",
-    city: "Buenos Aires",
+    city: "Santa Fe",
     phone: "1144834219",
     paymentMethod: ["MercadoPago"],
     shift: ["Tarde", "Noche"],
@@ -75,7 +75,7 @@ const mock = [
       "https://infodeportes.com.ar/wp-content/uploads/2023/03/Furor-por-los-alquileres-de-canchas-de-futbol.-Cuesta-conseguir-turnos12.jpg",
     service: ["Tribunas", "Vestuarios"],
     address: "Av Rioja Norte 304",
-    city: "Buenos Aires",
+    city: "San Miguel de Tucumán",
     phone: "1134474210",
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Noche"],
@@ -170,13 +170,13 @@ const mock = [
   {
     name: "Fútbol Total",
     image:
-      "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
+      "https://muchosnegociosrentables.com/wp-content/uploads/2015/08/campo-de-f%C3%BAtbol-5-o-7.jpg",
     service: ["Estacionamiento", "Kiosco"],
     address: "Santa Rosa 826",
     city: "Buenos Aires",
     phone: "1137224367",
     paymentMethod: ["MercadoPago"],
-    shift:[ "Noche"],
+    shift: ["Noche"],
     price: 10000,
     Sports: [{ name: "Fútbol" }, { name: "Padel" }],
     status: true,
@@ -324,7 +324,7 @@ const mock = [
   {
     name: "Di María Fútbol",
     image:
-      "https://i.pinimg.com/550x/00/d4/ea/00d4eaf5da36ee2f3fb79de64292ebd5.jpg",
+      "https://muchosnegociosrentables.com/wp-content/uploads/2015/08/campo-de-f%C3%BAtbol-5-o-7.jpg",
     service: ["Estacionamiento"],
     address: "Av Rafael Núñez 4684",
     city: "Rosario",
@@ -380,7 +380,7 @@ const mock = [
   {
     name: "F5 Ahora",
     image:
-      "https://i.pinimg.com/550x/00/d4/ea/00d4eaf5da36ee2f3fb79de64292ebd5.jpg",
+      "https://muchosnegociosrentables.com/wp-content/uploads/2015/08/campo-de-f%C3%BAtbol-5-o-7.jpg",
     service: ["Duchas"],
     address: "Av Duarte Quirós 69",
     city: "Rosario",
@@ -582,7 +582,7 @@ const mock = [
     city: "Córdoba",
     phone: "1114980835",
     paymentMethod: ["MercadoPago"],
-    shift:[ "Tarde"],
+    shift: ["Tarde"],
     price: 6000,
     Sports: [{ name: "Vóley" }],
     status: true,
@@ -590,7 +590,7 @@ const mock = [
   {
     name: "Silvera Fútbol",
     image:
-      "https://i2.wp.com/lacalleclub.com/wp-content/uploads/2018/11/alquiler-cancha-futbol-la-calle-proximamente-2.jpg?fit=1500%2C750&ssl=1",
+      "https://muchosnegociosrentables.com/wp-content/uploads/2015/08/campo-de-f%C3%BAtbol-5-o-7.jpg",
     service: ["Duchas", "Vestuarios"],
     address: "Av Corrientes 1343",
     city: "Córdoba",
@@ -635,7 +635,7 @@ const mock = [
       "https://i2.wp.com/lacalleclub.com/wp-content/uploads/2018/11/alquiler-cancha-futbol-la-calle-proximamente-2.jpg?fit=1500%2C750&ssl=1",
     service: ["Kiosco", "Vestuarios"],
     address: "Torres 2543",
-    city: "Santa fe",
+    city: "Santa Fe",
     phone: "1198745605",
     paymentMethod: ["MercadoPago"],
     shift: ["Mañana", "Tarde"],
