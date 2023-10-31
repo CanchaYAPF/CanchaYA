@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -10,8 +9,8 @@ const { DATABASE_URL } = process.env;
 
 const server = express();
 const pool = new pg.Pool({
-  connectionString: "postgres://vapret:RIGPh3z8xf0jtBZTUWG5lOquswM22hn5@dpg-cl052v2s1bgc738t02rg-a/canchasya",
-  // ssl: true
+  connectionString: process.env.DATABASE_URL,
+   ssl: true
 });
 
 pool.query('SELECT NOW()', (err, result) => {
