@@ -1,6 +1,8 @@
 /* Estilo para el contenedor principal */
-.bookingcontainer {
-    margin: 20px;
+.bookingcards {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila si no caben en una fila */
+    justify-content: space-between; /* Espaciado entre las tarjetas */
 }
 
 /* Estilo para el título "Mis Reservas" */

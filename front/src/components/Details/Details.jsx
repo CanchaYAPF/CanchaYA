@@ -57,7 +57,7 @@ function Details() {
         </div>
         
       </div>
-      < Reviews/>
+      < Reviews idField={id}/>
     </div> 
   );
 }

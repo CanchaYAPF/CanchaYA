@@ -5,10 +5,14 @@ import "./Review.module.css"
 import {createReview} from "../../Redux/actions/form_actions"
 import {Link} from "react-router-dom"
 import style from './Review.module.css';
+import { useNavigate } from 'react-router-dom';
 
 
-const FormReview = () => {
 
+const FormReview = (fieldId) => {
+
+
+  const id = fieldId.fieldId
 
   const token = sessionStorage.getItem(`token`)
   const googleToken= sessionStorage.getItem('googleToken')
@@ -16,7 +20,7 @@ const FormReview = () => {
 
 
 
-  const {id} = useParams();
+  
 
 //estado local para cada input
   const [state, setState] = useState({
@@ -30,8 +34,8 @@ const FormReview = () => {
   })
 //estado para los errores de cada input
   const [error, setError] = useState({
-    rate:"cannot be null",
-    description:"cannot be null",
+    rate:"agrega la calificación",
+    description:"agrega la descripción",
     
 })
 
@@ -40,12 +44,12 @@ const FormReview = () => {
   //fucion que valida en cada onChange
   const validate = (stateAux, name)=>{
     if(name==="rate"){
-      if(stateAux.rate==="") setError({...error, rate:"incomplete rate"})
+      if(stateAux.rate==="") setError({...error, rate:"agregue la calificación"})
       else setError({...error, rate:""})
     }
 
     if(name==="description"){
-      if(stateAux.description==="") setError({...error, description:"incomplete description."})
+      if(stateAux.description==="") setError({...error, description:"Complete la descripción."})
       else setError({...error, description:""})
     }
 
@@ -78,12 +82,17 @@ const FormReview = () => {
       [event.target.name]: event.target.value
     }, event.target.name)
   }
+  const navigate = useNavigate();
 
+const handleSubmit = (event) => {
+  event.preventDefault();
+  dispatch(createReview(state));
 
-  const handleSubmit = (event) =>{
-    event.preventDefault()
-    dispatch(createReview(state))
-  }
+  window.alert('Revisión enviada. ¡Gracias por visitarnos!');
+
+  navigate('/'); // Reemplaza '/ ' con la URL de tu página de inicio
+};
+  
 
 
   return (
@@ -96,7 +105,7 @@ const FormReview = () => {
         
         
         <h2>Review</h2>
-        <label>Rate: </label>
+        <label>Califición: </label>
         
         
 
@@ -113,7 +122,7 @@ const FormReview = () => {
 
 
 
-        <label>Description: </label>
+        <label>Descripción: </label>
         <input name='description' onChange={handleChange} type="text" />
         <label className='form-error'>{error.description}</label>
         

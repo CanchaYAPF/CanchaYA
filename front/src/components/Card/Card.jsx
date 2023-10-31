@@ -29,9 +29,10 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
     }
   };
 
+  
   useEffect(() => {
     myFavorites.forEach((fav) => {
-      if (fav.id === id) {
+      if (fav.idsFields === id) {
         setIsFav(true);
       }
     });

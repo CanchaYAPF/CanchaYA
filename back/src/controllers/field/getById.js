@@ -1,19 +1,22 @@
 const { Field, Sport } = require("../../db");
-const mock = require ("../../../../mockUp")
+const mock = require("../../../mockUp");
 
 const googleMapsApiKey = "AIzaSyAV__VfZf0oOEDAkQIhYskp9KSBHN9ZxNQ";
 
 const getById = async (id, source) => {
-  const result = source === "api" ? mock.filter((f) => f.id === id) : await Field.findAll({
-    where: { id: id },
-    include: {
-      model: Sport,
-      attributes: ["name"],
-      through: {
-        attributes: [],
-      },
-    },
-  });
+  const result =
+    source === "api"
+      ? mock.filter((f) => f.id === id)
+      : await Field.findAll({
+          where: { id: id },
+          include: {
+            model: Sport,
+            attributes: ["name"],
+            through: {
+              attributes: [],
+            },
+          },
+        });
 
   const normalize = (arr) =>
     arr.map((field) => {

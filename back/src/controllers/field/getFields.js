@@ -1,6 +1,6 @@
 const { Field, Sport } = require("../../db");
 
-const mock = require ("../../../../mockUp")
+const mock = require("../../../mockUp");
 
 const getAllFields = async (name) => {
   const allFields = await Field.findAll({
@@ -23,50 +23,40 @@ const getAllFields = async (name) => {
     }
   }
 
+  const normalize = (arr) =>
+    arr.map((field) => {
+      const sport = field.Sports?.map((objeto) => objeto.name);
+      const sports = sport?.join(", ");
 
-  
+      const shif = field.shift?.map((objeto) => objeto);
+      const shifs = shif?.join(", ");
 
+      const pay = field.paymentMethod?.map((objeto) => objeto);
+      const pays = pay?.join(", ");
 
-  const normalize = (arr) => 
-  arr.map((field) => {
-  
-  
-      const sport = field.Sports?.map(objeto => objeto.name);
-      const sports = sport?.join(', ');
+      const ser = field.service?.map((objeto) => objeto);
+      const servs = ser?.join(", ");
 
-      const shif = field.shift?.map(objeto => objeto);
-      const shifs = shif?.join(', ');
-
-      const pay = field.paymentMethod?.map(objeto => objeto);
-      const pays = pay?.join(', ');
-
-      const ser = field.service?.map(objeto => objeto);
-      const servs = ser?.join(', ');
-  
       return {
-        id :field.id,
-        name :field.name,
-        image:field.image,
+        id: field.id,
+        name: field.name,
+        image: field.image,
         sports: sports,
-        address:field.address,
-        city:field.city,
-        phone:field.phone,
-        price:field.price,
-        shift:shifs,
-        paymentMethod:pays,
-        service:servs,
+        address: field.address,
+        city: field.city,
+        phone: field.phone,
+        price: field.price,
+        shift: shifs,
+        paymentMethod: pays,
+        service: servs,
         status:field.status
-          
-          
-          
       };
-  });
+    });
 
+  const mockNormal = normalize(mock);
+  const database = normalize(allFields);
 
-const mockNormal = normalize(mock)
-const database = normalize(allFields)
-
-  return [...database,...mockNormal];
+  return [...database, ...mockNormal];
 };
 
 module.exports = getAllFields;
