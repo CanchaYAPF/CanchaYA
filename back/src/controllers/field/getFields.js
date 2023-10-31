@@ -1,34 +1,40 @@
 const { Field, Sport } = require("../../db");
 
-// const mock = require("../../../../mockUp");
+const aux = [
+  {
+    name: "Fútbol Cancha",
+    city: "Buenos Aires",
+    price: 10000,
+    image:
+      "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
+    Sports: ["Fútbol", "Básquet"],
+  },
+  {
+    name: "F5 Canchas",
+    city: "Buenos Aires",
+    price: 15000,
+    image:
+      "https://i.pinimg.com/550x/00/d4/ea/00d4eaf5da36ee2f3fb79de64292ebd5.jpg",
+    Sports: ["Fútbol"],
+  },
+];
 
 const getAllFields = async (name) => {
-  const allFields = await Field.bulkCreate([
-    {
-      name: "Fútbol Cancha",
-      city: "Buenos Aires",
-      price: 10000,
-      image:
-        "https://www.neuqueninforma.gob.ar/wp-content/uploads/2022/10/web-Cancha-de-cesped-sintetico-El-Alamito-46.jpg",
-      Sports: [{ name: "fulbo" }, { name: "basket" }],
+  aux.map((f) => {
+    if (f) {
+      Field.findOrCreate({
+        where: { name: f.name, city: f.city, price: f.price, image: f.image },
+      });
+    }
+  });
+
+  const allFields = await Field.findAll({
+    include: {
+      model: Sport,
+      attributes: ["name"],
+      through: { attributes: [] },
     },
-    {
-      name: "F5 Canchas",
-      city: "Buenos Aires",
-      price: 15000,
-      image:
-        "https://i.pinimg.com/550x/00/d4/ea/00d4eaf5da36ee2f3fb79de64292ebd5.jpg",
-      Sports: [{ name: "fulbo" }],
-    },
-  ]).then(
-    await Field.findAll({
-      include: {
-        model: Sport,
-        attributes: ["name"],
-        through: { attributes: [] },
-      },
-    })
-  );
+  });
 
   if (name) {
     fieldsByName = allFields.filter((field) =>
