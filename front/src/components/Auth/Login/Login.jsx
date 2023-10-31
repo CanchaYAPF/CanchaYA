@@ -54,39 +54,7 @@ const Login = () => {
       alert("Error al iniciar sesión: " + error.message);
     } 
  }
- const [isRevealPwd, setIsRevealPwd] = useState(false);
- const [showModal, setShowModal] = useState(false);
- const emailRef = useRef('');
-
- const toggleModal = () => {
-  setShowModal(!showModal);
-};
-
-const handleForgotPasswordClick = () => {
-  toggleModal();
-};
-
-  const handleForgotPasswordSubmit = async (e) => {
-    e.preventDefault();
-    const email = emailRef.current.value;
-    if (!email) {
-      alert('Por favor, ingrese su correo electrónico.');
-      return;
-    }
-
-    try {
-      const response = await axios.post('/forgot-password', {
-        email: email,
-      });
-
-      alert('Se ha enviado un enlace de recuperación de contraseña a su correo electrónico.');
-      toggleModal();
-    } catch (error) {
-      console.error('Error al enviar el correo de recuperación de contraseña:', error);
-      alert('Error al enviar el correo de recuperación de contraseña.');
-    }
-  };
- 
+ const [isRevealPwd, setIsRevealPwd] = useState(false); 
 
   return (
     <div className={style.master}>
@@ -127,28 +95,10 @@ const handleForgotPasswordClick = () => {
                         className={style.passwordIcon}
                     />
           <div className={style.forgotPasswordLink}>
-          <button className={style.link} onClick={handleForgotPasswordClick}>
-        Olvidé mi contraseña
-      </button>
-
-      {showModal && (
-        <div className={style.modal}>
-          <div className={style.modalContent}>
-            <h2>Recuperar Contraseña</h2>
-            <form onSubmit={handleForgotPasswordSubmit}>
-              <label htmlFor="forgotEmail">E-mail: </label>
-              <input
-                placeholder="Escribí tu e-mail"
-                ref={emailRef}
-                id="forgotEmail"
-                type="email"
-              />
-              <button type="submit">Enviar correo de recuperación</button>
-            </form>
-            <button onClick={toggleModal}>Cerrar</button>
-          </div>
-        </div>
-      )}
+          <Link to= "/forgot-password">
+          <button className={style.link}> Olvidé mi contraseña </button>
+          
+          </Link>
           </div>
         </div>
         <div className={style.button}>

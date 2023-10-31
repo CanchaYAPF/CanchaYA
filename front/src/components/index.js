@@ -9,6 +9,7 @@ import Profile from "./Profile/Profile";
 import Booking from "./Booking/Booking";
 import Favorites from "./Favorites/Favorites"
 import Reviews from "./Review/getReviews"
+import Forgotpw from "./Auth/Login/Forgotpw"
 import Resetpw from "./Auth/Login/Resetpw"
 
-export { Login, NavBar, Home, SignUp, Form, Details, Profile, Booking, Favorites, Review, Reviews, Resetpw } 
+export { Login, NavBar, Home, SignUp, Form, Details, Profile, Booking, Favorites, Review, Reviews, Forgotpw, Resetpw } 
