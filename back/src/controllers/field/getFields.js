@@ -779,5 +779,4 @@ const getAllFields = async (name) => {
   const database = normalize(allFieldsFinal);
   return [...database];
 };
-
-module.exports = getAllFields;
+module.exports = { getAllFields, mock };

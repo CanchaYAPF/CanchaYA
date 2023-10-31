@@ -1,6 +1,6 @@
 const { Favorito, Field } = require("../../db");
 const jwt = require("jsonwebtoken");
-const mock = require("../../../mockUp");
+const mock = require("../field/getFields");
 
 const getAllFavs = async (id) => {
   const decoded = jwt.verify(id, "secretKey");
