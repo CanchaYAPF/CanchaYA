@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -5,13 +6,22 @@ const morgan = require("morgan");
 const cors = require("cors");
 const routes = require("./routes/router.js");
 const pg= require ("pg")
-const { DATABASE_URL } = process.env;require("./db.js");
+const { DATABASE_URL } = process.env;
 
 const server = express();
-new pg.Pool ({
-  connectionString: process.env.DATABASE_URL,
-  // ssl:true
-})
+const pool = new pg.Pool({
+  connectionString: "postgres://vapret:RIGPh3z8xf0jtBZTUWG5lOquswM22hn5@dpg-cl052v2s1bgc738t02rg-a.oregon-postgres.render.com/canchasya",
+  // ssl: true
+});
+
+pool.query('SELECT NOW()', (err, result) => {
+  if (err) {
+    console.error('Error executing query', err);
+  } else {
+    console.log('Current date and time from the database:', result.rows[0].now);
+  }
+  pool.end(); // Cierra la piscina de conexiones cuando hayas terminado.
+});
 
 server.name = "API";
 
