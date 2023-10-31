@@ -13,6 +13,8 @@ function MyBookings() {
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
   const [openModals, setOpenModals] = useState({});
 
+  console.log(bookingData)
+
   const openModal = (bookingId) => {
     setOpenModals((prevOpenModals) => ({
       ...prevOpenModals,
