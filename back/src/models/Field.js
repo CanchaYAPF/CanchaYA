@@ -11,7 +11,6 @@ module.exports = (sequelize) => {
       },
       name: {
         type: DataTypes.STRING,
-   
       },
       image: {
         type: DataTypes.TEXT,
@@ -19,27 +18,24 @@ module.exports = (sequelize) => {
       },
       service: {
         type: DataTypes.ARRAY(DataTypes.STRING),
- 
       },
       address: {
         type: DataTypes.STRING,
-  
       },
       city: {
         type: DataTypes.TEXT,
-   
       },
-      phone:{
+      phone: {
         type: DataTypes.STRING,
       },
-      price:{
+      price: {
         type: DataTypes.INTEGER,
       },
-      paymentMethod:{
-        type:DataTypes.ARRAY(DataTypes.STRING)
+      paymentMethod: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
-      shift:{
-        type:DataTypes.ARRAY(DataTypes.STRING)
+      shift: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
       status:{
         type:DataTypes.BOOLEAN,

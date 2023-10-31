@@ -1,5 +1,5 @@
 const { Field, Sport } = require("../../db");
-const mock = require("../../../mockUp");
+const mock = require("../../utils/mockUp");
 
 const googleMapsApiKey = "AIzaSyAV__VfZf0oOEDAkQIhYskp9KSBHN9ZxNQ";
 
