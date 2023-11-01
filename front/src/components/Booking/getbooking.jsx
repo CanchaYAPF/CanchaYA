@@ -42,7 +42,7 @@ function MyBookings() {
         </Link>
 
       
-        {bookingData.map((booking) => {
+        {bookingData?.map((booking) => {
           const bookingStartTime = new Date(booking.day + ' ' + booking.initialHour);
           const bookingEndTime = new Date(booking.day + ' ' + booking.finalHour);
 

@@ -25,7 +25,8 @@ const initialState = {
  },
  getAllUsers: [],
  error:"",
- getAllFieldsAdmin:[]
+ getAllFieldsAdmin:[],
+ bookingAdmin:[]
 };
 
 export default function formReducer(state = initialState, action) {
@@ -38,7 +39,8 @@ export default function formReducer(state = initialState, action) {
    case GET_BOOKING:
      return {
        ...state,
-       bookingData: action.data
+       bookingData: action.data,
+       bookingAdmin:action.data
      };
    case CREATE_FIELD:
      return {
