@@ -19,41 +19,46 @@ const checkIfEmailExists = async (email) => {
 
 const requestPasswordRecovery = async (req, res) => {
   const { mail } = req.body;
-  console.log(await checkIfEmailExists(mail))
-  await checkIfEmailExists(mail)
-    .then((emailExists) => {
-      if (!emailExists) {
-        return res.status(404).json({ error: 'Correo electrónico no encontrado' });
-      }
+  console.log(await checkIfEmailExists(mail));
+  
+  try {
+    const emailExists = await checkIfEmailExists(mail);
 
-      // Genera un token de recuperación único que incluye la dirección de correo electrónico.
-      const token = jwt.sign({ mail }, 'secretKey', { expiresIn: '1h' });
+    if (!emailExists) {
+      return res.status(404).json({ error: 'Correo electrónico no encontrado' });
+    }
 
-      // Crea un enlace de recuperación que incluye el token.
-      const recoveryLink = `http://localhost:3001/reset-password?token=${token}`;
+    // Genera un token de recuperación único que incluye la dirección de correo electrónico y un timestamp.
+    const tokenPayload = {
+      mail,
+      timestamp: Date.now(), // Agrega un timestamp
+    };
+    const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '1h' });
 
-      // Envia un correo electrónico al usuario con el enlace de recuperación.
-      const msg = {
-        to: mail,
-        from: 'grtechPF@gmail.com',
-        subject: 'Recuperación de contraseña',
-        text: 'Siga este enlace para restablecer su contraseña',
-        html: `<a href="${recoveryLink}">Haga clic aquí para restablecer su contraseña</a>`,
-      };
+    // Crea un enlace de recuperación que incluye el token.
+    const recoveryLink = `http://127.0.0.1:5173/reset-password?token=${token}`;
 
-      sgMail.send(msg)
-        .then(() => {
-          return res.status(200).json({ message: 'Correo de recuperación de contraseña enviado con éxito' });
-        })
-        .catch((error) => {
-          console.error('Error al enviar el correo de recuperación de contraseña:', error);
-          return res.status(500).json({ error: 'Error al enviar el correo de recuperación de contraseña' });
-        });
-    })
-    .catch((error) => {
-      console.error('Error al verificar la existencia del correo electrónico:', error);
-      return res.status(500).json({ error: 'Error al verificar la existencia del correo electrónico' });
-    });
+    // Envia un correo electrónico al usuario con el enlace de recuperación.
+    const msg = {
+      to: mail,
+      from: 'grtechPF@gmail.com',
+      subject: 'Recuperación de contraseña',
+      text: 'Siga este enlace para restablecer su contraseña',
+      html: `<a href="${recoveryLink}">Haga clic aquí para restablecer su contraseña</a>`,
+    };
+
+    sgMail.send(msg)
+      .then(() => {
+        return res.status(200).json({ message: 'Correo de recuperación de contraseña enviado con éxito' });
+      })
+      .catch((error) => {
+        console.error('Error al enviar el correo de recuperación de contraseña:', error);
+        return res.status(500).json({ error: 'Error al enviar el correo de recuperación de contraseña' });
+      });
+  } catch (error) {
+    console.error('Error al verificar la existencia del correo electrónico:', error);
+    return res.status(500).json({ error: 'Error al verificar la existencia del correo electrónico' });
+  }
 };
 
 module.exports = { requestPasswordRecovery };
