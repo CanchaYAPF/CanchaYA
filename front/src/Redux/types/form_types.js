@@ -29,4 +29,6 @@ export const GET_USERS = 'GET_USERS';
 export const NOT_ALLOW='NOT_ALLOW';
 export const DESACTIVE_FIELD = 'DESACTIVE__FIELD';
 export const USER_ROLES='USER_ROLES';
-export const CLEAR_USER_ROLE = 'CLEAR_USER_ROLE'
+export const CLEAR_USER_ROLE = 'CLEAR_USER_ROLE';
+export const REVIEW_ADMIN='REVIEW_ADMIN';
+

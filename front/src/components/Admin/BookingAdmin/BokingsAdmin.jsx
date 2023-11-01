@@ -2,7 +2,6 @@ import { useDispatch,useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getBookings } from "../../../Redux/actions/admin_actions";
-import axios from "axios";
 import BookingCard from "./BookingCard";
 
 const BookingAdmin = ()=>{

@@ -20,7 +20,8 @@ const editFieldHr = require("./admin/editFieldHr");
 const getAllBookingHr= require("./admin/getAllBookingHr");
 const editBookingHr= require("./admin/editBookingHr");
 const getUserRoleHr = require("./admin/getUserRolesHr")
-const getReviewHr = require("./admin/getReviewsHr")
+const getReviewHr = require("./admin/getReviewsHr");
+const desactiveReviewHr = require("./admin/desactiveReviewHr")
 
 module.exports = {
   getBookingHr,
@@ -45,5 +46,6 @@ module.exports = {
   desactiveUserHr,
   desactiveFieldHr,
   getUserRoleHr,
-  getReviewHr
+  getReviewHr,
+  desactiveReviewHr
 };

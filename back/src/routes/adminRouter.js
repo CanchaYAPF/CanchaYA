@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const {getAllUserHr,deleteUserHr,editUserHr,editFieldHr, getAllBookingHr, editBookingHr, desactiveUserHr, desactiveFieldHr, getUserRoleHr,getReviewHr}= require("../handlers/index")
+const {getAllUserHr,deleteUserHr,editUserHr,editFieldHr, getAllBookingHr, editBookingHr, desactiveUserHr, desactiveFieldHr, getUserRoleHr,getReviewHr,desactiveReviewHr}= require("../handlers/index")
 const authAdmin= require("../middlewares/authAdmin");
 
 
@@ -18,5 +18,6 @@ adminRouter.get("/booking",getAllBookingHr)
 adminRouter.put("/booking/:id", editBookingHr)
 //Review:
 adminRouter.get("/review",getReviewHr)
+adminRouter.patch("/review/:id",desactiveReviewHr)
 
 module.exports = adminRouter;
