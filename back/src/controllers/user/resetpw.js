@@ -1,16 +1,15 @@
-const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = process.env;
+// const jwt = require('jsonwebtoken');
+// const { JWT_SECRET } = process.env;
 const { User } = require("../../db");
+const { decodeJwtTokenEmail } = require("../../utils/decodedToken");
 
 const resetPassword = (req, res) => {
-  const { token, newPassword } = req.body;
+  const { newPassword } = req.body;
+  const {token}= req.query;
 
-  jwt.verify(token, 'secretKey', (err, decoded) => {
-    if (err) {
-      return res.status(400).json({ error: 'Token de recuperación no válido' });
-    }
-
-    const email = decoded.mail;
+  try {
+    const email = decodeJwtTokenEmail(token);
+    console.log("email",email)
 
     User.update(
       {
@@ -29,7 +28,11 @@ const resetPassword = (req, res) => {
         console.error('Error al cambiar la contraseña en la base de datos:', error);
         return res.status(500).json({ error: 'Error al cambiar la contraseña en la base de datos' });
       });
-  });
+  } catch (err) {
+    console.error('Error al decodificar el token JWT:', err);
+    return res.status(400).json({ error: 'Problemas para decodificar el mail del Token' });
+  }
 };
 
 module.exports = { resetPassword };
+

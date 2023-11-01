@@ -12,7 +12,7 @@ function ForgotPassword() {
     };
 
     try {
-      const response = await axios.post('/forgot-password', data);
+      const response = await axios.post('http://localhost:3001/recovery/', data);
 
       if (response.status === 200) {
         alert('Solicitud de recuperación de contraseña exitosa. Verifica tu correo electrónico.');

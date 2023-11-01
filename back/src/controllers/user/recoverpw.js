@@ -30,7 +30,7 @@ const requestPasswordRecovery = async (req, res) => {
       const token = jwt.sign({ mail }, 'secretKey', { expiresIn: '1h' });
 
       // Crea un enlace de recuperación que incluye el token.
-      const recoveryLink = `http://127.0.0.1:5173/reset-password?token=${token}`;
+      const recoveryLink = `http://localhost:3001/reset-password?token=${token}`;
 
       // Envia un correo electrónico al usuario con el enlace de recuperación.
       const msg = {

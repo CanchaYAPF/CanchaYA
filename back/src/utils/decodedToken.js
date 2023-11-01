@@ -34,5 +34,18 @@ const decodeJwtToken = (token) => {
       return null;
     }
   };
+  const decodeJwtTokenEmail = (token) => {
+    const SECRET_KEY='secretKey'//debe ir en el env
+    try {
+      const decoded = jwt.verify(token, SECRET_KEY);
+      return decoded.mail;
+    } catch (err) {
+      console.error("Error al decodificar el token JWT:", err);
+      throw new Error(`Error al decodificar el token JWT:${err.message}`)
+    }
+  };
 
-  module.exports= {decodeJwtToken, decodeGoogleToken}
+
+
+
+  module.exports= {decodeJwtToken, decodeGoogleToken, decodeJwtTokenEmail}
