@@ -50,7 +50,7 @@ function MyBookings() {
           const isNotPlayed = currentTime < bookingStartTime;
           const bookingId = booking.id;
           <Link to="/home" className={styles.bookingcard} style={{ textDecoration: 'none' }}>
-          <h3>Agregar Reserva</h3>
+          <h3>Agregar Nueva Reserva</h3>
           <p>Haz clic aquí para agregar una nueva reserva &#43;</p>
         </Link>
 
