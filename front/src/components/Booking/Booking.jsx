@@ -11,6 +11,7 @@ const Booking = () => {
   const field = useSelector((state) => state.currentField);
   const shift = field.shift; // Asumiendo que "shift" está dentro del objeto "currentField"
   const sports = field.sports.split(',').map(sport => sport.trim()); // Convertir cadena en un array de deportes
+  
   // const bookingData = useSelector((state) => state.bookingData);
   // console.log(bookingData)
 
@@ -120,6 +121,9 @@ const Booking = () => {
 
   const handlePayment = (method) => {
      if (method === 'mercadopago') {
+
+      dispatch(postBooking(formData))
+      
       const paymentData = {
         id: field.id,
         items: 1,
@@ -127,14 +131,8 @@ const Booking = () => {
         description: `Reserva de la cancha ${field.name}`,
         image: field.image,
         price: field.price,
-        // day: formData.day,
-        // initialHour: formData.initialHour,
-        // finalHour: formData.finalHour,
-        // totalTime: formData.totalTime,
-        // fieldName: formData.fieldName,
-        // userId: formData.userId,
+        userId: formData.userId,
       };
-      console.log(paymentData);
       // const isHourAvailable = checkHourAvailability(formData.initialHour, formData.finalHour);
 
       // if (!isHourAvailable) {
@@ -157,8 +155,6 @@ const Booking = () => {
       //   .catch((error) => {
       //     console.error("Error al confirmar el pago:", error.message);
       //   });    
-         dispatch(postBooking(formData));
-         alert('Reserva creada');
       }
     setIsModalOpen(false);
     setFormData({

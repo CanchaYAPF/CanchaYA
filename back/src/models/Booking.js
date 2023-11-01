@@ -21,8 +21,7 @@ module.exports = (sequelize) => {
       totalTime: {
         type: DataTypes.INTEGER,
       },
-
-      
+      status: { type: DataTypes.BOOLEAN, defaultValue: false },
     },
     { timestamps: false }
   );
