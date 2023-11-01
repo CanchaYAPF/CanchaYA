@@ -4,14 +4,23 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const routes = require("./routes/router.js");
-const pg= require ("pg")
-const { DATABASE_URL } = process.env;require("./db.js");
+const pg = require("pg");
+const { DATABASE_URL } = process.env;
 
 const server = express();
-new pg.Pool ({
+const pool = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
-  // ssl:true
-})
+  ssl: true,
+});
+
+pool.query("SELECT NOW()", (err, result) => {
+  if (err) {
+    console.error("Error executing query", err);
+  } else {
+    console.log("Current date and time from the database:", result.rows[0].now);
+  }
+  pool.end();
+});
 
 server.name = "API";
 

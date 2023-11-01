@@ -44,24 +44,23 @@ const averageRate = calculateAverageRate();
   }, [dispatch]);
   
   return (
-
-
     <div>
-       <h1>Reseñas de la cancha:</h1>
-       <div>
-        <h3>
-          Promedio de calificación: {averageRate.toFixed(2)} {renderAverageStars(averageRate)}
-        </h3>
-      </div>
-      {reviewData?.map((rev) =>
-
-<div key={rev.id}>
-       <h2>{rev.User.name}: "{rev.description}" </h2>
-       <h3>Calificacion: {rev.rate} {renderStars(rev.rate)}
- </h3>
-      </div> 
-
-       )}
+      <h1>Reseñas de la cancha:</h1>
+      {reviewData.length === 0 ? (
+        <p>Por el momento no hay reviews, te invitamos a reservar un turno y calificarnos.</p>
+      ) : (
+        <div>
+          <h3>
+            Promedio de calificación: {averageRate.toFixed(2)} {renderAverageStars(averageRate)}
+          </h3>
+          {reviewData?.map((rev) => 
+            <div key={rev.id}>
+              <h2>{rev.User.name}: "{rev.description}"</h2>
+              <h3>Calificación: {rev.rate} {renderStars(rev.rate)}</h3>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }

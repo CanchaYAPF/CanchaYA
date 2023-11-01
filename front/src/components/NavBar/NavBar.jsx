@@ -22,30 +22,26 @@ const NavBar = () => {
 
   const isLoginOrSignup = location.pathname === '/login' || location.pathname === '/signup';
 
-  const { setSearchTerm } = useContext(SearchContext);
-
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+  const handleSearchChange = useContext(SearchContext);
 
   return (
     <div className={style.navbar}>
-      {!isLoginOrSignup && (
-        <div className={style.logo}>
-          <Link to="/home" style={{ font: '28px Poppins, sans-serif' }}>
-            <img src={logo} alt="" />
-          </Link>
-        </div>
-      )}
-      {!isLoginOrSignup && isHomePage && (
-        <div className={style.search}>
-          <input
-            type="search"
-            placeholder="Buscar cancha por nombre"
-            onChange={handleSearchChange}
-          />
-        </div>
-      )}
+  {!isLoginOrSignup && (
+    <div className={style.logo}>
+      <Link to="/home" style={{ font: '28px Poppins, sans-serif' }}>
+        <img src={logo} alt="" />
+      </Link>
+    </div>
+  )}
+  {!isLoginOrSignup && isHomePage && (
+    <div className={style.search}>
+      <input
+        type="search"
+        placeholder="Buscar cancha por nombre"
+        onChange={handleSearchChange}
+      />
+    </div>
+  )}
 
   {!isLoginOrSignup && (
     <div className={style.text}>
