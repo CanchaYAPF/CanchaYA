@@ -57,13 +57,13 @@ export default function formReducer(state = initialState, action) {
       return {
         ...state,
         bookingData: action.data,
-        bookMp: action.data,
+        bookMp: action.payload,
       };
     case GET_BOOKING:
       return {
         ...state,
         bookingData: action.data,
-        bookMp: action.data,
+        bookMp: action.payload,
       };
     case CREATE_FIELD:
       return {
