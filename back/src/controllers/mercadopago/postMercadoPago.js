@@ -25,9 +25,9 @@ const createOrder = (req, res) => {
       },
     ],
     back_urls: {
-      success: "http://localhost:5173/home",
-      failure: "http://localhost:3001/payment/failure",
-      pending: "http://localhost:3001/payment/pending",
+      success: "http://https://canchasyaback.onrender.com/home",
+      failure: "http://https://canchasyaback.onrender.com/payment/failure",
+      pending: "http://https://canchasyaback.onrender.com/payment/pending",
     },
     notification_url: "https://c252-181-170-139-159.ngrok-free.app/webhook",
     auto_return: "approved",
@@ -62,11 +62,11 @@ const handleSuccess = async (req, res) => {
         .send(msg)
         .then(() => {
           console.log("Correo electrónico enviado con éxito");
-          res.redirect(`http://localhost:5173/home`);
+          res.redirect(`https://canchasyaback.onrender.com/home`);
         })
         .catch((error) => {
           console.error("Error al enviar el correo electrónico", error);
-          res.redirect(`http://localhost:5173/home`);
+          res.redirect(`https://canchasyaback.onrender.com/home`);
         });
     } else {
       res.status(404).json({ error: "Usuario no encontrado" });
