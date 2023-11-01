@@ -48,7 +48,7 @@ const Login = () => {
     try {
         await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
         sessionStorage.setItem('googleToken', credentialResponse.credential);
-        console.log(credentialResponse.credential)
+        dispatch(getUserRole(credentialResponse.credential))
         navigate("/home");
     } catch (error) {
       alert("Error al iniciar sesión: " + error.message);
