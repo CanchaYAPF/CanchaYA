@@ -1,18 +1,18 @@
 const { Sport } = require("../../db");
 
 const getAllSports = async () => {
-  const sports = ["Fútbol", "Básquet", "Padel", "Tenis", "Vóley"];
-  sports.forEach((s) => {
-    if (s) {
-      Sport.findOrCreate({
-        where: { name: s },
-      });
+  const sportsToExtract = ["Fútbol", "Básquet", "Padel", "Tenis", "Vóley"];
+  const extractedSports = [];
+
+  for (const sportName of sportsToExtract) {
+    const sport = await Sport.findOne({ where: { name: sportName } });
+
+    if (sport) {
+      extractedSports.push(sport);
     }
-  });
+  }
 
-  const deportes = Sport.findAll();
-
-  return deportes;
+  return extractedSports;
 };
 
 module.exports = getAllSports;
