@@ -10,7 +10,7 @@ mercadopago.configure({
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const createOrder = (req, res) => {
-  const { id, title, description, image, price } = req.body;
+  const { id, title, description, image, price, userId } = req.body;
 
   let preference = {
     items: [
@@ -22,6 +22,7 @@ const createOrder = (req, res) => {
         currency_id: "ARS",
         picture_url: image,
         description,
+        userId,
       },
     ],
     back_urls: {

@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getField, getSports, filter, getCities, getHorarios } from '../../Redux/actions/form_actions';
+import { getAllBookings } from '../../Redux/actions/form_actions';
 import Filters from '../Filters/Filters';
 import Cards from '../Cards/Cards';
 import style from './Home.module.css';
@@ -15,8 +16,9 @@ const Home = () => {
   const token = sessionStorage.getItem('token');
   const googleToken= sessionStorage.getItem('googleToken')
   const dispatch = useDispatch();
-  const allFields = useSelector((state) => state.fieldData);
-  
+  const allFields = useSelector((state) => state.fieldData); 
+  const bookMp = useSelector((state) => state.bookMp);
+
   const allFilteredFields = useSelector((state) => state.filteredFields);
   const [currentPage, setCurrentPage] = useState(parseInt(localStorage.getItem("currentPage")) || 1);
   const fieldsPerPage = 8;
@@ -48,11 +50,12 @@ const Home = () => {
   
   useEffect(() => {
     dispatch(getHorarios());
+    dispatch(getAllBookings());
     dispatch(getSports());
     dispatch(getField());
     dispatch(getCities());
     if (token === null && googleToken===null) navigate('/login');
-  }, [dispatch, token,googleToken, navigate]);
+  }, [dispatch, token, googleToken, navigate]);
   
   useEffect(() => {
     const filteredFields = allFilteredFields
@@ -61,13 +64,15 @@ const Home = () => {
     setCurrentFields(filteredFields);
   }, [searchTerm, allFilteredFields, firstField, lastField]);
   
-  // useEffect(() => {
-  //   const urlParams = new URLSearchParams(window.location.search);
-  //   const myParam = urlParams.get('status');  
-  //   if ( myParam === "approved") {
-      
-  //   }
-  // })
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('collection_status');  
+    if ( myParam === "approved") {
+      const aux = bookMp[bookMp?.length-1]
+      aux.status = true
+      return alert("Reserva pagada con éxito!")
+    }
+  })
 
   return (
     <div>
