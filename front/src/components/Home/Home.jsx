@@ -64,15 +64,15 @@ const Home = () => {
     setCurrentFields(filteredFields);
   }, [searchTerm, allFilteredFields, firstField, lastField]);
   
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get('collection_status');  
-    if ( myParam === "approved") {
-      const aux = bookMp[bookMp?.length-1]
-      aux.status = true
-      return alert("Reserva pagada con éxito!")
-    }
-  })
+  // useEffect(() => {
+  //   const urlParams = new URLSearchParams(window.location.search);
+  //   const myParam = urlParams.get('collection_status');  
+  //   if ( myParam === "approved") {
+  //     const aux = bookMp[bookMp?.length-1]
+  //     aux.status = true
+  //     return alert("Reserva pagada con éxito!")
+  //   }
+  // })
 
   return (
     <div>
