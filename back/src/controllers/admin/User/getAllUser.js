@@ -1,5 +1,5 @@
 // const { Op } = require('sequelize');// Para consultas complejas
-const { User } = require("../../db");
+const { User } = require("../../../db");
 
 const getAllUsers = async()=>{
         // if(mail){

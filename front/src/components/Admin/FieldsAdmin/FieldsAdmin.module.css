@@ -1,0 +1,30 @@
+.tableContainer {
+  max-height: 500px;
+  overflow-x: auto;
+}
+
+.tableContainer table {
+  min-width: 600px;
+}
+
+.tableContainer td, .tableContainer th {
+  white-space: nowrap; 
+}
+
+.btn-table {
+  background-color: #4CAF50; /* Color de fondo */
+  border: none; /* Sin bordes */
+  color: white; /* Color del texto */
+  padding: 15px 32px; /* Espaciado interno */
+  text-align: center; /* Alineación del texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  transition-duration: 0.4s; /* Duración de la transición */
+}
+
+.btn-table:hover {
+  background-color: #45a049; /* Cambia el color de fondo al pasar el ratón */
+}
