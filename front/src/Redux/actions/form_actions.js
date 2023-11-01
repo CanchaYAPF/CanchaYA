@@ -23,7 +23,7 @@ export function getAllBookings() {
     const token = sessionStorage.getItem('token');
 
     try {
-      const response = await axios.get('http://localhost:3001/booking/', {
+      const response = await axios.get('https://canchasyaback.onrender.com/booking/', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -52,7 +52,7 @@ return async function(dispatch){
 
   try{
 
-    const result = await axios.get(`http://localhost:3001/field/`);
+    const result = await axios.get(`https://canchasyaback.onrender.com/field/`);
     const fields = result.data
 
 return dispatch({type: GET_FIELD, payload: fields});
@@ -67,7 +67,7 @@ return async function(dispatch){
 
   try{
 
-    const result = await axios.get(`http://localhost:3001/Sports/`);
+    const result = await axios.get(`https://canchasyaback.onrender.com/Sports/`);
     const sports = result.data
 
 return dispatch({type: GET_SPORTS, payload: sports});
@@ -84,7 +84,7 @@ export function  createReview(data) {
   return async function(dispatch){
     try{
       
-      const result = await axios.post(`http://localhost:3001/reviews/`, data)
+      const result = await axios.post(`https://canchasyaback.onrender.com/reviews/`, data)
   
       
   
@@ -105,7 +105,7 @@ export function  createReview(data) {
 export function getReviews(idField) {
 return async function (dispatch){
 
-  const res = await axios.get(`http://localhost:3001/reviews/${idField}`)
+  const res = await axios.get(`https://canchasyaback.onrender.com/reviews/${idField}`)
 const alReducer = res.data
 
 console.log(alReducer)
@@ -120,7 +120,7 @@ return dispatch({
 
 export function userLogin(data) {
   return async function (dispatch) {
-    const res = await axios.post(`http://localhost:3001/user/login`, data);
+    const res = await axios.post(`https://canchasyaback.onrender.com/user/login`, data);
     const user = res.data;
     return dispatch({
       type: USER_LOGIN,
@@ -132,7 +132,7 @@ export function userLogin(data) {
 export function userSignup(data) {
   console.log("data actions",data)
   return async function (dispatch) {
-    const res = await axios.post(`http://localhost:3001/user/signup`, data);
+    const res = await axios.post(`https://canchasyaback.onrender.com/user/signup`, data);
     const register = res.data;
     return dispatch({
       type: USER_SIGNUP,
@@ -144,7 +144,7 @@ export function postBooking(booking) {
   return async function (dispatch) {
     const token = sessionStorage.getItem('token')
     try {
-      await axios.post('http://localhost:3001/booking', booking,{
+      await axios.post('https://canchasyaback.onrender.com/booking', booking,{
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -164,7 +164,7 @@ export function formCancha(data) {
     //se obtiene el token del localStorage y se usa para enviar por cabecera para pasar filtro del middleware Auth
     const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
-      await axios.post('http://localhost:3001/field', data,{
+      await axios.post('https://canchasyaback.onrender.com/field', data,{
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -190,7 +190,7 @@ export function addFav(fav) {
     
     try {
       await axios.post(
-        `http://localhost:3001/favorite/`,fav,{
+        `https://canchasyaback.onrender.com/favorite/`,fav,{
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -199,7 +199,7 @@ export function addFav(fav) {
 
         }
      } );
-      const favs = await axios.get(`http://localhost:3001/favorite/${token}`,
+      const favs = await axios.get(`https://canchasyaback.onrender.com/favorite/${token}`,
       )
       const alReducer = favs.data
 
@@ -222,7 +222,7 @@ export function removeFav(fav) {
     console.log("entra borrar")
     try {
       await axios.post(
-        `http://localhost:3001/favorite/del/`,fav,{
+        `https://canchasyaback.onrender.com/favorite/del/`,fav,{
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -231,7 +231,7 @@ export function removeFav(fav) {
 
         }
      } );
-      const favs = await axios.get(`http://localhost:3001/favorite/${token}`,
+      const favs = await axios.get(`https://canchasyaback.onrender.com/favorite/${token}`,
       )
       const alReducer = favs.data
 
@@ -252,7 +252,7 @@ export function getFavById(token) {
   return async function(dispatch){
     const token = sessionStorage.getItem('token')
     try{
-      const favs = await axios.get(`http://localhost:3001/favorite/${token}`)
+      const favs = await axios.get(`https://canchasyaback.onrender.com/favorite/${token}`)
       const alReducer = favs.data
       console.log(alReducer)
       return dispatch({type: ADD_FAV, payload: alReducer});
@@ -267,7 +267,7 @@ export function getFavById(token) {
 export function getFieldById(id) {
   return async function(dispatch){
     try{
-      const result = await axios.get(`http://localhost:3001/field/${id}`);
+      const result = await axios.get(`https://canchasyaback.onrender.com/field/${id}`);
       const field = result.data[0];
       return dispatch({type: GET_FIELD_BY_ID, payload: field});
     }

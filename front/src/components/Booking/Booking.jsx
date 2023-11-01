@@ -144,13 +144,13 @@ const Booking = () => {
       // }
   
       axios
-        .post("http://localhost:3001/payment/createOrder", paymentData)
+        .post("https://canchasyaback.onrender.com/payment/createOrder", paymentData)
         .then((response) => {
           window.location.href = response.data.body.init_point;
         })
         .catch((error) => console.log(error.message));
   
-      // axios.post("http://localhost:3001/payment/success", paymentData)
+      // axios.post("https://canchasyaback.onrender.com/payment/success", paymentData)
       //   .then((response) => {
       //     console.log("Pago confirmado con éxito:", response.data);
       //   })

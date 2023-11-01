@@ -25,7 +25,7 @@ const createOrder = (req, res) => {
       },
     ],
     back_urls: {
-      success: "http://https://canchasyaback.onrender.com/home",
+      success: "https://cancha-ya-git-pre-develop-canchayas-projects.vercel.app/home",
       failure: "http://https://canchasyaback.onrender.com/payment/failure",
       pending: "http://https://canchasyaback.onrender.com/payment/pending",
     },
@@ -62,11 +62,11 @@ const handleSuccess = async (req, res) => {
         .send(msg)
         .then(() => {
           console.log("Correo electrónico enviado con éxito");
-          res.redirect(`https://canchasyaback.onrender.com/home`);
+          res.redirect(`https://cancha-ya-git-pre-develop-canchayas-projects.vercel.app/home`);
         })
         .catch((error) => {
           console.error("Error al enviar el correo electrónico", error);
-          res.redirect(`https://canchasyaback.onrender.com/home`);
+          res.redirect(`https://cancha-ya-git-pre-develop-canchayas-projects.vercel.app/home`);
         });
     } else {
       res.status(404).json({ error: "Usuario no encontrado" });

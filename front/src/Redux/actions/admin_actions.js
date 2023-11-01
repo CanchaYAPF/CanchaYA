@@ -4,7 +4,7 @@ import axios from 'axios'
 export const getUsers = ()=> async dispatch => {
     const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
-      const {data} = await axios.get('http://localhost:3001/admin', {
+      const {data} = await axios.get('https://canchasyaback.onrender.com/admin', {
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`

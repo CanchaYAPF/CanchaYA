@@ -26,7 +26,7 @@ const UsersAdmin = () => {
 
   const handlerDesactive =async (id) => {
      try {
-        const {data} = await axios.patch(`http://localhost:3001/admin/${id}`)
+        const {data} = await axios.patch(`https://canchasyaback.onrender.com/admin/${id}`)
      } catch (error) {
         console.log(error)
      }
