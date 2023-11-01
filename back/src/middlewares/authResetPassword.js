@@ -1,13 +1,14 @@
 const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = process.env;
 
 const authResetPassword = (req, res, next) => {
-  const {token} = req.query;
-
+console.log('token del mw', req.body.token);
   try {
-    if (!token) {
+    if (!req.body.token) {
+      console.log('estes el el del if', req.body.token);
       return res.status(401).json({ error: 'Token de autenticación no proporcionado' });
     }
-    const decodedToken = jwt.verify(token, 'secretKey');
+    const decodedToken = jwt.verify(req.body.token, 'secretKey');
     console.log("decodedToken:", decodedToken)
     next();
   } catch (error) {
@@ -22,9 +23,9 @@ const authResetPassword = (req, res, next) => {
 module.exports = authResetPassword;
 
     
-    //   jwt.verify(token, 'secretKey', (err, decoded) => {
+    //   jwt.verify(req.body.token, 'secretKey', (err, decoded) => {
     //     if (err.name==='TokenExpiredError') {
-    //       return res.status(403).json({ error: 'El token ha expirado.' });
+    //       return res.status(403).json({ error: 'El req.body.token ha expirado.' });
     //     }
     //     console.log("decoded",decoded)
     

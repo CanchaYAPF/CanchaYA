@@ -1,14 +1,16 @@
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 // const { JWT_SECRET } = process.env;
 const { User } = require("../../db");
 const { decodeJwtTokenEmail } = require("../../utils/decodedToken");
 
 const resetPassword = (req, res) => {
-  const { newPassword } = req.body;
-  const {token}= req.query;
+  const { newPassword } = req.body.newPassword;
+  const {token}= req.body.token;
+  console.log('es este burro', req.body);
 
   try {
     const email = decodeJwtTokenEmail(token);
+    console.log(email);
     User.update(
       {
         password: newPassword,
