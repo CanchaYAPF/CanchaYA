@@ -3,7 +3,7 @@ import UsersAdmin from "../UsersAdmin/UsersAdmin"
 import FieldsAdmin  from "../FieldsAdmin/FieldsAdmin"
 import BookingAdmin from "../BookingAdmin/BokingsAdmin"
 import style from "./Admin.module.css"
-import ReviewAdmin from "../Review/ReviewAdmin"
+import ReviewAdmin from "../ReviewAdmin/ReviewAdmin"
 
 const Admin =()=>{
   const [activeTab, setActiveTab] = useState('Usuarios');

@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import style from "./ReviewCard.module.css"
 const ReviewCard =({review,handlerDesactive})=>{
 return(
     <tr key={review.id}>
@@ -8,7 +9,7 @@ return(
         <td>{review.user}</td>
         <td>{review.approved  ? "Activo": "Desactivo"}</td>
         <td>
-                <button onClick={()=>handlerDesactive(review.id)}>Desactivar</button>
+                <button className={style['btn-table']} onClick={()=>handlerDesactive(review.id)}>Desactivar</button>
             </td>
     </tr>
 )

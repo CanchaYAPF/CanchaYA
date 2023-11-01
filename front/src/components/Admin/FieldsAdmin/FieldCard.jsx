@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import style from './FieldsAdmin.module.css'; // Importa el archivo CSS
 const FieldCard = ({field, handlerDesactive})=>{ // Aquí desestructuramos field de las props
   console.log(field.status ? "Activo": "Desactivo")
     return(
@@ -10,7 +11,7 @@ const FieldCard = ({field, handlerDesactive})=>{ // Aquí desestructuramos field
         <td>{field.phone}</td>
         <td>{field.status ? "Activo": "Desactivo"}</td>
         <td>
-            <button onClick={() => handlerDesactive(field.id)}>Desactivar</button>
+            <button className={style['btn-table']} onClick={() => handlerDesactive(field.id)}>Desactivar</button>
             </td>
         </tr>
     )
