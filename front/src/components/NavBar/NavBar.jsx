@@ -16,14 +16,14 @@ const NavBar = () => {
   const token= tokenJwt ? tokenJwt : googleToken
   const dispatch = useDispatch()
   const userRole = useSelector(state=>state.role)
-  const [isLoading, setIsLoading] = useState(true);
+
   
-  useEffect(()=>{
-    console.log("entra a useEffect")
-    if(userRole.length===0){
-   dispatch(getUserRole(token)).finally(() => setIsLoading(false))}
+  // useEffect(()=>{
+  //  console.log("typeof",typeof userRole)
+  //   if(userRole.length===0){
+  //  dispatch(getUserRole(token)).finally(() => setIsLoading(false))}
    console.log("userole:", userRole)
-  },[dispatch])
+  // })
 
 
   const location = useLocation();
@@ -37,6 +37,7 @@ const NavBar = () => {
   };
 
   const logoutFunction = async () => {
+    console.log("hola")
     sessionStorage.removeItem('token');
     dispatch(clearUserRole())
     navigate('/login');
@@ -109,7 +110,7 @@ const NavBar = () => {
             <Link to="/Profile" className={style.link}>
               Información
             </Link>
-            {!isLoading && userRole==="admin" && (<div>
+            { userRole==="admin" && (<div>
               <Link to="/Administracion">Admin</Link>
             </div>)}
            
