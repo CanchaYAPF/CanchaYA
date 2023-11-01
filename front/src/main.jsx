@@ -5,9 +5,10 @@ import {BrowserRouter} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './Redux/store/form_store.js';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-
+import axios from 'axios';
 import './index.css';
 
+axios.defaults.baseURL = "https://canchasyaback.onrender.com/";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
