@@ -7,26 +7,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 110vh;
-    margin-top: 30px;
+    height: 130vh;
+    margin-top: 60px;
   }
   .inputs {
     margin: 5%;
-    margin-top: 10px;
     
   }
   .sesion{
     display: flex;
     align-items: center; 
     justify-content: center;
-margin-top: auto;
+    margin-top: auto;
   }
   .inputs input {
     width: 90%;
     padding: 5px;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 12px;
-    margin-top: 5px;
   }
   label {
     display: block;
@@ -38,15 +36,15 @@ margin-top: auto;
     background: rgb(220, 220, 220);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 45vh;
-    margin-top: 0;
+    height: 80vh;
+    margin: 0;
   }
   .container {
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     border-radius: 35px;
     position: relative;
     overflow: hidden;
-    width: 350px;
+    width: 550px;
     max-width: 100%;
     min-width: 550px;
     margin: 0 auto;
@@ -59,18 +57,14 @@ margin-top: auto;
   }
   .button{
     display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center; 
-  height: 10vh;
-  margin-top: 20px;
-  padding: 10px 20px;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    height: 115px;
   }
   .button button {
-    margin: 5px 10px; 
+    margin: 10px 0; 
     padding: 10px 20px;
-    display: inline;
-    
   }
   .verde{
     background-color: #81BA27;
@@ -80,22 +74,21 @@ margin-top: auto;
     margin-top: 15px;
   }
   .link{
-    color: #0D3A5D;
+    color: #01599c;
     text-decoration: none;
     border: none;
     background-color: transparent;
     cursor: pointer;
     margin-bottom: 0;
-    margin-top: 10px;
   }
   .texto{
     margin-left: 500px;
-    margin-right: 500px;
+    margin-right: 480px;
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    margin-top: -20px;
+    margin-top: -30px;
     margin-bottom: none; 
   }
   .texto h1 {
@@ -112,60 +105,34 @@ margin-top: auto;
   .logo{
     color: #fff;
     text-decoration: none;
-    margin-top: -150px;
+    margin-top: -110px;
     margin-right: 900px;
     font: 20px 'Poppins', sans-serif;
+    margin-bottom: 0;
   }
   .resaltado{
     color: rgb(16, 194, 0); 
-  font-weight: bold;
+    font-weight: bold;
   }
-  img{
-    max-width: 260px;
-    margin-bottom: 0;
-  }  
-  .google{
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-bottom: none;
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 4px;
   }
-  .passwordIcon {
+  .passwordContainer {
+    position: relative;
+}
+
+.passwordIcon {
     position: absolute;
-    top: 56%;
+    top: 50%;
     transform: translateY(-50%);
-    right: 35px; 
+    right: 10px; 
     cursor: pointer;
     width: 24px; 
     height: 24px;
 }
-.forgotPasswordLink {
-  display: block;
-  margin-top: 0px; 
-  text-align: right;
-  white-space: nowrap; 
-}
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000; 
-}
-
-
-.modalContent {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 400px; 
-  width: 90%;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
+img{
+  max-width: 260px;
+  margin-bottom: 0;
+}  
