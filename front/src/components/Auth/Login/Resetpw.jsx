@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import style from './Resetpw.module.css'
+import hidePwdImg from '../SignUp/hide-password.svg';
+import showPwdImg from '../SignUp/show-password.svg';
 
 function Resetpw() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState(''); 
   const urlParams = new URLSearchParams(window.location.search);
   const token = urlParams.get('token');
+  const [isRevealPwd, setIsRevealPwd] = useState(false);
  
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,6 +33,7 @@ function Resetpw() {
         <form onSubmit={handleSubmit}>
           <label>
             Nueva Contraseña:
+            
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
           <label>

@@ -1,23 +1,18 @@
 const jwt = require('jsonwebtoken');
-// const { JWT_SECRET } = process.env;
 const { User } = require("../../db");
-const { decodeJwtTokenEmail } = require("../../utils/decodedToken");
-
-const resetPassword = (req, res) => {
-  const { newPassword } = req.body.newPassword;
-  const {token}= req.body.token;
-  console.log('es este burro', req.body);
-
+const bcrypt = require("bcryptjs");
+const resetPassword = async (req, res) => {
+const encryptPassword = await bcrypt.hash(req.body.newPassword.toString(), 10);
   try {
-    const email = decodeJwtTokenEmail(token);
-    console.log(email);
+    const decodedToken = jwt.verify(req.body.token, 'secretKey');
+    
     User.update(
       {
-        password: newPassword,
+        password: encryptPassword,
       },
       {
         where: {
-          mail: email,
+          mail: decodedToken.mail,
         },
       }
     )
