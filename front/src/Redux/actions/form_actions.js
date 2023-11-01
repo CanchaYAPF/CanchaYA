@@ -2,7 +2,7 @@
 import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, 
   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS,
    ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES,
-    FILTER_HORARIO, GET_HORARIOS,ADD_FAV,DELETE_FAV, FORM_BOOKING_SUCCESS, RESET_CITY_FILTER,RESET_HORARIO_FILTER,RESET_SPORT_FILTER, FILTER_PRICE_RANGE, RESET_PRICE_RANGE_FILTER} from "../types/form_types";
+    FILTER_HORARIO, GET_HORARIOS,EDIT_FIELD,ADD_FAV,DELETE_FAV, FORM_BOOKING_SUCCESS, RESET_CITY_FILTER,RESET_HORARIO_FILTER,RESET_SPORT_FILTER, FILTER_PRICE_RANGE, RESET_PRICE_RANGE_FILTER} from "../types/form_types";
 
     
 
@@ -61,6 +61,23 @@ catch (error) {
     alert("error fields")
 }}}
 
+export const editField = (id, field) => async (dispatch) => {
+  const token = sessionStorage.getItem('token');
+  try {
+    const response = await axios.put(`http://localhost:3001/field/${id}`, field, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    dispatch({
+      type: EDIT_FIELD,
+      payload: response.data
+    });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 export function getSports() {
 return async function(dispatch){
