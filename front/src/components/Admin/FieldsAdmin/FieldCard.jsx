@@ -1,8 +1,9 @@
-/* eslint-disable react/prop-types */
-const FieldCard = ({field, handlerDesactive})=>{ // Aquí desestructuramos field de las props
-  console.log(field.status ? "Activo": "Desactivo")
-    return(
-        <tr key={field.id}>
+import FieldEdit from './FieldEdit';
+
+const FieldCard = ({ field, handlerDesactive, getField }) => {
+  console.log(field.status ? "Activo" : "Desactivo");
+  return (
+    <tr key={field.id}>
         <td>{field.name}</td>
         <td>{field.sports}</td>
         <td>{field.city}</td>
@@ -10,10 +11,11 @@ const FieldCard = ({field, handlerDesactive})=>{ // Aquí desestructuramos field
         <td>{field.phone}</td>
         <td>{field.status ? "Activo": "Desactivo"}</td>
         <td>
-            <button onClick={() => handlerDesactive(field.id)}>Desactivar</button>
-            </td>
-        </tr>
-    )
+        <FieldEdit field={field} getField={getField} />
+        <button onClick={() => handlerDesactive(field.id)}>Desactivar</button>
+      </td>
+    </tr>
+  );
+};
 
-}
-export default FieldCard
+export default FieldCard;

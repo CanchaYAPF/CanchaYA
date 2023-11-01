@@ -44,20 +44,18 @@ function Details() {
           <h4>{field.shift}</h4>
           <h2>SERVICIOS EXTRAS DEL ESTABLECIMIENTO:</h2>
           <h4>{field.service}</h4>
-          <button onClick={openBookingModal}>Reservar</button>
+          <button onClick={openBookingModal} className={style.btn}>Reservar</button>
           {isBookingModalOpen && (
             <div className={style.modal}>
               <div className={`${style.modalcontent} ${isBookingModalOpen ? style.animated : ''}`}>
-                <button onClick={closeBookingModal}>Cerrar</button>
+                <button onClick={closeBookingModal} className={style.btn}>Cerrar</button>
                 <Booking />
               </div>
-
             </div>
           )}
+          <Reviews idField={id} className={style.reviews}/> {/* Mueve el componente Reviews aquí */}
         </div>
-        
       </div>
-      < Reviews idField={id}/>
     </div> 
   );
 }

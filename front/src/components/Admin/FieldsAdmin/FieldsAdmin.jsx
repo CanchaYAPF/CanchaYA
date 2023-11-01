@@ -1,12 +1,12 @@
-import { useDispatch,useSelector } from "react-redux"
-import { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import {getField} from "../../../Redux/actions/form_actions"
-import FieldCard from "./FieldCard"
-import styles from './FieldsAdmin.module.css'; // Importa el archivo CSS
+import { getField } from "../../../Redux/actions/form_actions";
+import FieldCard from "./FieldCard";
+import styles from './FieldsAdmin.module.css';
 
-const FieldsAdmin = ()=>{
+const FieldsAdmin = () => {
 
     const allFields =  useSelector(state=>state.allFieldsBackUp);
     console.log("allfields", allFields)
@@ -33,9 +33,9 @@ const FieldsAdmin = ()=>{
         }
      };
 
-    return(
-        <div className={styles.tableContainer}> {/* Usa la clase tableContainer */}
-            <table>
+     return (
+        <div className={styles.tableContainer}>
+          <table>
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -47,12 +47,13 @@ const FieldsAdmin = ()=>{
                     </tr>
                 </thead>
                 <tbody>
-                    {allFields?.map(field=>(
-                        <FieldCard key={field.id} field={field} handlerDesactive={handlerDesactive}/> 
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    )
-}
-export default FieldsAdmin
+          {allFields?.map(field => (
+            <FieldCard key={field.id} field={field} handlerDesactive={handlerDesactive} getField={getField} />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default FieldsAdmin;
