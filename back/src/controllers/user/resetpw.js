@@ -9,8 +9,6 @@ const resetPassword = (req, res) => {
 
   try {
     const email = decodeJwtTokenEmail(token);
-    console.log("email",email)
-
     User.update(
       {
         password: newPassword,
