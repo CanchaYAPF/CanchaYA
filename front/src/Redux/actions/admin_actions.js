@@ -1,4 +1,4 @@
-import { GET_BOOKING, GET_USERS,NOT_ALLOW } from "../types/form_types";
+import { GET_BOOKING, GET_USERS,NOT_ALLOW, USER_ROLES,CLEAR_USER_ROLE } from "../types/form_types";
 import axios from 'axios'
 
 export const getUsers = ()=> async dispatch => {
@@ -26,7 +26,7 @@ export const getUsers = ()=> async dispatch => {
   export const getBookings = ()=> async dispatch => {
     const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
-      const {data} = await axios.get('http://localhost:3001/admin/booking', {
+      const {data} = await axios.get('http://localhost:3001/admin/roles', {
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -44,6 +44,28 @@ export const getUsers = ()=> async dispatch => {
       }
     }
   }
+
+  export const getUserRole = ()=>async dispatch =>{
+    try {
+      const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken');
+      const {data} = await axios.get('http://localhost:3001/admin/roles', {
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      dispatch({
+        type:USER_ROLES,
+        payload:data
+      })
+    } catch (error) {
+      throw Error(error.message);
+    }
+  }
+
+  export const clearUserRole = () => ({
+    type: CLEAR_USER_ROLE,
+  });
 
   // export const desactiveField = (id )=> async dispatch => {
   //   const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')

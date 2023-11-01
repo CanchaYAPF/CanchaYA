@@ -1,7 +1,8 @@
 import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW,
-  USER_LOGIN, USER_SIGNUP, GET_SPORTS , 
-  GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE, GET_CITIES,
-   FILTER_CITIES,FILTER_HORARIO,GET_HORARIOS, ADD_FAV, DELETE_FAV, RESET_CITY_FILTER, RESET_HORARIO_FILTER, RESET_SPORT_FILTER, RESET_PRICE_RANGE_FILTER, FILTER_PRICE_RANGE,GET_USERS, NOT_ALLOW} from '../types/form_types';
+  USER_LOGIN, USER_SIGNUP, GET_SPORTS , GET_FIELD_BY_ID,FILTER, ORDER_BY_PRICE, GET_CITIES,
+   FILTER_CITIES,FILTER_HORARIO,GET_HORARIOS, ADD_FAV, DELETE_FAV, RESET_CITY_FILTER, 
+   RESET_HORARIO_FILTER, RESET_SPORT_FILTER, RESET_PRICE_RANGE_FILTER, FILTER_PRICE_RANGE,
+   GET_USERS, NOT_ALLOW, USER_ROLES, CLEAR_USER_ROLE} from '../types/form_types';
 
 const initialState = {
  bookingData: [],
@@ -26,7 +27,8 @@ const initialState = {
  getAllUsers: [],
  error:"",
  getAllFieldsAdmin:[],
- bookingAdmin:[]
+ bookingAdmin:[],
+ role:""
 };
 
 export default function formReducer(state = initialState, action) {
@@ -240,6 +242,17 @@ case RESET_PRICE_RANGE_FILTER:
       ...state,
       error:action.error
      }
+     case USER_ROLES:
+      return{
+        ...state,
+        role:action.payload
+ 
+      }
+      case CLEAR_USER_ROLE:
+        return{
+          ...state,
+          role:""
+        }
    default:
      return state;
  }

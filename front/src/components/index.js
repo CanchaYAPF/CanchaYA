@@ -9,5 +9,6 @@ import Profile from "./Profile/Profile";
 import Booking from "./Booking/Booking";
 import Favorites from "./Favorites/Favorites"
 import Reviews from "./Review/getReviews"
+import Admin from "./Admin/Admin/Admin"
 
-export { Login, NavBar, Home, SignUp, Form, Details, Profile, Booking, Favorites, Review, Reviews } 
+export { Login, NavBar, Home, SignUp, Form, Details, Profile, Booking, Favorites, Review, Reviews, Admin } 
