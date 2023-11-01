@@ -14,12 +14,17 @@
 .leftContent {
   flex: 1;
   padding: 20px;
-  margin-top: -400px; 
+  margin-top: 50px; 
   margin-left: 350px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.reviews {
+  margin-top: 500px; 
+  width: 100%;
 }
 
 .leftContent img {
@@ -33,24 +38,42 @@
 }
 
 .rightContent {
-  flex: 2; 
+  flex: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   margin-right: 500px;
-  margin-top: -400px; 
+  margin-top: -350px; 
   height: auto;
-  width: 100%; 
+  width: 100%;
   max-width: 400px;
 }
+
 .contentWrapper {
   width: 100%;
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Alinea todo el contenido a la izquierda */
   justify-content: center; 
+}
+
+.btn {
+  background-color: #81BA27;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  align-self: flex-start; 
+}
+
+.btn:hover {
+  background-color: #0056b3;
 }
 
 h1 {
@@ -156,13 +179,13 @@ h4 {
   .container {
     height: auto;
     flex-direction: column;
-    margin-bottom: 100px; /* Agregar margen inferior */
+    margin-bottom: 100px; 
   }
   .leftContent, .rightContent {
     flex: 0 0 100%;
     max-width: 100%;
     margin: 0;
-    margin-top: 55px; /* Reducir el margen superior */
+    margin-top: 55px; 
     margin-bottom: -50px; 
   }
 }

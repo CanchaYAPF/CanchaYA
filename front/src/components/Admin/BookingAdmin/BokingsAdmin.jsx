@@ -4,7 +4,7 @@ const BookingAdmin = ()=>{
     return(
         
         <div>
-
+         
         </div>
     )
 }
