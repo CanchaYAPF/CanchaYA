@@ -32,7 +32,9 @@ function Details() {
     <div className={style.container}>
       <div className={style.leftContent}>
         <img src={field.image} alt={field.name} />
-        <GoogleMap googleMapsUrl={field.googleMapsUrl} /> {/* Agrega el componente GoogleMap aquí */}
+        <h3 > ¿Donde podés encontrarnos?📍 </h3>
+
+        <GoogleMap googleMapsUrl={field.googleMapsUrl} /> 
       </div>
       <div className={style.rightContent}>
         <div className={style.contentWrapper}>
