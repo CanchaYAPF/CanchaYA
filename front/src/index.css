@@ -5,6 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://garajemovil.net/tienda/wp-content/uploads/2014/03/cesped.png');
+  background-size: 100% 15%;
+  background-repeat: no-repeat;
+  background-position: center bottom; /* Centra la imagen en la parte inferior de la pantalla */
 }
 
 code {

@@ -1,18 +1,27 @@
 const { Favorito, Sport } = require("../../db");
 const jwt = require("jsonwebtoken")
+const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")
+
+
 
 const postFavorite = async (token,idsFields) => {
-  
 
-  const decoded = jwt.verify(token, 'secretKey');
-  console.log("decode",decoded.userId)
-  const userId = decoded.userId
 
+ 
+// const longitudToken = tokenString.length > 500 ? "google" : "jwt"
 
 
 
 
-  
+//   let userId= longitudToken ===  "google" ?await decodeGoogleToken(token) :
+//   await decodeJwtToken(token)
+//     ;
+
+
+
+
+const tokenId=await decodeJwtToken(token)
+let userId= tokenId ? tokenId: await decodeGoogleToken(token);
 
   
 

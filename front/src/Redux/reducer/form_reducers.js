@@ -5,8 +5,10 @@ import { CREATE_BOOKING,
         CREATE_REVIEW,
         GET_REVIEW,
   USER_LOGIN,
+ CLEAR_FAVS,
         USER_SIGNUP, 
         GET_SPORTS , 
+
   GET_FIELD_BY_ID,
         FILTER, 
         ORDER_BY_PRICE, 
@@ -198,6 +200,11 @@ export default function formReducer(state = initialState, action) {
   };
 
 
+      case CLEAR_FAVS:
+        return {
+          ...state,
+          fields: [],
+        };
     case RESET_PRICE_RANGE_FILTER:
       return {
         ...state,

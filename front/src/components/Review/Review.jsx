@@ -14,8 +14,10 @@ const FormReview = (fieldId) => {
 
   const id = fieldId.fieldId
 
-  const token = sessionStorage.getItem(`token`)
+  const tokenJwt = sessionStorage.getItem(`token`)
   const googleToken= sessionStorage.getItem('googleToken')
+  const token =  tokenJwt?  tokenJwt : googleToken
+
   const dispatch = useDispatch()
 
 

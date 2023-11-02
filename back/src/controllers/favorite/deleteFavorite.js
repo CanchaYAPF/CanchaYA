@@ -1,20 +1,18 @@
 const { where } = require("sequelize");
 const { Favorito, Sport } = require("../../db");
 const jwt = require("jsonwebtoken")
+const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")
 
 const deleteFav = async (token,idsFields) => {
-  // const existingField = await Favorite.findOne({ where: { name } });
-  // if (existingField) {
-  //   const error = new Error("La cancha ya existe");
-  //   error.status = 409;
-  //   throw error;
-  // }
 
 
-  const decoded = jwt.verify(token, 'secretKey');
-  console.log("decode",decoded.userId)
-  const userId = decoded.userId
+  let userId= await decodeGoogleToken(token) ?await decodeGoogleToken(token) :
+  await decodeJwtToken(token)
+    ;
+  
 
+  // const tokenId=await decodeJwtToken(token)
+  // let userId= tokenId ? tokenId: await decodeGoogleToken(token);
 
 
   const allFavoRelations =  await Favorito.findAll({where:{idUser : userId},})
