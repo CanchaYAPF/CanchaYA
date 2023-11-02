@@ -4,7 +4,7 @@ import axios from 'axios'
 export const getUsers = ()=> async dispatch => {
     let token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
-      const {data} = await axios.get('http://localhost:3001/admin', {
+      const {data} = await axios.get('https://canchasyaback.onrender.com/admin', {
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -26,7 +26,7 @@ export const getUsers = ()=> async dispatch => {
   export const getBookings = ()=> async dispatch => {
     const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
-      const {data} = await axios.get('http://localhost:3001/admin/roles', {
+      const {data} = await axios.get('https://canchasyaback.onrender.com/admin/roles', {
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -48,7 +48,7 @@ export const getUsers = ()=> async dispatch => {
   export const getUserRole = ()=>async dispatch =>{
     try {
       const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken');
-      const {data} = await axios.get('http://localhost:3001/admin/roles', {
+      const {data} = await axios.get('https://canchasyaback.onrender.com/admin/roles', {
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -70,7 +70,7 @@ export const getUsers = ()=> async dispatch => {
   export const getReviewsAdmin = ()=> async dispatch => {
     const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
-      const {data} = await axios.get('http://localhost:3001/admin/review', {
+      const {data} = await axios.get('https://canchasyaback.onrender.com/admin/review', {
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -90,7 +90,7 @@ export const getUsers = ()=> async dispatch => {
   }
 export const getFieldAdmin = ()=> async dispatch=>{
  try {
-  const {data} = await axios.get('http://localhost:3001/admin/fields', {
+  const {data} = await axios.get('https://canchasyaback.onrender.com/admin/fields', {
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -112,7 +112,7 @@ export const getFieldAdmin = ()=> async dispatch=>{
   // export const desactiveField = (id )=> async dispatch => {
   //   const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
   //   try {
-  //     const {data} = await axios.get(`http://localhost:3001/admin/field/${id}`, {
+  //     const {data} = await axios.get(`https://canchasyaback.onrender.com/admin/field/${id}`, {
   //       headers:{
   //         'Content-Type': 'application/json',
   //         'Authorization': `Bearer ${token}`

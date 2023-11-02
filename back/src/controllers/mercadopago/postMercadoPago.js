@@ -27,9 +27,9 @@ const createOrder = (req, res) => {
     ],
     external_reference: bookingId,
     back_urls: {
-      success: "http://localhost:5173/home",
-      failure: "http://localhost:3001/payment/failure",
-      pending: "http://localhost:3001/payment/pending",
+      success: "https://cancha-ya-git-pre-develop-canchayas-projects.vercel.app/home",
+      failure: "https://canchasyaback.onrender.com/payment/failure",
+      pending: "https://canchasyaback.onrender.com/payment/pending",
     },
     notification_url: "https://c252-181-170-139-159.ngrok-free.app/webhook",
     auto_return: "approved",
@@ -64,11 +64,11 @@ const handleSuccess = async (req, res) => {
         .send(msg)
         .then(() => {
           console.log("Correo electrónico enviado con éxito");
-          res.redirect(`http://localhost:5173/home`);
+          res.redirect(`https://cancha-ya-git-pre-develop-canchayas-projects.vercel.app/home`);
         })
         .catch((error) => {
           console.error("Error al enviar el correo electrónico", error);
-          res.redirect(`http://localhost:5173/home`);
+          res.redirect(`https://cancha-ya-git-pre-develop-canchayas-projects.vercel.app/home`);
         });
     } else {
       res.status(404).json({ error: "Usuario no encontrado" });
