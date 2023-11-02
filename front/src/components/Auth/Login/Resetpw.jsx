@@ -81,7 +81,7 @@ function Resetpw() {
     <div className={style.resetPassword}>
       <h2>Restablecer Contraseña</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={style.box}> 
         <div className={style.inputs}>
           <label htmlFor="password">Nueva Contraseña:</label>
           <div className={style.passwordContainer}>

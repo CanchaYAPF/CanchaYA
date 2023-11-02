@@ -10,9 +10,11 @@
     height: 130vh;
     margin-top: 60px;
   }
-  .inputs {
-    margin: 5%;
-    
+  .box {
+    background-color: #b6d8f1;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   .sesion{
     display: flex;
@@ -135,4 +137,15 @@
 img{
   max-width: 260px;
   margin-bottom: 0;
+}
+
+.resetPassword {
+  background-color: #fff;
+  border-radius: 35px;
+  position: relative;
+  overflow: hidden;
+  width: 350px;
+  max-width: 100%;
+  min-width: 550px;
+  margin: 0 auto;
 }
