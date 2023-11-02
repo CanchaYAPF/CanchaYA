@@ -1,0 +1,51 @@
+/* Forgotpw.module.css */
+.master {
+    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 104vh;
+  margin-top: 30px;
+  background-size: auto; 
+  background-repeat: repeat; 
+  animation: scrollBackground 20s linear infinite; 
+}
+.inputs {
+  margin: 5%;
+  margin-top: 10px;
+  
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 35px;
+  position: relative;
+  overflow: hidden;
+  width: 350px;
+  max-width: 100%;
+  min-width: 550px;
+  margin: 0 auto;
+}
+
+.box {
+  background-color: #b6d8f1;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  text-align: center;
+}
+
+ 
+  .button {
+    margin: 5px 10px; 
+    padding: 10px 20px;
+    display: inline;
+    background-color: #cbddae;
+
+    
+  }
+ 

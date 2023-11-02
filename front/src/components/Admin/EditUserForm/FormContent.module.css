@@ -1,0 +1,35 @@
+.formLabel {
+    display: block;
+    margin: 5px 0;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .formInput {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #292929;
+    border-radius: 10px;
+    color: #000;
+  }
+  
+  .editUserButton {
+    background-color: #81BA27;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .editUserButton:hover {
+    background-color: #0056b3;
+  }

@@ -1,38 +1,130 @@
+
 .formContainer {
-  max-width: 600px;
-  margin: 0 auto;
+  flex: 1;
+  max-width: 400px;
+  margin-left: 680px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
+ background-color: #0D3A5D;
+  margin-top: 18px;
+  color: #fcfcfc;
+  margin-right: 300px;
+  
+  
+
+}
+.container{
+  background-color: #ffffff00;
+  height: 150vh;
+  
+}
+.master{
+  display: flex;
+  background-color: rgba(58, 99, 128, 0.562);
+  height: 100vh;
 }
 
 .formLabel {
   display: block;
-  margin: 10px 0;
+  margin: 5px 0;
   font-weight: bold;
+  color: #fff;
+  border-radius: 35px;
 }
 
 .formInput {
-  width: 100%;
-  padding: 10px;
+  max-width: 98%;
+  padding: 5px;
   margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
+  background-color: #ffffff;
+  color: #fff;
 }
 
 .formCheckbox {
   margin-right: 5px;
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
+  color: #fff;
 }
 
 .formButton {
-  background-color: #007bff;
+  background-color: #81BA27;
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .formButton:hover {
   background-color: #0056b3;
+}
+.formContainer input{
+border: 1px solid #292929;
+color: rgb(0, 0, 0);
+}
+.link{
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.error {
+  color: #e63946;
+  font-size: 16px;
+  margin-top: 5px;
+}
+.label {
+  margin-bottom: 20px ;
+  margin-top: 30px;
+  
+}
+.verde{
+  color: #080c02;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+.leftContainer{
+  flex: 1;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 35px;
+  background-color: rgba(255, 255, 255, 0);
+  color: #2a638f;
+  margin-left: 80px;
+  margin-top: 70px;
+  max-height: 400px;
+
+  
+}
+.leftContainer img{
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+.leftContainer h2{
+color: #8cd811;
+margin: 0;
+margin-left: 0px;
+}
+.leftContainer h4{
+  color: #0f0000;
+  margin: 0;
+  margin-left: 0px;
+  }
+.resaltado {
+  color: #1b0202;
+  font-weight: bold;
+}
+.formSelect{
+  border: 1px solid #0D3A5D;
+  border-radius: 35px;
 }

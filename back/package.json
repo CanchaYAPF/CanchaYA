@@ -14,6 +14,7 @@
     "npm": ">=6.14.6"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "axios": "^1.5.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -21,9 +22,11 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "google-auth-library": "^9.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mercadopago": "^1.5.17",
     "morgan": "^1.10.0",
-    "pg": "^8.5.1",
+    "pg": "^8.11.3",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {

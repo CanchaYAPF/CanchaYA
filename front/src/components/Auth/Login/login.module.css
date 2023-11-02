@@ -1,17 +1,18 @@
 .master {
-    background-color: #0E4070;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin-top: 0;
+    height: 104vh;
+    margin-top: 30px;
+    background-size: auto; 
+    background-repeat: repeat; 
+    animation: scrollBackground 20s linear infinite; 
   }
   .inputs {
     margin: 5%;
+    margin-top: 10px;
     
   }
   .sesion{
@@ -25,6 +26,7 @@ margin-top: auto;
     padding: 5px;
     border: 2px solid rgb(255, 255, 255);
     border-radius: 12px;
+    margin-top: 5px;
   }
   label {
     display: block;
@@ -36,10 +38,12 @@ margin-top: auto;
     background: rgb(220, 220, 220);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 40vh;
+    height: 45vh;
     margin-top: 0;
   }
   .container {
+    text-align: center;
+    height: 50vh;
     background-color: #fff;
     border-radius: 35px;
     position: relative;
@@ -54,17 +58,23 @@ margin-top: auto;
     margin: 0;
     padding: 10px;
   font-size: 30px;
+  text-align: center; /* Centrar el texto en el elemento .text */
+
   }
   .button{
     display: flex;
   flex-direction: column;
   align-items: center; 
   justify-content: center; 
-  height: 115px;
+  height: 10vh;
+  margin-top: 20px;
+  padding: 10px 20px;
   }
   .button button {
-    margin: 10px 0; 
+    margin: 5px 10px; 
     padding: 10px 20px;
+    display: inline;
+    
   }
   .verde{
     background-color: #81BA27;
@@ -74,29 +84,34 @@ margin-top: auto;
     margin-top: 15px;
   }
   .link{
-    color: #01599c;
+    color: #0D3A5D;
     text-decoration: none;
     border: none;
     background-color: transparent;
     cursor: pointer;
-margin-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 10px;
   }
   .texto{
-    margin-left: 500px;
-    margin-right: 500px;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
-    margin-top: none;
+    margin-top: -20px;
     margin-bottom: none; 
+    text-align: center; /* Centrar el texto en el elemento .texto */
+
   }
   .texto h1 {
     margin: 0;
   }
   .top{
-    color: #81BA27;
+    color: #90dd14;
     margin: 0;
+    text-align: center; /* Centrar el texto en el elemento .top */
+
   }
   .blanco{
     
@@ -105,12 +120,69 @@ margin-bottom: 0;
   .logo{
     color: #fff;
     text-decoration: none;
-    margin-top: -150px;
-    margin-right: 900px;
+    margin-top: -10px;
+    margin-right: 90px;
     font: 20px 'Poppins', sans-serif;
   }
   .resaltado{
     color: rgb(16, 194, 0); 
   font-weight: bold;
   }
- 
+  img{
+    max-width: 260px;
+    margin-bottom: 0;
+  }  
+  .google{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: none;
+  }
+  .passwordIcon {
+    position: absolute;
+    top: 56%;
+    transform: translateY(-50%);
+    right: 35px; 
+    cursor: pointer;
+    width: 24px; 
+    height: 24px;
+}
+.forgotPasswordLink {
+  display: block;
+  margin-top: 0px; 
+  text-align: right;
+  white-space: nowrap; 
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+}
+
+
+.modalContent {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 400px; 
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 50% 0;
+  }
+}

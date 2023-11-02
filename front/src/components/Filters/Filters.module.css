@@ -1,0 +1,86 @@
+.selects {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: #0D3A5D;
+  margin-left: 85px;
+}
+
+.select {
+  display: flex;
+  border: #0D3A5D;
+  margin-left: 10px;
+  align-items: center;
+  background-color: #81BA27;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  margin-right: 20px; /* Ajusta este valor según tus necesidades */
+}
+
+.select:hover {
+  background-color: #0056b3;
+}
+
+.select::after {
+  content: '▼'; 
+  color: #0D3A5D;; 
+  font-weight: bold; 
+  position: absolute;
+  right: 10px; 
+  top: 50%; 
+  transform: translateY(-50%);
+  transform: translateY(-50%); 
+}
+
+.priceFilter {
+  display: flex;
+  align-items: center;
+  padding: 3px 10px;
+  gap:10px; 
+  margin-left: 810px;
+}
+
+button {
+  max-width: 110px;
+}
+
+button.btn {
+  background-color: #81BA27;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  margin-right: 190px;
+}
+
+button.btn:hover {
+  background-color: #0056b3;
+}
+
+.resetButton {
+  max-width: 110px;
+  background-color: #81BA27;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  margin-right: 190px;
+}
+
+.resetButton:hover {
+  background-color: #0056b3;
+}

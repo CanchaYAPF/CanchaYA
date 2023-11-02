@@ -1,30 +1,65 @@
-.paginate-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paginado {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin: 20px auto;
+  list-style: none; 
+}
   
-  .card {
-    border: 1px solid #ccc;
-    padding: 16px;
-    margin: 8px;
-  }
+.paginado li {
+  margin: 0 4px;
+}
   
-  .button-container {
-    margin: 16px;
-  }
+.paginado button {
+  background-color: #0D3A5D;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px 10px -10px 10px; 
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.paginado button:hover {
+  transform: scale(1.1);
+}
+
+.paginado button:active {
+  transform: scale(1.1);
+}
   
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
+.paginado button:focus {
+  outline: none;
+}
   
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
+.inicioFin {
+  background: grey; 
+  color: rgb(255, 255, 255); 
+  width: 55px;
+}
   
+.paginado .number.active button {
+  background-color: #0D3A5D;
+  color: white;
+  border: 1px solid blue;
+}
+.paginado .disabled button {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pageCounter {
+  text-align: center;
+  margin-top: -5px;
+}

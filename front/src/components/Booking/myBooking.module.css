@@ -1,0 +1,47 @@
+/* Estilo para el contenedor principal */
+.bookingcards {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente fila si no caben en una fila */
+    justify-content: space-between; /* Espaciado entre las tarjetas */
+}
+
+/* Estilo para el título "Mis Reservas" */
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para las tarjetas de reservas */
+.bookingcard {
+    border: 1px solid #ccc;
+    padding: 5px; /* Reducimos el padding */
+    margin: 5px; /* Reducimos el margen */
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 5px #888888;
+    max-width: 300px; /* Limitamos el ancho máximo */
+}
+
+/* Estilo para los elementos de reserva (párrafos) */
+.bookingcard p {
+    margin: 5px 0;
+    font-size: 14px; /* Reducimos el tamaño del texto */
+}
+
+/* Estilo para la imagen de la cancha */
+.bookingcard img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Estilo para el estado "Completado" */
+.bookingcard .completed {
+    color: green;
+    font-weight: bold;
+}
+
+/* Estilo para el estado "No jugado" */
+.bookingcard .notPlayed {
+    color: red;
+    font-weight: bold;
+}

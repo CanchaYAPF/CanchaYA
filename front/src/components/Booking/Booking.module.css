@@ -1,0 +1,118 @@
+
+.bookingContainer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+   background-color: #0D3A5D;
+    margin-top: 40px;
+    height: 20%;
+    
+  }
+  .containerbooking{
+    background-color: #93adc200;
+    height: 10%;
+  }
+  
+  .formLabel {
+    display: block;
+    margin: 5px 0;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .formInput {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #292929;
+    border-radius: 10px;
+    
+  }
+  
+  .formCheckbox {
+    margin-right: 5px;
+    border: 1px solid #292929;
+  }
+  
+  .bookingButton {
+    background-color: #81BA27;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .bookingButton:hover {
+    background-color: #0056b3;
+  }
+  .bookingContainer input{
+  border: 1px solid #292929;
+  }
+  .link{
+    color: #0056b3;
+    text-decoration: none;
+  }
+
+  .error {
+    color: #e63946;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+  .formInput2 {
+    width: 100%;
+    max-width: 97%;
+    border-radius: 10px;
+  }
+  .botonPago{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .modal1 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+
+.modalbutton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 10%;
+  width: 20px; /* Ancho reducido */
+  height: 20px; /* Alto reducido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: #000;
+}
+
+
+.modalbutton:hover {
+  background-color: #b30000;
+}
+

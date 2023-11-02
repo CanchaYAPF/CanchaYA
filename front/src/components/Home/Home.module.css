@@ -1,5 +1,10 @@
 
-  
+.paginadoContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: -5px;
+}
+
   .select{
     display: flex;
         justify-content: center;
@@ -32,3 +37,46 @@
     justify-content: center;
     gap: 20px;
   }
+  .search input {
+    padding: 3px;
+    
+    
+    font-size: 16px;
+    width: 265px;
+    max-width: 100%;
+    
+  }
+  .leftBox {
+    display: flex;        
+    flex-direction: row;  
+    justify-content: space-between; 
+    align-items: center;  
+   
+  }
+.button{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: -75px;
+  
+}
+.button button{
+  margin-left: 218px; 
+  margin-right: 218px;
+  background-color: #0D3A5D;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.homeContainer {
+  background-image: url('https://garajemovil.net/tienda/wp-content/uploads/2014/03/cesped.png');
+  background-size: 100% 15%;
+  background-repeat: no-repeat;
+  background-position: center bottom; 
+}

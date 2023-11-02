@@ -1,0 +1,41 @@
+.tableContainer {
+  max-height: 500px;
+  overflow-x: auto;
+}
+
+.tableContainer table {
+  min-width: 600px;
+}
+
+.tableContainer td, .tableContainer th {
+  white-space: nowrap; 
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.btn-table {
+  background-color: #81BA27;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 2px 2px;
+  font-size: 14px;
+  transition-duration: 0.4s;
+}
+
+.btn-table:hover {
+  background-color: #0056b3;
+}
+
+.tableContainer th:last-child,
+.tableContainer td:last-child {
+  width: 250px; 
+}

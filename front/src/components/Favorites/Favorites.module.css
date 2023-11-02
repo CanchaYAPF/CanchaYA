@@ -1,0 +1,11 @@
+.favoritos{
+    display: grid; 
+    gap: 3px;
+    grid-template-columns: repeat(5, 1fr); 
+    grid-template-rows: auto;
+    margin: 0;
+    margin-left: -30px;
+    margin-right: 30px;
+  }
+  
+   

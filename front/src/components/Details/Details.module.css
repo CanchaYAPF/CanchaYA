@@ -1,52 +1,200 @@
-.container{
-    background-color: #0E4070;
-    background-repeat: no-repeat;
-    background-size: 250vh;
-    background-position: center center;
-    border: 2px solid black;
-    backdrop-filter: blur(5px);
-    height: 100vh;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-size: 250vh;
+  background-position: center center;
+  backdrop-filter: blur(5px);
+  height: 110vh;
+  align-items: center;
+  justify-content: center;
 }
 
+.leftContent {
+  flex: 1;
+  padding: 20px;
+  margin-top: 50px; 
+  margin-left: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-.container .contenido img{
-    right: 25px;
-    width: 700px;
+.reviews {
+  margin-top: 500px; 
+  width: 100%;
+}
+
+.leftContent img {
+  width: auto; 
+  max-width: 600px; 
+  height: auto;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  margin-bottom: 10px; 
+  height: 50vh;
+}
+
+.rightContent {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 500px;
+  margin-top: -350px; 
+  height: auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinea todo el contenido a la izquierda */
+  justify-content: center; 
+}
+
+.btn {
+  background-color: #81BA27;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  align-self: flex-start; 
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+h1 {
+  margin: 0; 
+  margin-left: 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  color: #81BA27;
+  margin-bottom: 6px; 
+  font-size: 1vw;
+  white-space: nowrap;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 1vw;
+  margin-bottom: 10px;
+  color: #0D3A5D;
+  border-radius: 5px;
+  margin-left: 0;
+  white-space: nowrap;
+}
+h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 1vw;
+  margin-bottom: 10px;
+  color: #0D3A5D;
+  border-radius: 5px;
+  margin-left: 0;
+  white-space: nowrap;
+}
+h1, h2 {
+  text-align: left;
+}
+
+h4 {
+  width: 100%;
+  text-align: left;
+  font-size: 1vw;
+  margin-bottom: 10px;
+  color: #0D3A5D;
+  border-radius: 5px;
+  margin-left: 0; 
+  margin-top: -5px;
+  white-space: nowrap;
+}
+
+.precio {
+  border: 1px solid #0D3A5D;
+  border-radius: 5px;
+  padding: 6px;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.link {
+  display: inline-block;
+  padding: 10px 20px; 
+  background-color: #81BA27;
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 20px; 
+  margin-top: 20px; 
+}
+
+.link:hover {
+  transform: scale(1.05);
+  color: #0D3A5D;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #11111160;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.modalcontent {
+  margin: auto;
+  width: 80%;
+  max-width: 600px;
+  padding: 3em 2.5em;
+  border-radius: 6px;
+  position: absolute;
+  top: 0%;
+  transform: translateX(100%);
+  transition: transform 0.5s;
+}
+
+.animated {
+  transform: translateX(0);
+}
+
+.rightContent button:hover {
+  background-color: #00b300;
+}
+
+@media (max-width: 1950px) {
+  .container {
     height: auto;
-    border: 2px solid #fff;
-    border-radius: 10px;
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto;
-    margin-bottom: 40px;
-    margin-top: 50px;
-}
-
-
-.container .contenido h1{
-    margin: 30px auto 40px;
-    width: 300px;
-    text-align: center;
-    border-radius: 10px;
-    color: #81BA27;
-    margin-bottom: 20px;
-}
-
-.container .contenido h2{
-    width: 99.5%;
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 30px;
-    color: #ffffff;
-    border-radius: 5px;
-    display: block; 
-}
-
-
-.container .contenido h3{
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    color: #f5f5f5;
+    flex-direction: column;
+    margin-bottom: 100px; 
+  }
+  .leftContent, .rightContent {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0;
+    margin-top: 55px; 
+    margin-bottom: -50px; 
+  }
 }

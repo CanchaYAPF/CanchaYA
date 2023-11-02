@@ -1,0 +1,27 @@
+.tableContainer {
+    max-height: 500px;
+    overflow-x: auto;
+  }
+  
+  .tableContainer table {
+    min-width: 600px;
+  }
+  
+  .tableContainer td, .tableContainer th {
+    white-space: nowrap; 
+  }
+  .btn-table {
+    background-color: #81BA27;
+    color: #fff;
+    padding: 10px 0px 10px 0px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 5px;
+    width: 80px;
+    white-space: nowrap;
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-start;
+  }

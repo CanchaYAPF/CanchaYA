@@ -1,20 +1,33 @@
 import React from 'react';
 import Card from '../Card/Card';
 import styles from './Cards.module.css';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import {getFavById} from '../../Redux/actions/form_actions';
+
 
 function Cards({ allFields }) {
-  const uniqueFields = allFields
-  .filter((field, index, self) => 
-    index === self.findIndex((f) => (
-      f.id === field.id
-    ))
-  )
-  .slice(0, 16);
+
+
+  const  myFavorites = useSelector(state => state.myFavorites);
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    
+    dispatch(getFavById())
+   
+  }, []);
+
+
+
+
+
+  const arrFields = allFields
+  
   return (
     <div className={styles.container}>
-      {allFields.slice(0, 16).map((field) => (
-        <Card key={field.id} field={field} className={styles.card} />
-      ))}
+{arrFields?.map((field, index) => (<Card key={index} field={field} myFavorites={myFavorites} />))}
     </div>
   );
 }
