@@ -28,7 +28,7 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
       dispatch(addFav(char));
     }
   };
-
+ 
   
   useEffect(() => {
     myFavorites.forEach((fav) => {
