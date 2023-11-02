@@ -45,8 +45,8 @@ export function getAllBookings() {
 
 
 export const clearFavs = () => {
-  return {
-    type: CLEAR_FAVS,
+  return async function(dispatch) {
+   return dispatch( {type: CLEAR_FAVS})
   };
 };
 

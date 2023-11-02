@@ -217,7 +217,7 @@ export default function formReducer(state = initialState, action) {
       case CLEAR_FAVS:
         return {
           ...state,
-          fields: [],
+          myFavorites: [],
         };
     case RESET_PRICE_RANGE_FILTER:
       return {
