@@ -10,7 +10,7 @@ const FormContent = ({ formData, handleInputChange, handleSportChange, handleShi
         </label>
         <div className={styles.formLabel}>Deportes:</div>
         {sports.map((sport, index) => (
-          <div key={index}>
+          <div key={index} className={styles.sportLabel}>
             <input
               type="checkbox"
               name={sport}

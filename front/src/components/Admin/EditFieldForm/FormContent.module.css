@@ -12,7 +12,11 @@
     border: 1px solid #292929;
     border-radius: 10px;
   }
-  
+
+  .sportLabel {
+    color: #fff; 
+}
+
   .editFieldButton {
     background-color: #81BA27;
     color: #fff;
