@@ -10,8 +10,8 @@ mercadopago.configure({
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const createOrder = (req, res) => {
-  const { id, title, description, image, price, userId } = req.body;
-
+  const { id, title, description, image, price, userId, bookingId } = req.body;
+  console.log("asdasdasd", bookingId);
   let preference = {
     items: [
       {
@@ -25,6 +25,7 @@ const createOrder = (req, res) => {
         userId,
       },
     ],
+    external_reference: bookingId,
     back_urls: {
       success: "http://localhost:5173/home",
       failure: "http://localhost:3001/payment/failure",
