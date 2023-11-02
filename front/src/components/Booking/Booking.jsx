@@ -24,7 +24,7 @@ const Booking = () => {
 
   const tokenJwt = sessionStorage.getItem(`token`)
   const googleToken= sessionStorage.getItem('googleToken')
-  const token =  tokenJwt?  tokenJwt : googleToken
+  let token =  tokenJwt ?  tokenJwt : googleToken
 
 
 

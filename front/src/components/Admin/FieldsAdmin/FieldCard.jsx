@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import FieldEdit from './FieldEdit';
 import styles from './FieldsAdmin.module.css';
 

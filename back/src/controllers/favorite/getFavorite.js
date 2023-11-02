@@ -6,12 +6,12 @@ const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")
 const getAllFavs = async (id) => {
  
  
-  let userId= await decodeGoogleToken(id) ?await decodeGoogleToken(id) :
-  await decodeJwtToken(id)
-    ;
+  // let userId= await decodeGoogleToken(id) ?await decodeGoogleToken(id) :
+  // await decodeJwtToken(id)
+    
 
-  // const tokenId=await decodeJwtToken(id)
-  // let userId= tokenId ? tokenId: await decodeGoogleToken(id);
+  let tokenId = await decodeJwtToken(id)
+  let userId = tokenId ? tokenId: await decodeGoogleToken(id);
 
 
   const allFavoRelations = await Favorito.findAll({
