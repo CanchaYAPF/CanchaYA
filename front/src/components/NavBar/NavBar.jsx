@@ -30,6 +30,7 @@ const NavBar = () => {
   const logoutFunction = async () => {
     console.log("hola")
     sessionStorage.removeItem('token');
+    sessionStorage.removeItem('googleToken')
     dispatch(clearUserRole())
     navigate('/login');
   };
