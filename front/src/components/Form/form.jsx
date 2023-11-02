@@ -69,7 +69,7 @@ const validate = ({name, image, sports, address, city, phone, price, shift, paym
 const FormularioCancha = () => {
   const tokenJwt = sessionStorage.getItem(`token`)
   const googleToken= sessionStorage.getItem('googleToken')
-  const token =  tokenJwt?  tokenJwt : googleToken
+  const token =  tokenJwt ?  tokenJwt : googleToken
 
   const navigate= useNavigate()
   const allSports = useSelector(state => state.sportData)
@@ -87,7 +87,6 @@ const FormularioCancha = () => {
     if (tokenJwt === null && googleToken===null) navigate('/login');
   }, []);
    
-  const token = tokenJwt ? tokenJwt : googleToken
   
   const [formData, setFormData] = useState({
     name: '',

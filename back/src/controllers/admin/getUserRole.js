@@ -1,12 +1,12 @@
-const {decodeGoogleToken,decodeJwtToken} = require("../../utils/decodedToken")
+const {decodeJwtTokenRole,decodeGoogleTokenRole} = require("../../utils/decodedToken")
 
 const getUserRole = async (token)=>{
-  const user = decodeJwtToken(token)
+  const user = decodeJwtTokenRole(token)
   if(user){
-    return user.roles
-  }else if(decodeGoogleToken(token)){
-    const googleUser=decodeGoogleToken(token)
-    return googleUser.roles
+    return user
+  }else if(decodeGoogleTokenRole(token)){
+    const googleUser=decodeGoogleTokenRole(token)
+    return googleUser
   }else{
     throw new Error("No se encontro usuario")
   }

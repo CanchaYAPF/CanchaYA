@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Login, SignUp, Form, Details, Profile, Favorites, Booking, NavBar, Review, Admin,Forgotpw, Resetpw  } from "./components/index";
+import { Home, Login, SignUp, Form, Details, Profile, Favorites, Booking, NavBar, Review,Reviews, Admin,Forgotpw, Resetpw  } from "./components/index";
 import './App.css'; 
 import SearchContext from './SearchContext';
 
@@ -25,7 +25,6 @@ const App = () => {
           <Route path='/Administracion' element={<Admin/>} /> 
           <Route path="/forgot-password" element={<Forgotpw />} />
           <Route path='/reset-password' element={<Resetpw />} />
-
         </Routes>
       </div>
     </SearchContext.Provider>
