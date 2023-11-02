@@ -13,7 +13,8 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
   const googleToken= sessionStorage.getItem('googleToken')
   const token =  googleToken ? googleToken  : tokenJwt
 
-  
+  const uniqueSports = [...new Set(field.sports.split(', '))];
+
   const id = field.id
   const char = {
     token: token,
@@ -62,7 +63,7 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
           <h3 className={style.h3}>{field.name}</h3>
           <h3>Ciudad: {field.city}</h3>
           <h3>Precio: ${field.price}</h3>
-          <h3>Deportes: {field.sports}</h3>
+          <h3>Deportes: {uniqueSports.join(', ')}</h3>
           </div>
       
     
