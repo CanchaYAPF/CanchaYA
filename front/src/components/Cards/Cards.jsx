@@ -3,7 +3,7 @@ import Card from '../Card/Card';
 import styles from './Cards.module.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import {getFavById} from '../../Redux/actions/form_actions';
+import {getFavById, clearFavs} from '../../Redux/actions/form_actions';
 
 
 function Cards({ allFields }) {
@@ -16,6 +16,10 @@ function Cards({ allFields }) {
   useEffect(() => {
     
     dispatch(getFavById())
+    return () => {
+      //al desmontar limpia el estado de detalle
+        dispatch(clearFavs());
+      };
    
   }, []);
 
