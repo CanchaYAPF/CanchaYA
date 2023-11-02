@@ -67,14 +67,15 @@ const validate = ({name, image, sports, address, city, phone, price, shift, paym
 
 
 const FormularioCancha = () => {
-  const token = sessionStorage.getItem(`token`)
+  const tokenJwt = sessionStorage.getItem(`token`)
   const googleToken= sessionStorage.getItem('googleToken')
+  const token =  tokenJwt?  tokenJwt : googleToken
 
   const navigate= useNavigate()
   const allSports = useSelector(state => state.sportData)
   const allCities = useSelector(state => state.citiesData)
 
-
+    
 
  const dispatch = useDispatch();
 

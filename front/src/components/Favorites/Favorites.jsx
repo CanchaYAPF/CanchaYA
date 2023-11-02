@@ -1,14 +1,16 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import { connect, useDispatch, useSelector } from "react-redux";
-import {getFavById, getField} from '../../Redux/actions/form_actions';
+import {getFavById, getField, clearFavs} from '../../Redux/actions/form_actions';
 import Card from "../Card/Card";
 
 import style from './Favorites.module.css';
 
 export default function Favorites() {
 
-  const token = sessionStorage.getItem(`token`)
+  const tokenJwt = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const token =  tokenJwt?  tokenJwt : googleToken
 
   const allFields = useSelector((state) => state.fieldData);
 
@@ -34,6 +36,11 @@ toCard.push(push)
     dispatch(getFavById())
     
    if (token === null) navigate("/login")
+
+   return () => {
+    //al desmontar limpia el estado de favs
+      dispatch(clearFavs());
+   };
   }, []);
    
   

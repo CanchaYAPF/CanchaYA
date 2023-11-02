@@ -6,6 +6,7 @@ import {
   CREATE_REVIEW,
   GET_REVIEW,
   USER_LOGIN,
+  CLEAR_FAVS,
   USER_SIGNUP,
   GET_SPORTS,
   GET_FIELD_BY_ID,
@@ -205,6 +206,11 @@ export default function formReducer(state = initialState, action) {
           filteredFields.length > 0 ? filteredFields : state.allFieldsBackUp,
       };
 
+      case CLEAR_FAVS:
+        return {
+          ...state,
+          fields: [],
+        };
     case RESET_PRICE_RANGE_FILTER:
       return {
         ...state,

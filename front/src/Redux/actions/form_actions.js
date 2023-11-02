@@ -1,5 +1,5 @@
 
-import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, 
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, CLEAR_FAVS, GET_FIELD, CREATE_REVIEW, GET_REVIEW, 
   USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS,
    ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES,
     FILTER_HORARIO, GET_HORARIOS,ADD_FAV,DELETE_FAV, FORM_BOOKING_SUCCESS, RESET_CITY_FILTER,RESET_HORARIO_FILTER,RESET_SPORT_FILTER, FILTER_PRICE_RANGE, RESET_PRICE_RANGE_FILTER} from "../types/form_types";
@@ -42,6 +42,13 @@ export function getAllBookings() {
   };
 }
 
+
+
+export const clearFavs = () => {
+  return {
+    type: CLEAR_FAVS,
+  };
+};
 
 export function createField(data) {
   return { type: CREATE_FIELD, data };
@@ -142,7 +149,12 @@ export function userSignup(data) {
 }
 export function postBooking(booking) {
   return async function (dispatch) {
-    const token = sessionStorage.getItem('token')
+    
+    const tokenJwt = sessionStorage.getItem(`token`)
+    const googleToken= sessionStorage.getItem('googleToken')
+    const token =  tokenJwt ?  tokenJwt : googleToken
+
+
     try {
       await axios.post('http://localhost:3001/booking', booking,{
         headers:{
@@ -186,19 +198,22 @@ export function formCancha(data) {
 
 export function addFav(fav) {
   return async function (dispatch) {
-    const token = sessionStorage.getItem('token')
-    
+    const tokenJwt = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const token =  tokenJwt ?  tokenJwt : googleToken
     try {
       await axios.post(
-        `http://localhost:3001/favorite/`,fav,{
-        headers:{
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
+        `http://localhost:3001/favorite/`,fav, {
+          headers:{
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+  
+        
+  
+          }
+       } );
 
-      
 
-        }
-     } );
       const favs = await axios.get(`http://localhost:3001/favorite/${token}`,
       )
       const alReducer = favs.data
@@ -218,8 +233,9 @@ export function addFav(fav) {
 
 export function removeFav(fav) {
   return async function (dispatch) {
-    const token = sessionStorage.getItem('token')
-    console.log("entra borrar")
+    const tokenJwt = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const token =  tokenJwt?  tokenJwt : googleToken
     try {
       await axios.post(
         `http://localhost:3001/favorite/del/`,fav,{
@@ -250,15 +266,16 @@ export function removeFav(fav) {
 
 export function getFavById(token) {
   return async function(dispatch){
-    const token = sessionStorage.getItem('token')
+    const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
+    
     try{
       const favs = await axios.get(`http://localhost:3001/favorite/${token}`)
       const alReducer = favs.data
-      console.log(alReducer)
+      
       return dispatch({type: ADD_FAV, payload: alReducer});
     }
     catch (error) {
-      alert("error")
+      alert("error en getFavById")
     }
   }
 }
