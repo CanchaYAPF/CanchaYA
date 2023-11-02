@@ -18,7 +18,12 @@ const Booking = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState('');
 
-  const token = sessionStorage.getItem('token');
+  const tokenJwt = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const token =  tokenJwt?  tokenJwt : googleToken
+
+
+
   const [formData, setFormData] = useState({
     day: '',
     initialHour: '',
@@ -110,7 +115,7 @@ const Booking = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!token) {
+    if (!token ) {
       setIsLoginModalOpen(true);
     } else if (!formData.userId) {
       setIsLoginModalOpen(true);

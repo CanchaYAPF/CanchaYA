@@ -1,31 +1,26 @@
 const { Favorito, Field } = require("../../db");
 const jwt = require("jsonwebtoken");
 const mock = require("../field/getFields");
+const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")
 
 const getAllFavs = async (id) => {
-  const decoded = jwt.verify(id, "secretKey");
-  console.log("decode", decoded.userId);
-  const userId = decoded.userId;
+ 
+ 
+  let userId= await decodeGoogleToken(id) ?await decodeGoogleToken(id) :
+  await decodeJwtToken(id)
+    ;
+
+  // const tokenId=await decodeJwtToken(id)
+  // let userId= tokenId ? tokenId: await decodeGoogleToken(id);
+
 
   const allFavoRelations = await Favorito.findAll({
     where: { idUser: userId },
   });
 
-  // const ids = allFavoRelations.map( fav=>fav.idsFields)
-  // const idsUU = ids.filter( id=> id.length> 10)
+return allFavoRelations;
 
-  // const resposeDb = idsUU.map(id =>{
-
-  // return  Field.findAll({where:{id : id}})
-
-  // })
-
-  //   const responseApi = allFavoRelations.map( relation => {
-  //     id = relation.idsFields
-  //     return mock.filter(f => f.id===id)
-  //   })
-
-  return allFavoRelations;
+  
 };
 
 module.exports = getAllFavs;

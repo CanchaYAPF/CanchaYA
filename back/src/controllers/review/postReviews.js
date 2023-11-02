@@ -1,7 +1,9 @@
 const { Review, Field, User } = require("../../db");
 const jwt = require("jsonwebtoken")
+
+
 const postReviews = async (rate, description, FieldId, token) => {
-  
+  const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")
 
 
     
@@ -13,9 +15,12 @@ const postReviews = async (rate, description, FieldId, token) => {
     }
 
 
-    const decoded = jwt.verify(token, 'secretKey');
     
-    const UserId = decoded.userId
+
+    let UserId= await decodeGoogleToken(token) ?await decodeGoogleToken(token) :
+    await decodeJwtToken(token)
+      ;
+  
 
 
      const user =  await User.findAll({where:{id : UserId},})

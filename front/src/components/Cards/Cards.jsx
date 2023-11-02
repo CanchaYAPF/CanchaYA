@@ -24,7 +24,7 @@ function Cards({ allFields }) {
 
 
   const arrFields = allFields
-  console.log(myFavorites)
+  
   return (
     <div className={styles.container}>
 {arrFields?.map((field, index) => (<Card key={index} field={field} myFavorites={myFavorites} />))}
