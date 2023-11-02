@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import FieldEdit from './FieldEdit';
-import style from './FieldCard.module.css'
+import style from './FieldsAdmin.module.css'
 
 const FieldCard = ({ field, handlerDesactive, getField }) => {
   console.log(field.status ? "Activo" : "Desactivo");
