@@ -1,5 +1,6 @@
 const { Field, Sport } = require("../../db");
-const mock = require("../../utils/mockUp");
+const mock = require ("../../../src/utils/mockUp")
+
 
 const getAllFields = async (name) => {
   const allFields = await Field.findAll({
@@ -55,6 +56,7 @@ const getAllFields = async (name) => {
         shift: shifs,
         paymentMethod: pays,
         service: servs,
+        status:field.status
       };
     });
   const database = normalize(allFieldsFinal);

@@ -1,5 +1,5 @@
 // const { Op } = require('sequelize');// Para consultas complejas
-const { User,Booking } = require("../../db");
+const { User } = require("../../db");
 
 const getAllUsers = async()=>{
         // if(mail){
@@ -9,7 +9,7 @@ const getAllUsers = async()=>{
         //         },{include: Booking})
         // return userByMail
         // }else{
-        const allUsers = await User.findAll({include: Booking})
+        const allUsers = await User.findAll()
         return allUsers 
         // }
 }

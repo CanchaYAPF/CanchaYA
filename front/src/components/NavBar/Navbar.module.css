@@ -199,3 +199,14 @@
   cursor: pointer;
   transition: background-color 0.3s; 
 }
+.btntable {
+  background-color: #81BA27;
+  color: #fff;
+  padding: 5px 10px; 
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-right: 5px; 
+  width: 80px; 
+  white-space: nowrap; 
+}

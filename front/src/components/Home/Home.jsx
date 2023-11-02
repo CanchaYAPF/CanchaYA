@@ -14,10 +14,12 @@ const Home = () => {
   const { searchTerm } = useContext(SearchContext);
   const navigate = useNavigate();
   const token = sessionStorage.getItem('token');
-  const googleToken= sessionStorage.getItem('googleToken')
+  const googleToken = sessionStorage.getItem('googleToken')
   const dispatch = useDispatch();
   const allFields = useSelector((state) => state.fieldData); 
+  
   const bookMp = useSelector((state) => state.bookMp);
+  const bookingData = useSelector((state) => state.bookingData)
 
   const allFilteredFields = useSelector((state) => state.filteredFields);
   const [currentPage, setCurrentPage] = useState(parseInt(localStorage.getItem("currentPage")) || 1);
@@ -31,6 +33,18 @@ const Home = () => {
       dispatch(getField());
     }
   }, [dispatch, allFilteredFields]);
+
+  // useEffect(() => { //maneja si la matriz esta vacia 
+  //   if (bookingData.length === 0) {
+  //     dispatch(getAllBookings());
+  //   }
+  // }, [dispatch, bookingData]);
+
+  // useEffect(() => { //maneja si la matriz esta vacia 
+  //   if (bookMp.length === 0) {
+  //     dispatch(getAllBookings());
+  //   }
+  // }, [dispatch, bookMp]);
   
   useEffect(() => {
     const storedCurrentPage = localStorage.getItem("currentPage");
@@ -69,6 +83,7 @@ const Home = () => {
   //   const myParam = urlParams.get('collection_status');  
   //   if ( myParam === "approved") {
   //     const aux = bookMp[bookMp?.length-1]
+  //     console.log(aux);
   //     aux.status = true
   //     return alert("Reserva pagada con éxito!")
   //   }
