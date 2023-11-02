@@ -20,8 +20,8 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = dispatch(userLogin(usernameLogin))
-      sessionStorage.setItem('token', response.payload.token);
+      const response = await dispatch(userLogin(usernameLogin))
+      await sessionStorage.setItem('token', response.payload.token);
       dispatch(getUserRole(response.payload.token))
       navigate("/home")
 
@@ -46,8 +46,8 @@ const Login = () => {
 
   const credentialResponse = async (credentialResponse) =>{
     try {
-        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
-        sessionStorage.setItem('googleToken', credentialResponse.credential);
+        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential });
+        await sessionStorage.setItem('googleToken', credentialResponse.credential);
         dispatch(getUserRole(credentialResponse.credential))
         navigate("/home");
     } catch (error) {
