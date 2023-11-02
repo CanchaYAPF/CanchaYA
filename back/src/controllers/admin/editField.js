@@ -1,10 +1,10 @@
-const { Field } = require('../../db');
+const { Field, Sport } = require('../../db');
+const { Op } = require('sequelize');
 
 const editField = async (id, data) => {
     let updateData = {};
     if (data.name) updateData.name = data.name;
     if (data.image) updateData.image = data.image;
-    if (data.sports) updateData.sports = data.sports;
     if (data.phone) updateData.phone = data.phone;
     if (data.address) updateData.address = data.address;
     if (data.city) updateData.city = data.city;
@@ -21,6 +21,21 @@ const editField = async (id, data) => {
 
     // Después de la actualización, obtenemos el campo actualizado
     const updatedField = await Field.findOne({ where: { id: id } });
+
+    // Si se proporcionaron deportes, los actualizamos
+    if (data.sports) {
+        // Obtenemos las instancias de los deportes
+        const sportsInstances = await Sport.findAll({
+            where: {
+                name: {
+                    [Op.in]: Object.keys(data.sports).filter(sport => data.sports[sport])
+                }
+            }
+        });
+
+        // Asociamos los deportes con el campo
+        await updatedField.setSports(sportsInstances);
+    }
 
     return updatedField;
 }
