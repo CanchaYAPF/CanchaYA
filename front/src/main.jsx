@@ -8,7 +8,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import axios from 'axios';
 import './index.css';
 
-axios.defaults.baseURL = "https://canchasyaback.onrender.com/";
+/* axios.defaults.baseURL = "https://canchasyaback.onrender.com/"; */
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
