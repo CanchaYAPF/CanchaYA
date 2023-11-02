@@ -6,6 +6,7 @@ import style from './login.module.css'
 import  logo  from './logotipo-canchasya.png';
 import axios from 'axios'
 import { GoogleLogin } from '@react-oauth/google';
+import {getUserRole} from '../../../Redux/actions/admin_actions'
 
 
 const Login = () => {
@@ -19,10 +20,11 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await dispatch(userLogin(usernameLogin))
+      const response = dispatch(userLogin(usernameLogin))
       sessionStorage.setItem('token', response.payload.token);
-      console.log(response.payload.token)
+      dispatch(getUserRole(response.payload.token))
       navigate("/home")
+
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
     }
@@ -46,7 +48,7 @@ const Login = () => {
     try {
         await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
         sessionStorage.setItem('googleToken', credentialResponse.credential);
-        console.log(credentialResponse.credential)
+        dispatch(getUserRole(credentialResponse.credential))
         navigate("/home");
     } catch (error) {
       alert("Error al iniciar sesión: " + error.message);

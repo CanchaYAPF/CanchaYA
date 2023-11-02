@@ -6,8 +6,7 @@ import { CREATE_BOOKING,
         GET_REVIEW,
   USER_LOGIN,
         USER_SIGNUP, 
-        GET_SPORTS , 
-  GET_FIELD_BY_ID,
+        GET_SPORTS , GET_FIELD_BY_ID,
         FILTER, 
         ORDER_BY_PRICE, 
         GET_CITIES,
@@ -18,12 +17,14 @@ import { CREATE_BOOKING,
         ADD_FAV, 
         DELETE_FAV, 
         RESET_CITY_FILTER, 
-        RESET_HORARIO_FILTER, 
+        
+   RESET_HORARIO_FILTER, 
         RESET_SPORT_FILTER, 
         RESET_PRICE_RANGE_FILTER, 
         FILTER_PRICE_RANGE,
-        GET_USERS, 
-        NOT_ALLOW} from '../types/form_types';
+        
+   GET_USERS, 
+        NOT_ALLOW, USER_ROLES, CLEAR_USER_ROLE, REVIEW_ADMIN} from '../types/form_types';
 
 const initialState = {
  bookingData: [],
@@ -47,7 +48,10 @@ const initialState = {
  },
  getAllUsers: [],
  error:"",
- getAllFieldsAdmin:[]
+ getAllFieldsAdmin:[],
+ bookingAdmin:[],
+ role:"",
+ adminReview:[],
 };
 
 export default function formReducer(state = initialState, action) {
@@ -60,7 +64,8 @@ export default function formReducer(state = initialState, action) {
    case GET_BOOKING:
      return {
        ...state,
-       bookingData: action.data
+       bookingData: action.data,
+       bookingAdmin:action.data
      };
      case EDIT_FIELD:
   return {
@@ -275,7 +280,23 @@ export default function formReducer(state = initialState, action) {
       return {
         ...state,
         error: action.error,
-      };
+      }
+     case USER_ROLES:
+      return{
+        ...state,
+        role:action.payload
+ 
+      }
+      case CLEAR_USER_ROLE:
+        return{
+          ...state,
+          role:""
+        }
+      case REVIEW_ADMIN:
+        return{
+          ...state,
+          adminReview:action.payload
+        };
     default:
       return state;
   }

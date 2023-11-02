@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 import FieldEdit from './FieldEdit';
+import style from './FieldCard.module.css'
 
 const FieldCard = ({ field, handlerDesactive, getField }) => {
   console.log(field.status ? "Activo" : "Desactivo");
@@ -12,7 +14,7 @@ const FieldCard = ({ field, handlerDesactive, getField }) => {
         <td>{field.status ? "Activo": "Desactivo"}</td>
         <td>
         <FieldEdit field={field} getField={getField} />
-        <button onClick={() => handlerDesactive(field.id)}>Desactivar</button>
+        <button className={style['btn-table']} onClick={() => handlerDesactive(field.id)}>Desactivar</button>
       </td>
     </tr>
   );

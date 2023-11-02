@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { Home, Login, SignUp, Form, Details, Profile, Favorites, Booking, NavBar, Review, Reviews } from "./components/index";
+import { Home, Login, SignUp, Form, Details, Profile, Favorites, Booking, NavBar, Review, Reviews, Admin } from "./components/index";
 import './App.css'; 
 import SearchContext from './SearchContext';
 
@@ -22,6 +22,7 @@ const App = () => {
           <Route path='/:id' element={<Details />} />
           <Route path='/profile' element={<Profile/>} /> 
           <Route path='/booking' element={<Booking/>} /> 
+          <Route path='/Administracion' element={<Admin/>} /> 
         </Routes>
       </div>
     </SearchContext.Provider>
