@@ -30,7 +30,7 @@ const requestPasswordRecovery = async (req, res) => {
       const token = jwt.sign({ mail }, 'secretKey', { expiresIn: '1h' });
 
       // Crea un enlace de recuperación que incluye el token.
-      const recoveryLink = `https://cancha-ya-git-prepredevelop-dupli-dupli-canchayas-projects.vercel.app//reset-password?token=${token}`;
+      const recoveryLink = `https://cancha-ya-git-prepredevelop-dupli-dupli-canchayas-projects.vercel.app/reset-password?token=${token}`;
 
       // Envia un correo electrónico al usuario con el enlace de recuperación.
       const msg = {
