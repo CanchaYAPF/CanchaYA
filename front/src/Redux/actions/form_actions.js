@@ -283,7 +283,7 @@ export function removeFav(fav) {
 
 export function getFavById(token) {
   return async function(dispatch){
-    const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
+    let token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     
     try{
       const favs = await axios.get(`http://localhost:3001/favorite/${token}`)

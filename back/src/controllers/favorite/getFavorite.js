@@ -10,8 +10,8 @@ const getAllFavs = async (id) => {
   // await decodeJwtToken(id)
     
 
-  let tokenId=await decodeJwtToken(id)
-  let userId= tokenId ? tokenId: await decodeGoogleToken(id);
+  let tokenId = await decodeJwtToken(id)
+  let userId = tokenId ? tokenId: await decodeGoogleToken(id);
 
 
   const allFavoRelations = await Favorito.findAll({
