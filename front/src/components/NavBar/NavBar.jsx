@@ -1,30 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useContext, useEffect } from 'react';
-import {useSelector, useDispatch} from 'react-redux'
+import React, { useState, useContext} from 'react';
+import {useSelector} from 'react-redux'
 import style from './Navbar.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import logo from './logotipo-canchasya.png';
 import SearchContext from '../../SearchContext';
-import { getUserRole, clearUserRole } from '../../Redux/actions/admin_actions';
+
 
 
 const NavBar = () => {
 
   //validacion de role Admin
-  const tokenJwt = sessionStorage.getItem('token');
-  const googleToken= sessionStorage.getItem('googleToken')
-  const token= tokenJwt ? tokenJwt : googleToken
-  const dispatch = useDispatch()
   const userRole = useSelector(state=>state.role)
-
-  
-  // useEffect(()=>{
-  //  console.log("typeof",typeof userRole)
-  //   if(userRole.length===0){
-  //  dispatch(getUserRole(token)).finally(() => setIsLoading(false))}
-   console.log("userole:", userRole)
-  // })
-
 
   const location = useLocation();
   const navigate = useNavigate(); 
@@ -39,9 +26,7 @@ const NavBar = () => {
   const logoutFunction = async () => {
     console.log("hola")
     sessionStorage.removeItem('token');
-    dispatch(clearUserRole())
     navigate('/login');
-
   };
 
   const isLoginOrSignup = location.pathname === '/login' || location.pathname === '/signup';

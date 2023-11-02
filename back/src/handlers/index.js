@@ -21,9 +21,7 @@ const getAllBookingHr= require("./admin/getAllBookingHr");
 const editBookingHr= require("./admin/editBookingHr");
 const getUserRoleHr = require("./admin/getUserRolesHr")
 const getReviewHr = require("./admin/getReviewsHr");
-const desactiveReviewHr = require("./admin/desactiveReviewHr")
-const getAllBookingHr = require("./admin/getAllBookingHr");
-const editBookingHr = require("./admin/editBookingHr");
+const desactiveReviewHr = require("./admin/desactiveReviewHr");
 const updateBookingHr = require("./booking/updateBooking");
 
 module.exports = {
