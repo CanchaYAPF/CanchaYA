@@ -12,7 +12,7 @@ const authAdmin = async (req, res, next) => {
     const token = bearerHeader.split(' ')[1];
     
     let userId = await decodeJwtToken(token);
-    console.log(userId,"jwt token prueba")
+    
     if (!userId) {
       // Si el token no se pudo decodificar con decodeJwtToken, intenta con decodeGoogleToken
       userId = await decodeGoogleToken(token);
@@ -22,13 +22,13 @@ const authAdmin = async (req, res, next) => {
       return res.status(401).json({ message: "Token inválido" });
     }
     
-    const adminUser = await User.findOne({
+    const user = await User.findOne({
       where: {
         id: userId,
       }
     });
 
-    if (!adminUser) {
+    if (!user) {
       return res.status(403).json({ message: "No tiene los permisos de acceso necesarios" });
     }
 

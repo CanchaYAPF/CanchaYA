@@ -21,9 +21,10 @@ const getUserDetails = async (token) => {
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('mi-informacion');
   const [userDetails, setUserDetails] = useState(null);
-
+  const tokenJwt = sessionStorage.getItem('token'); 
+  const tokenGoogle = sessionStorage.getItem('googleToken'); 
+  let token = tokenJwt ? tokenJwt : tokenGoogle
   useEffect(() => {
-    const token = sessionStorage.getItem('token'); 
     getUserDetails(token).then(details => setUserDetails(details));
   }, []);
 
