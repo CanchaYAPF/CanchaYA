@@ -37,7 +37,11 @@ const NavBar = () => {
 
   const isLoginOrSignup = location.pathname === '/login' || location.pathname === '/signup';
 
-  const handleSearchChange = useContext(SearchContext);
+  const { setSearchTerm } = useContext(SearchContext);
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
 
   return (
 <div className={style.navbar} style={{ backgroundImage: `url(${imagen})` }}>  
