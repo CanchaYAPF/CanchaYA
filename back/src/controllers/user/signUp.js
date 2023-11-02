@@ -22,7 +22,7 @@ const signUp = async (name, lastname, mail, password, birthdate, phone,roles) =>
     });
     const msg = {
       to: mail, 
-      from: 'grtechpf@gmail.com', 
+      from: 'canchasya1@gmail.com', 
       subject: 'Bienvenido a CanchasYA',
       text: '¡Gracias por unirte a nuestra aplicación, ya podes reservar y agregar canchas!',
       html: '<strong>¡Gracias por unirte a nuestra aplicación!</strong>',

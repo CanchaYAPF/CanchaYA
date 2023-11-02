@@ -55,7 +55,7 @@ const handleSuccess = async (req, res) => {
 
       const msg = {
         to: userEmail,
-        from: "grtechpf@gmail.com",
+        from: "canchasya1@gmail.com",
         subject: "Reserva exitosa",
         text: "Tu reserva ha sido exitosa. Gracias por elegirnos!.",
       };

@@ -35,7 +35,7 @@ const requestPasswordRecovery = async (req, res) => {
       // Envia un correo electrónico al usuario con el enlace de recuperación.
       const msg = {
         to: mail,
-        from: 'grtechPF@gmail.com',
+        from: 'canchasya1@gmail.com',
         subject: 'Recuperación de contraseña',
         text: 'Siga este enlace para restablecer su contraseña',
         html: `<a href="${recoveryLink}">Haga clic aquí para restablecer su contraseña</a>`,
