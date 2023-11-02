@@ -40,7 +40,7 @@ const EditUserForm = ({ user, getUsers, closeModal }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = sessionStorage.getItem('token'); 
-    await axios.put(`https://canchasyaback.onrender.com/admin/${user.id}`, formData, {
+    await axios.put(`http://localhost:3001/admin/${user.id}`, formData, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

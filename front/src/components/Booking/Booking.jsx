@@ -131,7 +131,7 @@ const Booking = () => {
   const handlePayment = (method) => {
      if (method === 'mercadopago') {
       // dispatch(postBooking(formData))
-      axios.post('https://canchasyaback.onrender.com/booking', formData,{
+      axios.post('http://localhost:3001/booking', formData,{
         headers:{
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -152,7 +152,7 @@ const Booking = () => {
         bookingId: response.data.reserva.id,
       };
       axios
-        .post("https://canchasyaback.onrender.com/payment/createOrder", paymentData)
+        .post("http://localhost:3001/payment/createOrder", paymentData)
         .then((response) => {
           window.location.href = response.data.body.init_point;
         })
@@ -171,7 +171,7 @@ const Booking = () => {
   
       
   
-      // axios.post("https://canchasyaback.onrender.com/payment/success", paymentData)
+      // axios.post("http://localhost:3001/payment/success", paymentData)
       //   .then((response) => {
       //     console.log("Pago confirmado con éxito:", response.data);
       //   })

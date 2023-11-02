@@ -23,7 +23,7 @@ useEffect(()=>{
 
 const handlerDesactive = async(id)=>{
     try {
-       const {data} = await axios.patch(`https://canchasyaback.onrender.com/admin/review/${id}`) 
+       const {data} = await axios.patch(`http://localhost:3001/admin/review/${id}`) 
        dispatch(getReviewsAdmin())
     } catch (error) {
         console.log(error)
