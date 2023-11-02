@@ -26,7 +26,6 @@ function Resetpw() {
           token: token,
         })
         .then((response) => {
-          setPasswordChanged(true); 
           alert(response.data.message);         
         })
         .catch((error) => {
