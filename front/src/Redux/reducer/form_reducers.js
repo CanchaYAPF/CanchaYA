@@ -183,6 +183,8 @@ export default function formReducer(state = initialState, action) {
    case ORDER_BY_PRICE:
      const orderByPrice = state.fieldData.slice();
      const isDescending = action.payload === "Descendente";
+     console.log(action.payload);
+
      orderByPrice.sort((a, b) => {
        const priceA = a.price;
        const priceB = b.price;
