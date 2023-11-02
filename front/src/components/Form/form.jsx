@@ -7,6 +7,8 @@ import Swal from 'sweetalert2'
 /* import NavBar from '../NavBar/NavBar'; */
 import axios from "axios"
 import img from "./jovenes-seguidores-apostando-linea.jpg"
+import imagen from './fondo-form-34.png';
+
 
 const validate = ({name, image, sports, address, city, phone, price, shift, paymentMethod, service}) => {
   let errors = {}
@@ -215,8 +217,8 @@ const FormularioCancha = () => {
 
 
   return (
-    <div className={styles.master}>      
-    <div className={styles.leftContainer}>
+    <div className={styles.master} style={{ backgroundImage: `url(${imagen})` }}>      
+    <div className={styles.leftContainer} >
       <img src={img} alt="" />
       <h2 >POTENCIA TUS INGRESOS:</h2>
       <h2 >ÚNETE A NOSOTROS Y ALQUILA TUS CANCHAS EN LÍNEA</h2>
@@ -227,7 +229,7 @@ const FormularioCancha = () => {
       <h4><span className={styles.resaltado}>RESEÑAS Y MEJORA CONTINUA:</span> RECIBE RETROALIMENTACIÓN PARA MEJORAR TUS SERVICIOS.</h4>
       <h4><span className={styles.resaltado}>SEGUIDAD Y CONFIANZA:</span> TRANSACCIONES SEGURAS PARA TODOS.</h4>
     </div>
-    <div className={styles.container}>
+    <div className={styles.container} >
     <h1 className={styles.verde}>INSCRIBE TU CANCHA AQUI</h1>   
     <div className={styles.formContainer}>   
       <label className={styles.formLabel}>Nombre de Cancha:</label>
