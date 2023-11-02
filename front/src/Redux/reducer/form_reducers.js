@@ -98,9 +98,12 @@ export default function formReducer(state = initialState, action) {
        reviewData: action.data
      };
    case GET_REVIEW:
+    const reviews = action.payload;
+    const activeReviews = reviews.filter(review => review.approved === true)
      return {
       ...state,
-      reviewData: [...action.payload],
+      reviewData: activeReviews,
+      reviewAdmin: action.payload
      };
    case USER_LOGIN:
      return {
