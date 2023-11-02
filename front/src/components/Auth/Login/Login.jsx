@@ -20,19 +20,33 @@ const Login = () => {
     mail: "",
     password: ""
   })
+  const [error, setError] = useState(null)  //manejo de errores
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await dispatch(userLogin(usernameLogin))
+      const response = await dispatch(userLogin(usernameLogin));
       await sessionStorage.setItem('token', response.payload.token);
-      dispatch(getUserRole(response.payload.token))
-      navigate("/home")
-
+      dispatch(getUserRole(response.payload.token));
+      navigate("/home");
     } catch (error) {
+      if (error.response) {
+        // Si el error tiene una respuesta del servidor
+        if (error.response.status === 404) {
+          setError("El usuario no está registrado. Por favor, verifica tu correo electrónico.");
+        } else if (error.response.status === 401) {
+          setError("Contraseña incorrecta. Inténtalo de nuevo.");
+        } else if (error.response.status === 403) {
+          setError("El usuario se encuentra desactivado. Por favor, contacta al soporte técnico.");
+        } else {
+          setError("Error desconocido. Por favor, inténtalo de nuevo más tarde.");
+        }
+      } else {
+        setError("Error desconocido. Por favor, inténtalo de nuevo más tarde.");
+      }
       console.error("Error al iniciar sesión:", error);
     }
-  }
+  };
   const handleEmailChange = (e) => {
     setUserLogin({
       ...usernameLogin,
@@ -116,6 +130,7 @@ const Login = () => {
         <Link to="/signup">
           <button className={style.link}>No tengo una cuenta</button>
         </Link>
+        {error && <p className={style.error}>{error}</p>} 
         </div>
       </form>
     </div>

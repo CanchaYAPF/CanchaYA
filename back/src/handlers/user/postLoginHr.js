@@ -4,9 +4,10 @@ const postLoginHr = async (req, res) => {
   const { mail, password } = req.body;
   try {
     const loginResponse = await login(mail, password);
-    res.status(201).json(loginResponse);
+    res.status(200).json(loginResponse); // Cambiado a 200: OK
   } catch (error) {
-    res.status(401).json({ error: error.message });
+    const statusCode = error.statusCode || 500; // Si no se define un statusCode, se usa 500: Internal Server Error
+    res.status(statusCode).json({ error: error.message });
   }
 };
 

@@ -6,17 +6,23 @@ const login = async (mail, password) => {
   const user = await User.findOne({ where: { mail } });
 
   if (!user) {
-    throw new Error("Este usuario no esta registrado");
+    const error = new Error("Este usuario no está registrado");
+    error.statusCode = 404; 
+    throw error;
   } else {
     const passwordIsValid = await bcrypt.compare(password, user.password);
 
     if (!passwordIsValid) {
-      throw new Error("Contraseña inválida");
+      const error = new Error("Contraseña inválida");
+      error.statusCode = 401;
+      throw error;
     } else if (user.status !== true) {
-      throw new Error("El usuario se encuentra desactivado comunicate con soporte tecnico para activarlo");
+      const error = new Error("El usuario se encuentra desactivado. Comunícate con soporte técnico para activarlo.");
+      error.statusCode = 403; // Forbidden
+      throw error;
     } else {
-      const token = jwt.sign({ userId: user.id, roles:user.roles }, "secretKey");
-      return { auth:"Validación exitosa", token:token };
+      const token = jwt.sign({ userId: user.id, roles: user.roles }, "secretKey");
+      return { auth: "Validación exitosa", token: token };
     }
   }
 };
