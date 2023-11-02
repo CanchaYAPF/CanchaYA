@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import  './Forgotpw.module.css'; 
+import  style from './Forgotpw.module.css'; 
 
 function ForgotPassword() {
   const [email, setEmail] = useState('');
@@ -26,16 +26,16 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="master">
-    <div className="container">
-      <div className="box">
+    <div className={style.master}>
+    <div className={style.container}>
+      <div className={style.box}>
         <h2>Recuperación de Contraseña</h2>
         <form onSubmit={handleSubmit}>
           <label>
             Correo Electrónico:
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </label>
-          <button type="submit">Enviar Correo de Recuperación</button>
+          <button className={style.button} type="submit">Enviar Correo de Recuperación</button>
         </form>
       </div>
     </div>
