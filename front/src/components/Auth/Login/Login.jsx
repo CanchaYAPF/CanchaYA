@@ -64,7 +64,7 @@ const Login = () => {
 
   const credentialResponse = async (credentialResponse) =>{
     try {
-        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential });
+        await axios.post(`https://canchasyaback.onrender.com/user/googleLogin`, { token: credentialResponse.credential });
         await sessionStorage.setItem('googleToken', credentialResponse.credential);
         dispatch(getUserRole(credentialResponse.credential))
         navigate("/home");

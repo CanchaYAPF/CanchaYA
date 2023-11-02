@@ -6,7 +6,7 @@ import Favorites from "../Favorites/Favorites";
 
 const getUserDetails = async (token) => {
   try {
-    const response = await axios.get('http://localhost:3001/user/profile', {
+    const response = await axios.get('https://canchasyaback.onrender.com/user/profile', {
       headers: {
         'Authorization': 'Bearer ' + token
       }

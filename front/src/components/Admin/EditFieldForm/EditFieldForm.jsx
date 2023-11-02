@@ -98,7 +98,7 @@ const EditFieldForm = ({ field, closeModal }) => {
     e.preventDefault();
     const token = sessionStorage.getItem('token');
     try {
-      await axios.put(`http://localhost:3001/admin/fields/${field.id}`, formData, {
+      await axios.put(`https://canchasyaback.onrender.com/admin/fields/${field.id}`, formData, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

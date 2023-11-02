@@ -2,7 +2,7 @@
 .formContainer {
   flex: 1;
   max-width: 400px;
-  margin-left: 120px;
+  margin-left: 680px;
   padding: 20px;
   border: 1px solid #0D3A5D;
   border-radius: 35px;
@@ -10,17 +10,19 @@
   margin-top: 18px;
   color: #fcfcfc;
   margin-right: 300px;
-  margin-bottom: 50px;
+  
+  
+
 }
 .container{
-  background-color: #ffffff;
+  background-color: #ffffff00;
   height: 150vh;
   
 }
 .master{
   display: flex;
-  background-color: #ffffff;
-  height: 117vh;
+  background-color: rgba(58, 99, 128, 0.562);
+  height: 100vh;
 }
 
 .formLabel {
@@ -87,32 +89,39 @@ color: rgb(0, 0, 0);
   
 }
 .verde{
-  color: #81BA27;
-  margin-right: 0px;
+  color: #080c02;
   margin-bottom: 0;
-  margin-top: 80px;
-  margin-left: -90px;
+  margin-top: 10px;
 }
 .leftContainer{
   flex: 1;
   max-width: 400px;
   padding: 20px;
   border-radius: 35px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0);
   color: #2a638f;
-  margin-left: 400px;
+  margin-left: 80px;
   margin-top: 70px;
+  max-height: 400px;
+
+  
 }
 .leftContainer img{
   max-width: 100%;
   margin-bottom: 10px;
 }
 .leftContainer h2{
-color: #81BA27;
+color: #8cd811;
 margin: 0;
+margin-left: 0px;
 }
+.leftContainer h4{
+  color: #0f0000;
+  margin: 0;
+  margin-left: 0px;
+  }
 .resaltado {
-  color: #0D3A5D;
+  color: #1b0202;
   font-weight: bold;
 }
 .formSelect{

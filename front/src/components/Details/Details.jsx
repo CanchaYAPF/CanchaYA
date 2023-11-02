@@ -39,7 +39,7 @@ function Details() {
       </div>
       <div className={style.rightContent}>
         <div className={style.contentWrapper}>
-          <h2>{field.sports}</h2>
+          {/* <h2>{field.sports}</h2> */}
           <h1>{field.name}</h1>
           <h2>{field.city} | {field.address}</h2>
           <h2 className={style.precio}>PRECIO POR HORA: ${field.price}</h2>
