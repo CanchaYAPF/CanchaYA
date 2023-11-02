@@ -7,6 +7,6 @@ userRouter.post("/signup", postSignUpHr);
 userRouter.post("/login", postLoginHr);
 userRouter.post("/googleLogin", postGoogleLoginHr);
 userRouter.get("/profile", getUserProfile);
-userRouter.patch("/admin/:id", editUserHr); 
+
 
 module.exports = userRouter;
