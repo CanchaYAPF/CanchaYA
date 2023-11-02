@@ -1,11 +1,12 @@
+/* eslint-disable no-case-declarations */
 import { CREATE_BOOKING, 
         GET_BOOKING, 
         CREATE_FIELD, 
         GET_FIELD, 
         CREATE_REVIEW,
         GET_REVIEW,
-  USER_LOGIN,
- CLEAR_FAVS,
+        USER_LOGIN,
+        CLEAR_FAVS,
         USER_SIGNUP, 
         GET_SPORTS , 
         GET_FIELD_BY_ID,
@@ -27,7 +28,8 @@ import { CREATE_BOOKING,
         NOT_ALLOW, 
         USER_ROLES, 
         CLEAR_USER_ROLE, 
-        REVIEW_ADMIN} from '../types/form_types';
+        REVIEW_ADMIN,
+        GET_FIELD_ADMIN} from '../types/form_types';
 
 const initialState = {
  bookingData: [],
@@ -81,11 +83,14 @@ export default function formReducer(state = initialState, action) {
        fieldData: action.data
      };
    case GET_FIELD:
+   const fields= action.payload;
+   const activeFields= fields.filter(field=>field.status === true)
      return {
        ...state,
-       fieldData: [...action.payload],
-       allFieldsBackUp: action.payload,
-       filteredFields: action.payload,
+       fieldData: activeFields,
+       allFieldsBackUp: activeFields,
+       filteredFields: activeFields,
+       fieldAdmin: action.payload
      };
    case CREATE_REVIEW:
      return {
@@ -305,6 +310,11 @@ export default function formReducer(state = initialState, action) {
           ...state,
           adminReview:action.payload
         };
+        case GET_FIELD_ADMIN:
+          return {
+            ...state,
+          allFields: action.payload,
+          };
     default:
       return state;
   }

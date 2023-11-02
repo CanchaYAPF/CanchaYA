@@ -1,8 +1,8 @@
-import { GET_BOOKING, GET_USERS,NOT_ALLOW, USER_ROLES,CLEAR_USER_ROLE, REVIEW_ADMIN } from "../types/form_types";
+import { GET_BOOKING, GET_USERS,NOT_ALLOW, USER_ROLES,CLEAR_USER_ROLE, REVIEW_ADMIN , GET_FIELD_ADMIN} from "../types/form_types";
 import axios from 'axios'
 
 export const getUsers = ()=> async dispatch => {
-    const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
+    let token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')
     try {
       const {data} = await axios.get('http://localhost:3001/admin', {
         headers:{
@@ -88,7 +88,26 @@ export const getUsers = ()=> async dispatch => {
       }
     }
   }
-
+export const getFieldAdmin = ()=> async dispatch=>{
+ try {
+  const {data} = await axios.get('http://localhost:3001/admin/fields', {
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  dispatch({
+    type: GET_FIELD_ADMIN,
+    payload: data
+  })
+ } catch (error) {
+  if (error.response && error.response.status === 403) {
+    dispatch({ 
+      type: NOT_ALLOW, 
+      error: error.response.data.msg });
+  }
+ }
+}
 
   // export const desactiveField = (id )=> async dispatch => {
   //   const token = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : sessionStorage.getItem('googleToken')

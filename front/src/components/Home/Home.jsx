@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -31,16 +32,16 @@ const Home = () => {
   const [currentFields, setCurrentFields] = useState([]);
   
   useEffect(() => { //maneja si la matriz esta vacia 
-    if (!allFilteredFields.length) {
+    if (!allFilteredFields?.length) {
       dispatch(getField());
     }
   }, [dispatch, allFilteredFields]);
 
   useEffect(() => { 
-    if (!bookingData.length) {
+    if (!bookingData?.length) {
       dispatch(getAllBookings());
     }
-  }, [bookingData]);
+  }, [dispatch]);//le puse dispatch para que no haga un get infinito de booking
 
   // useEffect(() => {
   //   if (bookMp.length === 0) {

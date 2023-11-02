@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useContext} from 'react';
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import style from './Navbar.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import logo from './logotipo-canchasya.png';
 import SearchContext from '../../SearchContext';
 import imagen from './canchas-ya-imgane22.png';
+import {clearUserRole} from "../../Redux/actions/admin_actions"
+
 
 
 
@@ -16,6 +18,7 @@ const NavBar = () => {
 
   const location = useLocation();
   const navigate = useNavigate(); 
+  const dispatch = useDispatch();
 
   const isHomePage = location.pathname === '/home';
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -27,6 +30,7 @@ const NavBar = () => {
   const logoutFunction = async () => {
     console.log("hola")
     sessionStorage.removeItem('token');
+    dispatch(clearUserRole())
     navigate('/login');
   };
 

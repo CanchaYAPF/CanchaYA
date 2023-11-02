@@ -33,4 +33,5 @@ export const EDIT_FIELD = 'EDIT_FIELD';
 export const USER_ROLES='USER_ROLES';
 export const CLEAR_USER_ROLE = 'CLEAR_USER_ROLE';
 export const REVIEW_ADMIN='REVIEW_ADMIN';
+export const GET_FIELD_ADMIN ='GET_FIELD_ADMIN'
 

@@ -8,7 +8,7 @@ import styles from './FieldsAdmin.module.css';
 
 const FieldsAdmin = () => {
 
-    const allFields =  useSelector(state=>state.allFieldsBackUp);
+    const allFields =  useSelector(state=>state.fieldAdmin);
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const jwtToken = sessionStorage.getItem(`token`)
