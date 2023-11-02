@@ -3,7 +3,6 @@ import axios from 'axios';
 import style from './Profile.module.css';
 import MyBookings from '../Booking/getbooking';
 import Favorites from "../Favorites/Favorites";
-import Admin from '../Admin/Admin/Admin';
 
 const getUserDetails = async (token) => {
   try {
@@ -22,9 +21,10 @@ const getUserDetails = async (token) => {
 const Profile = () => {
   const [activeTab, setActiveTab] = useState('mi-informacion');
   const [userDetails, setUserDetails] = useState(null);
-
+  const tokenJwt = sessionStorage.getItem('token'); 
+  const tokenGoogle = sessionStorage.getItem('googleToken'); 
+  let token = tokenJwt ? tokenJwt : tokenGoogle
   useEffect(() => {
-    const token = sessionStorage.getItem('token'); 
     getUserDetails(token).then(details => setUserDetails(details));
   }, []);
 
@@ -51,11 +51,6 @@ const Profile = () => {
             className={`${style['tab-button']} ${activeTab === 'mis-reservas' ? style.active : ''}`}>
             Mis Reservas
           </button>
-          <button onClick={()=> handleTabClick('administracion')} 
-          className={`${style['tab-button']} ${activeTab === 'administracion' ? style.active : ''}`}>
-            Administración</button>
-        </div>
-
         <div className={style['tab-content']}>
           {activeTab === 'mi-informacion' && userDetails && (
             <div>
@@ -78,13 +73,9 @@ const Profile = () => {
                <MyBookings/> 
             </div>
           )}
-            {activeTab === 'administracion' && (
-            <div >
-              <Admin />
-            </div>
-          )}
         </div>
       </div>
+    </div>
     </div>
   );
 };

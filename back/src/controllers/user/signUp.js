@@ -32,7 +32,7 @@ const signUp = async (name, lastname, mail, password, birthdate, phone,roles) =>
       .then(() => console.log('Correo electrónico de bienvenida enviado'))
       .catch((error) => console.error('Error al enviar el correo electrónico de bienvenida', error));
     
-    const token = await jwt.sign({ userId: newUser.id }, "secretKey");
+    const token = await jwt.sign({ userId: newUser.id, roles: newUser.roles }, "secretKey");
     return { auth:"registro exitoso", token:token };
   }
   

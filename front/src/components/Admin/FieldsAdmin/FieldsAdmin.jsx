@@ -8,21 +8,19 @@ import styles from './FieldsAdmin.module.css';
 
 const FieldsAdmin = () => {
 
-    const allFields =  useSelector(state=>state.allFieldsBackUp);
-    console.log("allfields", allFields)
+    const allFields =  useSelector(state=>state.fieldAdmin);
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const jwtToken = sessionStorage.getItem(`token`)
     const googleToken= sessionStorage.getItem('googleToken')
-
 
     useEffect(()=>{
         if(allFields.length===0){
             dispatch(getField())
         if (jwtToken === null && googleToken===null) navigate('/login');
         }
-
     })
+
     const handlerDesactive = async (id) => {
         try {
            const {data} = await axios.patch(`http://localhost:3001/admin/fields/${id}`)
@@ -44,6 +42,7 @@ const FieldsAdmin = () => {
                         <th>Dirección</th>
                         <th>Teléfono</th>
                         <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>

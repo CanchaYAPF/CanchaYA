@@ -8,6 +8,9 @@ import axios from 'axios'
 import { GoogleLogin } from '@react-oauth/google';
 import showPwdImg from '../SignUp/show-password.svg';
 import hidePwdImg from '../SignUp/hide-password.svg';
+import {getUserRole} from '../../../Redux/actions/admin_actions'
+import imagen from './canchas-ya-imgane23.png';
+
 
 
 const Login = () => {
@@ -22,9 +25,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await dispatch(userLogin(usernameLogin))
-      sessionStorage.setItem('token', response.payload.token);
-      console.log(response.payload.token)
+      await sessionStorage.setItem('token', response.payload.token);
+      dispatch(getUserRole(response.payload.token))
       navigate("/home")
+
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
     }
@@ -46,9 +50,9 @@ const Login = () => {
 
   const credentialResponse = async (credentialResponse) =>{
     try {
-        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
-        sessionStorage.setItem('googleToken', credentialResponse.credential);
-        console.log(credentialResponse.credential)
+        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential });
+        await sessionStorage.setItem('googleToken', credentialResponse.credential);
+        dispatch(getUserRole(credentialResponse.credential))
         navigate("/home");
     } catch (error) {
       alert("Error al iniciar sesión: " + error.message);
@@ -57,14 +61,19 @@ const Login = () => {
  const [isRevealPwd, setIsRevealPwd] = useState(false); 
 
   return (
-    <div className={style.master}>
-      <div className={style.logo}>
+    <div className={style.master} style={{ backgroundImage: `url(${imagen})` }}>  
+          <div className={style.logo}>
         <h1><img src={logo} alt="" /></h1>
       </div>
       <div className={style.texto}>
-      <h1 className={style.top}>ENCUENTRA, RESERVA Y JUEGA:</h1>
+      <h1 className={style.top}>ENCUENTRA, RESERVA Y JUEGA</h1>
       <h1 className={style.blanco}>LA CANCHA IDEAL A SOLO UN CLIC DE DISTANCIA</h1>
-      <h3 className={style.blanco}>Descubre la forma más sencilla y rápida de reservar canchas deportivas. En <span className={style.resaltado}>CANCHAS YA</span> ponemos el deporte al alcance de tus manos . Encuentra, reserva y juega en las mejores instalaciones en segundos. Tu cancha perfecta, tu juego perfecto. ¡Únete a la comunidad deportiva ahora!</h3>
+      <h3 className={style.blanco}>Descubre la forma más sencilla y rápida de reservar canchas deportivas. En 
+      <span className={style.resaltado}> CanchasYA</span> </h3>
+      <h2 className={style.blanco}> Ponemos el deporte al alcance de tus manos</h2>
+      <h2 className={style.blanco}> Encuentra, reserva y juega en las mejores instalaciones en segundos</h2>
+      <h2 className={style.blanco}> Tu cancha perfecta, tu juego perfecto. ¡Únete a la comunidad deportiva ahora!</h2>
+      <h2 className={style.resaltado}> Para ingresar es necesario crear un usuario </h2>      
       </div>
       <br />
       <div className={style.container}>

@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
 import {getFavById, getField, clearFavs} from '../../Redux/actions/form_actions';
 import Card from "../Card/Card";
@@ -10,12 +12,14 @@ export default function Favorites() {
 
   const tokenJwt = sessionStorage.getItem(`token`)
   const googleToken= sessionStorage.getItem('googleToken')
-  const token =  tokenJwt?  tokenJwt : googleToken
+  let token =  tokenJwt ?  tokenJwt : googleToken;
+
 
   const allFields = useSelector((state) => state.fieldData);
 
   const  myFavorites = useSelector(state => state.myFavorites);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
  
 
 

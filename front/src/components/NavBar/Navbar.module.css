@@ -1,13 +1,15 @@
 .navbar {
   display: flex;
   align-items: center;
-  background-image:  url("C:\Users\Equipo\OneDrive\Escritorio\CanchaYA\CanchaYA\front\src\components\NavBar\canchas-ya-imgane22.png");
   color: #fff;
   padding: 10px;
   text-align: center;
   justify-content: space-between;
   margin-bottom: 0;
   margin-top: -100px;
+  background-size: auto; 
+  background-repeat: repeat; 
+  animation: scrollBackground 20s linear infinite; 
 }
 
 .logo {
@@ -34,7 +36,7 @@
 }
 
 .text2{
-  background-color: #0D3A5D;
+  background-color: #66a3d100;
   color: #fff;
   padding: 10px;
   font-size: 12px;
@@ -52,7 +54,7 @@
 }
 
 .text {
-  background-color: #0D3A5D;
+  background-color: #aac1d300;
   color: #fff;
   padding: 10px;
   font-size: 12px;
@@ -209,4 +211,12 @@
   margin-right: 5px; 
   width: 80px; 
   white-space: nowrap; 
+}
+@keyframes scrollBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 50% 0;
+  }
 }

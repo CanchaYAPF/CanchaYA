@@ -1,15 +1,16 @@
 
-const BookingCard = (booking)=>{
+const BookingCard = ({booking})=>{
 
     return(
-        <div>
-<tr key={booking.id}>
+    <tr key={booking.id}>
     <td>{booking.day}</td>
     <td>{booking.initialHour}</td>
     <td>{booking.finalHour}</td>
     <td>{booking.totalTime}</td>
-</tr>
-        </div>
+    <td>{booking.userName}</td>
+    <td>{booking.fieldName}</td>
+    <td>{booking.id}</td>
+    </tr>
     )
 }
 export default BookingCard

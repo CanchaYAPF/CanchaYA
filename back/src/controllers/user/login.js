@@ -15,7 +15,7 @@ const login = async (mail, password) => {
     } else if (user.status !== true) {
       throw new Error("El usuario se encuentra desactivado comunicate con soporte tecnico para activarlo");
     } else {
-      const token = jwt.sign({ userId: user.id }, "secretKey");
+      const token = jwt.sign({ userId: user.id, roles:user.roles }, "secretKey");
       return { auth:"Validación exitosa", token:token };
     }
   }

@@ -3,6 +3,7 @@ import UsersAdmin from "../UsersAdmin/UsersAdmin"
 import FieldsAdmin  from "../FieldsAdmin/FieldsAdmin"
 import BookingAdmin from "../BookingAdmin/BokingsAdmin"
 import style from "./Admin.module.css"
+import ReviewAdmin from "../ReviewAdmin/ReviewAdmin"
 
 const Admin =()=>{
   const [activeTab, setActiveTab] = useState('Usuarios');
@@ -24,6 +25,10 @@ const Admin =()=>{
       onClick={() => handleTabClick('Reservas')}
       className={`${style['tab-button']} ${activeTab === 'Reservas' ? style.active : ''}`}>
       Reservas</button>
+      <button
+      onClick={() => handleTabClick('Reseñas')}
+      className={`${style['tab-button']} ${activeTab === 'Reseñas' ? style.active : ''}`}>
+      Reseñas</button>
       </div>
       {activeTab === 'Usuarios' && (
             <div >
@@ -43,6 +48,12 @@ const Admin =()=>{
               <BookingAdmin/>
             </div>
           )}     
+        {activeTab === 'Reseñas' && (
+            <div >
+              <h2 className={style['Reseñas']}>Reseñas</h2>
+              <ReviewAdmin/>
+            </div>
+          )} 
            
         
 

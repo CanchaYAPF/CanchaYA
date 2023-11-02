@@ -69,27 +69,28 @@ const validate = ({name, image, sports, address, city, phone, price, shift, paym
 const FormularioCancha = () => {
   const tokenJwt = sessionStorage.getItem(`token`)
   const googleToken= sessionStorage.getItem('googleToken')
-  const token =  tokenJwt?  tokenJwt : googleToken
+
 
   const navigate= useNavigate()
   const allSports = useSelector(state => state.sportData)
   const allCities = useSelector(state => state.citiesData)
+  const [isFormComplete, setIsFormComplete] = useState(false);
+
 
     
 
  const dispatch = useDispatch();
 
-
  const [errors, setErrors] = useState({});
-
 
   useEffect(() => {
     dispatch(getSports())
     dispatch (getCities())
-    if (token === null && googleToken===null) navigate('/login');
+    if (tokenJwt === null && googleToken===null) navigate('/login');
   }, []);
    
- 
+  let token = tokenJwt ? tokenJwt : googleToken
+  
   const [formData, setFormData] = useState({
     name: '',
     image: '',
@@ -109,12 +110,8 @@ const FormularioCancha = () => {
   
     if (name === "phone" || name === "price") {
       const numericValue = value.replace(/\D/g, ''); // Solo permite números
-  
-      
-        setFormData({ ...formData, [name]: numericValue });
-      
+      setFormData({ ...formData, [name]: numericValue });
     } else if (name === "sports") {
-      console.log("entro");
       if (formData.sports.includes(value)) return;
       setFormData({
         ...formData,
@@ -124,13 +121,18 @@ const FormularioCancha = () => {
       setFormData({ ...formData, [name]: value });
     }
   
+    // Verifica si el formulario está completo
+    const formComplete = Object.keys(validate({ ...formData, [name]: value })).length === 0 &&
+      formData.sports.length > 0 &&
+      formData.phone.length > 0;
+  
+    // Actualiza el estado de errores y el estado del formulario completo
     setErrors(
-      validate({
-        ...formData,
-        [name]: value,
-      })
+      validate({ ...formData, [name]: value })
     );
+    setIsFormComplete(formComplete);
   };
+  
   
   
 
@@ -186,24 +188,20 @@ const FormularioCancha = () => {
  
 
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    let error = Object.keys(validate(formData));
-      if (error.length || !formData.sports.length || !formData.phone.length) {
-        alert("Falta completar datos");
-        errors.sports = "falta completar datos";
-        errors.phone = "falta completar datos";
-      }{
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const validationErrors = validate(formData);
+
+  if (Object.keys(validationErrors).length > 0 || formData.sports.length === 0 || formData.phone.length === 0) {
+    alert("Falta completar datos");
+  } else {
     dispatch(formCancha(formData));
-    Swal.fire(
-      'Cancha Subida con exito',
-      'You clicked the button!',
-      'success'
-    )
-     setFormData({
+    Swal.fire('Cancha Subida con éxito', 'You clicked the button!', 'success');
+    setFormData({
       name: '',
       image: '',
-      sports:[],
+      sports: [],
       address: '',
       city: '',
       phone: '',
@@ -212,8 +210,9 @@ const FormularioCancha = () => {
       paymentMethod: [],
       service: [],
     });
-   }
-  };
+  }
+};
+
 
   return (
     <div className={styles.master}>      
@@ -451,7 +450,13 @@ const FormularioCancha = () => {
       {errors.service && <p className={styles.error} >{errors.service}</p>}
       </div>
 
-      <button className={styles.formButton} >Agregar</button>
+      <button
+        className={styles.formButton}
+        onClick={handleSubmit}
+        disabled={!isFormComplete} // Deshabilita el botón si el formulario no está completo
+      >
+        Agregar
+      </button>
       </form>
     </div>
         </div>

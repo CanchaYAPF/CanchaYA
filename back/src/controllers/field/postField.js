@@ -1,5 +1,5 @@
 const { Field, Sport } = require("../../db");
-const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")//modularice el decifrado de tokens
+const { decodeGoogleToken, decodeJwtToken} = require("../../utils/decodedToken")//modularice el decifrado de tokens
 
 const postField = async (name, image, sports, phone, address, city, paymentMethod, price, service, shift, token) => {
   try {
@@ -7,7 +7,7 @@ const postField = async (name, image, sports, phone, address, city, paymentMetho
     if (existingField) {
       const error = new Error("La cancha ya existe");
       error.status = 409;
-      throw error;
+      throw error
     }else {
       const sportsToAdd = await Sport.findAll({ where: { name: sports } });
       //Dependiendo de si es googleToken o Token lo decodifica y le da el valor del userId

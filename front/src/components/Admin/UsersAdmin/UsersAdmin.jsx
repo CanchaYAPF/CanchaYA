@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUsers } from '../../../Redux/actions/admin_actions';
@@ -14,16 +15,23 @@ const UsersAdmin = () => {
   const googleToken= sessionStorage.getItem('googleToken')
   let token= jwtToken ? jwtToken : googleToken
 
+
   useEffect(() => {
     if (allUsers?.length === 0) {
       dispatch(getUsers());
-      if (jwtToken === null && googleToken===null) navigate('/login');
+      if (token===null) navigate('/login');
     }
   }, [dispatch]);
 
   const handlerDesactive = async (id) => {
     try {
-      const {data} = await axios.patch(`http://localhost:3001/admin/desactive/${id}`)
+      const {data} = await axios.patch(`http://localhost:3001/admin/desactive/${id}`,  {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+    
       dispatch(getUsers()); 
     } catch (error) {
       console.log(error)
