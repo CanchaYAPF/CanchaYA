@@ -8,7 +8,6 @@ const OrderByPrice = () => {
 
   const onSelectedChange = (event) => {
     event.preventDefault();
-
     dispatch(orderByPrice(event.target.value));
   };
 

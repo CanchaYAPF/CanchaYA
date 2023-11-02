@@ -180,24 +180,21 @@ export default function formReducer(state = initialState, action) {
        filters: true,
        appliedFilters: newSportFilters,
      };
-   case ORDER_BY_PRICE:
-     const orderByPrice = state.fieldData.slice();
-     const isDescending = action.payload === "Descendente";
-     console.log(action.payload);
-
-     orderByPrice.sort((a, b) => {
-       const priceA = a.price;
-       const priceB = b.price;
-       if (isDescending) {
-         return priceB - priceA;  
-       } else {
-         return priceA - priceB;  
-       }
-     });
-     return {
-       ...state,
-       fieldData: orderByPrice, 
-     };
+     case ORDER_BY_PRICE:
+      const orderByPrice = [...state.fieldData];
+      orderByPrice.sort((a, b) => {
+        const priceA = Number(a.price);
+        const priceB = Number(b.price);
+        if (action.payload === "desc") {
+          return priceB - priceA;  
+        } else {
+          return priceA - priceB;  
+        }
+      });
+      return {
+        ...state,
+        fieldData: orderByPrice, 
+      };
    case GET_CITIES:
      return { 
        ...state,
@@ -209,14 +206,14 @@ export default function formReducer(state = initialState, action) {
        horariosData: [...action.payload]
      };
      case FILTER_PRICE_RANGE:
-  const filteredFields = state.allFieldsBackUp.filter(field => field.price >= action.payload.min && field.price <= action.payload.max);
+  const { min, max } = action.payload;
+  const filteredFields = state.allFieldsBackUp.filter(field => Number(field.price) >= Number(min) && Number(field.price) <= Number(max));
   return {
     ...state,
     fieldData: filteredFields.length > 0 ? filteredFields : state.allFieldsBackUp,
+    filteredFields: filteredFields.length > 0 ? filteredFields : state.allFieldsBackUp,
   };
-
-
-      case CLEAR_FAVS:
+     case CLEAR_FAVS:
         return {
           ...state,
           fields: [],
