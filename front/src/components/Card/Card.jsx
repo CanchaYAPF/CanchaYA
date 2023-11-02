@@ -18,7 +18,7 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
   const char = {
     token: token,
     idsFields: field.id
-  }
+  } 
 
   const dispatch = useDispatch();
   const [isFav, setIsFav] = esFav? useState(true):useState(false)
@@ -34,7 +34,7 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
       dispatch(addFav(char));
     }
   };
-
+ 
   
   useEffect(() => {
     myFavorites.forEach((fav) => {

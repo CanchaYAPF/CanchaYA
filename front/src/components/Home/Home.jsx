@@ -9,6 +9,8 @@ import style from './Home.module.css';
 import {Paginado} from '../Pagination/Paginate';
 import OrderByPrice from '../Order/orderByPrice';
 import SearchContext from '../../SearchContext';
+import axios from 'axios';
+
 
 const Home = () => {
   const { searchTerm } = useContext(SearchContext);
@@ -34,13 +36,13 @@ const Home = () => {
     }
   }, [dispatch, allFilteredFields]);
 
-  // useEffect(() => { //maneja si la matriz esta vacia 
-  //   if (bookingData.length === 0) {
-  //     dispatch(getAllBookings());
-  //   }
-  // }, [dispatch, bookingData]);
+  useEffect(() => { 
+    if (!bookingData.length) {
+      dispatch(getAllBookings());
+    }
+  }, [bookingData]);
 
-  // useEffect(() => { //maneja si la matriz esta vacia 
+  // useEffect(() => {
   //   if (bookMp.length === 0) {
   //     dispatch(getAllBookings());
   //   }
@@ -63,8 +65,10 @@ const Home = () => {
   };
   
   useEffect(() => {
+    // dispatch(getAllBookings());
+    // const aux = bookingData[bookingData?.length-1]
+    // console.log(aux);
     dispatch(getHorarios());
-    dispatch(getAllBookings());
     dispatch(getSports());
     dispatch(getField());
     dispatch(getCities());
@@ -78,16 +82,15 @@ const Home = () => {
     setCurrentFields(filteredFields);
   }, [searchTerm, allFilteredFields, firstField, lastField]);
   
-  // useEffect(() => {
-  //   const urlParams = new URLSearchParams(window.location.search);
-  //   const myParam = urlParams.get('collection_status');  
-  //   if ( myParam === "approved") {
-  //     const aux = bookMp[bookMp?.length-1]
-  //     console.log(aux);
-  //     aux.status = true
-  //     return alert("Reserva pagada con éxito!")
-  //   }
-  // })
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('status');  
+    const params = urlParams.get('external_reference');  
+    if ( myParam === "approved") {
+      axios.put(`http://localhost:3001/booking/${params}`).then((response) => console.log(response))
+      return alert("Reserva pagada con éxito!")
+    }
+  }, [])
 
   return (
     <div>
