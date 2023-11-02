@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { userLogin } from '../../../Redux/actions/form_actions'
 import { useDispatch } from "react-redux"
 import { Link,useNavigate } from 'react-router-dom'
 import style from './login.module.css'
-import  logo  from './logotipo-canchasya.png';
+import logo  from './logotipo-canchasya.png';
 import axios from 'axios'
 import { GoogleLogin } from '@react-oauth/google';
+import showPwdImg from '../SignUp/show-password.svg';
+import hidePwdImg from '../SignUp/hide-password.svg';
 import {getUserRole} from '../../../Redux/actions/admin_actions'
 
 
@@ -54,6 +56,7 @@ const Login = () => {
       alert("Error al iniciar sesión: " + error.message);
     } 
  }
+ const [isRevealPwd, setIsRevealPwd] = useState(false); 
 
   return (
     <div className={style.master}>
@@ -80,11 +83,28 @@ const Login = () => {
         </div>
         <div className={style.inputs}>
         <label htmlFor="password">Contraseña: </label>
-          <input placeholder="Escribí tu contraseña" onChange={handlePasswordChange} value={usernameLogin.password} id="password" name="password" type='password'/>
+          <input placeholder="Escribí tu contraseña"
+            onChange={handlePasswordChange} 
+            value={usernameLogin.password} 
+            id="password" 
+            name="password" 
+            type={isRevealPwd ? "text" : "password"}
+                    />                    
+                    <img
+                        src={isRevealPwd ? hidePwdImg : showPwdImg}
+                        alt={isRevealPwd ? "Ocultar contraseña" : "Mostrar contraseña"}
+                        onClick={() => setIsRevealPwd(!isRevealPwd)}
+                        className={style.passwordIcon}
+                    />
+          <div className={style.forgotPasswordLink}>
+          <Link to= "/forgot-password">
+          <button className={style.link}> Olvidé mi contraseña </button>
+          
+          </Link>
+          </div>
         </div>
         <div className={style.button}>
-        <button className={style.verde} type="submit">Iniciar Sesion</button>
-
+        <button className={style.verde} type="submit">Iniciar Sesion</button>  
         
         <Link to="/signup">
           <button className={style.link}>No tengo una cuenta</button>

@@ -1,6 +1,8 @@
 const { Booking, Field } = require("../../db");
 const jwt = require("jsonwebtoken");
 const { Op } = require("sequelize");
+const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")
+
 
 async function createBooking(
   day,
@@ -22,9 +24,14 @@ async function createBooking(
       throw new Error("Faltan datos por completar");
     }
 
-    const decoded = jwt.verify(userId, "secretKey");
-    console.log("decode", decoded.userId);
-    const UserId = decoded.userId;
+
+    
+
+    let UserId= await decodeGoogleToken(userId) ?await decodeGoogleToken(userId) :
+    await decodeJwtToken(userId)
+      ;
+
+
 
     const field = await Field.findByPk(fieldId);
 

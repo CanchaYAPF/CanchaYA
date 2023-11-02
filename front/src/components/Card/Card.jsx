@@ -7,12 +7,19 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 
 function Card({field,myFavorites, removeFav, addFav, esFav}) {
-  const token = sessionStorage.getItem(`token`)
+
+
+  const tokenJwt = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const token =  googleToken ? googleToken  : tokenJwt
+
+  const uniqueSports = [...new Set(field.sports.split(', '))];
+
   const id = field.id
   const char = {
     token: token,
     idsFields: field.id
-  }
+  } 
 
   const dispatch = useDispatch();
   const [isFav, setIsFav] = esFav? useState(true):useState(false)
@@ -28,7 +35,7 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
       dispatch(addFav(char));
     }
   };
-
+ 
   
   useEffect(() => {
     myFavorites.forEach((fav) => {
@@ -40,6 +47,13 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
 
     return (
       <div className={style.container2}>
+        <div className={style.close}>
+        {isFav ? (
+          <button onClick={handleFavorite}>❤️</button>
+        ) : (
+          <button onClick={handleFavorite}>🤍</button>
+        )}
+      </div>
         <Link to ={`/${id}`} >
         <div className={style.container}>
           <div className={style.imagen}>
@@ -49,15 +63,9 @@ function Card({field,myFavorites, removeFav, addFav, esFav}) {
           <h3 className={style.h3}>{field.name}</h3>
           <h3>Ciudad: {field.city}</h3>
           <h3>Precio: ${field.price}</h3>
-          <h3>Deportes: {field.sports}</h3>
+          <h3>Deportes: {uniqueSports.join(', ')}</h3>
           </div>
-      <div className={style.close}>
-        {isFav ? (
-          <button onClick={handleFavorite}>❤️</button>
-        ) : (
-          <button onClick={handleFavorite}>🤍</button>
-        )}
-      </div>
+      
     
         </Link>
         </div>

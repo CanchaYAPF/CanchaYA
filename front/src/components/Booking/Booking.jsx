@@ -4,6 +4,10 @@ import Modal from 'react-modal';
 import styles from './Booking.module.css';
 import { postBooking } from '../../Redux/actions/form_actions';
 import axios from 'axios';
+import { CREATE_BOOKING, GET_BOOKING, CREATE_FIELD, GET_FIELD, CREATE_REVIEW, GET_REVIEW, 
+  USER_LOGIN, USER_SIGNUP, FORM_CANCHA_SUCCESS, FORM_CANCHA_ERROR, GET_SPORTS,
+   ORDER_BY_PRICE,FILTER, GET_FIELD_BY_ID, GET_CITIES, FILTER_CITIES,
+    FILTER_HORARIO, GET_HORARIOS,ADD_FAV,DELETE_FAV, FORM_BOOKING_SUCCESS, RESET_CITY_FILTER,RESET_HORARIO_FILTER,RESET_SPORT_FILTER, FILTER_PRICE_RANGE, RESET_PRICE_RANGE_FILTER} from "../../Redux/types/form_types";
 
 Modal.setAppElement('#root');
 
@@ -18,7 +22,12 @@ const Booking = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState('');
 
-  const token = sessionStorage.getItem('token');
+  const tokenJwt = sessionStorage.getItem(`token`)
+  const googleToken= sessionStorage.getItem('googleToken')
+  const token =  tokenJwt?  tokenJwt : googleToken
+
+
+
   const [formData, setFormData] = useState({
     day: '',
     initialHour: '',
@@ -110,7 +119,7 @@ const Booking = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!token) {
+    if (!token ) {
       setIsLoginModalOpen(true);
     } else if (!formData.userId) {
       setIsLoginModalOpen(true);
@@ -121,9 +130,17 @@ const Booking = () => {
 
   const handlePayment = (method) => {
      if (method === 'mercadopago') {
-
-      dispatch(postBooking(formData))
-      
+      // dispatch(postBooking(formData))
+      axios.post('http://localhost:3001/booking', formData,{
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      } ).then((response) => {dispatch({
+        type: FORM_BOOKING_SUCCESS,
+        payload: formData
+      })
+      console.log(response.data.reserva);
       const paymentData = {
         id: field.id,
         items: 1,
@@ -132,7 +149,18 @@ const Booking = () => {
         image: field.image,
         price: field.price,
         userId: formData.userId,
+        bookingId: response.data.reserva.id,
       };
+      axios
+        .post("http://localhost:3001/payment/createOrder", paymentData)
+        .then((response) => {
+          window.location.href = response.data.body.init_point;
+        })
+        .catch((error) => console.log(error.message));
+    })
+      
+
+      
       // const isHourAvailable = checkHourAvailability(formData.initialHour, formData.finalHour);
 
       // if (!isHourAvailable) {
@@ -141,12 +169,7 @@ const Booking = () => {
       //   return;
       // }
   
-      axios
-        .post("http://localhost:3001/payment/createOrder", paymentData)
-        .then((response) => {
-          window.location.href = response.data.body.init_point;
-        })
-        .catch((error) => console.log(error.message));
+      
   
       // axios.post("http://localhost:3001/payment/success", paymentData)
       //   .then((response) => {

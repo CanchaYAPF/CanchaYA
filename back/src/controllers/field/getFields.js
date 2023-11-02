@@ -1,4 +1,5 @@
 const { Field, Sport } = require("../../db");
+const mock = require ("../../../src/utils/mockUp")
 
 
 const getAllFields = async (name) => {

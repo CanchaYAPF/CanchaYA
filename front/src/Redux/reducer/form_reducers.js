@@ -5,26 +5,29 @@ import { CREATE_BOOKING,
         CREATE_REVIEW,
         GET_REVIEW,
   USER_LOGIN,
+ CLEAR_FAVS,
         USER_SIGNUP, 
-        GET_SPORTS , GET_FIELD_BY_ID,
+        GET_SPORTS , 
+        GET_FIELD_BY_ID,
         FILTER, 
         ORDER_BY_PRICE, 
         GET_CITIES,
-   FILTER_CITIES,
+        FILTER_CITIES,
         FILTER_HORARIO,
         GET_HORARIOS, 
         EDIT_FIELD, 
         ADD_FAV, 
         DELETE_FAV, 
         RESET_CITY_FILTER, 
-        
-   RESET_HORARIO_FILTER, 
+        RESET_HORARIO_FILTER, 
         RESET_SPORT_FILTER, 
         RESET_PRICE_RANGE_FILTER, 
         FILTER_PRICE_RANGE,
-        
-   GET_USERS, 
-        NOT_ALLOW, USER_ROLES, CLEAR_USER_ROLE, REVIEW_ADMIN} from '../types/form_types';
+        GET_USERS, 
+        NOT_ALLOW, 
+        USER_ROLES, 
+        CLEAR_USER_ROLE, 
+        REVIEW_ADMIN} from '../types/form_types';
 
 const initialState = {
  bookingData: [],
@@ -203,6 +206,11 @@ export default function formReducer(state = initialState, action) {
   };
 
 
+      case CLEAR_FAVS:
+        return {
+          ...state,
+          fields: [],
+        };
     case RESET_PRICE_RANGE_FILTER:
       return {
         ...state,

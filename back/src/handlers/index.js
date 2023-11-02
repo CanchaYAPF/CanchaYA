@@ -10,7 +10,7 @@ const getSportsHr = require("./sports/getSportsHr");
 const postSignUpHr = require("./user/postSignUpHr");
 const postLoginHr = require("./user/postLoginHr");
 const postGoogleLoginHr = require("./user/postGoogleLoginHr");
-const getUserProfile = require("./user/getUserProfile"); 
+const getUserProfile = require("./user/getUserProfile");
 const getAllUserHr = require("./admin/getAllUserHr");
 const deleteUserHr = require("./admin/deleteUserHr");
 const desactiveUserHr = require("./admin/desactiveUserHr")
@@ -22,8 +22,12 @@ const editBookingHr= require("./admin/editBookingHr");
 const getUserRoleHr = require("./admin/getUserRolesHr")
 const getReviewHr = require("./admin/getReviewsHr");
 const desactiveReviewHr = require("./admin/desactiveReviewHr")
+const getAllBookingHr = require("./admin/getAllBookingHr");
+const editBookingHr = require("./admin/editBookingHr");
+const updateBookingHr = require("./booking/updateBooking");
 
 module.exports = {
+  updateBookingHr,
   getBookingHr,
   postBookingHr,
   allFieldsHr,
@@ -36,7 +40,7 @@ module.exports = {
   postSignUpHr,
   postLoginHr,
   postGoogleLoginHr,
-  getUserProfile, 
+  getUserProfile,
   getAllUserHr,
   deleteUserHr,
   editUserHr,
@@ -49,3 +53,4 @@ module.exports = {
   getReviewHr,
   desactiveReviewHr
 };
+
