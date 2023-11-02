@@ -3,6 +3,7 @@ import style from './Navbar.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import logo from './logotipo-canchasya.png';
 import SearchContext from '../../SearchContext';
+import imagen from './canchas-ya-imgane22.png';
 
 const NavBar = () => {
   const location = useLocation();
@@ -25,7 +26,7 @@ const NavBar = () => {
   const handleSearchChange = useContext(SearchContext);
 
   return (
-    <div className={style.navbar}>
+<div className={style.navbar} style={{ backgroundImage: `url(${imagen})` }}>  
   {!isLoginOrSignup && (
     <div className={style.logo}>
       <Link to="/home" style={{ font: '28px Poppins, sans-serif' }}>
