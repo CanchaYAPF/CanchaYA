@@ -8,6 +8,7 @@ import axios from 'axios'
 import { GoogleLogin } from '@react-oauth/google';
 import showPwdImg from '../SignUp/show-password.svg';
 import hidePwdImg from '../SignUp/hide-password.svg';
+import {getUserRole} from '../../../Redux/actions/admin_actions'
 
 
 const Login = () => {
@@ -22,9 +23,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await dispatch(userLogin(usernameLogin))
-      sessionStorage.setItem('token', response.payload.token);
-      console.log(response.payload.token)
+      await sessionStorage.setItem('token', response.payload.token);
+      dispatch(getUserRole(response.payload.token))
       navigate("/home")
+
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
     }
@@ -46,9 +48,9 @@ const Login = () => {
 
   const credentialResponse = async (credentialResponse) =>{
     try {
-        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential })
-        sessionStorage.setItem('googleToken', credentialResponse.credential);
-        console.log(credentialResponse.credential)
+        await axios.post(`http://localhost:3001/user/googleLogin`, { token: credentialResponse.credential });
+        await sessionStorage.setItem('googleToken', credentialResponse.credential);
+        dispatch(getUserRole(credentialResponse.credential))
         navigate("/home");
     } catch (error) {
       alert("Error al iniciar sesión: " + error.message);

@@ -1,13 +1,24 @@
-import React, { useState, useContext } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState, useContext} from 'react';
+import {useSelector, useDispatch} from 'react-redux'
 import style from './Navbar.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import logo from './logotipo-canchasya.png';
 import SearchContext from '../../SearchContext';
 import imagen from './canchas-ya-imgane22.png';
+import {clearUserRole} from "../../Redux/actions/admin_actions"
+
+
+
 
 const NavBar = () => {
+
+  //validacion de role Admin
+  const userRole = useSelector(state=>state.role)
+
   const location = useLocation();
   const navigate = useNavigate(); 
+  const dispatch = useDispatch();
 
   const isHomePage = location.pathname === '/home';
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -17,7 +28,9 @@ const NavBar = () => {
   };
 
   const logoutFunction = async () => {
+    console.log("hola")
     sessionStorage.removeItem('token');
+    dispatch(clearUserRole())
     navigate('/login');
   };
 
@@ -82,6 +95,10 @@ const NavBar = () => {
             <Link to="/Profile" className={style.link}>
               Información
             </Link>
+            { userRole==="admin" && (<div>
+              <Link to="/Administracion">Admin</Link>
+            </div>)}
+           
             <button onClick={logoutFunction} className={style.button}>
               Cerrar Sesión
             </button>

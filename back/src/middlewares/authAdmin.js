@@ -10,20 +10,21 @@ const authAdmin = async (req, res, next) => {
     }
 
     const token = bearerHeader.split(' ')[1];
-    let idUser = decodeJwtToken(token);
-
-    if (!idUser) {
+    
+    let userId = await decodeJwtToken(token);
+    console.log(userId,"jwt token prueba")
+    if (!userId) {
       // Si el token no se pudo decodificar con decodeJwtToken, intenta con decodeGoogleToken
-      idUser = decodeGoogleToken(token);
+      userId = await decodeGoogleToken(token);
     }
 
-    if (!idUser) {
+    if (!userId) {
       return res.status(401).json({ message: "Token inválido" });
     }
-
+    
     const adminUser = await User.findOne({
       where: {
-        id: idUser,
+        id: userId,
         roles: "admin"
       }
     });

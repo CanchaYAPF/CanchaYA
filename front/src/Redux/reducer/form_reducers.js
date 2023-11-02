@@ -1,19 +1,19 @@
+/* eslint-disable no-case-declarations */
 import { CREATE_BOOKING, 
         GET_BOOKING, 
         CREATE_FIELD, 
         GET_FIELD, 
         CREATE_REVIEW,
         GET_REVIEW,
-  USER_LOGIN,
- CLEAR_FAVS,
+        USER_LOGIN,
+        CLEAR_FAVS,
         USER_SIGNUP, 
         GET_SPORTS , 
-
-  GET_FIELD_BY_ID,
+        GET_FIELD_BY_ID,
         FILTER, 
         ORDER_BY_PRICE, 
         GET_CITIES,
-   FILTER_CITIES,
+        FILTER_CITIES,
         FILTER_HORARIO,
         GET_HORARIOS, 
         EDIT_FIELD, 
@@ -25,7 +25,11 @@ import { CREATE_BOOKING,
         RESET_PRICE_RANGE_FILTER, 
         FILTER_PRICE_RANGE,
         GET_USERS, 
-        NOT_ALLOW} from '../types/form_types';
+        NOT_ALLOW, 
+        USER_ROLES, 
+        CLEAR_USER_ROLE, 
+        REVIEW_ADMIN,
+        GET_FIELD_ADMIN} from '../types/form_types';
 
 const initialState = {
  bookingData: [],
@@ -49,7 +53,10 @@ const initialState = {
  },
  getAllUsers: [],
  error:"",
- getAllFieldsAdmin:[]
+ getAllFieldsAdmin:[],
+ bookingAdmin:[],
+ role:"",
+ adminReview:[],
 };
 
 export default function formReducer(state = initialState, action) {
@@ -62,7 +69,8 @@ export default function formReducer(state = initialState, action) {
    case GET_BOOKING:
      return {
        ...state,
-       bookingData: action.data
+       bookingData: action.data,
+       bookingAdmin:action.data
      };
      case EDIT_FIELD:
   return {
@@ -75,11 +83,14 @@ export default function formReducer(state = initialState, action) {
        fieldData: action.data
      };
    case GET_FIELD:
+   const fields= action.payload;
+   const activeFields= fields.filter(field=>field.status === true)
      return {
        ...state,
-       fieldData: [...action.payload],
-       allFieldsBackUp: action.payload,
-       filteredFields: action.payload,
+       fieldData: activeFields,
+       allFieldsBackUp: activeFields,
+       filteredFields: activeFields,
+       fieldAdmin: action.payload
      };
    case CREATE_REVIEW:
      return {
@@ -87,9 +98,12 @@ export default function formReducer(state = initialState, action) {
        reviewData: action.data
      };
    case GET_REVIEW:
+    const reviews = action.payload;
+    const activeReviews = reviews.filter(review => review.approved === true)
      return {
       ...state,
-      reviewData: [...action.payload],
+      reviewData: activeReviews,
+      reviewAdmin: action.payload
      };
    case USER_LOGIN:
      return {
@@ -282,7 +296,28 @@ export default function formReducer(state = initialState, action) {
       return {
         ...state,
         error: action.error,
-      };
+      }
+     case USER_ROLES:
+      return{
+        ...state,
+        role:action.payload
+ 
+      }
+      case CLEAR_USER_ROLE:
+        return{
+          ...state,
+          role:""
+        }
+      case REVIEW_ADMIN:
+        return{
+          ...state,
+          adminReview:action.payload
+        };
+        case GET_FIELD_ADMIN:
+          return {
+            ...state,
+          allFields: action.payload,
+          };
     default:
       return state;
   }

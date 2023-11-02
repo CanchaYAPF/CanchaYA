@@ -25,11 +25,9 @@ async function createBooking(
     }
 
 
-    
-
-    let UserId= await decodeGoogleToken(userId) ?await decodeGoogleToken(userId) :
-    await decodeJwtToken(userId)
-      ;
+    let decodedTokenGoogle = await decodeGoogleToken(userId)
+    let UserId= decodedTokenGoogle ? decodedTokenGoogle : await decodeJwtToken(userId)
+      
 
 
 

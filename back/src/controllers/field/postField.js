@@ -1,5 +1,5 @@
 const { Field, Sport } = require("../../db");
-const { decodeJwtToken, decodeGoogleToken} = require("../../utils/decodedToken")//modularice el decifrado de tokens
+const { decodeGoogleToken, decodeJwtToken} = require("../../utils/decodedToken")//modularice el decifrado de tokens
 
 const postField = async (name, image, sports, phone, address, city, paymentMethod, price, service, shift, token) => {
   try {

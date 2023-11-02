@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,7 +16,7 @@ import axios from 'axios';
 const Home = () => {
   const { searchTerm } = useContext(SearchContext);
   const navigate = useNavigate();
-  const token = sessionStorage.getItem('token');
+  const tokenJwt = sessionStorage.getItem('token');
   const googleToken = sessionStorage.getItem('googleToken')
   const dispatch = useDispatch();
   const allFields = useSelector((state) => state.fieldData); 
@@ -31,16 +32,16 @@ const Home = () => {
   const [currentFields, setCurrentFields] = useState([]);
   
   useEffect(() => { //maneja si la matriz esta vacia 
-    if (!allFilteredFields.length) {
+    if (!allFilteredFields?.length) {
       dispatch(getField());
     }
   }, [dispatch, allFilteredFields]);
 
   useEffect(() => { 
-    if (!bookingData.length) {
+    if (!bookingData?.length) {
       dispatch(getAllBookings());
     }
-  }, [bookingData]);
+  }, [dispatch]);//le puse dispatch para que no haga un get infinito de booking
 
   // useEffect(() => {
   //   if (bookMp.length === 0) {
@@ -63,6 +64,7 @@ const Home = () => {
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+  let token = tokenJwt ? tokenJwt : googleToken
   
   useEffect(() => {
     // dispatch(getAllBookings());
@@ -72,8 +74,8 @@ const Home = () => {
     dispatch(getSports());
     dispatch(getField());
     dispatch(getCities());
-    if (token === null && googleToken===null) navigate('/login');
-  }, [dispatch, token, googleToken, navigate]);
+    if (token === null ) navigate('/login');
+  }, [dispatch, token, navigate]);
   
   useEffect(() => {
     const filteredFields = allFilteredFields

@@ -3,7 +3,6 @@ import axios from 'axios';
 import style from './Profile.module.css';
 import MyBookings from '../Booking/getbooking';
 import Favorites from "../Favorites/Favorites";
-import Admin from '../Admin/Admin/Admin';
 
 const getUserDetails = async (token) => {
   try {
@@ -51,11 +50,6 @@ const Profile = () => {
             className={`${style['tab-button']} ${activeTab === 'mis-reservas' ? style.active : ''}`}>
             Mis Reservas
           </button>
-          <button onClick={()=> handleTabClick('administracion')} 
-          className={`${style['tab-button']} ${activeTab === 'administracion' ? style.active : ''}`}>
-            Administración</button>
-        </div>
-
         <div className={style['tab-content']}>
           {activeTab === 'mi-informacion' && userDetails && (
             <div>
@@ -78,13 +72,9 @@ const Profile = () => {
                <MyBookings/> 
             </div>
           )}
-            {activeTab === 'administracion' && (
-            <div >
-              <Admin />
-            </div>
-          )}
         </div>
       </div>
+    </div>
     </div>
   );
 };
