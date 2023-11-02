@@ -313,7 +313,7 @@ export function getFieldById(id) {
 export const orderByPrice = (order) => {
   return {
     type: ORDER_BY_PRICE,
-    payload: order,
+    payload: order === "Ascendente" ? "asc" : "desc",
   };
 };
 
@@ -385,10 +385,10 @@ export const filterCities = (selectedCity) => {
   };
 };
 
-export const filterPriceRange = (priceRange) => {
+export const filterPriceRange = (min, max) => {
   return {
     type: FILTER_PRICE_RANGE,
-    payload: priceRange,
+    payload: { min, max },
   };
 };
 

@@ -27,10 +27,13 @@ function Filters() {
     if (filters.horario !== "") {
       dispatch(filterHorario(filters.horario));
     }
-    if (filters.priceRange.min !== "" || filters.priceRange.max !== "") {
-      dispatch(filterPriceRange(filters.priceRange));
+  }, [filters, dispatch]);
+
+  useEffect(() => {
+    if (filters.priceRange.min !== "" && filters.priceRange.max !== "") {
+      dispatch(filterPriceRange(filters.priceRange.min, filters.priceRange.max));
     }
-  }, [filters]);
+  }, [filters.priceRange, dispatch]);
 
   const handleFilterChange = (event) => {
     const selectedSport = event.target.value;
@@ -65,8 +68,10 @@ function Filters() {
         [name]: value,
       },
     }));
+    if (filters.priceRange.min !== "" && filters.priceRange.max !== "") {
+      dispatch(filterPriceRange(filters.priceRange.min, filters.priceRange.max));
+    }
   };
-
   const handleResetFilters = () => {
     setFilters({
       sport: "",
