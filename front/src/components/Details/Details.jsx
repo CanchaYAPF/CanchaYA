@@ -15,6 +15,7 @@ function Details() {
   const dispatch = useDispatch();
   const field = useSelector(state => state.currentField);
   const [isBookingModalOpen, setBookingModalOpen] = useState(false);
+  console.log(field);
 
   useEffect(() => {
     dispatch(getFieldById(id));
