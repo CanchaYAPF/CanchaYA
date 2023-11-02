@@ -21,7 +21,7 @@ function Resetpw() {
     // Validación de contraseña antes de enviarla al servidor
     if (passwordErrors.length === 0 && !confirmPasswordError) {
       axios
-        .post('http://localhost:3001/recovery/reset-password', {
+        .post('https://canchasyaback.onrender.com/recovery/reset-password', {
           newPassword: password,
           token: token,
         })

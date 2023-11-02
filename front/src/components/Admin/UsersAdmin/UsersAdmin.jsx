@@ -25,7 +25,7 @@ const UsersAdmin = () => {
 
   const handlerDesactive = async (id) => {
     try {
-      const {data} = await axios.patch(`http://localhost:3001/admin/desactive/${id}`,  {
+      const {data} = await axios.patch(`https://canchasyaback.onrender.com/admin/desactive/${id}`,  {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
