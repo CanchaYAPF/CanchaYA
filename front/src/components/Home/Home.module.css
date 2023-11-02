@@ -74,3 +74,9 @@
   align-items: center;
   text-align: center;
 }
+.homeContainer {
+  background-image: url('https://garajemovil.net/tienda/wp-content/uploads/2014/03/cesped.png');
+  background-size: 100% 15%;
+  background-repeat: no-repeat;
+  background-position: center bottom; 
+}
