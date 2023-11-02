@@ -89,7 +89,7 @@ const Home = () => {
     const myParam = urlParams.get('status');  
     const params = urlParams.get('external_reference');  
     if ( myParam === "approved") {
-      axios.put(`http://localhost:3001/booking/${params}`).then((response) => console.log(response))
+      axios.put(`https://canchasyaback.onrender.com/booking/${params}`).then((response) => console.log(response))
       return alert("Reserva pagada con éxito!")
     }
   }, [])
