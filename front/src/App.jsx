@@ -32,5 +32,13 @@ const App = () => {
   );
 };
 
-export default App;
+function AppWrapper() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
+
+export default AppWrappe;
 
